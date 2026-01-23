@@ -238,6 +238,75 @@
             padding: 120px 60px;
         }
 
+        /* Section Carousel */
+        .section-carousel {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .section-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            will-change: transform;
+        }
+
+        .section-slide {
+            flex: 0 0 100%;
+            width: 100%;
+        }
+
+        .section-carousel-nav {
+            display: flex;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 60px;
+        }
+
+        .section-carousel-button {
+            width: 48px;
+            height: 48px;
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--ink);
+        }
+
+        .section-carousel-button:hover {
+            background: var(--ink);
+            color: var(--card);
+            transform: scale(1.05);
+        }
+
+        .section-carousel-dots {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 40px;
+        }
+
+        .section-carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--divider);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .section-carousel-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
         .section-divider {
             height: 1px;
             background: var(--divider);
@@ -751,57 +820,263 @@
 
     <!-- Section 1: Inbound -->
     <div class="section">
-        <div class="two-col">
-            <!-- iPhone Left -->
-            <div>
-                <div class="iphone-mockup">
-                    <div class="iphone-notch"></div>
-                    <div class="iphone-screen">
-                        <div class="status-bar">
-                            <div class="time">2:34</div>
-                            <div class="status-icons">
-                                <span>📶</span>
-                                <span>📡</span>
-                                <span>🔋</span>
+        <div class="section-carousel">
+            <div class="section-slides" id="section1Slides">
+                <!-- Slide 1 -->
+                <div class="section-slide">
+                    <div class="two-col">
+                        <!-- iPhone Left -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">2:34</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Kalalou</div>
+                                            <div class="call-subtitle">Support Connected</div>
+                                            <div class="call-duration">00:47</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
 
-                        <div class="call-screen">
-                            <div class="call-header">
-                                <div class="caller-name">Kalalou</div>
-                                <div class="call-subtitle">Support Connected</div>
-                                <div class="call-duration">00:47</div>
-                            </div>
-
-                            <div>
-                                <div class="call-actions">
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">🔇</div>
-                                        <div class="action-label">mute</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">⌨️</div>
-                                        <div class="action-label">keypad</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">🔊</div>
-                                        <div class="action-label">speaker</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">➕</div>
-                                        <div class="action-label">add call</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">📹</div>
-                                        <div class="action-label">FaceTime</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">👤</div>
-                                        <div class="action-label">contacts</div>
-                                    </button>
+                        <!-- Content Right -->
+                        <div class="content-block">
+                            <h2>24/7 Customer Presence</h2>
+                            <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Always available</span>
                                 </div>
-                                <div class="end-call-container">
-                                    <button class="end-call-btn">📞</button>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>No waiting</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Infinite scalability</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Consistent answers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="two-col">
+                        <!-- iPhone Left -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">2:34</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Kalalou</div>
+                                            <div class="call-subtitle">Support Connected</div>
+                                            <div class="call-duration">00:47</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Right -->
+                        <div class="content-block">
+                            <h2>24/7 Customer Presence</h2>
+                            <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Always available</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>No waiting</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Infinite scalability</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Consistent answers</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="two-col">
+                        <!-- iPhone Left -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">2:34</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Kalalou</div>
+                                            <div class="call-subtitle">Support Connected</div>
+                                            <div class="call-duration">00:47</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Content Right -->
+                        <div class="content-block">
+                            <h2>24/7 Customer Presence</h2>
+                            <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Always available</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>No waiting</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Infinite scalability</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Consistent answers</span>
                                 </div>
                             </div>
                         </div>
@@ -809,29 +1084,17 @@
                 </div>
             </div>
 
-            <!-- Content Right -->
-            <div class="content-block">
-                <h2>24/7 Customer Presence</h2>
-                <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
-                
-                <div class="soft-stats">
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Always available</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>No waiting</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Infinite scalability</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Consistent answers</span>
-                    </div>
-                </div>
+            <!-- Navigation Dots -->
+            <div class="section-carousel-dots">
+                <div class="section-carousel-dot active" data-section="1" data-slide="0"></div>
+                <div class="section-carousel-dot" data-section="1" data-slide="1"></div>
+                <div class="section-carousel-dot" data-section="1" data-slide="2"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="section-carousel-nav">
+                <button class="section-carousel-button" data-section="1" data-direction="prev">←</button>
+                <button class="section-carousel-button" data-section="1" data-direction="next">→</button>
             </div>
         </div>
     </div>
@@ -840,87 +1103,281 @@
 
     <!-- Section 2: Outbound -->
     <div class="section">
-        <div class="two-col reverse">
-            <!-- Content Left -->
-            <div class="content-block">
-                <h2>Reaching Stores Before Competitors</h2>
-                <p>Calm conversations. Never cold. Always relevant.</p>
-                
-                <div class="soft-stats">
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Only warm leads</span>
+        <div class="section-carousel">
+            <div class="section-slides" id="section2Slides">
+                <!-- Slide 1 -->
+                <div class="section-slide">
+                    <div class="two-col reverse">
+                        <!-- Content Left -->
+                        <div class="content-block">
+                            <h2>Reaching Stores Before Competitors</h2>
+                            <p>Calm conversations. Never cold. Always relevant.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Only warm leads</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Human tone</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Books real meetings</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Works quietly in background</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- iPhone Right -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">10:15</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Wholesale Buyer</div>
+                                            <div class="call-subtitle">Warm Lead</div>
+                                            <div class="call-duration">calling...</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Human tone</span>
+                </div>
+
+                <!-- Slide 2 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="two-col reverse">
+                        <!-- Content Left -->
+                        <div class="content-block">
+                            <h2>Reaching Stores Before Competitors</h2>
+                            <p>Calm conversations. Never cold. Always relevant.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Only warm leads</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Human tone</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Books real meetings</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Works quietly in background</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- iPhone Right -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">10:15</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Wholesale Buyer</div>
+                                            <div class="call-subtitle">Warm Lead</div>
+                                            <div class="call-duration">calling...</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Books real meetings</span>
-                    </div>
-                    <div class="stat-item">
-                        <div class="stat-bullet"></div>
-                        <span>Works quietly in background</span>
+                </div>
+
+                <!-- Slide 3 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="two-col reverse">
+                        <!-- Content Left -->
+                        <div class="content-block">
+                            <h2>Reaching Stores Before Competitors</h2>
+                            <p>Calm conversations. Never cold. Always relevant.</p>
+                            
+                            <div class="soft-stats">
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Only warm leads</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Human tone</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Books real meetings</span>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-bullet"></div>
+                                    <span>Works quietly in background</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- iPhone Right -->
+                        <div>
+                            <div class="iphone-mockup">
+                                <div class="iphone-notch"></div>
+                                <div class="iphone-screen">
+                                    <div class="status-bar">
+                                        <div class="time">10:15</div>
+                                        <div class="status-icons">
+                                            <span>📶</span>
+                                            <span>📡</span>
+                                            <span>🔋</span>
+                                        </div>
+                                    </div>
+
+                                    <div class="call-screen">
+                                        <div class="call-header">
+                                            <div class="caller-name">Wholesale Buyer</div>
+                                            <div class="call-subtitle">Warm Lead</div>
+                                            <div class="call-duration">calling...</div>
+                                        </div>
+
+                                        <div>
+                                            <div class="call-actions">
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔇</div>
+                                                    <div class="action-label">mute</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">⌨️</div>
+                                                    <div class="action-label">keypad</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">🔊</div>
+                                                    <div class="action-label">speaker</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">➕</div>
+                                                    <div class="action-label">add call</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">📹</div>
+                                                    <div class="action-label">FaceTime</div>
+                                                </button>
+                                                <button class="call-action-btn">
+                                                    <div class="action-icon">👤</div>
+                                                    <div class="action-label">contacts</div>
+                                                </button>
+                                            </div>
+                                            <div class="end-call-container">
+                                                <button class="end-call-btn">📞</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
 
-            <!-- iPhone Right -->
-            <div>
-                <div class="iphone-mockup">
-                    <div class="iphone-notch"></div>
-                    <div class="iphone-screen">
-                        <div class="status-bar">
-                            <div class="time">10:15</div>
-                            <div class="status-icons">
-                                <span>📶</span>
-                                <span>📡</span>
-                                <span>🔋</span>
-                            </div>
-                        </div>
+            <!-- Navigation Dots -->
+            <div class="section-carousel-dots">
+                <div class="section-carousel-dot active" data-section="2" data-slide="0"></div>
+                <div class="section-carousel-dot" data-section="2" data-slide="1"></div>
+                <div class="section-carousel-dot" data-section="2" data-slide="2"></div>
+            </div>
 
-                        <div class="call-screen">
-                            <div class="call-header">
-                                <div class="caller-name">Wholesale Buyer</div>
-                                <div class="call-subtitle">Warm Lead</div>
-                                <div class="call-duration">calling...</div>
-                            </div>
-
-                            <div>
-                                <div class="call-actions">
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">🔇</div>
-                                        <div class="action-label">mute</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">⌨️</div>
-                                        <div class="action-label">keypad</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">🔊</div>
-                                        <div class="action-label">speaker</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">➕</div>
-                                        <div class="action-label">add call</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">📹</div>
-                                        <div class="action-label">FaceTime</div>
-                                    </button>
-                                    <button class="call-action-btn">
-                                        <div class="action-icon">👤</div>
-                                        <div class="action-label">contacts</div>
-                                    </button>
-                                </div>
-                                <div class="end-call-container">
-                                    <button class="end-call-btn">📞</button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <!-- Navigation Buttons -->
+            <div class="section-carousel-nav">
+                <button class="section-carousel-button" data-section="2" data-direction="prev">←</button>
+                <button class="section-carousel-button" data-section="2" data-direction="next">→</button>
             </div>
         </div>
     </div>
@@ -929,24 +1386,92 @@
 
     <!-- Section 3: Lead Engine -->
     <div class="section">
-        <div class="centered-section">
-            <h2>A Living Pipeline</h2>
-            <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
-            
-            <div class="pipeline-diagram">
-                <div class="pipeline-step">AI finds retailers</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">AI emails</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">Buyers click</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">AI calls</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">Meetings booked</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">New customers</div>
-                <div class="pipeline-arrow">→</div>
-                <div class="pipeline-step">AI supports</div>
+        <div class="section-carousel">
+            <div class="section-slides" id="section3Slides">
+                <!-- Slide 1 -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A Living Pipeline</h2>
+                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
+                        
+                        <div class="pipeline-diagram">
+                            <div class="pipeline-step">AI finds retailers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI emails</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Buyers click</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI calls</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Meetings booked</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">New customers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI supports</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A Living Pipeline</h2>
+                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
+                        
+                        <div class="pipeline-diagram">
+                            <div class="pipeline-step">AI finds retailers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI emails</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Buyers click</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI calls</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Meetings booked</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">New customers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI supports</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A Living Pipeline</h2>
+                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
+                        
+                        <div class="pipeline-diagram">
+                            <div class="pipeline-step">AI finds retailers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI emails</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Buyers click</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI calls</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">Meetings booked</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">New customers</div>
+                            <div class="pipeline-arrow">→</div>
+                            <div class="pipeline-step">AI supports</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="section-carousel-dots">
+                <div class="section-carousel-dot active" data-section="3" data-slide="0"></div>
+                <div class="section-carousel-dot" data-section="3" data-slide="1"></div>
+                <div class="section-carousel-dot" data-section="3" data-slide="2"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="section-carousel-nav">
+                <button class="section-carousel-button" data-section="3" data-direction="prev">←</button>
+                <button class="section-carousel-button" data-section="3" data-direction="next">→</button>
             </div>
         </div>
     </div>
@@ -955,23 +1480,89 @@
 
     <!-- Section 4: Flywheel -->
     <div class="section">
-        <div class="centered-section">
-            <h2>A System That Compounds</h2>
-            
-            <div class="flywheel">
-                <div class="flywheel-circle">
-                    <div class="flywheel-steps">
-                        <div class="flywheel-step">Leads</div>
-                        <div class="flywheel-step">Calls</div>
-                        <div class="flywheel-step">Orders</div>
-                        <div class="flywheel-step">Growth</div>
-                        <div class="flywheel-step">Loyalty</div>
-                        <div class="flywheel-step">Referrals</div>
+        <div class="section-carousel">
+            <div class="section-slides" id="section4Slides">
+                <!-- Slide 1 -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A System That Compounds</h2>
+                        
+                        <div class="flywheel">
+                            <div class="flywheel-circle">
+                                <div class="flywheel-steps">
+                                    <div class="flywheel-step">Leads</div>
+                                    <div class="flywheel-step">Calls</div>
+                                    <div class="flywheel-step">Orders</div>
+                                    <div class="flywheel-step">Growth</div>
+                                    <div class="flywheel-step">Loyalty</div>
+                                    <div class="flywheel-step">Referrals</div>
+                                </div>
+                                <div class="flywheel-center">∞</div>
+                            </div>
+                            
+                            <p class="flywheel-text">A system that compounds without chaos.</p>
+                        </div>
                     </div>
-                    <div class="flywheel-center">∞</div>
                 </div>
-                
-                <p class="flywheel-text">A system that compounds without chaos.</p>
+
+                <!-- Slide 2 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A System That Compounds</h2>
+                        
+                        <div class="flywheel">
+                            <div class="flywheel-circle">
+                                <div class="flywheel-steps">
+                                    <div class="flywheel-step">Leads</div>
+                                    <div class="flywheel-step">Calls</div>
+                                    <div class="flywheel-step">Orders</div>
+                                    <div class="flywheel-step">Growth</div>
+                                    <div class="flywheel-step">Loyalty</div>
+                                    <div class="flywheel-step">Referrals</div>
+                                </div>
+                                <div class="flywheel-center">∞</div>
+                            </div>
+                            
+                            <p class="flywheel-text">A system that compounds without chaos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>A System That Compounds</h2>
+                        
+                        <div class="flywheel">
+                            <div class="flywheel-circle">
+                                <div class="flywheel-steps">
+                                    <div class="flywheel-step">Leads</div>
+                                    <div class="flywheel-step">Calls</div>
+                                    <div class="flywheel-step">Orders</div>
+                                    <div class="flywheel-step">Growth</div>
+                                    <div class="flywheel-step">Loyalty</div>
+                                    <div class="flywheel-step">Referrals</div>
+                                </div>
+                                <div class="flywheel-center">∞</div>
+                            </div>
+                            
+                            <p class="flywheel-text">A system that compounds without chaos.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="section-carousel-dots">
+                <div class="section-carousel-dot active" data-section="4" data-slide="0"></div>
+                <div class="section-carousel-dot" data-section="4" data-slide="1"></div>
+                <div class="section-carousel-dot" data-section="4" data-slide="2"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="section-carousel-nav">
+                <button class="section-carousel-button" data-section="4" data-direction="prev">←</button>
+                <button class="section-carousel-button" data-section="4" data-direction="next">→</button>
             </div>
         </div>
     </div>
@@ -1219,6 +1810,87 @@
             sections.forEach((section, index) => {
                 section.style.animationDelay = `${0.2 + index * 0.1}s`;
             });
+        });
+
+        // Section Carousels Functionality
+        const sectionCarousels = {
+            1: { currentSlide: 0, totalSlides: 3 },
+            2: { currentSlide: 0, totalSlides: 3 },
+            3: { currentSlide: 0, totalSlides: 3 },
+            4: { currentSlide: 0, totalSlides: 3 }
+        };
+
+        function updateSectionCarousel(sectionNum) {
+            const slides = document.getElementById(`section${sectionNum}Slides`);
+            const carousel = sectionCarousels[sectionNum];
+            
+            if (slides) {
+                slides.style.transform = `translateX(-${carousel.currentSlide * 100}%)`;
+            }
+
+            // Update dots for this section
+            const dots = document.querySelectorAll(`[data-section="${sectionNum}"].section-carousel-dot`);
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === carousel.currentSlide);
+            });
+        }
+
+        function nextSectionSlide(sectionNum) {
+            const carousel = sectionCarousels[sectionNum];
+            carousel.currentSlide = (carousel.currentSlide + 1) % carousel.totalSlides;
+            updateSectionCarousel(sectionNum);
+        }
+
+        function prevSectionSlide(sectionNum) {
+            const carousel = sectionCarousels[sectionNum];
+            carousel.currentSlide = (carousel.currentSlide - 1 + carousel.totalSlides) % carousel.totalSlides;
+            updateSectionCarousel(sectionNum);
+        }
+
+        // Initialize all section carousels
+        [1, 2, 3, 4].forEach(sectionNum => {
+            // Button handlers
+            const nextBtn = document.querySelector(`[data-section="${sectionNum}"][data-direction="next"]`);
+            const prevBtn = document.querySelector(`[data-section="${sectionNum}"][data-direction="prev"]`);
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => nextSectionSlide(sectionNum));
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => prevSectionSlide(sectionNum));
+            }
+
+            // Dot handlers
+            const dots = document.querySelectorAll(`[data-section="${sectionNum}"].section-carousel-dot`);
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => {
+                    sectionCarousels[sectionNum].currentSlide = index;
+                    updateSectionCarousel(sectionNum);
+                });
+            });
+
+            // Touch swipe support for each section
+            const slides = document.getElementById(`section${sectionNum}Slides`);
+            if (slides) {
+                let touchStartX = 0;
+                let touchEndX = 0;
+
+                slides.addEventListener('touchstart', (e) => {
+                    touchStartX = e.changedTouches[0].screenX;
+                });
+
+                slides.addEventListener('touchend', (e) => {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const diff = touchEndX - touchStartX;
+                    if (Math.abs(diff) > 50) {
+                        if (diff < 0) {
+                            nextSectionSlide(sectionNum);
+                        } else {
+                            prevSectionSlide(sectionNum);
+                        }
+                    }
+                });
+            }
         });
     </script>
 </body>
