@@ -1,5 +1,7 @@
 # MagicWand AI Website
 
+> Last updated: 2026-01-22
+
 A modern React website built with Vite, Tailwind CSS, and React Router. Features two main pages:
 - **Home**: AI Customer Support page with dark theme
 - **Kalalou**: Kalalou AI Leverage presentation page with light theme
