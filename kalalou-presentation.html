@@ -182,53 +182,7 @@
             opacity: 0.95;
         }
 
-        .tam-emoji {
-            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-            margin-left: 10px;
-        }
-
-        .tam-boat {
-            position: absolute;
-            left: 50%;
-            transform: translateX(-220px);
-            top: 16%;
-            z-index: 2;
-            pointer-events: none;
-            opacity: 0.95;
-        }
-
-        .tam-boat {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
-            font-size: 40px;
-            line-height: 1;
-        }
-
-        .tam-boat .tam-fishing-line {
-            position: absolute;
-            left: 155px;
-            top: 32px;
-            width: 2px;
-            height: 160px;
-            background: rgba(43, 111, 255, 0.85);
-            border-radius: 2px;
-            transform: rotate(12deg);
-        }
-
-        .tam-boat .tam-hook {
-            position: absolute;
-            left: 150px;
-            top: 182px;
-            width: 18px;
-            height: 18px;
-            border: 2px solid rgba(43, 111, 255, 0.85);
-            border-top: none;
-            border-right: none;
-            border-radius: 0 0 0 12px;
-            transform: rotate(-8deg);
-        }
+        /* (Removed emoji overlay per request) */
 
         .tam-subtext {
             font-size: 1.1rem;
@@ -1312,13 +1266,6 @@
     <section class="tam-hero">
         <div class="tam-canvas-wrapper">
             <canvas class="tam-canvas" id="tamCanvas"></canvas>
-            <!-- Boat + fishing rod overlay -->
-            <div class="tam-boat" aria-hidden="true">
-                <span class="tam-boat-emoji">🚤</span>
-                <span class="tam-fisher-emoji">🧒🎣</span>
-                <span class="tam-fishing-line"></span>
-                <span class="tam-hook"></span>
-            </div>
         </div>
 
         <div class="tam-carousel">
@@ -1326,7 +1273,7 @@
                 <!-- Slide 1 -->
                 <div class="tam-slide">
                     <div class="tam-title">We are fishing in a massive pond…</div>
-                    <div class="tam-title tam-title-sub">With a fishing rod?<span class="tam-emoji">🎣</span></div>
+                    <div class="tam-title tam-title-sub">With a fishing rod?</div>
                 </div>
 
                 <!-- Slide 2 -->
