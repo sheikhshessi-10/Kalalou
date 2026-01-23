@@ -115,6 +115,147 @@
             background: var(--bg-primary);
         }
 
+        /* TAM Section (hero-like) */
+        .tam-hero {
+            position: relative;
+            width: 100%;
+            padding: 120px 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .tam-canvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+            background: var(--bg-primary);
+        }
+
+        .tam-carousel {
+            position: relative;
+            z-index: 10;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tam-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+            width: 100%;
+            will-change: transform;
+        }
+
+        .tam-slide {
+            flex: 0 0 100%;
+            width: 100%;
+            padding-bottom: 90px;
+        }
+
+        .tam-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.8rem, 5vw, 4.2rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 22px;
+            line-height: 1.1;
+            color: var(--ink);
+        }
+
+        .tam-subtext {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin: 0 auto 56px;
+            max-width: 720px;
+            letter-spacing: 0.01em;
+            line-height: 1.9;
+        }
+
+        .tam-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 18px;
+            max-width: 980px;
+            margin: 0 auto;
+        }
+
+        .tam-card {
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 26px 24px;
+            text-align: left;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
+        }
+
+        .tam-kpi {
+            font-size: 0.95rem;
+            color: var(--secondary);
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
+        }
+
+        .tam-value {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 8px;
+            letter-spacing: -0.01em;
+        }
+
+        .tam-note {
+            font-size: 1rem;
+            color: var(--secondary);
+            line-height: 1.8;
+        }
+
+        .tam-dots {
+            position: absolute;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .tam-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--divider);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tam-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        .tam-nav {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        @media (max-width: 1024px) {
+            .tam-metrics { grid-template-columns: 1fr; }
+        }
+
+        @media (max-width: 768px) {
+            .tam-hero { padding: 90px 30px; }
+        }
+
         .hero-carousel {
             position: relative;
             width: 100%;
@@ -1101,6 +1242,100 @@
 
     <div class="section-divider"></div>
 
+    <!-- TAM Section -->
+    <section class="tam-hero">
+        <canvas class="tam-canvas" id="tamCanvas"></canvas>
+
+        <div class="tam-carousel">
+            <div class="tam-slides" id="tamSlides">
+                <!-- Slide 1 -->
+                <div class="tam-slide">
+                    <div class="tam-title">TAM</div>
+                    <p class="tam-subtext">A market large enough to justify building the system once—and letting it compound quietly for years.</p>
+
+                    <div class="tam-metrics">
+                        <div class="tam-card">
+                            <div class="tam-kpi">Addressable</div>
+                            <div class="tam-value">$XXB+</div>
+                            <div class="tam-note">Wholesale + retail demand across the categories we already serve.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Reach</div>
+                            <div class="tam-value">50k+</div>
+                            <div class="tam-note">Potential storefronts and buyers to contact and convert.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Expansion</div>
+                            <div class="tam-value">Multi‑channel</div>
+                            <div class="tam-note">Email + calls + follow-ups—one system across every channel.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 2 -->
+                <div class="tam-slide">
+                    <div class="tam-title">Where the TAM lives</div>
+                    <p class="tam-subtext">Every unanswered inquiry, every delayed quote, every out‑of‑stock question is demand waiting to be captured.</p>
+
+                    <div class="tam-metrics">
+                        <div class="tam-card">
+                            <div class="tam-kpi">Inbound</div>
+                            <div class="tam-value">Calls</div>
+                            <div class="tam-note">Support, order status, availability, pricing, returns.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Outbound</div>
+                            <div class="tam-value">Stores</div>
+                            <div class="tam-note">Warm follow-ups, restock reminders, new line launches.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Retention</div>
+                            <div class="tam-value">Accounts</div>
+                            <div class="tam-note">Proactive outreach that prevents churn and drives reorders.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 -->
+                <div class="tam-slide">
+                    <div class="tam-title">The path to owning it</div>
+                    <p class="tam-subtext">We don’t need more hustle. We need a repeatable engine: capture demand, convert faster, and expand systematically.</p>
+
+                    <div class="tam-metrics">
+                        <div class="tam-card">
+                            <div class="tam-kpi">Step 1</div>
+                            <div class="tam-value">Capture</div>
+                            <div class="tam-note">Never miss calls, never lose inquiries.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Step 2</div>
+                            <div class="tam-value">Convert</div>
+                            <div class="tam-note">Speed wins—follow up instantly and consistently.</div>
+                        </div>
+                        <div class="tam-card">
+                            <div class="tam-kpi">Step 3</div>
+                            <div class="tam-value">Expand</div>
+                            <div class="tam-note">Proactive outreach that grows accounts over time.</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="tam-dots">
+                <div class="tam-dot active" data-tam-slide="0"></div>
+                <div class="tam-dot" data-tam-slide="1"></div>
+                <div class="tam-dot" data-tam-slide="2"></div>
+            </div>
+
+            <!-- Nav -->
+            <div class="tam-nav">
+                <button class="carousel-button" id="tamPrev">←</button>
+                <button class="carousel-button" id="tamNext">→</button>
+            </div>
+        </div>
+    </section>
+
     <!-- Section 2: Outbound -->
     <div class="section">
         <div class="section-carousel">
@@ -1581,44 +1816,44 @@
     <script>
         // Three.js Animated Background
         let scene, camera, renderer, particles;
+        let tamScene, tamCamera, tamRenderer, tamParticles;
         let isDarkMode = false; // Kalalou starts with light theme
+        let animationId;
 
-        function initThreeJS() {
+        function createWaveScene({ canvas, backgroundHex, lineHex, opacity }) {
             try {
-                const canvas = document.getElementById('heroCanvas');
                 if (!canvas) {
                     console.error('Canvas not found');
-                    return;
+                    return null;
                 }
 
-                const width = window.innerWidth;
-                const height = window.innerHeight;
+                const width = canvas.clientWidth || window.innerWidth;
+                const height = canvas.clientHeight || window.innerHeight;
 
                 // Scene
-                scene = new THREE.Scene();
-                scene.background = new THREE.Color(0xF7F4EF); // Light beige background
+                const localScene = new THREE.Scene();
+                localScene.background = new THREE.Color(backgroundHex);
 
                 // Camera
-                camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
-                camera.position.set(0, 0, 8);
+                const localCamera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+                localCamera.position.set(0, 0, 8);
 
                 // Renderer
-                renderer = new THREE.WebGLRenderer({ 
+                const localRenderer = new THREE.WebGLRenderer({ 
                     canvas: canvas,
                     antialias: true,
                     alpha: false
                 });
-                renderer.setSize(width, height);
-                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+                localRenderer.setSize(width, height);
+                localRenderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
 
                 // Create wave-like mountainous pattern
                 const segments = 200;
                 const lines = [];
-                // Lighter colors for light theme
                 const lineMaterial = new THREE.LineBasicMaterial({
-                    color: 0x6F6F6F, // Match secondary color
+                    color: lineHex,
                     transparent: true,
-                    opacity: 0.3,
+                    opacity,
                     linewidth: 1
                 });
 
@@ -1641,26 +1876,55 @@
                     geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
                     
                     const line = new THREE.Line(geometry, lineMaterial);
-                    scene.add(line);
+                    localScene.add(line);
                     lines.push(line);
                 }
 
-                // Store lines for animation
-                particles = lines;
+                return { scene: localScene, camera: localCamera, renderer: localRenderer, particles: lines, canvas };
+            } catch (error) {
+                console.error('Error initializing Three.js:', error);
+                return null;
+            }
+        }
 
-                let time = 0;
-                // Animate
-                function animate() {
-                    animationId = requestAnimationFrame(animate);
-                    time += 0.01;
+        function initThreeJS() {
+            // Hero background
+            const heroCanvas = document.getElementById('heroCanvas');
+            const heroBundle = createWaveScene({
+                canvas: heroCanvas,
+                backgroundHex: 0xF7F4EF,
+                lineHex: 0x6F6F6F,
+                opacity: 0.3
+            });
 
-                    // Animate wave pattern
-                    particles.forEach((line, i) => {
+            if (heroBundle) {
+                ({ scene, camera, renderer, particles } = heroBundle);
+            }
+
+            // TAM background
+            const tamCanvasEl = document.getElementById('tamCanvas');
+            const tamBundle = createWaveScene({
+                canvas: tamCanvasEl,
+                backgroundHex: 0xF7F4EF,
+                lineHex: 0x6F6F6F,
+                opacity: 0.25
+            });
+
+            if (tamBundle) {
+                ({ scene: tamScene, camera: tamCamera, renderer: tamRenderer, particles: tamParticles } = tamBundle);
+            }
+
+            let time = 0;
+            function animateAll() {
+                animationId = requestAnimationFrame(animateAll);
+                time += 0.01;
+
+                const animateBundle = (bundleParticles, bundleRenderer, bundleScene, bundleCamera) => {
+                    if (!bundleParticles || !bundleRenderer || !bundleScene || !bundleCamera) return;
+                    bundleParticles.forEach((line, i) => {
                         const positions = line.geometry.attributes.position;
                         for (let j = 0; j < positions.count; j++) {
                             const x = positions.getX(j);
-                            const y = positions.getY(j);
-                            // Animated wave with multiple frequencies
                             const z = Math.sin(x * 0.2 + i * 0.1 + time) * 2 + 
                                       Math.cos(x * 0.4 + i * 0.08 + time * 0.8) * 1.2 +
                                       Math.sin(x * 0.6 + i * 0.15 + time * 0.6) * 0.8;
@@ -1668,25 +1932,28 @@
                         }
                         positions.needsUpdate = true;
                     });
+                    bundleRenderer.render(bundleScene, bundleCamera);
+                };
 
-                    renderer.render(scene, camera);
-                }
-
-                animate();
-
-                // Handle resize
-                window.addEventListener('resize', () => {
-                    const width = window.innerWidth;
-                    const height = window.innerHeight;
-                    camera.aspect = width / height;
-                    camera.updateProjectionMatrix();
-                    renderer.setSize(width, height);
-                });
-
-                console.log('Three.js initialized successfully');
-            } catch (error) {
-                console.error('Error initializing Three.js:', error);
+                animateBundle(particles, renderer, scene, camera);
+                animateBundle(tamParticles, tamRenderer, tamScene, tamCamera);
             }
+
+            animateAll();
+
+            // Handle resize for both canvases
+            window.addEventListener('resize', () => {
+                const resizeBundle = (bundleRenderer, bundleCamera, canvasEl) => {
+                    if (!bundleRenderer || !bundleCamera || !canvasEl) return;
+                    const w = canvasEl.clientWidth || window.innerWidth;
+                    const h = canvasEl.clientHeight || window.innerHeight;
+                    bundleCamera.aspect = w / h;
+                    bundleCamera.updateProjectionMatrix();
+                    bundleRenderer.setSize(w, h);
+                };
+                resizeBundle(renderer, camera, heroCanvas);
+                resizeBundle(tamRenderer, tamCamera, tamCanvasEl);
+            });
         }
 
         // Theme Toggle
@@ -1699,27 +1966,33 @@
                 
                 if (isDarkMode) {
                     // Dark mode
-                    if (scene) {
-                        scene.background = new THREE.Color(0x000000);
-                        if (particles && particles.length > 0) {
-                            particles.forEach(line => {
+                    const applyDark = (s, p) => {
+                        if (!s) return;
+                        s.background = new THREE.Color(0x000000);
+                        if (p && p.length > 0) {
+                            p.forEach(line => {
                                 line.material.color.setHex(0xaaaaaa);
                                 line.material.opacity = 0.5;
                             });
                         }
-                    }
+                    };
+                    applyDark(scene, particles);
+                    applyDark(tamScene, tamParticles);
                     themeIcon.textContent = '☀️';
                 } else {
                     // Light mode (default for Kalalou)
-                    if (scene) {
-                        scene.background = new THREE.Color(0xF7F4EF);
-                        if (particles && particles.length > 0) {
-                            particles.forEach(line => {
+                    const applyLight = (s, p, op) => {
+                        if (!s) return;
+                        s.background = new THREE.Color(0xF7F4EF);
+                        if (p && p.length > 0) {
+                            p.forEach(line => {
                                 line.material.color.setHex(0x6F6F6F);
-                                line.material.opacity = 0.3;
+                                line.material.opacity = op;
                             });
                         }
-                    }
+                    };
+                    applyLight(scene, particles, 0.3);
+                    applyLight(tamScene, tamParticles, 0.25);
                     themeIcon.textContent = '🌙';
                 }
             });
@@ -1819,6 +2092,59 @@
             3: { currentSlide: 0, totalSlides: 3 },
             4: { currentSlide: 0, totalSlides: 3 }
         };
+
+        // TAM Carousel Functionality
+        let tamCurrentSlide = 0;
+        const tamTotalSlides = 3;
+        const tamSlides = document.getElementById('tamSlides');
+        const tamDots = document.querySelectorAll('.tam-dot');
+        const tamPrev = document.getElementById('tamPrev');
+        const tamNext = document.getElementById('tamNext');
+
+        function updateTamCarousel() {
+            if (!tamSlides) return;
+            tamSlides.style.transform = `translateX(-${tamCurrentSlide * 100}%)`;
+            tamDots.forEach((dot, i) => dot.classList.toggle('active', i === tamCurrentSlide));
+        }
+
+        function tamNextSlide() {
+            tamCurrentSlide = (tamCurrentSlide + 1) % tamTotalSlides;
+            updateTamCarousel();
+        }
+
+        function tamPrevSlide() {
+            tamCurrentSlide = (tamCurrentSlide - 1 + tamTotalSlides) % tamTotalSlides;
+            updateTamCarousel();
+        }
+
+        if (tamNext) tamNext.addEventListener('click', tamNextSlide);
+        if (tamPrev) tamPrev.addEventListener('click', tamPrevSlide);
+
+        tamDots.forEach((dot, i) => {
+            dot.addEventListener('click', () => {
+                tamCurrentSlide = i;
+                updateTamCarousel();
+            });
+        });
+
+        // Touch swipe support for TAM
+        if (tamSlides) {
+            let tamTouchStartX = 0;
+            let tamTouchEndX = 0;
+
+            tamSlides.addEventListener('touchstart', (e) => {
+                tamTouchStartX = e.changedTouches[0].screenX;
+            });
+
+            tamSlides.addEventListener('touchend', (e) => {
+                tamTouchEndX = e.changedTouches[0].screenX;
+                const diff = tamTouchEndX - tamTouchStartX;
+                if (Math.abs(diff) > 50) {
+                    if (diff < 0) tamNextSlide();
+                    else tamPrevSlide();
+                }
+            });
+        }
 
         function updateSectionCarousel(sectionNum) {
             const slides = document.getElementById(`section${sectionNum}Slides`);
