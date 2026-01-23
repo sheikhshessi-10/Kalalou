@@ -2694,8 +2694,8 @@
         }
 
         // Button click handlers
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
+        if (nextButton) nextButton.addEventListener('click', nextSlide);
+        if (prevButton) prevButton.addEventListener('click', prevSlide);
 
         // Dot click handlers
         dots.forEach((dot, index) => {
