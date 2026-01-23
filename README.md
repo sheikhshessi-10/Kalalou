@@ -56,10 +56,12 @@ npm run preview
 ## Project Structure
 
 ```
-├── public/                      # 🚀 DEPLOYED TO VERCEL
-│   ├── index.html              # Main landing page (production)
-│   ├── ai-support-website.html # Redirects to index
-│   └── kalalou-presentation.html # Presentation page (production)
+├── index.html                   # 🚀 Main landing page (DEPLOYED)
+├── ai-support-website.html      # 🚀 Redirects to index (DEPLOYED)
+├── kalalou-presentation.html    # 🚀 Presentation page (DEPLOYED)
+├── vercel.json                  # Vercel configuration (static deployment)
+├── .vercelignore               # Ignore React files during deployment
+├── public/                      # Backup of HTML files
 ├── src/                         # React development files (not deployed)
 │   ├── components/
 │   │   ├── Navigation.jsx      # Shared navigation component
@@ -71,8 +73,6 @@ npm run preview
 │   ├── App.jsx                  # Main app with routing
 │   ├── main.jsx                 # Entry point
 │   └── index.css                # Global styles
-├── vercel.json                  # Vercel configuration (static deployment)
-├── .vercelignore               # Ignore React files during deployment
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.js
@@ -81,18 +81,21 @@ npm run preview
 ## Deployment
 
 ### Production (Vercel)
-The site deploys static HTML files from the `public/` directory.
+The site deploys static HTML files from the root directory.
 
 **Configuration:**
-- `vercel.json` configured for static file serving
+- HTML files are in root directory (Vercel requirement for static sites)
+- `vercel.json` configured for redirects and clean URLs
+- `.vercelignore` excludes React source code and build files
 - No build process runs on deployment
 - Files are served directly as-is
-- React code in `src/` is ignored during deployment
 
 ### Local Testing
 To test the static files locally:
 ```bash
-npx serve public
+npx serve .
+# or
+python -m http.server 8000
 ```
 
 ### Development (React)
