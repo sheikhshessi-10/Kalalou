@@ -126,13 +126,9 @@
 
         .tam-canvas-wrapper {
             position: absolute;
-            left: 50%;
-            bottom: -10%;
-            transform: translateX(-50%);
-            width: 140%;
-            height: 60%;
-            border-radius: 140% 140% 0 0;
-            overflow: hidden;
+            inset: 0;
+            width: 100%;
+            height: 100%;
             background: var(--bg-primary);
             z-index: 1;
         }
@@ -194,44 +190,45 @@
             line-height: 1.9;
         }
 
-        .tam-metrics {
+        .tam-stats {
             display: grid;
-            grid-template-columns: repeat(3, minmax(0, 1fr));
-            gap: 18px;
-            max-width: 980px;
-            margin: 0 auto;
-        }
-
-        .tam-card {
-            background: rgba(255, 255, 255, 0.65);
-            border: 1px solid var(--divider);
-            border-radius: 12px;
-            padding: 26px 24px;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 32px;
+            max-width: 960px;
+            margin: 0 auto 28px;
             text-align: left;
-            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.05);
         }
 
-        .tam-kpi {
-            font-size: 0.95rem;
-            color: var(--secondary);
-            letter-spacing: 0.02em;
+        .tam-stats-block-title {
+            font-size: 0.9rem;
             text-transform: uppercase;
-            margin-bottom: 10px;
-        }
-
-        .tam-value {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            font-weight: 500;
-            color: var(--ink);
-            margin-bottom: 8px;
-            letter-spacing: -0.01em;
-        }
-
-        .tam-note {
-            font-size: 1rem;
+            letter-spacing: 0.15em;
             color: var(--secondary);
-            line-height: 1.8;
+            margin-bottom: 16px;
+        }
+
+        .tam-bullet {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            margin-bottom: 10px;
+            font-size: 1.02rem;
+            color: var(--ink);
+        }
+
+        .tam-bullet-icon {
+            width: 8px;
+            height: 8px;
+            border-radius: 999px;
+            background: var(--accent);
+            margin-top: 8px;
+            flex-shrink: 0;
+        }
+
+        .tam-footnote {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            opacity: 0.9;
         }
 
         .tam-dots {
@@ -269,7 +266,7 @@
         }
 
         @media (max-width: 1024px) {
-            .tam-metrics { grid-template-columns: 1fr; }
+            .tam-stats { grid-template-columns: 1fr; }
         }
 
         @media (max-width: 768px) {
@@ -1278,26 +1275,40 @@
 
                 <!-- Slide 2 -->
                 <div class="tam-slide">
-                    <div class="tam-title">Where the TAM lives</div>
-                    <p class="tam-subtext">Every unanswered inquiry, every delayed quote, every out‑of‑stock question is demand waiting to be captured.</p>
+                    <div class="tam-title">Where the TAM actually is</div>
+                    <p class="tam-subtext">A huge pond of independent retailers. This is the surface area our system can quietly cover for you.</p>
 
-                    <div class="tam-metrics">
-                        <div class="tam-card">
-                            <div class="tam-kpi">Inbound</div>
-                            <div class="tam-value">Calls</div>
-                            <div class="tam-note">Support, order status, availability, pricing, returns.</div>
+                    <div class="tam-stats">
+                        <div>
+                            <div class="tam-stats-block-title">Market (TAM)</div>
+                            <div class="tam-bullet">
+                                <div class="tam-bullet-icon"></div>
+                                <div>54,941 gift shops &amp; card stores<span aria-hidden="true">¹</span></div>
+                            </div>
+                            <div class="tam-bullet">
+                                <div class="tam-bullet-icon"></div>
+                                <div>Thousands more home decor boutiques</div>
+                            </div>
+                            <div class="tam-bullet">
+                                <div class="tam-bullet-icon"></div>
+                                <div><strong>Total: 60,000+ potential retailers</strong></div>
+                            </div>
                         </div>
-                        <div class="tam-card">
-                            <div class="tam-kpi">Outbound</div>
-                            <div class="tam-value">Stores</div>
-                            <div class="tam-note">Warm follow-ups, restock reminders, new line launches.</div>
-                        </div>
-                        <div class="tam-card">
-                            <div class="tam-kpi">Retention</div>
-                            <div class="tam-value">Accounts</div>
-                            <div class="tam-note">Proactive outreach that prevents churn and drives reorders.</div>
+
+                        <div>
+                            <div class="tam-stats-block-title">You today</div>
+                            <div class="tam-bullet">
+                                <div class="tam-bullet-icon"></div>
+                                <div>10,000 retail partners</div>
+                            </div>
+                            <div class="tam-bullet">
+                                <div class="tam-bullet-icon"></div>
+                                <div><strong>That’s 16.7% market penetration</strong></div>
+                            </div>
                         </div>
                     </div>
+
+                    <p class="tam-footnote">¹ Illustrative counts based on U.S. gift, card, and specialty retail segments.</p>
                 </div>
 
                 <!-- Slide 3 -->
