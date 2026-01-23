@@ -481,6 +481,72 @@
             margin: 0 auto;
         }
 
+        /* Growth System Section */
+        .growth-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 60px;
+        }
+
+        .growth-heading {
+            text-align: center;
+        }
+
+        .growth-heading h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.6rem, 4.5vw, 3.4rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+            color: var(--ink);
+        }
+
+        .growth-subtitle {
+            font-size: 1.3rem;
+            color: var(--secondary);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .growth-subtitle span {
+            font-size: 1.4rem;
+        }
+
+        .growth-table {
+            margin: 48px auto 0;
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid var(--divider);
+            background: rgba(255, 255, 255, 0.7);
+            overflow: hidden;
+        }
+
+        .growth-table-row {
+            display: grid;
+            grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1.2fr 0.9fr 0.9fr;
+            gap: 0;
+            padding: 14px 20px;
+            font-size: 0.95rem;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--secondary);
+            background: rgba(247, 244, 239, 0.9);
+        }
+
+        .growth-table-header {
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        @media (max-width: 900px) {
+            .growth-table-row {
+                grid-template-columns: repeat(4, minmax(0, 1fr));
+                row-gap: 8px;
+            }
+        }
+
         /* Two Column Layouts */
         .two-col {
             display: grid;
@@ -1659,6 +1725,31 @@
             </div>
         </div>
     </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Growth System Section -->
+    <section class="growth-section">
+        <div class="growth-heading">
+            <h2>Growth system</h2>
+            <div class="growth-subtitle">
+                <span>✅</span>
+                <span>AI extracts leads from databases.</span>
+            </div>
+        </div>
+
+        <div class="growth-table" aria-label="Example of leads table headers">
+            <div class="growth-table-row">
+                <div class="growth-table-header">Name</div>
+                <div class="growth-table-header">Company</div>
+                <div class="growth-table-header"># Employees</div>
+                <div class="growth-table-header">Industry</div>
+                <div class="growth-table-header">Website</div>
+                <div class="growth-table-header">City</div>
+                <div class="growth-table-header">Country</div>
+            </div>
+        </div>
+    </section>
 
     <div class="section-divider"></div>
 
