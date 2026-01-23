@@ -280,16 +280,28 @@
         }
 
         .brand-logo {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             white-space: nowrap;
-            opacity: 0.5;
+            opacity: 0.6;
             transition: opacity 0.3s ease;
+        }
+
+        .brand-logo img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
         }
 
         .brand-logo:hover {
             opacity: 1;
+        }
+
+        .brand-logo:hover img {
+            filter: grayscale(0%);
         }
 
         @keyframes scroll {
@@ -1099,26 +1111,33 @@
 
     <!-- Brands Section -->
     <section class="brands-section">
-        <div class="brands-title">Trusted By Industry Leaders</div>
         <div style="overflow: hidden;">
             <div class="brands-carousel">
-                <div class="brand-logo">ACME CORP</div>
-                <div class="brand-logo">TECHFLOW</div>
-                <div class="brand-logo">NEXUS</div>
-                <div class="brand-logo">VERTEX</div>
-                <div class="brand-logo">PULSE</div>
-                <div class="brand-logo">QUANTUM</div>
-                <div class="brand-logo">STRATUS</div>
-                <div class="brand-logo">ATLAS</div>
+                <div class="brand-logo">
+                    <img src="images/i1.png" alt="Partner 1">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i2.png" alt="Partner 2">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i3.png" alt="Partner 3">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i4.png" alt="Partner 4">
+                </div>
                 <!-- Duplicate for seamless loop -->
-                <div class="brand-logo">ACME CORP</div>
-                <div class="brand-logo">TECHFLOW</div>
-                <div class="brand-logo">NEXUS</div>
-                <div class="brand-logo">VERTEX</div>
-                <div class="brand-logo">PULSE</div>
-                <div class="brand-logo">QUANTUM</div>
-                <div class="brand-logo">STRATUS</div>
-                <div class="brand-logo">ATLAS</div>
+                <div class="brand-logo">
+                    <img src="images/i1.png" alt="Partner 1">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i2.png" alt="Partner 2">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i3.png" alt="Partner 3">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i4.png" alt="Partner 4">
+                </div>
             </div>
         </div>
     </section>
