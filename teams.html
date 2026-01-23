@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Team | InfinixLeverage</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #000000;
+            --bg-secondary: #0a0a0a;
+            --bg-tertiary: #111111;
+            --text-primary: #ffffff;
+            --text-secondary: #888888;
+            --text-tertiary: #666666;
+            --accent: #ffffff;
+            --border: #1a1a1a;
+        }
+
+        body.light-mode {
+            --bg-primary: #ffffff;
+            --bg-secondary: #f5f5f5;
+            --bg-tertiary: #e5e5e5;
+            --text-primary: #000000;
+            --text-secondary: #333333;
+            --text-tertiary: #666666;
+            --accent: #000000;
+            --border: #e0e0e0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Inter', 'SF Pro Display', 'Segoe UI', 'Roboto', sans-serif;
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            z-index: 1000;
+            padding: 24px 0;
+        }
+
+        body.light-mode .nav {
+            background: rgba(255, 255, 255, 0.8);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.7;
+        }
+
+        .logo-svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--text-primary);
+        }
+
+        body.light-mode .theme-toggle {
+            background: rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        body.light-mode .theme-toggle:hover {
+            background: rgba(0, 0, 0, 0.15);
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 180px 60px 100px;
+            text-align: center;
+            background: var(--bg-primary);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            letter-spacing: -0.04em;
+            margin-bottom: 1.5rem;
+            line-height: 1.1;
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        /* Team Section */
+        .team-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 60px 140px;
+        }
+
+        .team-member {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            align-items: center;
+            margin-bottom: 100px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .team-member:nth-child(1) { animation-delay: 0.1s; }
+        .team-member:nth-child(2) { animation-delay: 0.2s; }
+        .team-member:nth-child(3) { animation-delay: 0.3s; }
+        .team-member:nth-child(4) { animation-delay: 0.4s; }
+        .team-member:nth-child(5) { animation-delay: 0.5s; }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .team-photo {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--border);
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        body.light-mode .team-photo {
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .team-photo:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.4);
+        }
+
+        body.light-mode .team-photo:hover {
+            box-shadow: 0 15px 50px rgba(0, 0, 0, 0.15);
+        }
+
+        .team-info h2 {
+            font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .team-role {
+            font-size: 1.1rem;
+            color: var(--text-secondary);
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .team-description {
+            font-size: 1rem;
+            color: var(--text-secondary);
+            line-height: 1.8;
+            letter-spacing: 0.01em;
+        }
+
+        /* Footer */
+        .footer {
+            background: var(--bg-primary);
+            backdrop-filter: blur(10px);
+            color: var(--text-primary);
+            padding: 48px 0;
+            font-weight: 300;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.light-mode .footer {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .footer-container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 16px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 32px;
+            margin-bottom: 48px;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        .footer-column h3 {
+            font-size: 1.125rem;
+            font-weight: 500;
+            margin-bottom: 16px;
+        }
+
+        .footer-column p {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 8px;
+        }
+
+        .footer-column a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-column .footer-text {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 16px;
+        }
+
+        .footer-social a {
+            color: var(--text-secondary);
+            transition: color 0.3s ease;
+        }
+
+        .footer-social a:hover {
+            color: var(--text-primary);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+        }
+
+        body.light-mode .footer-bottom {
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 30px;
+            }
+
+            .hero {
+                padding: 140px 30px 80px;
+            }
+
+            .team-section {
+                padding: 40px 30px 100px;
+            }
+
+            .team-member {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+                margin-bottom: 80px;
+            }
+
+            .team-photo {
+                margin: 0 auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="index.html" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#888888;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#666666;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#444444;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 30 50
+                             C 30 30, 50 30, 50 50
+                             C 50 70, 70 70, 70 50
+                             C 70 30, 50 30, 50 50
+                             C 50 30, 30 30, 30 50"
+                          fill="url(#logoGradient)"
+                          stroke="none"/>
+                </svg>
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Meet Our Team</h1>
+        <p>The minds behind InfinixLeverage. Experts in AI, business strategy, and innovation working together to transform how businesses operate.</p>
+    </section>
+
+    <!-- Team Section -->
+    <section class="team-section">
+        <!-- Team Member 1 -->
+        <div class="team-member">
+            <img src="images/p1.png" alt="Sheikh Shessi" class="team-photo">
+            <div class="team-info">
+                <h2>Sheikh Shessi</h2>
+                <div class="team-role">Founder & Team Lead</div>
+                <p class="team-description">
+                    UN-recognized entrepreneur and Gen AI expert specializing in agent orchestration systems. Previously awarded funding for BridgePK, a social edtech startup. Computer Science & Business Entrepreneurship major with deep expertise in building intelligent automation layers that transform how businesses operate.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Member 2 -->
+        <div class="team-member">
+            <img src="images/p2.png" alt="JJ" class="team-photo">
+            <div class="team-info">
+                <h2>JJ</h2>
+                <div class="team-role">Legal & Strategy Advisor</div>
+                <p class="team-description">
+                    Economics major (USM). Brings strategic business insight and legal acumen to ensure our solutions are not only powerful but compliant and strategically sound for enterprise deployment.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Member 3 -->
+        <div class="team-member">
+            <img src="images/p3.png" alt="Mehar" class="team-photo">
+            <div class="team-info">
+                <h2>Mehar</h2>
+                <div class="team-role">AI/ML Lead</div>
+                <p class="team-description">
+                    Led the Lahore chapter of the NASA SpaceX Hackathon—the world's largest hackathon. Specializes in LLM fine-tuning and building custom AI applications that leverage proprietary business data to deliver competitive advantages.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Member 4 -->
+        <div class="team-member">
+            <img src="images/p4.png" alt="Ajwad" class="team-photo">
+            <div class="team-info">
+                <h2>Ajwad</h2>
+                <div class="team-role">Voice AI Specialist</div>
+                <p class="team-description">
+                    Developer at Edly, a Silicon Valley startup serving MIT and Cambridge. Expert in text-to-speech voice agent development, creating natural, intelligent voice systems that handle complex business communications at scale.
+                </p>
+            </div>
+        </div>
+
+        <!-- Team Member 5 -->
+        <div class="team-member">
+            <img src="images/p5.png" alt="Asjad" class="team-photo">
+            <div class="team-info">
+                <h2>Asjad</h2>
+                <div class="team-role">Operations & Client Success Director</div>
+                <p class="team-description">
+                    Computer Science & Political Science major (USM) leading operations and client relationships. Ensures seamless implementation and ongoing success of our AI solutions, bridging technical capabilities with real-world business needs.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h3>InfinixLeverage</h3>
+                    <p>Building the future of customer support, one call at a time.</p>
+                </div>
+                <div class="footer-column">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="kalalou-presentation.html">Kalalou</a></li>
+                        <li><a href="teams.html">Team</a></li>
+                        <li><a href="#demo">Demo</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Contact</h3>
+                    <ul>
+                        <li class="footer-text">hello@infinixleverage.com</li>
+                        <li class="footer-text">+1 (601) 307-2165</li>
+                        <li class="footer-text">Available 24/7</li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>Connect</h3>
+                    <div class="footer-social">
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                                <line x1="17.5" x2="17.51" y1="6.5" y2="6.5"></line>
+                            </svg>
+                        </a>
+                        <a href="#" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                                <rect width="4" height="12" x="2" y="9"></rect>
+                                <circle cx="4" cy="4" r="2"></circle>
+                            </svg>
+                        </a>
+                        <a href="mailto:hello@infinixleverage.com" aria-label="Email">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+                                <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                © 2024 InfinixLeverage. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+        let isDarkMode = true;
+
+        if (themeToggle && themeIcon) {
+            themeToggle.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+
+                if (isDarkMode) {
+                    document.body.classList.remove('light-mode');
+                    themeIcon.textContent = '🌙';
+                } else {
+                    document.body.classList.add('light-mode');
+                    themeIcon.textContent = '☀️';
+                }
+            });
+        }
+    </script>
+</body>
+</html>
