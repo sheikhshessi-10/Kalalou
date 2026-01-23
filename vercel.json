@@ -1,19 +1,15 @@
 {
-  "rewrites": [
+  "redirects": [
     {
       "source": "/ai-support-website.html",
-      "destination": "/index.html"
+      "destination": "/index.html",
+      "permanent": true
     }
   ],
-  "headers": [
+  "rewrites": [
     {
-      "source": "/ai-support-website.html",
-      "headers": [
-        {
-          "key": "Location",
-          "value": "/index.html"
-        }
-      ]
+      "source": "/(.*)",
+      "destination": "/$1"
     }
   ]
 }
