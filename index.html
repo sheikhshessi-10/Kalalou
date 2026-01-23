@@ -1419,6 +1419,23 @@
     <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
 
     <script>
+        // Prevent any attempts to load ai-support-website.html
+        if (window.location.pathname.includes('ai-support-website.html')) {
+            window.location.replace('/index.html');
+        }
+        
+        // Intercept fetch requests for ai-support-website.html
+        const originalFetch = window.fetch;
+        window.fetch = function(...args) {
+            const url = args[0];
+            if (typeof url === 'string' && url.includes('ai-support-website.html')) {
+                return originalFetch.apply(this, ['/index.html', ...args.slice(1)]);
+            }
+            return originalFetch.apply(this, args);
+        };
+    </script>
+
+    <script>
         // Three.js Animated Background
         let scene, camera, renderer, particles;
         let isDarkMode = true;
