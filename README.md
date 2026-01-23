@@ -2,8 +2,17 @@
 
 > Last updated: 2026-01-22
 
-A modern React website built with Vite, Tailwind CSS, and React Router. Features two main pages:
+A dual-mode website supporting both static HTML deployment and React development.
+
+## Current Setup
+
+- **Production (Vercel)**: Deploys static HTML files from `public/` directory
+- **Development**: React app in `src/` for future enhancements
+
+## Production Pages
+
 - **Home**: AI Customer Support page with dark theme
+- **AI Support**: Redirects to home
 - **Kalalou**: Kalalou AI Leverage presentation page with light theme
 
 ## Features
@@ -47,7 +56,11 @@ npm run preview
 ## Project Structure
 
 ```
-├── src/
+├── public/                      # 🚀 DEPLOYED TO VERCEL
+│   ├── index.html              # Main landing page (production)
+│   ├── ai-support-website.html # Redirects to index
+│   └── kalalou-presentation.html # Presentation page (production)
+├── src/                         # React development files (not deployed)
 │   ├── components/
 │   │   ├── Navigation.jsx      # Shared navigation component
 │   │   ├── iPhoneMockup.jsx    # iPhone mockup component
@@ -58,14 +71,43 @@ npm run preview
 │   ├── App.jsx                  # Main app with routing
 │   ├── main.jsx                 # Entry point
 │   └── index.css                # Global styles
-├── index.html
+├── vercel.json                  # Vercel configuration (static deployment)
+├── .vercelignore               # Ignore React files during deployment
 ├── package.json
 ├── tailwind.config.js
 └── vite.config.js
 ```
 
+## Deployment
+
+### Production (Vercel)
+The site deploys static HTML files from the `public/` directory.
+
+**Configuration:**
+- `vercel.json` configured for static file serving
+- No build process runs on deployment
+- Files are served directly as-is
+- React code in `src/` is ignored during deployment
+
+### Local Testing
+To test the static files locally:
+```bash
+npx serve public
+```
+
+### Development (React)
+To work on the React version (not currently deployed):
+```bash
+npm install
+npm run dev
+```
+
 ## Technologies
 
+### Production Stack
+- Pure HTML/CSS/JavaScript (Three.js for animations)
+
+### Development Stack (Optional)
 - React 18
 - React Router DOM
 - Vite

@@ -1,16 +1,43 @@
 {
+  "buildCommand": null,
+  "devCommand": null,
+  "installCommand": null,
+  "outputDirectory": "public",
+  "cleanUrls": true,
   "redirects": [
     {
       "source": "/ai-support-website.html",
       "destination": "/index.html",
       "permanent": true
+    },
+    {
+      "source": "/ai-support-website",
+      "destination": "/index.html",
+      "permanent": true
     }
   ],
-  "rewrites": [
+  "routes": [
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/$1"
+    }
+  ],
+  "headers": [
     {
       "source": "/(.*)",
-      "destination": "/$1"
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        }
+      ]
     }
   ]
 }
-
