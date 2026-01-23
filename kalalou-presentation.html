@@ -1,0 +1,1225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kalalou AI Leverage</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --bg-primary: #F7F4EF;
+            --ink: #1C1C1C;
+            --secondary: #6F6F6F;
+            --accent: #B46A4C;
+            --divider: #DDD8D0;
+            --card: #FFFFFF;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-primary);
+            color: var(--ink);
+            line-height: 1.8;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* Navigation */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(247, 244, 239, 0.95);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--divider);
+            z-index: 1000;
+            padding: 24px 0;
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo-link {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+            transition: opacity 0.3s ease;
+        }
+
+        .logo-link:hover {
+            opacity: 0.7;
+        }
+
+        .logo-svg {
+            width: 40px;
+            height: 40px;
+        }
+
+        .theme-toggle {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(28, 28, 28, 0.1);
+            border: 1px solid rgba(28, 28, 28, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--ink);
+        }
+
+        .theme-toggle:hover {
+            background: rgba(28, 28, 28, 0.15);
+            border-color: rgba(28, 28, 28, 0.3);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 180px 60px 120px;
+            text-align: center;
+            overflow: hidden;
+        }
+
+        .hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+            background: var(--bg-primary);
+        }
+
+        .hero-carousel {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            z-index: 10;
+        }
+
+        .hero-slides {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .hero-slide {
+            min-width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding-bottom: 100px;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3.5rem, 7vw, 6rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 32px;
+            line-height: 1.1;
+            color: var(--ink);
+        }
+
+        .hero-subtext {
+            font-size: 1.1rem;
+            color: var(--secondary);
+            font-weight: 400;
+            margin-bottom: 60px;
+            max-width: 500px;
+            letter-spacing: 0.01em;
+        }
+
+        .hero-divider {
+            width: 60px;
+            height: 1px;
+            background: var(--divider);
+            margin: 0 auto;
+        }
+
+        /* Carousel Navigation */
+        .carousel-nav {
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 10;
+        }
+
+        .carousel-button {
+            width: 48px;
+            height: 48px;
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--ink);
+        }
+
+        .carousel-button:hover {
+            background: var(--ink);
+            color: var(--card);
+            transform: scale(1.05);
+        }
+
+        .carousel-dots {
+            position: absolute;
+            bottom: 140px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 12px;
+        }
+
+        .carousel-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--divider);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .carousel-dot.active {
+            background: var(--accent);
+            width: 24px;
+            border-radius: 4px;
+        }
+
+        /* Artwork Slide */
+        .artwork-slide {
+            padding: 40px;
+        }
+
+        .artwork-image {
+            max-width: 900px;
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Section Container */
+        .section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 120px 60px;
+        }
+
+        .section-divider {
+            height: 1px;
+            background: var(--divider);
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        /* Two Column Layouts */
+        .two-col {
+            display: grid;
+            grid-template-columns: 400px 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .two-col.reverse {
+            grid-template-columns: 1fr 400px;
+        }
+
+        /* iPhone Mockup - Minimal */
+        .iphone-mockup {
+            width: 340px;
+            height: 680px;
+            background: #1a1a1a;
+            border-radius: 50px;
+            padding: 12px;
+            box-shadow: 
+                0 0 0 1px rgba(0, 0, 0, 0.04),
+                0 20px 60px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+
+        .iphone-notch {
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 150px;
+            height: 30px;
+            background: #000;
+            border-radius: 0 0 20px 20px;
+            z-index: 10;
+        }
+
+        .iphone-screen {
+            width: 100%;
+            height: 100%;
+            background: #000;
+            border-radius: 42px;
+            overflow: hidden;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Status Bar */
+        .status-bar {
+            height: 44px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 30px 0 180px;
+            font-size: 14px;
+            font-weight: 500;
+            color: #fff;
+        }
+
+        .time {
+            position: absolute;
+            left: 30px;
+            top: 14px;
+        }
+
+        .status-icons {
+            display: flex;
+            gap: 6px;
+            align-items: center;
+        }
+
+        /* Call Screen - Minimal */
+        .call-screen {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 60px 30px 30px;
+            background: #000;
+        }
+
+        .call-header {
+            text-align: center;
+            padding-top: 60px;
+        }
+
+        .caller-name {
+            font-size: 40px;
+            font-weight: 300;
+            color: #fff;
+            margin-bottom: 12px;
+            letter-spacing: -0.5px;
+        }
+
+        .call-subtitle {
+            font-size: 16px;
+            color: #8e8e93;
+            font-weight: 400;
+            margin-top: 8px;
+        }
+
+        .call-duration {
+            font-size: 16px;
+            color: #8e8e93;
+            font-weight: 400;
+            margin-top: 24px;
+        }
+
+        /* iOS Buttons */
+        .call-actions {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px 16px;
+            margin-bottom: 40px;
+            padding: 0 10px;
+        }
+
+        .call-action-btn {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            padding: 0;
+        }
+
+        .action-icon {
+            width: 68px;
+            height: 68px;
+            background: #2c2c2e;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        .action-label {
+            font-size: 13px;
+            color: #fff;
+            font-weight: 400;
+        }
+
+        .end-call-container {
+            display: flex;
+            justify-content: center;
+            padding-bottom: 20px;
+        }
+
+        .end-call-btn {
+            width: 68px;
+            height: 68px;
+            background: #ff3b30;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 32px;
+        }
+
+        /* Content Sections */
+        .content-block h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 400;
+            margin-bottom: 32px;
+            line-height: 1.3;
+            color: var(--ink);
+            letter-spacing: -0.01em;
+        }
+
+        .content-block p {
+            font-size: 1.15rem;
+            color: var(--secondary);
+            line-height: 1.9;
+            margin-bottom: 48px;
+        }
+
+        .soft-stats {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            color: var(--ink);
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .stat-bullet {
+            width: 6px;
+            height: 6px;
+            background: var(--accent);
+            border-radius: 50%;
+        }
+
+        /* Centered Sections */
+        .centered-section {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .centered-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 40px;
+            line-height: 1.2;
+            color: var(--ink);
+        }
+
+        .centered-section p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            line-height: 1.9;
+            margin-bottom: 60px;
+        }
+
+        /* Pipeline Diagram */
+        .pipeline-diagram {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            margin: 80px 0;
+            flex-wrap: wrap;
+        }
+
+        .pipeline-step {
+            background: var(--card);
+            padding: 32px 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            font-size: 1.1rem;
+            color: var(--ink);
+            font-weight: 500;
+            min-width: 140px;
+            text-align: center;
+        }
+
+        .pipeline-arrow {
+            color: var(--divider);
+            font-size: 1.5rem;
+            font-weight: 300;
+        }
+
+        /* Flywheel */
+        .flywheel {
+            margin: 80px 0;
+            text-align: center;
+        }
+
+        .flywheel-circle {
+            width: 400px;
+            height: 400px;
+            margin: 0 auto 60px;
+            position: relative;
+            border: 2px solid var(--divider);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .flywheel-steps {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+        .flywheel-step {
+            position: absolute;
+            background: var(--card);
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            font-size: 1rem;
+            color: var(--ink);
+            font-weight: 500;
+            white-space: nowrap;
+        }
+
+        .flywheel-step:nth-child(1) { top: -10px; left: 50%; transform: translateX(-50%); }
+        .flywheel-step:nth-child(2) { top: 25%; right: -20px; }
+        .flywheel-step:nth-child(3) { bottom: 25%; right: -20px; }
+        .flywheel-step:nth-child(4) { bottom: -10px; left: 50%; transform: translateX(-50%); }
+        .flywheel-step:nth-child(5) { bottom: 25%; left: -20px; }
+        .flywheel-step:nth-child(6) { top: 25%; left: -20px; }
+
+        .flywheel-center {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 500;
+        }
+
+        .flywheel-text {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            line-height: 1.9;
+        }
+
+        /* Final CTA */
+        .final-section {
+            text-align: center;
+            padding: 140px 60px;
+        }
+
+        .final-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
+            font-weight: 400;
+            margin-bottom: 60px;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: var(--ink);
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s ease;
+            letter-spacing: 0.02em;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--card);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(180, 106, 76, 0.2);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .two-col,
+            .two-col.reverse {
+                grid-template-columns: 1fr;
+                gap: 60px;
+                justify-items: center;
+            }
+
+            .iphone-mockup {
+                margin: 0 auto;
+            }
+
+            .section {
+                padding: 80px 40px;
+            }
+
+            .hero {
+                padding: 140px 40px 100px;
+            }
+
+            .flywheel-circle {
+                width: 300px;
+                height: 300px;
+            }
+
+            .flywheel-step {
+                font-size: 0.9rem;
+                padding: 12px 20px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 30px;
+            }
+
+            .section {
+                padding: 60px 30px;
+            }
+
+            .hero {
+                padding: 120px 30px 80px;
+            }
+
+            .iphone-mockup {
+                width: 300px;
+                height: 600px;
+                border-radius: 44px;
+            }
+
+            .iphone-screen {
+                border-radius: 36px;
+            }
+
+            .pipeline-diagram {
+                flex-direction: column;
+                gap: 16px;
+            }
+
+            .pipeline-arrow {
+                transform: rotate(90deg);
+            }
+
+            .final-section {
+                padding: 100px 30px;
+            }
+        }
+
+        /* Subtle entrance animations */
+        .fade-in {
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .section {
+            opacity: 0;
+            animation: fadeIn 0.6s ease 0.2s forwards;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <a href="ai-support-website.html" class="logo-link">
+                <svg class="logo-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <defs>
+                        <linearGradient id="logoGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#888888;stop-opacity:1" />
+                            <stop offset="50%" style="stop-color:#666666;stop-opacity:1" />
+                            <stop offset="100%" style="stop-color:#444444;stop-opacity:1" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M 30 50 
+                             C 30 30, 50 30, 50 50 
+                             C 50 70, 70 70, 70 50 
+                             C 70 30, 50 30, 50 50 
+                             C 50 30, 30 30, 30 50" 
+                          fill="url(#logoGradient)" 
+                          stroke="none"/>
+                </svg>
+            </a>
+            <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
+                <span id="themeIcon">🌙</span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero fade-in">
+        <canvas class="hero-canvas" id="heroCanvas"></canvas>
+        <div class="hero-carousel">
+            <div class="hero-slides" id="heroSlides">
+                <!-- Slide 1: Main Title -->
+                <div class="hero-slide">
+                    <h1>KALALOU AI LEVERAGE</h1>
+                    <p class="hero-subtext">A quiet system working behind the scenes.</p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 2: Custom Message -->
+                <div class="hero-slide">
+                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Future of Wholesale</h1>
+                    <p class="hero-subtext">Where craftsmanship meets intelligent automation.</p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 3: Artwork -->
+                <div class="hero-slide artwork-slide">
+                    <img src="kalalou-artwork.png" 
+                         alt="Kalalou Vision - Balancing craftsmanship with modern efficiency" 
+                         class="artwork-image"
+                         id="artworkImage">
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="carousel-dots">
+                <div class="carousel-dot active" data-slide="0"></div>
+                <div class="carousel-dot" data-slide="1"></div>
+                <div class="carousel-dot" data-slide="2"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="carousel-nav">
+                <button class="carousel-button" id="prevButton">←</button>
+                <button class="carousel-button" id="nextButton">→</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Section 1: Inbound -->
+    <div class="section">
+        <div class="two-col">
+            <!-- iPhone Left -->
+            <div>
+                <div class="iphone-mockup">
+                    <div class="iphone-notch"></div>
+                    <div class="iphone-screen">
+                        <div class="status-bar">
+                            <div class="time">2:34</div>
+                            <div class="status-icons">
+                                <span>📶</span>
+                                <span>📡</span>
+                                <span>🔋</span>
+                            </div>
+                        </div>
+
+                        <div class="call-screen">
+                            <div class="call-header">
+                                <div class="caller-name">Kalalou</div>
+                                <div class="call-subtitle">Support Connected</div>
+                                <div class="call-duration">00:47</div>
+                            </div>
+
+                            <div>
+                                <div class="call-actions">
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">🔇</div>
+                                        <div class="action-label">mute</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">⌨️</div>
+                                        <div class="action-label">keypad</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">🔊</div>
+                                        <div class="action-label">speaker</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">➕</div>
+                                        <div class="action-label">add call</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">📹</div>
+                                        <div class="action-label">FaceTime</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">👤</div>
+                                        <div class="action-label">contacts</div>
+                                    </button>
+                                </div>
+                                <div class="end-call-container">
+                                    <button class="end-call-btn">📞</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content Right -->
+            <div class="content-block">
+                <h2>24/7 Customer Presence</h2>
+                <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
+                
+                <div class="soft-stats">
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Always available</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>No waiting</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Infinite scalability</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Consistent answers</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 2: Outbound -->
+    <div class="section">
+        <div class="two-col reverse">
+            <!-- Content Left -->
+            <div class="content-block">
+                <h2>Reaching Stores Before Competitors</h2>
+                <p>Calm conversations. Never cold. Always relevant.</p>
+                
+                <div class="soft-stats">
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Only warm leads</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Human tone</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Books real meetings</span>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-bullet"></div>
+                        <span>Works quietly in background</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- iPhone Right -->
+            <div>
+                <div class="iphone-mockup">
+                    <div class="iphone-notch"></div>
+                    <div class="iphone-screen">
+                        <div class="status-bar">
+                            <div class="time">10:15</div>
+                            <div class="status-icons">
+                                <span>📶</span>
+                                <span>📡</span>
+                                <span>🔋</span>
+                            </div>
+                        </div>
+
+                        <div class="call-screen">
+                            <div class="call-header">
+                                <div class="caller-name">Wholesale Buyer</div>
+                                <div class="call-subtitle">Warm Lead</div>
+                                <div class="call-duration">calling...</div>
+                            </div>
+
+                            <div>
+                                <div class="call-actions">
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">🔇</div>
+                                        <div class="action-label">mute</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">⌨️</div>
+                                        <div class="action-label">keypad</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">🔊</div>
+                                        <div class="action-label">speaker</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">➕</div>
+                                        <div class="action-label">add call</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">📹</div>
+                                        <div class="action-label">FaceTime</div>
+                                    </button>
+                                    <button class="call-action-btn">
+                                        <div class="action-icon">👤</div>
+                                        <div class="action-label">contacts</div>
+                                    </button>
+                                </div>
+                                <div class="end-call-container">
+                                    <button class="end-call-btn">📞</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 3: Lead Engine -->
+    <div class="section">
+        <div class="centered-section">
+            <h2>A Living Pipeline</h2>
+            <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
+            
+            <div class="pipeline-diagram">
+                <div class="pipeline-step">AI finds retailers</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">AI emails</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Buyers click</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">AI calls</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">Meetings booked</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">New customers</div>
+                <div class="pipeline-arrow">→</div>
+                <div class="pipeline-step">AI supports</div>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 4: Flywheel -->
+    <div class="section">
+        <div class="centered-section">
+            <h2>A System That Compounds</h2>
+            
+            <div class="flywheel">
+                <div class="flywheel-circle">
+                    <div class="flywheel-steps">
+                        <div class="flywheel-step">Leads</div>
+                        <div class="flywheel-step">Calls</div>
+                        <div class="flywheel-step">Orders</div>
+                        <div class="flywheel-step">Growth</div>
+                        <div class="flywheel-step">Loyalty</div>
+                        <div class="flywheel-step">Referrals</div>
+                    </div>
+                    <div class="flywheel-center">∞</div>
+                </div>
+                
+                <p class="flywheel-text">A system that compounds without chaos.</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="section-divider"></div>
+
+    <!-- Final Section -->
+    <section class="final-section">
+        <h2>Growth should feel calm,<br/>not exhausting.</h2>
+        <a href="#" class="cta-button">Explore the System</a>
+    </section>
+
+    <!-- Three.js Library -->
+    <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
+
+    <script>
+        // Three.js Animated Background
+        let scene, camera, renderer, particles;
+        let isDarkMode = false; // Kalalou starts with light theme
+
+        function initThreeJS() {
+            try {
+                const canvas = document.getElementById('heroCanvas');
+                if (!canvas) {
+                    console.error('Canvas not found');
+                    return;
+                }
+
+                const width = window.innerWidth;
+                const height = window.innerHeight;
+
+                // Scene
+                scene = new THREE.Scene();
+                scene.background = new THREE.Color(0xF7F4EF); // Light beige background
+
+                // Camera
+                camera = new THREE.PerspectiveCamera(75, width / height, 0.1, 1000);
+                camera.position.set(0, 0, 8);
+
+                // Renderer
+                renderer = new THREE.WebGLRenderer({ 
+                    canvas: canvas,
+                    antialias: true,
+                    alpha: false
+                });
+                renderer.setSize(width, height);
+                renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+
+                // Create wave-like mountainous pattern
+                const segments = 200;
+                const lines = [];
+                // Lighter colors for light theme
+                const lineMaterial = new THREE.LineBasicMaterial({
+                    color: 0x6F6F6F, // Match secondary color
+                    transparent: true,
+                    opacity: 0.3,
+                    linewidth: 1
+                });
+
+                // Create multiple layers of wave lines
+                for (let layer = 0; layer < 120; layer++) {
+                    const geometry = new THREE.BufferGeometry();
+                    const positions = [];
+                    const y = (layer / 120 - 0.5) * 18;
+
+                    for (let i = 0; i <= segments; i++) {
+                        const x = (i / segments - 0.5) * 30;
+                        // Create wave pattern with multiple frequencies for depth
+                        const z = Math.sin(x * 0.2 + layer * 0.1) * 2 + 
+                                  Math.cos(x * 0.4 + layer * 0.08) * 1.2 +
+                                  Math.sin(x * 0.6 + layer * 0.15) * 0.8;
+                        
+                        positions.push(x, y, z);
+                    }
+
+                    geometry.setAttribute('position', new THREE.Float32BufferAttribute(positions, 3));
+                    
+                    const line = new THREE.Line(geometry, lineMaterial);
+                    scene.add(line);
+                    lines.push(line);
+                }
+
+                // Store lines for animation
+                particles = lines;
+
+                let time = 0;
+                // Animate
+                function animate() {
+                    animationId = requestAnimationFrame(animate);
+                    time += 0.01;
+
+                    // Animate wave pattern
+                    particles.forEach((line, i) => {
+                        const positions = line.geometry.attributes.position;
+                        for (let j = 0; j < positions.count; j++) {
+                            const x = positions.getX(j);
+                            const y = positions.getY(j);
+                            // Animated wave with multiple frequencies
+                            const z = Math.sin(x * 0.2 + i * 0.1 + time) * 2 + 
+                                      Math.cos(x * 0.4 + i * 0.08 + time * 0.8) * 1.2 +
+                                      Math.sin(x * 0.6 + i * 0.15 + time * 0.6) * 0.8;
+                            positions.setZ(j, z);
+                        }
+                        positions.needsUpdate = true;
+                    });
+
+                    renderer.render(scene, camera);
+                }
+
+                animate();
+
+                // Handle resize
+                window.addEventListener('resize', () => {
+                    const width = window.innerWidth;
+                    const height = window.innerHeight;
+                    camera.aspect = width / height;
+                    camera.updateProjectionMatrix();
+                    renderer.setSize(width, height);
+                });
+
+                console.log('Three.js initialized successfully');
+            } catch (error) {
+                console.error('Error initializing Three.js:', error);
+            }
+        }
+
+        // Theme Toggle
+        const themeToggle = document.getElementById('themeToggle');
+        const themeIcon = document.getElementById('themeIcon');
+
+        if (themeToggle) {
+            themeToggle.addEventListener('click', () => {
+                isDarkMode = !isDarkMode;
+                
+                if (isDarkMode) {
+                    // Dark mode
+                    if (scene) {
+                        scene.background = new THREE.Color(0x000000);
+                        if (particles && particles.length > 0) {
+                            particles.forEach(line => {
+                                line.material.color.setHex(0xaaaaaa);
+                                line.material.opacity = 0.5;
+                            });
+                        }
+                    }
+                    themeIcon.textContent = '☀️';
+                } else {
+                    // Light mode (default for Kalalou)
+                    if (scene) {
+                        scene.background = new THREE.Color(0xF7F4EF);
+                        if (particles && particles.length > 0) {
+                            particles.forEach(line => {
+                                line.material.color.setHex(0x6F6F6F);
+                                line.material.opacity = 0.3;
+                            });
+                        }
+                    }
+                    themeIcon.textContent = '🌙';
+                }
+            });
+        }
+
+        // Initialize Three.js when page loads
+        function checkThreeJS() {
+            if (typeof THREE !== 'undefined') {
+                setTimeout(initThreeJS, 100);
+            } else {
+                console.error('Three.js library not loaded');
+                setTimeout(checkThreeJS, 500);
+            }
+        }
+
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', checkThreeJS);
+        } else {
+            checkThreeJS();
+        }
+
+        // Carousel functionality
+        let currentSlide = 0;
+        const totalSlides = 3;
+        const heroSlides = document.getElementById('heroSlides');
+        const dots = document.querySelectorAll('.carousel-dot');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        function updateCarousel() {
+            heroSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            
+            // Update dots
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        // Button click handlers
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
+
+        // Dot click handlers
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentSlide = index;
+                updateCarousel();
+            });
+        });
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowRight') nextSlide();
+            if (e.key === 'ArrowLeft') prevSlide();
+        });
+
+        // Touch swipe support
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        heroSlides.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        heroSlides.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchEndX < touchStartX - 50) nextSlide();
+            if (touchEndX > touchStartX + 50) prevSlide();
+        }
+
+        // Smooth scroll reveal on load
+        window.addEventListener('load', () => {
+            const sections = document.querySelectorAll('.section');
+            sections.forEach((section, index) => {
+                section.style.animationDelay = `${0.2 + index * 0.1}s`;
+            });
+        });
+    </script>
+</body>
+</html>
