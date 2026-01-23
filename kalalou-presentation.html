@@ -488,8 +488,15 @@
             padding: 120px 60px;
         }
 
+        .growth-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+            gap: 60px;
+            align-items: flex-start;
+        }
+
         .growth-heading {
-            text-align: center;
+            text-align: left;
         }
 
         .growth-heading h2 {
@@ -502,7 +509,7 @@
         }
 
         .growth-subtitle {
-            font-size: 1.3rem;
+            font-size: 1.28rem;
             color: var(--secondary);
             display: inline-flex;
             align-items: center;
@@ -510,7 +517,7 @@
         }
 
         .growth-subtitle span {
-            font-size: 1.4rem;
+            font-size: 1.35rem;
         }
 
         .growth-table {
@@ -540,10 +547,66 @@
             text-overflow: ellipsis;
         }
 
+        .growth-card {
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 18px;
+            border: 1px solid var(--divider);
+            padding: 28px 26px 30px;
+            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06);
+        }
+
+        .growth-card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.6rem;
+            margin-bottom: 18px;
+            color: var(--ink);
+        }
+
+        .growth-flow-icon {
+            display: flex;
+            align-items: center;
+            gap: 18px;
+        }
+
+        .growth-box {
+            border-radius: 10px;
+            padding: 14px 16px;
+            min-width: 150px;
+            font-size: 0.98rem;
+            line-height: 1.5;
+        }
+
+        .growth-box-solid {
+            border: 1px solid var(--divider);
+            background: rgba(247, 244, 239, 0.9);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .growth-box-solid .check {
+            color: #16a34a;
+            font-size: 1.1rem;
+        }
+
+        .growth-box-dashed {
+            border: 1px dashed var(--divider);
+            background: transparent;
+        }
+
+        .growth-arrow {
+            font-size: 1.6rem;
+            color: var(--secondary);
+        }
+
         @media (max-width: 900px) {
             .growth-table-row {
                 grid-template-columns: repeat(4, minmax(0, 1fr));
                 row-gap: 8px;
+            }
+            .growth-layout {
+                grid-template-columns: minmax(0, 1fr);
+                gap: 40px;
             }
         }
 
@@ -1730,23 +1793,41 @@
 
     <!-- Growth System Section -->
     <section class="growth-section">
-        <div class="growth-heading">
-            <h2>Growth system</h2>
-            <div class="growth-subtitle">
-                <span>✅</span>
-                <span>AI extracts leads from databases.</span>
-            </div>
-        </div>
+        <div class="growth-layout">
+            <div>
+                <div class="growth-heading">
+                    <h2>Growth system</h2>
+                    <div class="growth-subtitle">
+                        <span>✅</span>
+                        <span>AI extracts leads from databases.</span>
+                    </div>
+                </div>
 
-        <div class="growth-table" aria-label="Example of leads table headers">
-            <div class="growth-table-row">
-                <div class="growth-table-header">Name</div>
-                <div class="growth-table-header">Company</div>
-                <div class="growth-table-header"># Employees</div>
-                <div class="growth-table-header">Industry</div>
-                <div class="growth-table-header">Website</div>
-                <div class="growth-table-header">City</div>
-                <div class="growth-table-header">Country</div>
+                <div class="growth-table" aria-label="Example of leads table headers">
+                    <div class="growth-table-row">
+                        <div class="growth-table-header">Name</div>
+                        <div class="growth-table-header">Company</div>
+                        <div class="growth-table-header"># Employees</div>
+                        <div class="growth-table-header">Industry</div>
+                        <div class="growth-table-header">Website</div>
+                        <div class="growth-table-header">City</div>
+                        <div class="growth-table-header">Country</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="growth-card">
+                <div class="growth-card-title">Growth system</div>
+                <div class="growth-flow-icon">
+                    <div class="growth-box growth-box-solid">
+                        <span class="check">✓</span>
+                        <span>Leads from database</span>
+                    </div>
+                    <div class="growth-arrow">→</div>
+                    <div class="growth-box growth-box-dashed">
+                        AI verifies the emails so they don’t bounce back.
+                    </div>
+                </div>
             </div>
         </div>
     </section>
