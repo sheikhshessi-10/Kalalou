@@ -307,26 +307,127 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 30px;
+                padding: 0 20px;
+            }
+
+            .logo-svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
 
             .hero {
-                padding: 140px 30px 80px;
+                padding: 120px 20px 60px;
+            }
+
+            .hero h1 {
+                font-size: clamp(2rem, 7vw, 2.5rem);
+                margin-bottom: 1.2rem;
+            }
+
+            .hero p {
+                font-size: clamp(1rem, 4vw, 1.2rem);
+                padding: 0 10px;
             }
 
             .team-section {
-                padding: 40px 30px 100px;
+                padding: 30px 20px 80px;
             }
 
             .team-member {
                 grid-template-columns: 1fr;
-                gap: 30px;
+                gap: 24px;
                 text-align: center;
-                margin-bottom: 80px;
+                margin-bottom: 60px;
             }
 
             .team-photo {
+                width: 160px;
+                height: 160px;
                 margin: 0 auto;
+            }
+
+            .team-info h2 {
+                font-size: 1.5rem;
+            }
+
+            .team-role {
+                font-size: 1rem;
+            }
+
+            .team-description {
+                font-size: 0.95rem;
+                line-height: 1.7;
+            }
+
+            .footer {
+                padding: 40px 0;
+            }
+
+            .footer-container {
+                padding: 0 20px;
+            }
+
+            .footer-grid {
+                gap: 28px;
+            }
+
+            .footer-column h3 {
+                font-size: 1rem;
+            }
+
+            .footer-column p,
+            .footer-column a,
+            .footer-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 110px 16px 50px;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 8vw, 2.2rem);
+            }
+
+            .team-section {
+                padding: 20px 16px 60px;
+            }
+
+            .team-member {
+                margin-bottom: 50px;
+            }
+
+            .team-photo {
+                width: 140px;
+                height: 140px;
+            }
+
+            .team-info h2 {
+                font-size: 1.3rem;
+            }
+
+            .team-role {
+                font-size: 0.95rem;
+            }
+
+            .team-description {
+                font-size: 0.9rem;
+            }
+
+            .footer-container {
+                padding: 0 16px;
             }
         }
     </style>

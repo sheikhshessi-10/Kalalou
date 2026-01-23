@@ -331,34 +331,11 @@
 
         /* Carousel Navigation */
         .carousel-nav {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 16px;
-            z-index: 10;
+            display: none !important;
         }
 
         .carousel-button {
-            width: 48px;
-            height: 48px;
-            background: var(--card);
-            border: 1px solid var(--divider);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: var(--ink);
-        }
-
-        .carousel-button:hover {
-            background: var(--ink);
-            color: var(--card);
-            transform: scale(1.05);
+            display: none !important;
         }
 
         .carousel-dots {
@@ -450,31 +427,11 @@
         }
 
         .section-carousel-nav {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 60px;
+            display: none !important;
         }
 
         .section-carousel-button {
-            width: 48px;
-            height: 48px;
-            background: var(--card);
-            border: 1px solid var(--divider);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 20px;
-            color: var(--ink);
-        }
-
-        .section-carousel-button:hover {
-            background: var(--ink);
-            color: var(--card);
-            transform: scale(1.05);
+            display: none !important;
         }
 
         .section-carousel-dots {
@@ -1315,38 +1272,252 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 30px;
+                padding: 0 20px;
+            }
+
+            .logo-svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
 
             .section {
-                padding: 60px 30px;
+                padding: 50px 20px;
+            }
+
+            .section-with-canvas .section-carousel {
+                padding: 60px 20px;
             }
 
             .hero {
-                padding: 120px 30px 80px;
+                padding: 100px 20px 60px;
+                min-height: 85vh;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+            }
+
+            .hero h1 {
+                font-size: clamp(1.8rem, 7vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+
+            .hero p {
+                font-size: clamp(1rem, 4vw, 1.2rem);
+            }
+
+            .section h2 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+
+            .section p {
+                font-size: clamp(0.95rem, 3.5vw, 1.1rem);
             }
 
             .iphone-mockup {
-                width: 300px;
-                height: 600px;
-                border-radius: 44px;
+                width: 280px;
+                height: 560px;
+                border-radius: 40px;
+                padding: 12px;
             }
 
             .iphone-screen {
-                border-radius: 36px;
+                border-radius: 32px;
+            }
+
+            .iphone-notch {
+                width: 140px;
+                height: 28px;
+            }
+
+            .status-bar {
+                font-size: 13px;
+                padding: 0 24px 0 160px;
+            }
+
+            .time {
+                left: 24px;
+                top: 12px;
             }
 
             .pipeline-diagram {
                 flex-direction: column;
-                gap: 16px;
+                gap: 12px;
+            }
+
+            .pipeline-step {
+                font-size: 0.85rem;
+                padding: 10px 16px;
             }
 
             .pipeline-arrow {
                 transform: rotate(90deg);
+                font-size: 1.2rem;
+            }
+
+            .growth-section {
+                padding: 80px 20px;
+            }
+
+            .growth-heading h2 {
+                font-size: clamp(2rem, 6vw, 2.6rem);
+            }
+
+            .growth-subtitle {
+                font-size: 1.1rem;
+            }
+
+            .growth-table {
+                font-size: 0.8rem;
+                overflow-x: auto;
+            }
+
+            .growth-table-row {
+                padding: 12px 16px;
+            }
+
+            .growth-card {
+                padding: 20px 18px;
+            }
+
+            .growth-card-title {
+                font-size: 1.3rem;
+            }
+
+            .final-step {
+                padding: 16px 20px;
+                min-width: 140px;
+            }
+
+            .final-icon {
+                font-size: 2rem;
+            }
+
+            .final-text {
+                font-size: 0.85rem;
+            }
+
+            .final-arrow {
+                font-size: 1.5rem;
+            }
+
+            .tam-section {
+                padding: 80px 20px;
+            }
+
+            .section-carousel-dots {
+                bottom: 20px;
+                gap: 8px;
+            }
+
+            .section-carousel-dot {
+                width: 6px;
+                height: 6px;
+            }
+
+            .section-carousel-dot.active {
+                width: 20px;
+            }
+
+            .carousel-button,
+            .section-carousel-button {
+                width: 40px;
+                height: 40px;
+                font-size: 18px;
+            }
+
+            .flywheel-circle {
+                width: 280px;
+                height: 280px;
+            }
+
+            .flywheel-step {
+                font-size: 0.8rem;
+                padding: 10px 16px;
+            }
+
+            .flywheel-center {
+                font-size: 1.3rem;
+            }
+
+            .flywheel-text {
+                font-size: 1.1rem;
             }
 
             .final-section {
-                padding: 100px 30px;
+                padding: 80px 20px;
+            }
+
+            .final-attribution {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .section {
+                padding: 40px 16px;
+            }
+
+            .hero {
+                padding: 90px 16px 50px;
+            }
+
+            .growth-section {
+                padding: 60px 16px;
+            }
+
+            .growth-heading h2 {
+                font-size: clamp(1.8rem, 7vw, 2.2rem);
+            }
+
+            .growth-card {
+                padding: 18px 16px;
+            }
+
+            .iphone-mockup {
+                width: 260px;
+                height: 520px;
+            }
+
+            .final-step {
+                padding: 14px 16px;
+                min-width: 120px;
+            }
+
+            .final-icon {
+                font-size: 1.8rem;
+            }
+
+            .final-text {
+                font-size: 0.8rem;
+            }
+
+            .flywheel-circle {
+                width: 260px;
+                height: 260px;
+            }
+
+            .flywheel-step {
+                font-size: 0.75rem;
+                padding: 8px 14px;
+            }
+
+            .final-section {
+                padding: 60px 16px;
+            }
+
+            .final-attribution {
+                font-size: 0.95rem;
             }
         }
 
@@ -1404,37 +1575,8 @@
                 <!-- Slide 1: Main Title -->
                 <div class="hero-slide">
                     <h1>KALALOU AI LEVERAGE</h1>
-                    <p class="hero-subtext">A quiet system working behind the scenes.</p>
                     <div class="hero-divider"></div>
                 </div>
-
-                <!-- Slide 2: Custom Message -->
-                <div class="hero-slide">
-                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Future of Wholesale</h1>
-                    <p class="hero-subtext">Where craftsmanship meets intelligent automation.</p>
-                    <div class="hero-divider"></div>
-                </div>
-
-                <!-- Slide 3: Artwork -->
-                <div class="hero-slide artwork-slide">
-                    <img src="kalalou-artwork.png" 
-                         alt="Kalalou Vision - Balancing craftsmanship with modern efficiency" 
-                         class="artwork-image"
-                         id="artworkImage">
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="carousel-dots">
-                <div class="carousel-dot active" data-slide="0"></div>
-                <div class="carousel-dot" data-slide="1"></div>
-                <div class="carousel-dot" data-slide="2"></div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="carousel-nav">
-                <button class="carousel-button" id="prevButton">←</button>
-                <button class="carousel-button" id="nextButton">→</button>
             </div>
         </div>
     </section>
