@@ -1,0 +1,20 @@
+{
+  "rewrites": [
+    {
+      "source": "/ai-support-website.html",
+      "destination": "/index.html"
+    }
+  ],
+  "headers": [
+    {
+      "source": "/ai-support-website.html",
+      "headers": [
+        {
+          "key": "Location",
+          "value": "/index.html"
+        }
+      ]
+    }
+  ]
+}
+
