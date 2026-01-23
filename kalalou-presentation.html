@@ -175,6 +175,34 @@
             color: var(--ink);
         }
 
+        .tam-title.tam-title-sub {
+            font-size: clamp(2rem, 3.6vw, 2.8rem);
+            margin-top: 14px;
+            margin-bottom: 0;
+            opacity: 0.95;
+        }
+
+        .tam-emoji {
+            font-family: 'Apple Color Emoji', 'Segoe UI Emoji', 'Noto Color Emoji', sans-serif;
+            margin-left: 10px;
+        }
+
+        .tam-boat {
+            position: absolute;
+            left: 50%;
+            transform: translateX(-220px);
+            top: 16%;
+            z-index: 2;
+            pointer-events: none;
+            opacity: 0.95;
+        }
+
+        .tam-boat svg {
+            width: 300px;
+            height: auto;
+            display: block;
+        }
+
         .tam-subtext {
             font-size: 1.1rem;
             color: var(--secondary);
@@ -1257,6 +1285,33 @@
     <section class="tam-hero">
         <div class="tam-canvas-wrapper">
             <canvas class="tam-canvas" id="tamCanvas"></canvas>
+            <!-- Boat + fishing rod overlay -->
+            <div class="tam-boat" aria-hidden="true">
+                <svg viewBox="0 0 520 260">
+                    <!-- boat -->
+                    <path d="M165 140 C205 120, 260 112, 320 120 C360 126, 395 140, 420 158
+                             C370 178, 310 192, 245 190 C205 188, 180 176, 150 160
+                             C145 156, 145 146, 165 140 Z"
+                          fill="rgba(180, 106, 76, 0.95)"/>
+                    <path d="M178 145 C210 132, 260 126, 308 132 C340 136, 366 146, 386 156
+                             C350 168, 303 178, 250 176 C216 174, 195 166, 172 154 Z"
+                          fill="rgba(255,255,255,0.45)"/>
+
+                    <!-- small cabin -->
+                    <rect x="250" y="98" width="64" height="30" rx="6" fill="rgba(28,28,28,0.12)" stroke="rgba(28,28,28,0.18)"/>
+                    <rect x="260" y="105" width="18" height="14" rx="3" fill="rgba(255,255,255,0.35)"/>
+
+                    <!-- fishing rod -->
+                    <path d="M220 92 C240 70, 275 55, 322 54 C365 53, 402 66, 440 92"
+                          fill="none" stroke="#2b6fff" stroke-width="4" stroke-linecap="round"/>
+                    <!-- line into the pond -->
+                    <path d="M440 92 C456 116, 468 146, 472 182"
+                          fill="none" stroke="#2b6fff" stroke-width="2.5" stroke-linecap="round" opacity="0.95"/>
+                    <!-- hook -->
+                    <path d="M472 182 C472 196, 462 202, 452 202"
+                          fill="none" stroke="#2b6fff" stroke-width="2.5" stroke-linecap="round"/>
+                </svg>
+            </div>
         </div>
 
         <div class="tam-carousel">
@@ -1264,7 +1319,7 @@
                 <!-- Slide 1 -->
                 <div class="tam-slide">
                     <div class="tam-title">We are fishing in a massive pond…</div>
-                    <p class="tam-subtext">And we’re doing it with intention—line in the water, targeting the right buyers, every single day. 🎣</p>
+                    <div class="tam-title tam-title-sub">With a fishing rod?<span class="tam-emoji">🎣</span></div>
                 </div>
 
                 <!-- Slide 2 -->
