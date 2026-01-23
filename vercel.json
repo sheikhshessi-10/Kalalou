@@ -1,8 +1,4 @@
 {
-  "buildCommand": null,
-  "devCommand": null,
-  "installCommand": null,
-  "outputDirectory": "public",
   "cleanUrls": true,
   "redirects": [
     {
@@ -14,30 +10,6 @@
       "source": "/ai-support-website",
       "destination": "/index.html",
       "permanent": true
-    }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
-  ],
-  "headers": [
-    {
-      "source": "/(.*)",
-      "headers": [
-        {
-          "key": "X-Content-Type-Options",
-          "value": "nosniff"
-        },
-        {
-          "key": "X-Frame-Options",
-          "value": "DENY"
-        }
-      ]
     }
   ]
 }
