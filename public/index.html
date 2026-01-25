@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MagicWand AI | Never Miss Another Call</title>
+    <title>InfinixLeverage | Never Miss Another Call</title>
     <style>
         * {
             margin: 0;
@@ -280,16 +280,28 @@
         }
 
         .brand-logo {
-            font-size: 1.8rem;
-            font-weight: 500;
-            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             white-space: nowrap;
-            opacity: 0.5;
+            opacity: 0.6;
             transition: opacity 0.3s ease;
+        }
+
+        .brand-logo img {
+            height: 80px;
+            width: auto;
+            object-fit: contain;
+            filter: grayscale(100%);
+            transition: filter 0.3s ease;
         }
 
         .brand-logo:hover {
             opacity: 1;
+        }
+
+        .brand-logo:hover img {
+            filter: grayscale(0%);
         }
 
         @keyframes scroll {
@@ -1016,33 +1028,240 @@
         /* Responsive */
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 30px;
+                padding: 0 20px;
+            }
+
+            .logo-svg {
+                width: 32px;
+                height: 32px;
+            }
+
+            .theme-toggle {
+                width: 36px;
+                height: 36px;
+                font-size: 18px;
             }
 
             .hero {
-                padding: 120px 30px 60px;
+                padding: 100px 20px 40px;
+                min-height: 80vh;
+            }
+
+            .hero-content {
+                padding: 2rem 1rem;
+                margin-top: 0;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(1.8rem, 8vw, 2.5rem);
+                margin-bottom: 1rem;
+            }
+
+            .hero-content p {
+                font-size: clamp(1rem, 4vw, 1.2rem);
             }
 
             .empowering-section {
-                padding: 60px 16px;
+                padding: 40px 20px;
+            }
+
+            .empowering-container h2 {
+                font-size: clamp(1.3rem, 5vw, 1.5rem);
+                white-space: normal;
+            }
+
+            .empowering-container p {
+                font-size: clamp(0.95rem, 3.5vw, 1rem);
             }
 
             .section {
-                padding: 100px 30px;
+                padding: 60px 20px;
+            }
+
+            .section-header h2 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+
+            .section-header p {
+                font-size: 1rem;
             }
 
             .brands-section {
-                padding: 80px 30px;
+                padding: 60px 20px;
+            }
+
+            .brand-logo img {
+                height: 60px;
+            }
+
+            .brands-carousel {
+                gap: 60px;
             }
 
             .iphone-mockup {
-                width: 320px;
-                height: 640px;
-                border-radius: 48px;
+                width: 280px;
+                height: 560px;
+                border-radius: 40px;
+                padding: 12px;
             }
 
             .iphone-screen {
-                border-radius: 40px;
+                border-radius: 32px;
+            }
+
+            .iphone-notch {
+                width: 140px;
+                height: 28px;
+            }
+
+            .status-bar {
+                padding: 0 24px 0 160px;
+                font-size: 13px;
+            }
+
+            .time {
+                left: 24px;
+                top: 12px;
+            }
+
+            .inbound-screen,
+            .outbound-screen {
+                padding: 60px 20px 30px;
+            }
+
+            .caller-name {
+                font-size: 32px;
+            }
+
+            .phone-number-single {
+                font-size: 22px;
+            }
+
+            .slide-to-call-container,
+            .slide-container {
+                height: 56px;
+            }
+
+            .slide-to-call-button,
+            .slide-button {
+                width: 48px;
+                height: 48px;
+                font-size: 22px;
+            }
+
+            .slide-to-call-text,
+            .slide-text {
+                font-size: 15px;
+            }
+
+            .caller-avatar {
+                width: 100px;
+                height: 100px;
+                font-size: 40px;
+            }
+
+            .content-block h2 {
+                font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+            }
+
+            .content-block p {
+                font-size: 0.9rem !important;
+            }
+
+            .two-col {
+                gap: 40px;
+            }
+
+            .cta-section {
+                padding: 80px 20px;
+            }
+
+            .cta-section h2 {
+                font-size: clamp(1.5rem, 6vw, 2rem);
+            }
+
+            .cta-section p {
+                font-size: clamp(1rem, 4vw, 1.1rem);
+            }
+
+            .cta-buttons {
+                gap: 12px;
+            }
+
+            .cta-button-primary,
+            .cta-button-secondary {
+                padding: 10px 28px;
+                font-size: 0.95rem;
+            }
+
+            .footer {
+                padding: 40px 0;
+            }
+
+            .footer-container {
+                padding: 0 20px;
+            }
+
+            .footer-grid {
+                gap: 28px;
+            }
+
+            .footer-column h3 {
+                font-size: 1rem;
+            }
+
+            .footer-column p,
+            .footer-column a,
+            .footer-text {
+                font-size: 0.8rem;
+            }
+
+            .success-message {
+                padding: 32px 40px;
+                margin: 0 20px;
+            }
+
+            .success-message h4 {
+                font-size: 22px;
+            }
+
+            .success-message p {
+                font-size: 15px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 0 16px;
+            }
+
+            .hero {
+                padding: 90px 16px 30px;
+            }
+
+            .empowering-section {
+                padding: 30px 16px;
+            }
+
+            .section {
+                padding: 50px 16px;
+            }
+
+            .brands-section {
+                padding: 50px 16px;
+            }
+
+            .brand-logo img {
+                height: 50px;
+            }
+
+            .iphone-mockup {
+                width: 260px;
+                height: 520px;
+            }
+
+            .cta-section {
+                padding: 60px 16px;
             }
         }
     </style>
@@ -1099,26 +1318,33 @@
 
     <!-- Brands Section -->
     <section class="brands-section">
-        <div class="brands-title">Trusted By Industry Leaders</div>
         <div style="overflow: hidden;">
             <div class="brands-carousel">
-                <div class="brand-logo">ACME CORP</div>
-                <div class="brand-logo">TECHFLOW</div>
-                <div class="brand-logo">NEXUS</div>
-                <div class="brand-logo">VERTEX</div>
-                <div class="brand-logo">PULSE</div>
-                <div class="brand-logo">QUANTUM</div>
-                <div class="brand-logo">STRATUS</div>
-                <div class="brand-logo">ATLAS</div>
+                <div class="brand-logo">
+                    <img src="images/i1.png" alt="Partner 1">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i2.png" alt="Partner 2">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i3.png" alt="Partner 3">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i4.png" alt="Partner 4">
+                </div>
                 <!-- Duplicate for seamless loop -->
-                <div class="brand-logo">ACME CORP</div>
-                <div class="brand-logo">TECHFLOW</div>
-                <div class="brand-logo">NEXUS</div>
-                <div class="brand-logo">VERTEX</div>
-                <div class="brand-logo">PULSE</div>
-                <div class="brand-logo">QUANTUM</div>
-                <div class="brand-logo">STRATUS</div>
-                <div class="brand-logo">ATLAS</div>
+                <div class="brand-logo">
+                    <img src="images/i1.png" alt="Partner 1">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i2.png" alt="Partner 2">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i3.png" alt="Partner 3">
+                </div>
+                <div class="brand-logo">
+                    <img src="images/i4.png" alt="Partner 4">
+                </div>
             </div>
         </div>
     </section>
@@ -1151,8 +1377,8 @@
 
                                     <div class="inbound-screen">
                                         <div class="call-header">
-                                            <div class="caller-name">Magic Agent</div>
-                                            <div class="phone-number-single">+1 (228) 283-8127</div>
+                                            <div class="caller-name">InfinixLeverage</div>
+                                            <div class="phone-number-single">+1 (601) 307-2165</div>
                                         </div>
 
                                         <div class="slide-to-call">
@@ -1173,7 +1399,7 @@
                             <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--text-secondary); margin-bottom: 32px; font-weight: 400;">Slide to call!</p>
                             <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; margin-bottom: 24px; line-height: 1.3; color: var(--text-primary); letter-spacing: -0.02em;">24/7 Customer Presence</h2>
                             <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; font-weight: 400;">
-                                While your team rests, MagicWand AI remains available. Every call answered. Every question resolved. Every opportunity captured.
+                                While your team rests, InfinixLeverage AI remains available. Every call answered. Every question resolved. Every opportunity captured.
                             </p>
                             
                             <div class="soft-stats" style="display: flex; flex-direction: column; gap: 16px;">
@@ -1218,8 +1444,8 @@
 
                                     <div class="inbound-screen">
                                         <div class="call-header">
-                                            <div class="caller-name">Magic Agent</div>
-                                            <div class="phone-number-single">+1 (228) 283-8127</div>
+                                            <div class="caller-name">InfinixLeverage</div>
+                                            <div class="phone-number-single">+1 (601) 307-2165</div>
                                         </div>
 
                                         <div class="slide-to-call">
@@ -1240,7 +1466,7 @@
                             <p style="font-size: clamp(0.95rem, 1.5vw, 1.1rem); color: var(--text-secondary); margin-bottom: 32px; font-weight: 400;">Slide to call!</p>
                             <h2 style="font-size: clamp(1.5rem, 3vw, 2rem); font-weight: 500; margin-bottom: 24px; line-height: 1.3; color: var(--text-primary); letter-spacing: -0.02em;">24/7 Customer Presence</h2>
                             <p style="font-size: 0.95rem; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px; font-weight: 400;">
-                                While your team rests, MagicWand AI remains available. Every call answered. Every question resolved. Every opportunity captured.
+                                While your team rests, InfinixLeverage AI remains available. Every call answered. Every question resolved. Every opportunity captured.
                             </p>
                             
                             <div class="soft-stats" style="display: flex; flex-direction: column; gap: 16px;">
@@ -1361,7 +1587,7 @@
         <div class="footer-container">
             <div class="footer-grid">
                 <div class="footer-column">
-                    <h3>MagicWand AI</h3>
+                    <h3>InfinixLeverage</h3>
                     <p>Building the future of customer support, one call at a time.</p>
                 </div>
                 <div class="footer-column">
@@ -1369,14 +1595,16 @@
                     <ul>
                         <li><a href="index.html">Home</a></li>
                         <li><a href="kalalou-presentation.html">Kalalou</a></li>
+                        <li><a href="teams.html">Team</a></li>
+                        <li><a href="questionnaire.html">Questionnaire</a></li>
                         <li><a href="#demo">Demo</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>Contact</h3>
                     <ul>
-                        <li class="footer-text">hello@magicwand.ai</li>
-                        <li class="footer-text">+1 (228) 283-8127</li>
+                        <li class="footer-text">hello@infinixleverage.com</li>
+                        <li class="footer-text">+1 (601) 307-2165</li>
                         <li class="footer-text">Available 24/7</li>
                     </ul>
                 </div>
@@ -1397,7 +1625,7 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="mailto:hello@magicwand.ai" aria-label="Email">
+                        <a href="mailto:hello@infinixleverage.com" aria-label="Email">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                                 <rect width="20" height="16" x="2" y="4" rx="2"></rect>
                                 <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
@@ -1407,7 +1635,7 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                © 2024 MagicWand AI. All rights reserved.
+                © 2024 InfinixLeverage. All rights reserved.
             </div>
         </div>
     </footer>
@@ -1622,7 +1850,7 @@
 
                     if (currentXCall >= maxX * 0.85) {
                         isDraggingCall = false;
-                        const phoneNumber = '+12282838127';
+                        const phoneNumber = '+16013072165';
                         window.location.href = `tel:${phoneNumber}`;
                         showSuccess();
                     }
