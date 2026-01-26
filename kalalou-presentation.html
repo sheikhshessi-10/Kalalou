@@ -181,7 +181,7 @@
         /* (Removed emoji overlay per request) */
 
         .tam-subtext {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: var(--secondary);
             font-weight: 400;
             margin: 0 auto 56px;
@@ -313,13 +313,12 @@
         }
 
         .hero-subtext {
-            font-size: 1.22rem;
+            font-size: 1.1rem;
             color: var(--secondary);
             font-weight: 400;
             margin-bottom: 60px;
             max-width: 500px;
             letter-spacing: 0.01em;
-            line-height: 1.9;
         }
 
         .hero-divider {
@@ -331,35 +330,34 @@
 
         /* Carousel Navigation */
         .carousel-nav {
-            display: none !important;
+            position: absolute;
+            bottom: 60px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 16px;
+            z-index: 10;
         }
 
         .carousel-button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             background: var(--card);
             border: 1px solid var(--divider);
-            color: var(--ink);
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--ink);
         }
 
         .carousel-button:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-            transform: scale(1.08);
-            box-shadow: 0 4px 16px rgba(180, 106, 76, 0.25);
-        }
-
-        .carousel-button:active {
-            transform: scale(0.95);
+            background: var(--ink);
+            color: var(--card);
+            transform: scale(1.05);
         }
 
         .carousel-dots {
@@ -406,31 +404,6 @@
             padding: 120px 60px;
         }
 
-        .section-with-canvas {
-            position: relative;
-            max-width: 100%;
-            overflow: hidden;
-        }
-
-        .section-canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            display: block;
-            background: var(--bg-primary);
-        }
-
-        .section-with-canvas .section-carousel {
-            position: relative;
-            z-index: 10;
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 60px;
-        }
-
         /* Section Carousel */
         .section-carousel {
             position: relative;
@@ -451,45 +424,31 @@
         }
 
         .section-carousel-nav {
-            position: absolute;
-            top: 50%;
-            left: 0;
-            right: 0;
-            transform: translateY(-50%);
             display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-            pointer-events: none;
-            z-index: 10;
+            gap: 16px;
+            justify-content: center;
+            margin-top: 60px;
         }
 
         .section-carousel-button {
-            pointer-events: auto;
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            width: 48px;
+            height: 48px;
             background: var(--card);
             border: 1px solid var(--divider);
-            color: var(--ink);
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 20px;
+            color: var(--ink);
         }
 
         .section-carousel-button:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-            transform: scale(1.1);
-            box-shadow: 0 4px 20px rgba(180, 106, 76, 0.3);
-        }
-
-        .section-carousel-button:active {
-            transform: scale(0.95);
+            background: var(--ink);
+            color: var(--card);
+            transform: scale(1.05);
         }
 
         .section-carousel-dots {
@@ -497,42 +456,6 @@
             gap: 12px;
             justify-content: center;
             margin-top: 40px;
-            margin-bottom: 20px;
-        }
-
-        .section-carousel-bottom-nav {
-            display: flex;
-            gap: 16px;
-            justify-content: center;
-            margin-top: 20px;
-        }
-
-        .section-carousel-bottom-button {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: var(--card);
-            border: 1px solid var(--divider);
-            color: var(--ink);
-            font-size: 18px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
-        }
-
-        .section-carousel-bottom-button:hover {
-            background: var(--accent);
-            color: white;
-            border-color: var(--accent);
-            transform: scale(1.08);
-            box-shadow: 0 4px 16px rgba(180, 106, 76, 0.25);
-        }
-
-        .section-carousel-bottom-button:active {
-            transform: scale(0.95);
         }
 
         .section-carousel-dot {
@@ -555,368 +478,6 @@
             background: var(--divider);
             max-width: 1200px;
             margin: 0 auto;
-        }
-
-        /* Growth System Section */
-        .growth-section {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 120px 60px;
-        }
-
-        .growth-heading {
-            text-align: left;
-            margin-bottom: 20px;
-        }
-
-        .growth-heading h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2.6rem, 4.5vw, 3.4rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 20px;
-            color: var(--ink);
-        }
-
-        .growth-subtitle {
-            font-size: 1.28rem;
-            color: var(--secondary);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .growth-subtitle span {
-            font-size: 1.35rem;
-        }
-
-        .growth-table {
-            margin: 48px auto;
-            max-width: 100%;
-            border-radius: 10px;
-            border: 1px solid var(--divider);
-            background: rgba(255, 255, 255, 0.7);
-            overflow: hidden;
-        }
-
-        .growth-table-row {
-            display: grid;
-            grid-template-columns: 1.2fr 1.2fr 1fr 1fr 1.2fr 0.9fr 0.9fr;
-            gap: 0;
-            padding: 14px 20px;
-            font-size: 0.95rem;
-            letter-spacing: 0.02em;
-            text-transform: uppercase;
-            color: var(--secondary);
-            background: rgba(247, 244, 239, 0.9);
-        }
-
-        .growth-table-header {
-            white-space: nowrap;
-            overflow: hidden;
-            text-overflow: ellipsis;
-        }
-
-        .growth-carousel {
-            position: relative;
-            width: 100%;
-            overflow: hidden;
-            padding-bottom: 100px;
-        }
-
-        .growth-slides {
-            display: flex;
-            transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-            width: 100%;
-            will-change: transform;
-        }
-
-        .growth-slide {
-            flex: 0 0 100%;
-            width: 100%;
-            display: flex;
-            justify-content: center;
-        }
-
-        .growth-card {
-            background: rgba(255, 255, 255, 0.8);
-            border-radius: 18px;
-            border: 1px solid var(--divider);
-            padding: 28px 26px 30px;
-            box-shadow: 0 14px 36px rgba(0, 0, 0, 0.06);
-            max-width: 600px;
-            width: 100%;
-        }
-
-        .growth-card-title {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.6rem;
-            margin-bottom: 18px;
-            color: var(--ink);
-        }
-
-        .growth-flow-icon {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 18px;
-        }
-
-        .growth-box {
-            border-radius: 10px;
-            padding: 14px 16px;
-            min-width: 150px;
-            font-size: 0.98rem;
-            line-height: 1.5;
-        }
-
-        .growth-box-solid {
-            border: 1px solid var(--divider);
-            background: rgba(247, 244, 239, 0.9);
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .growth-box-solid .check {
-            color: #16a34a;
-            font-size: 1.1rem;
-        }
-
-        .growth-box-dashed {
-            border: 1px dashed var(--divider);
-            background: transparent;
-        }
-
-        .growth-arrow {
-            font-size: 1.6rem;
-            color: var(--secondary);
-        }
-
-        .growth-carousel-dots {
-            position: absolute;
-            bottom: 60px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 12px;
-        }
-
-        .growth-carousel-dot {
-            width: 8px;
-            height: 8px;
-            border-radius: 50%;
-            background: var(--divider);
-            transition: all 0.3s ease;
-            cursor: pointer;
-        }
-
-        .growth-carousel-dot.active {
-            background: var(--accent);
-            width: 24px;
-            border-radius: 4px;
-        }
-
-        .growth-carousel-nav {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 16px;
-        }
-
-        /* Email Preview Styles */
-        .growth-card-email {
-            max-width: 700px;
-        }
-
-        .email-preview {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        .email-row {
-            display: grid;
-            grid-template-columns: 1fr auto;
-            gap: 20px;
-            align-items: start;
-            padding: 16px;
-            background: rgba(247, 244, 239, 0.6);
-            border: 1px solid var(--divider);
-            border-radius: 10px;
-        }
-
-        .email-intro {
-            font-size: 0.98rem;
-            line-height: 1.6;
-            color: var(--ink);
-        }
-
-        .email-data {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-            min-width: 140px;
-        }
-
-        .email-data-item {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.9rem;
-            font-weight: 600;
-            color: var(--ink);
-            padding: 8px 12px;
-            background: var(--card);
-            border: 2px solid var(--accent);
-            border-radius: 6px;
-        }
-
-        .linkedin-icon {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            width: 18px;
-            height: 18px;
-            background: #0077b5;
-            color: white;
-            border-radius: 3px;
-            font-size: 12px;
-            font-weight: 700;
-            font-family: sans-serif;
-        }
-
-        .email-arrow-label {
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            font-size: 0.92rem;
-            color: var(--secondary);
-            padding-left: 10px;
-        }
-
-        .arrow-curved {
-            font-size: 1.4rem;
-            color: var(--accent);
-        }
-
-        .arrow-label-text {
-            font-style: italic;
-        }
-
-        .send-email-btn {
-            align-self: center;
-            padding: 12px 40px;
-            background: var(--accent);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 12px rgba(180, 106, 76, 0.2);
-        }
-
-        .send-email-btn:hover {
-            background: var(--ink);
-            transform: translateY(-2px);
-            box-shadow: 0 6px 18px rgba(28, 28, 28, 0.25);
-        }
-
-        /* Final Flow Styles */
-        .growth-card-final {
-            max-width: 900px;
-        }
-
-        .final-flow {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: center;
-            gap: 16px;
-            padding: 10px 0;
-            flex-wrap: wrap;
-        }
-
-        .final-step {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-            padding: 18px 20px;
-            background: rgba(247, 244, 239, 0.6);
-            border: 1px solid var(--divider);
-            border-radius: 12px;
-            flex: 0 0 auto;
-            min-width: 160px;
-            max-width: 200px;
-            transition: all 0.3s ease;
-        }
-
-        .final-step:hover {
-            background: rgba(255, 255, 255, 0.9);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-        }
-
-        .final-step-highlight {
-            background: rgba(180, 106, 76, 0.1);
-            border: 2px solid var(--accent);
-        }
-
-        .final-step-highlight:hover {
-            background: rgba(180, 106, 76, 0.15);
-        }
-
-        .final-icon {
-            font-size: 2.2rem;
-            line-height: 1;
-        }
-
-        .final-text {
-            font-size: 0.95rem;
-            font-weight: 500;
-            color: var(--ink);
-            text-align: center;
-            line-height: 1.4;
-        }
-
-        .final-arrow {
-            font-size: 1.8rem;
-            color: var(--accent);
-            font-weight: 600;
-            flex-shrink: 0;
-        }
-
-        @media (max-width: 900px) {
-            .growth-table-row {
-                grid-template-columns: repeat(4, minmax(0, 1fr));
-                row-gap: 8px;
-            }
-
-            .email-row {
-                grid-template-columns: 1fr;
-            }
-
-            .email-data {
-                flex-direction: row;
-                justify-content: center;
-            }
-
-            .final-step {
-                padding: 20px 24px;
-            }
-
-            .final-icon {
-                font-size: 2.5rem;
-            }
-
-            .final-text {
-                font-size: 1rem;
-            }
         }
 
         /* Two Column Layouts */
@@ -1095,7 +656,7 @@
         }
 
         .content-block p {
-            font-size: 1.22rem;
+            font-size: 1.15rem;
             color: var(--secondary);
             line-height: 1.9;
             margin-bottom: 48px;
@@ -1226,7 +787,7 @@
         }
 
         .centered-section p {
-            font-size: 1.28rem;
+            font-size: 1.2rem;
             color: var(--secondary);
             line-height: 1.9;
             margin-bottom: 60px;
@@ -1311,7 +872,7 @@
         }
 
         .flywheel-text {
-            font-size: 1.28rem;
+            font-size: 1.2rem;
             color: var(--secondary);
             line-height: 1.9;
         }
@@ -1322,14 +883,33 @@
             padding: 140px 60px;
         }
 
-        .final-attribution {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            font-size: 1.1rem;
+        .final-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 3.5rem);
             font-weight: 400;
-            color: var(--secondary);
-            line-height: 1.8;
+            margin-bottom: 60px;
+            line-height: 1.3;
+            color: var(--ink);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 18px 48px;
+            background: var(--ink);
+            color: var(--bg-primary);
+            text-decoration: none;
+            font-size: 1rem;
+            font-weight: 500;
+            border-radius: 6px;
+            transition: all 0.3s ease;
             letter-spacing: 0.02em;
-            opacity: 0.85;
+        }
+
+        .cta-button:hover {
+            background: var(--accent);
+            color: var(--card);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 24px rgba(180, 106, 76, 0.2);
         }
 
         /* Responsive */
@@ -1366,259 +946,38 @@
 
         @media (max-width: 768px) {
             .nav-container {
-                padding: 0 20px;
-            }
-
-            .logo-svg {
-                width: 32px;
-                height: 32px;
-            }
-
-            .theme-toggle {
-                width: 36px;
-                height: 36px;
-                font-size: 18px;
+                padding: 0 30px;
             }
 
             .section {
-                padding: 50px 20px;
-            }
-
-            .section-with-canvas .section-carousel {
-                padding: 60px 20px;
+                padding: 60px 30px;
             }
 
             .hero {
-                padding: 100px 20px 60px;
-                min-height: 85vh;
-            }
-
-            .hero-content {
-                padding: 2rem 1rem;
-            }
-
-            .hero h1 {
-                font-size: clamp(1.8rem, 7vw, 2.5rem);
-                margin-bottom: 1rem;
-            }
-
-            .hero p {
-                font-size: clamp(1rem, 4vw, 1.2rem);
-            }
-
-            .section h2 {
-                font-size: clamp(1.5rem, 6vw, 2rem);
-            }
-
-            .section p {
-                font-size: clamp(0.95rem, 3.5vw, 1.1rem);
+                padding: 120px 30px 80px;
             }
 
             .iphone-mockup {
-                width: 280px;
-                height: 560px;
-                border-radius: 40px;
-                padding: 12px;
+                width: 300px;
+                height: 600px;
+                border-radius: 44px;
             }
 
             .iphone-screen {
-                border-radius: 32px;
-            }
-
-            .iphone-notch {
-                width: 140px;
-                height: 28px;
-            }
-
-            .status-bar {
-                font-size: 13px;
-                padding: 0 24px 0 160px;
-            }
-
-            .time {
-                left: 24px;
-                top: 12px;
+                border-radius: 36px;
             }
 
             .pipeline-diagram {
                 flex-direction: column;
-                gap: 12px;
-            }
-
-            .pipeline-step {
-                font-size: 0.85rem;
-                padding: 10px 16px;
+                gap: 16px;
             }
 
             .pipeline-arrow {
                 transform: rotate(90deg);
-                font-size: 1.2rem;
-            }
-
-            .growth-section {
-                padding: 80px 20px;
-            }
-
-            .growth-heading h2 {
-                font-size: clamp(2rem, 6vw, 2.6rem);
-            }
-
-            .growth-subtitle {
-                font-size: 1.1rem;
-            }
-
-            .growth-table {
-                font-size: 0.8rem;
-                overflow-x: auto;
-            }
-
-            .growth-table-row {
-                padding: 12px 16px;
-            }
-
-            .growth-card {
-                padding: 20px 18px;
-            }
-
-            .growth-card-title {
-                font-size: 1.3rem;
-            }
-
-            .final-step {
-                padding: 16px 20px;
-                min-width: 140px;
-            }
-
-            .final-icon {
-                font-size: 2rem;
-            }
-
-            .final-text {
-                font-size: 0.85rem;
-            }
-
-            .final-arrow {
-                font-size: 1.5rem;
-            }
-
-            .tam-section {
-                padding: 80px 20px;
-            }
-
-            .section-carousel-dots {
-                bottom: 20px;
-                gap: 8px;
-            }
-
-            .section-carousel-dot {
-                width: 6px;
-                height: 6px;
-            }
-
-            .section-carousel-dot.active {
-                width: 20px;
-            }
-
-            .carousel-button,
-            .section-carousel-button {
-                width: 44px;
-                height: 44px;
-                font-size: 18px;
-            }
-
-            .section-carousel-bottom-button {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-                font-size: 18px;
-            }
-
-            .flywheel-circle {
-                width: 280px;
-                height: 280px;
-            }
-
-            .flywheel-step {
-                font-size: 0.8rem;
-                padding: 10px 16px;
-            }
-
-            .flywheel-center {
-                font-size: 1.3rem;
-            }
-
-            .flywheel-text {
-                font-size: 1.1rem;
             }
 
             .final-section {
-                padding: 80px 20px;
-            }
-
-            .final-attribution {
-                font-size: 1rem;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .nav-container {
-                padding: 0 16px;
-            }
-
-            .section {
-                padding: 40px 16px;
-            }
-
-            .hero {
-                padding: 90px 16px 50px;
-            }
-
-            .growth-section {
-                padding: 60px 16px;
-            }
-
-            .growth-heading h2 {
-                font-size: clamp(1.8rem, 7vw, 2.2rem);
-            }
-
-            .growth-card {
-                padding: 18px 16px;
-            }
-
-            .iphone-mockup {
-                width: 260px;
-                height: 520px;
-            }
-
-            .final-step {
-                padding: 14px 16px;
-                min-width: 120px;
-            }
-
-            .final-icon {
-                font-size: 1.8rem;
-            }
-
-            .final-text {
-                font-size: 0.8rem;
-            }
-
-            .flywheel-circle {
-                width: 260px;
-                height: 260px;
-            }
-
-            .flywheel-step {
-                font-size: 0.75rem;
-                padding: 8px 14px;
-            }
-
-            .final-section {
-                padding: 60px 16px;
-            }
-
-            .final-attribution {
-                font-size: 0.95rem;
+                padding: 100px 30px;
             }
         }
 
@@ -1676,8 +1035,37 @@
                 <!-- Slide 1: Main Title -->
                 <div class="hero-slide">
                     <h1>KALALOU AI LEVERAGE</h1>
+                    <p class="hero-subtext">A quiet system working behind the scenes.</p>
                     <div class="hero-divider"></div>
                 </div>
+
+                <!-- Slide 2: Custom Message -->
+                <div class="hero-slide">
+                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Future of Wholesale</h1>
+                    <p class="hero-subtext">Where craftsmanship meets intelligent automation.</p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 3: Artwork -->
+                <div class="hero-slide artwork-slide">
+                    <img src="kalalou-artwork.png" 
+                         alt="Kalalou Vision - Balancing craftsmanship with modern efficiency" 
+                         class="artwork-image"
+                         id="artworkImage">
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="carousel-dots">
+                <div class="carousel-dot active" data-slide="0"></div>
+                <div class="carousel-dot" data-slide="1"></div>
+                <div class="carousel-dot" data-slide="2"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="carousel-nav">
+                <button class="carousel-button" id="prevButton">←</button>
+                <button class="carousel-button" id="nextButton">→</button>
             </div>
         </div>
     </section>
@@ -1773,7 +1161,64 @@
                     </div>
                 </div>
 
-                <!-- Slide 2 -->
+                <!-- Slide 2 (Duplicate) -->
+                <div class="section-slide">
+                    <div class="centered-section">
+                        <h2>Our AI</h2>
+                        <p>Always on. Always steady. Always aligned with your business.</p>
+
+                        <div class="ai-mindmap" aria-label="Our AI mind map">
+                            <svg viewBox="0 0 920 520" role="img" aria-label="Our AI with arrows to key benefits">
+                                <defs>
+                                    <marker id="arrowHeadBlue2" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2b6fff"></path>
+                                    </marker>
+                                </defs>
+
+                                <!-- arrows (blue) - stop before labels -->
+                                <g stroke="#2b6fff" stroke-width="2.4" fill="none" stroke-linecap="round">
+                                    <path d="M 460 260 C 360 235, 300 210, 245 180" marker-end="url(#arrowHeadBlue2)"></path>
+                                    <path d="M 460 260 C 350 295, 300 335, 245 372" marker-end="url(#arrowHeadBlue2)"></path>
+                                    <path d="M 460 260 C 470 200, 500 150, 545 120" marker-end="url(#arrowHeadBlue2)"></path>
+                                    <path d="M 460 260 C 575 240, 660 220, 720 210" marker-end="url(#arrowHeadBlue2)"></path>
+                                    <path d="M 460 260 C 585 295, 665 335, 720 375" marker-end="url(#arrowHeadBlue2)"></path>
+                                    <path d="M 460 260 C 465 330, 480 385, 505 430" marker-end="url(#arrowHeadBlue2)"></path>
+                                </g>
+
+                                <!-- center "Our AI" (no circle) -->
+                                <g font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+                                    <text x="460" y="258" text-anchor="middle" class="label" style="font-size:30px;font-weight:700;">Our AI</text>
+                                </g>
+
+                                <!-- labels (kept away from arrow tips) -->
+                                <g font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
+                                    <!-- left-top -->
+                                    <text x="40" y="145" class="label">Never puts customers</text>
+                                    <text x="40" y="172" class="label">on hold</text>
+
+                                    <!-- left-bottom -->
+                                    <text x="40" y="385" class="label">Always happy</text>
+                                    <text x="40" y="412" class="sub">No bad mood</text>
+
+                                    <!-- top -->
+                                    <text x="560" y="70" class="label">Gives your team leverage</text>
+                                    <text x="560" y="97" class="sub">Focus on more creative tasks</text>
+
+                                    <!-- right-mid -->
+                                    <text x="770" y="215" class="label" style="font-size:32px;font-weight:700;">24/7</text>
+
+                                    <!-- right-bottom -->
+                                    <text x="700" y="395" class="label">No holidays</text>
+
+                                    <!-- bottom -->
+                                    <text x="520" y="490" class="label">Never sleeps</text>
+                                </g>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Slide 3 (Duplicate) -->
                 <div class="section-slide">
                     <div class="centered-section big-win">
                         <div class="big-win-title">With AI, we win big time <span class="emoji">💪</span></div>
@@ -1809,18 +1254,13 @@
             <div class="section-carousel-dots">
                 <div class="section-carousel-dot active" data-section="1" data-slide="0"></div>
                 <div class="section-carousel-dot" data-section="1" data-slide="1"></div>
+                <div class="section-carousel-dot" data-section="1" data-slide="2"></div>
             </div>
 
             <!-- Navigation Buttons -->
             <div class="section-carousel-nav">
                 <button class="section-carousel-button" data-section="1" data-direction="prev">←</button>
                 <button class="section-carousel-button" data-section="1" data-direction="next">→</button>
-            </div>
-
-            <!-- Bottom Navigation Buttons -->
-            <div class="section-carousel-bottom-nav">
-                <button class="section-carousel-bottom-button" data-section="1" data-direction="prev">←</button>
-                <button class="section-carousel-bottom-button" data-section="1" data-direction="next">→</button>
             </div>
         </div>
     </div>
@@ -2216,140 +1656,13 @@
                 <button class="section-carousel-button" data-section="2" data-direction="prev">←</button>
                 <button class="section-carousel-button" data-section="2" data-direction="next">→</button>
             </div>
-
-            <!-- Bottom Navigation Buttons -->
-            <div class="section-carousel-bottom-nav">
-                <button class="section-carousel-bottom-button" data-section="2" data-direction="prev">←</button>
-                <button class="section-carousel-bottom-button" data-section="2" data-direction="next">→</button>
-            </div>
         </div>
     </div>
 
     <div class="section-divider"></div>
 
-    <!-- Growth System Section -->
-    <section class="growth-section">
-        <div class="growth-heading">
-            <h2>Growth system</h2>
-            <div class="growth-subtitle">
-                <span>✅</span>
-                <span>AI extracts leads from databases.</span>
-            </div>
-        </div>
-
-        <div class="growth-table" aria-label="Example of leads table headers">
-            <div class="growth-table-row">
-                <div class="growth-table-header">Name</div>
-                <div class="growth-table-header">Company</div>
-                <div class="growth-table-header"># Employees</div>
-                <div class="growth-table-header">Industry</div>
-                <div class="growth-table-header">Website</div>
-                <div class="growth-table-header">City</div>
-                <div class="growth-table-header">Country</div>
-            </div>
-        </div>
-
-        <div class="growth-carousel">
-            <div class="growth-slides" id="growthSlides">
-                <!-- Slide 1: Lead from database -->
-                <div class="growth-slide">
-                    <div class="growth-card">
-                        <div class="growth-card-title">Lead from database</div>
-                        <div class="growth-flow-icon">
-                            <div class="growth-box growth-box-solid">
-                                <span class="check">✓</span>
-                                <span>Leads from database</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2: AI verifies email -->
-                <div class="growth-slide">
-                    <div class="growth-card">
-                        <div class="growth-card-title">AI verifies email</div>
-                        <div class="growth-flow-icon">
-                            <div class="growth-box growth-box-dashed">
-                                AI verifies the emails so they don't bounce back.
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3: AI sends personalized email -->
-                <div class="growth-slide">
-                    <div class="growth-card growth-card-email">
-                        <div class="growth-card-title">AI sends a personalized email</div>
-                        <div class="email-preview">
-                            <div class="email-row">
-                                <div class="email-intro">
-                                    Hi [Name], I noticed your beautiful store and thought our artisan home décor collection would be a perfect fit...
-                                </div>
-                                <div class="email-data">
-                                    <div class="email-data-item">
-                                        <span class="linkedin-icon">in</span>
-                                        <span>LinkedIn</span>
-                                    </div>
-                                    <div class="email-data-item">
-                                        <span>🌐</span>
-                                        <span>Website</span>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="email-arrow-label">
-                                <span class="arrow-curved">↳</span>
-                                <span class="arrow-label-text">Personalized from verified data</span>
-                            </div>
-                            <button class="send-email-btn">Send Email</button>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 4: Customer opens link, AI calls -->
-                <div class="growth-slide">
-                    <div class="growth-card growth-card-final">
-                        <div class="growth-card-title">Growth system</div>
-                        <div class="final-flow">
-                            <div class="final-step">
-                                <div class="final-icon">📧</div>
-                                <div class="final-text">Customer opens the link</div>
-                            </div>
-                            <div class="final-arrow">→</div>
-                            <div class="final-step">
-                                <div class="final-icon">📞</div>
-                                <div class="final-text">AI calls and books a meeting</div>
-                            </div>
-                            <div class="final-arrow">→</div>
-                            <div class="final-step final-step-highlight">
-                                <div class="final-icon">🤝</div>
-                                <div class="final-text">Team closes the deal</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="growth-carousel-dots">
-                <div class="growth-carousel-dot active" data-growth-slide="0"></div>
-                <div class="growth-carousel-dot" data-growth-slide="1"></div>
-                <div class="growth-carousel-dot" data-growth-slide="2"></div>
-                <div class="growth-carousel-dot" data-growth-slide="3"></div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="growth-carousel-nav">
-                <button class="carousel-button" id="growthPrev">←</button>
-                <button class="carousel-button" id="growthNext">→</button>
-            </div>
-        </div>
-    </section>
-
-    <div class="section-divider"></div>
-
     <!-- Section 3: Lead Engine -->
-    <div class="section section-with-canvas">
-        <canvas class="section-canvas" id="section3Canvas"></canvas>
+    <div class="section">
         <div class="section-carousel">
             <div class="section-slides" id="section3Slides">
                 <!-- Slide 1 -->
@@ -2437,20 +1750,13 @@
                 <button class="section-carousel-button" data-section="3" data-direction="prev">←</button>
                 <button class="section-carousel-button" data-section="3" data-direction="next">→</button>
             </div>
-
-            <!-- Bottom Navigation Buttons -->
-            <div class="section-carousel-bottom-nav">
-                <button class="section-carousel-bottom-button" data-section="3" data-direction="prev">←</button>
-                <button class="section-carousel-bottom-button" data-section="3" data-direction="next">→</button>
-            </div>
         </div>
     </div>
 
     <div class="section-divider"></div>
 
     <!-- Section 4: Flywheel -->
-    <div class="section section-with-canvas">
-        <canvas class="section-canvas" id="section4Canvas"></canvas>
+    <div class="section">
         <div class="section-carousel">
             <div class="section-slides" id="section4Slides">
                 <!-- Slide 1 -->
@@ -2535,12 +1841,6 @@
                 <button class="section-carousel-button" data-section="4" data-direction="prev">←</button>
                 <button class="section-carousel-button" data-section="4" data-direction="next">→</button>
             </div>
-
-            <!-- Bottom Navigation Buttons -->
-            <div class="section-carousel-bottom-nav">
-                <button class="section-carousel-bottom-button" data-section="4" data-direction="prev">←</button>
-                <button class="section-carousel-bottom-button" data-section="4" data-direction="next">→</button>
-            </div>
         </div>
     </div>
 
@@ -2548,7 +1848,8 @@
 
     <!-- Final Section -->
     <section class="final-section">
-        <p class="final-attribution">Crafted with vision for Kalalou<br/>by Team InfinixLeverage</p>
+        <h2>Growth should feel calm,<br/>not exhausting.</h2>
+        <a href="#" class="cta-button">Explore the System</a>
     </section>
 
     <!-- Three.js Library -->
@@ -2558,8 +1859,6 @@
         // Three.js Animated Background
         let scene, camera, renderer, particles;
         let tamScene, tamCamera, tamRenderer, tamParticles;
-        let section3Scene, section3Camera, section3Renderer, section3Particles;
-        let section4Scene, section4Camera, section4Renderer, section4Particles;
         let isDarkMode = false; // Kalalou starts with light theme
         let animationId;
 
@@ -2657,32 +1956,6 @@
                 ({ scene: tamScene, camera: tamCamera, renderer: tamRenderer, particles: tamParticles } = tamBundle);
             }
 
-            // Section 3 background
-            const section3Canvas = document.getElementById('section3Canvas');
-            const section3Bundle = createWaveScene({
-                canvas: section3Canvas,
-                backgroundHex: 0xF7F4EF,
-                lineHex: 0x6F6F6F,
-                opacity: 0.25
-            });
-
-            if (section3Bundle) {
-                ({ scene: section3Scene, camera: section3Camera, renderer: section3Renderer, particles: section3Particles } = section3Bundle);
-            }
-
-            // Section 4 background
-            const section4Canvas = document.getElementById('section4Canvas');
-            const section4Bundle = createWaveScene({
-                canvas: section4Canvas,
-                backgroundHex: 0xF7F4EF,
-                lineHex: 0x6F6F6F,
-                opacity: 0.25
-            });
-
-            if (section4Bundle) {
-                ({ scene: section4Scene, camera: section4Camera, renderer: section4Renderer, particles: section4Particles } = section4Bundle);
-            }
-
             let time = 0;
             function animateAll() {
                 animationId = requestAnimationFrame(animateAll);
@@ -2706,8 +1979,6 @@
 
                 animateBundle(particles, renderer, scene, camera);
                 animateBundle(tamParticles, tamRenderer, tamScene, tamCamera);
-                animateBundle(section3Particles, section3Renderer, section3Scene, section3Camera);
-                animateBundle(section4Particles, section4Renderer, section4Scene, section4Camera);
             }
 
             animateAll();
@@ -2724,8 +1995,6 @@
                 };
                 resizeBundle(renderer, camera, heroCanvas);
                 resizeBundle(tamRenderer, tamCamera, tamCanvasEl);
-                resizeBundle(section3Renderer, section3Camera, section3Canvas);
-                resizeBundle(section4Renderer, section4Camera, section4Canvas);
             });
         }
 
@@ -2751,8 +2020,6 @@
                     };
                     applyDark(scene, particles);
                     applyDark(tamScene, tamParticles);
-                    applyDark(section3Scene, section3Particles);
-                    applyDark(section4Scene, section4Particles);
                     themeIcon.textContent = '☀️';
                 } else {
                     // Light mode (default for Kalalou)
@@ -2768,8 +2035,6 @@
                     };
                     applyLight(scene, particles, 0.3);
                     applyLight(tamScene, tamParticles, 0.25);
-                    applyLight(section3Scene, section3Particles, 0.25);
-                    applyLight(section4Scene, section4Particles, 0.25);
                     themeIcon.textContent = '🌙';
                 }
             });
@@ -2819,8 +2084,8 @@
         }
 
         // Button click handlers
-        if (nextButton) nextButton.addEventListener('click', nextSlide);
-        if (prevButton) prevButton.addEventListener('click', prevSlide);
+        nextButton.addEventListener('click', nextSlide);
+        prevButton.addEventListener('click', prevSlide);
 
         // Dot click handlers
         dots.forEach((dot, index) => {
@@ -2864,7 +2129,7 @@
 
         // Section Carousels Functionality
         const sectionCarousels = {
-            1: { currentSlide: 0, totalSlides: 2 },
+            1: { currentSlide: 0, totalSlides: 3 },
             2: { currentSlide: 0, totalSlides: 3 },
             3: { currentSlide: 0, totalSlides: 3 },
             4: { currentSlide: 0, totalSlides: 3 }
@@ -2923,59 +2188,6 @@
             });
         }
 
-        // Growth Carousel Functionality
-        let growthCurrentSlide = 0;
-        const growthTotalSlides = 4;
-        const growthSlides = document.getElementById('growthSlides');
-        const growthDots = document.querySelectorAll('.growth-carousel-dot');
-        const growthPrev = document.getElementById('growthPrev');
-        const growthNext = document.getElementById('growthNext');
-
-        function updateGrowthCarousel() {
-            if (!growthSlides) return;
-            growthSlides.style.transform = `translateX(-${growthCurrentSlide * 100}%)`;
-            growthDots.forEach((dot, i) => dot.classList.toggle('active', i === growthCurrentSlide));
-        }
-
-        function growthNextSlide() {
-            growthCurrentSlide = (growthCurrentSlide + 1) % growthTotalSlides;
-            updateGrowthCarousel();
-        }
-
-        function growthPrevSlide() {
-            growthCurrentSlide = (growthCurrentSlide - 1 + growthTotalSlides) % growthTotalSlides;
-            updateGrowthCarousel();
-        }
-
-        if (growthNext) growthNext.addEventListener('click', growthNextSlide);
-        if (growthPrev) growthPrev.addEventListener('click', growthPrevSlide);
-
-        growthDots.forEach((dot, i) => {
-            dot.addEventListener('click', () => {
-                growthCurrentSlide = i;
-                updateGrowthCarousel();
-            });
-        });
-
-        // Touch swipe support for Growth
-        if (growthSlides) {
-            let growthTouchStartX = 0;
-            let growthTouchEndX = 0;
-
-            growthSlides.addEventListener('touchstart', (e) => {
-                growthTouchStartX = e.changedTouches[0].screenX;
-            });
-
-            growthSlides.addEventListener('touchend', (e) => {
-                growthTouchEndX = e.changedTouches[0].screenX;
-                const diff = growthTouchEndX - growthTouchStartX;
-                if (Math.abs(diff) > 50) {
-                    if (diff < 0) growthNextSlide();
-                    else growthPrevSlide();
-                }
-            });
-        }
-
         function updateSectionCarousel(sectionNum) {
             const slides = document.getElementById(`section${sectionNum}Slides`);
             const carousel = sectionCarousels[sectionNum];
@@ -3005,17 +2217,16 @@
 
         // Initialize all section carousels
         [1, 2, 3, 4].forEach(sectionNum => {
-            // Button handlers (both side and bottom buttons)
-            const nextBtns = document.querySelectorAll(`[data-section="${sectionNum}"][data-direction="next"]`);
-            const prevBtns = document.querySelectorAll(`[data-section="${sectionNum}"][data-direction="prev"]`);
-
-            nextBtns.forEach(btn => {
-                btn.addEventListener('click', () => nextSectionSlide(sectionNum));
-            });
-
-            prevBtns.forEach(btn => {
-                btn.addEventListener('click', () => prevSectionSlide(sectionNum));
-            });
+            // Button handlers
+            const nextBtn = document.querySelector(`[data-section="${sectionNum}"][data-direction="next"]`);
+            const prevBtn = document.querySelector(`[data-section="${sectionNum}"][data-direction="prev"]`);
+            
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => nextSectionSlide(sectionNum));
+            }
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => prevSectionSlide(sectionNum));
+            }
 
             // Dot handlers
             const dots = document.querySelectorAll(`[data-section="${sectionNum}"].section-carousel-dot`);

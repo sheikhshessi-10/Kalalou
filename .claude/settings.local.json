@@ -8,7 +8,9 @@
       "Bash(curl:*)",
       "Bash(git commit:*)",
       "Bash(git push:*)",
-      "Bash(cat:*)"
+      "Bash(cat:*)",
+      "Bash(python -m http.server:*)",
+      "Bash(start \"D:\\\\My Projects\\\\KALALOU\\\\ai web\\\\questionnaire.html\")"
     ]
   }
 }

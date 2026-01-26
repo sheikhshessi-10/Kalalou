@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalalou AI Systems - Questionnaire</title>
+    <title>AI Systems Questionnaire | InfinixLeverage</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -21,7 +21,6 @@
             --accent: #B46A4C;
             --divider: #DDD8D0;
             --card: #FFFFFF;
-            --success: #4A7C59;
         }
 
         body {
@@ -32,7 +31,6 @@
             -webkit-font-smoothing: antialiased;
         }
 
-        /* Navigation */
         .nav {
             position: fixed;
             top: 0;
@@ -48,45 +46,31 @@
         .nav-container {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 40px;
+            padding: 0 60px;
             display: flex;
             justify-content: space-between;
             align-items: center;
         }
 
-        .logo {
+        .logo-link {
             font-family: 'Playfair Display', serif;
             font-size: 1.5rem;
             font-weight: 600;
             color: var(--ink);
             text-decoration: none;
+            transition: opacity 0.3s ease;
         }
 
-        .nav-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
+        .logo-link:hover {
+            opacity: 0.7;
         }
 
-        .nav-link:hover {
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main {
-            padding-top: 120px;
-            padding-bottom: 80px;
-            min-height: 100vh;
-        }
-
-        .container {
+        .main-container {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 0 40px;
+            margin: 120px auto 60px;
+            padding: 0 20px;
         }
 
-        /* Header */
         .header {
             text-align: center;
             margin-bottom: 60px;
@@ -94,18 +78,10 @@
 
         .header h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 600;
+            margin-bottom: 20px;
             color: var(--ink);
-        }
-
-        .header-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--divider);
-            margin: 24px auto;
         }
 
         .header p {
@@ -113,48 +89,63 @@
             color: var(--secondary);
             max-width: 600px;
             margin: 0 auto;
-            line-height: 1.8;
         }
 
-        /* Tab Navigation */
-        .tabs {
-            display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
-            overflow-x: auto;
-            padding-bottom: 12px;
+        .questionnaire-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 24px;
+            margin-bottom: 60px;
         }
 
-        .tab {
-            padding: 12px 24px;
+        .questionnaire-card {
             background: var(--card);
-            border: 1px solid var(--divider);
-            border-radius: 24px;
+            border: 2px solid var(--divider);
+            border-radius: 12px;
+            padding: 32px;
             cursor: pointer;
             transition: all 0.3s ease;
-            white-space: nowrap;
-            font-size: 0.95rem;
+        }
+
+        .questionnaire-card:hover {
+            border-color: var(--accent);
+            transform: translateY(-4px);
+            box-shadow: 0 8px 24px rgba(180, 106, 76, 0.15);
+        }
+
+        .questionnaire-card.active {
+            border-color: var(--accent);
+            background: #FFF9F5;
+        }
+
+        .questionnaire-card h3 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            margin-bottom: 12px;
+            color: var(--ink);
+        }
+
+        .questionnaire-card p {
             color: var(--secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
         }
 
-        .tab:hover {
-            border-color: var(--accent);
-            color: var(--accent);
-        }
-
-        .tab.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-
-        /* Progress Bar */
         .progress-container {
             margin-bottom: 40px;
-            background: var(--card);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--divider);
+            display: none;
+        }
+
+        .progress-container.active {
+            display: block;
+        }
+
+        .progress-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+            font-size: 0.9rem;
+            color: var(--secondary);
         }
 
         .progress-bar {
@@ -163,223 +154,142 @@
             background: var(--divider);
             border-radius: 4px;
             overflow: hidden;
-            margin-bottom: 12px;
         }
 
         .progress-fill {
             height: 100%;
             background: var(--accent);
-            transition: width 0.5s ease;
-            width: 0%;
+            transition: width 0.3s ease;
+            border-radius: 4px;
         }
 
-        .progress-text {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-
-        /* Form Content */
-        .form-content {
+        .form-container {
             display: none;
         }
 
-        .form-content.active {
+        .form-container.active {
             display: block;
-            animation: fadeIn 0.5s ease;
+        }
+
+        .section {
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 12px;
+            padding: 40px;
+            margin-bottom: 40px;
+            display: none;
+        }
+
+        .section.active {
+            display: block;
+            animation: fadeIn 0.3s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Section Card */
-        .section-card {
-            background: var(--card);
-            padding: 40px;
-            border-radius: 12px;
-            border: 1px solid var(--divider);
-            margin-bottom: 32px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+            padding-bottom: 16px;
+            border-bottom: 2px solid var(--divider);
+            color: var(--ink);
+        }
+
+        .form-group {
+            margin-bottom: 32px;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 1rem;
             font-weight: 500;
             margin-bottom: 12px;
             color: var(--ink);
         }
 
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        /* Question Block */
-        .question-block {
-            margin-bottom: 40px;
-        }
-
-        .question-block:last-child {
-            margin-bottom: 0;
-        }
-
-        .question-label {
-            font-weight: 500;
-            font-size: 1.05rem;
-            color: var(--ink);
-            margin-bottom: 16px;
+        .form-hint {
             display: block;
-        }
-
-        .question-hint {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--secondary);
-            margin-bottom: 16px;
-            font-style: italic;
+            margin-bottom: 8px;
         }
 
-        /* Input Styles */
-        .input-text,
-        .input-textarea,
-        .input-number {
+        .form-input,
+        .form-textarea,
+        .form-select {
             width: 100%;
-            padding: 14px 18px;
-            border: 1px solid var(--divider);
+            background: var(--bg-primary);
+            border: 2px solid var(--divider);
             border-radius: 8px;
+            padding: 14px 16px;
             font-size: 1rem;
+            color: var(--ink);
             font-family: inherit;
             transition: all 0.3s ease;
-            background: var(--bg-primary);
         }
 
-        .input-text:focus,
-        .input-textarea:focus,
-        .input-number:focus {
+        .form-input:focus,
+        .form-textarea:focus,
+        .form-select:focus {
             outline: none;
             border-color: var(--accent);
-            background: white;
+            background: var(--card);
         }
 
-        .input-textarea {
+        .form-textarea {
             min-height: 120px;
             resize: vertical;
         }
 
-        /* Radio/Checkbox Options */
-        .options-grid {
-            display: grid;
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
             gap: 12px;
         }
 
-        .option-item {
-            position: relative;
-        }
-
-        .option-label {
+        .radio-label,
+        .checkbox-label {
             display: flex;
             align-items: center;
-            padding: 14px 18px;
+            padding: 12px 16px;
             background: var(--bg-primary);
-            border: 1px solid var(--divider);
+            border: 2px solid var(--divider);
             border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
         }
 
-        .option-label:hover {
-            border-color: var(--accent);
-            background: white;
-        }
-
-        .option-input {
-            margin-right: 12px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: var(--accent);
-        }
-
-        .option-input:checked + .option-label {
-            border-color: var(--accent);
-            background: rgba(180, 106, 76, 0.05);
-        }
-
-        .option-label input[type="radio"],
-        .option-label input[type="checkbox"] {
-            margin-right: 12px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: var(--accent);
-        }
-
-        /* Priority Buttons */
-        .priority-options {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .priority-btn {
-            padding: 10px 20px;
-            border: 1px solid var(--divider);
-            border-radius: 24px;
-            background: var(--bg-primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .priority-btn:hover {
+        .radio-label:hover,
+        .checkbox-label:hover {
             border-color: var(--accent);
         }
 
-        .priority-btn.selected {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 16px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th {
-            text-align: left;
-            padding: 12px;
-            background: var(--bg-primary);
+        .radio-label input:checked + span,
+        .checkbox-label input:checked + span {
+            color: var(--accent);
             font-weight: 500;
-            border-bottom: 2px solid var(--divider);
         }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--divider);
+        .radio-label input,
+        .checkbox-label input {
+            margin-right: 12px;
+            cursor: pointer;
+            accent-color: var(--accent);
         }
 
-        td input[type="text"],
-        td input[type="number"] {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--divider);
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-
-        /* Navigation Buttons */
-        .form-navigation {
+        .nav-buttons {
             display: flex;
             justify-content: space-between;
             gap: 16px;
@@ -388,19 +298,29 @@
 
         .btn {
             padding: 14px 32px;
-            border-radius: 8px;
             font-size: 1rem;
             font-weight: 500;
+            border-radius: 8px;
             cursor: pointer;
             transition: all 0.3s ease;
             border: none;
             font-family: inherit;
         }
 
+        .btn-primary {
+            background: var(--accent);
+            color: var(--card);
+        }
+
+        .btn-primary:hover {
+            background: #9F5A3C;
+            transform: translateY(-2px);
+        }
+
         .btn-secondary {
-            background: var(--card);
-            border: 1px solid var(--divider);
+            background: transparent;
             color: var(--ink);
+            border: 2px solid var(--divider);
         }
 
         .btn-secondary:hover {
@@ -408,306 +328,2608 @@
             color: var(--accent);
         }
 
-        .btn-primary {
-            background: var(--accent);
-            color: white;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: #9A5840;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(180, 106, 76, 0.3);
-        }
-
         .btn:disabled {
             opacity: 0.5;
             cursor: not-allowed;
         }
 
-        /* Success Message */
-        .success-message {
+        .success-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(28, 28, 28, 0.85);
+            backdrop-filter: blur(10px);
+            z-index: 2000;
             display: none;
-            text-align: center;
-            padding: 60px 40px;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--success);
-            border-radius: 50%;
-            display: flex;
             align-items: center;
             justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-            color: white;
+        }
+
+        .success-overlay.show {
+            display: flex;
+        }
+
+        .success-message {
+            background: var(--card);
+            border: 2px solid var(--divider);
+            border-radius: 16px;
+            padding: 48px 72px;
+            text-align: center;
+            max-width: 500px;
         }
 
         .success-message h2 {
             font-family: 'Playfair Display', serif;
             font-size: 2rem;
             margin-bottom: 16px;
+            color: var(--accent);
         }
 
         .success-message p {
             color: var(--secondary);
             font-size: 1.1rem;
-            line-height: 1.8;
+            margin-bottom: 32px;
         }
 
-        /* Responsive */
+        .autosave-indicator {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 12px 24px;
+            font-size: 0.9rem;
+            color: var(--secondary);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            z-index: 1500;
+        }
+
+        .autosave-indicator.show {
+            opacity: 1;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+        }
+
+        table th,
+        table td {
+            padding: 12px;
+            border: 1px solid var(--divider);
+            text-align: left;
+        }
+
+        table th {
+            background: var(--bg-primary);
+            font-weight: 600;
+            color: var(--ink);
+        }
+
+        table td input[type="text"],
+        table td input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid var(--divider);
+            border-radius: 4px;
+            background: var(--card);
+        }
+
         @media (max-width: 768px) {
-            .container {
+            .nav-container {
                 padding: 0 20px;
             }
 
-            .section-card {
+            .main-container {
+                margin-top: 100px;
+            }
+
+            .section {
                 padding: 24px;
             }
 
-            .tabs {
-                flex-wrap: nowrap;
-                -webkit-overflow-scrolling: touch;
+            .section-title {
+                font-size: 1.4rem;
             }
 
-            .form-navigation {
+            .nav-buttons {
                 flex-direction: column;
             }
 
             .btn {
                 width: 100%;
             }
+
+            .success-message {
+                padding: 32px 40px;
+                margin: 0 20px;
+            }
+
+            table {
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
     <nav class="nav">
         <div class="nav-container">
-            <a href="index.html" class="logo">KALALOU</a>
-            <a href="index.html" class="nav-link">← Back to Home</a>
+            <a href="index.html" class="logo-link">InfinixLeverage</a>
         </div>
     </nav>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="container">
-            <!-- Header -->
-            <div class="header">
-                <h1>AI Systems Questionnaire</h1>
-                <div class="header-divider"></div>
-                <p>Help us understand your needs to create the perfect AI solution for your business. Choose a questionnaire below to get started.</p>
-            </div>
+    <div class="main-container">
+        <div class="header">
+            <h1>AI Systems Questionnaire</h1>
+            <p>Help us understand your needs to create the perfect AI solution for your business</p>
+        </div>
 
-            <!-- Tab Navigation -->
-            <div class="tabs">
-                <div class="tab active" data-tab="inbound">Inbound AI System</div>
-                <div class="tab" data-tab="outbound">Outbound AI System</div>
-                <div class="tab" data-tab="leadgen">Lead Generation</div>
-                <div class="tab" data-tab="dashboard">Custom Dashboard</div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+        <div id="questionnaireSelection">
+            <div class="questionnaire-grid">
+                <div class="questionnaire-card" onclick="selectQuestionnaire('inbound')">
+                    <h3>Inbound AI System</h3>
+                    <p>Answer customer calls automatically with AI-powered support. 8 comprehensive sections.</p>
                 </div>
-                <div class="progress-text" id="progressText">Section 1 of 8</div>
-            </div>
-
-            <!-- Form Container -->
-            <form id="questionnaireForm">
-                <!-- Inbound AI System -->
-                <div class="form-content active" id="inbound-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Section 1: Call Volume & Patterns</h2>
-                        <p class="section-subtitle">Understanding your current call activity helps us size the system correctly.</p>
-
-                        <div class="question-block">
-                            <label class="question-label">1.1 How many inbound calls do you receive per month?</label>
-                            <div class="options-grid">
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="500-1000">
-                                    500-1,000 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="1000-1500">
-                                    1,000-1,500 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="1500-2500">
-                                    1,500-2,500 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="2500+">
-                                    2,500+ calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="not-sure">
-                                    Not sure (we'll help you track this)
-                                </label>
-                            </div>
-                            <input type="text" class="input-text" placeholder="If you know the exact number, enter it here..." style="margin-top: 12px;">
-                        </div>
-
-                        <div class="question-block">
-                            <label class="question-label">1.2 Who's calling you? (Estimate percentage breakdown)</label>
-                            <p class="question-hint">Enter rough estimates - they don't need to add up to 100%</p>
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Caller Type</th>
-                                            <th style="width: 150px;">Percentage</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Existing customers</td>
-                                            <td><input type="number" name="caller-existing" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>New prospects</td>
-                                            <td><input type="number" name="caller-prospects" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vendors/suppliers</td>
-                                            <td><input type="number" name="caller-vendors" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Other</td>
-                                            <td><input type="number" name="caller-other" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-
-                        <div class="question-block">
-                            <label class="question-label">1.3 When do most calls come in?</label>
-                            <p class="question-hint">Check all that apply</p>
-                            <div class="options-grid">
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="business-hours">
-                                    Business hours (9am-5pm CST)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="early-morning">
-                                    Early morning (7am-9am)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="late-afternoon">
-                                    Late afternoon/evening (5pm-8pm)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="after-hours">
-                                    After business hours (8pm-7am)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="weekends">
-                                    Weekends
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="distributed">
-                                    Calls are distributed fairly evenly throughout the day
-                                </label>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-navigation">
-                        <button type="button" class="btn btn-secondary" disabled>Previous</button>
-                        <button type="button" class="btn btn-primary" onclick="nextSection()">Next Section</button>
-                    </div>
+                <div class="questionnaire-card" onclick="selectQuestionnaire('outbound')">
+                    <h3>Outbound AI System</h3>
+                    <p>Proactive customer outreach and engagement automation. 9 detailed sections.</p>
                 </div>
-
-                <!-- Placeholder for other questionnaires -->
-                <div class="form-content" id="outbound-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Outbound AI System</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
-                    </div>
+                <div class="questionnaire-card" onclick="selectQuestionnaire('lead')">
+                    <h3>Lead Generation</h3>
+                    <p>Capture and qualify leads automatically with AI. 10 complete sections.</p>
                 </div>
-
-                <div class="form-content" id="leadgen-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Lead Generation System</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
-                    </div>
+                <div class="questionnaire-card" onclick="selectQuestionnaire('dashboard')">
+                    <h3>Dashboard System</h3>
+                    <p>Real-time analytics and insights for your business. 10 comprehensive sections.</p>
                 </div>
-
-                <div class="form-content" id="dashboard-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Custom Dashboard</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
-                    </div>
-                </div>
-            </form>
-
-            <!-- Success Message -->
-            <div class="success-message" id="successMessage">
-                <div class="success-icon">✓</div>
-                <h2>Thank You!</h2>
-                <p>Your responses have been submitted successfully. We'll review your information and reach out shortly to discuss next steps.</p>
             </div>
         </div>
-    </main>
+
+        <div class="progress-container" id="progressContainer">
+            <div class="progress-info">
+                <span id="currentSection">Section 1</span>
+                <span id="progressPercent">0%</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill"></div>
+            </div>
+        </div>
+
+        <!-- INBOUND AI SYSTEM FORM -->
+        <form id="inboundForm" class="form-container">
+            <!-- Section 1: Business Overview -->
+            <div class="section active" data-section="1">
+                <h2 class="section-title">Section 1: Business Overview</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Company Name *</label>
+                    <input type="text" class="form-input" name="company_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Industry *</label>
+                    <input type="text" class="form-input" name="industry" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Company Size *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="1-10" required>
+                            <span>1-10 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="11-50">
+                            <span>11-50 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="51-200">
+                            <span>51-200 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="201-500">
+                            <span>201-500 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="500+">
+                            <span>500+ employees</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current customer service channels *</label>
+                    <span class="form-hint">Select all that apply</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="channels" value="phone">
+                            <span>Phone</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="channels" value="email">
+                            <span>Email</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="channels" value="chat">
+                            <span>Live Chat</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="channels" value="social">
+                            <span>Social Media</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="channels" value="other">
+                            <span>Other</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Average daily call volume *</label>
+                    <input type="number" class="form-input" name="call_volume" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Primary business goals *</label>
+                    <textarea class="form-textarea" name="business_goals" required></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')" disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Call Handling Requirements -->
+            <div class="section" data-section="2">
+                <h2 class="section-title">Section 2: Call Handling Requirements</h2>
+
+                <div class="form-group">
+                    <label class="form-label">What types of calls do you receive most frequently? *</label>
+                    <span class="form-hint">Select all that apply</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="general_inquiry">
+                            <span>General inquiries</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="support">
+                            <span>Technical support</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="sales">
+                            <span>Sales inquiries</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="billing">
+                            <span>Billing questions</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="appointments">
+                            <span>Appointment scheduling</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="call_types" value="complaints">
+                            <span>Complaints/Issues</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Average call duration *</label>
+                    <select class="form-select" name="call_duration" required>
+                        <option value="">Select duration</option>
+                        <option value="under_2">Under 2 minutes</option>
+                        <option value="2_5">2-5 minutes</option>
+                        <option value="5_10">5-10 minutes</option>
+                        <option value="10_20">10-20 minutes</option>
+                        <option value="over_20">Over 20 minutes</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Peak call hours *</label>
+                    <span class="form-hint">Select all that apply</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="peak_hours" value="morning">
+                            <span>Morning (6am-12pm)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="peak_hours" value="afternoon">
+                            <span>Afternoon (12pm-5pm)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="peak_hours" value="evening">
+                            <span>Evening (5pm-10pm)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="peak_hours" value="night">
+                            <span>Night (10pm-6am)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you need 24/7 call coverage? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="24_7_coverage" value="yes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="24_7_coverage" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What percentage of calls could be handled by AI? *</label>
+                    <input type="text" class="form-input" name="ai_handling_percentage" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Describe your ideal call handling process</label>
+                    <textarea class="form-textarea" name="ideal_call_process"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 3: AI Capabilities & Features -->
+            <div class="section" data-section="3">
+                <h2 class="section-title">Section 3: AI Capabilities & Features</h2>
+
+                <div class="form-group">
+                    <label class="form-label">What AI capabilities are most important to you? *</label>
+                    <span class="form-hint">Rank from 1 (most important) to 5 (least important)</span>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>Ranking (1-5)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Natural conversation flow</td>
+                                <td><input type="number" name="rank_conversation" min="1" max="5"></td>
+                            </tr>
+                            <tr>
+                                <td>Multi-language support</td>
+                                <td><input type="number" name="rank_language" min="1" max="5"></td>
+                            </tr>
+                            <tr>
+                                <td>Sentiment analysis</td>
+                                <td><input type="number" name="rank_sentiment" min="1" max="5"></td>
+                            </tr>
+                            <tr>
+                                <td>Call transcription</td>
+                                <td><input type="number" name="rank_transcription" min="1" max="5"></td>
+                            </tr>
+                            <tr>
+                                <td>Automated follow-ups</td>
+                                <td><input type="number" name="rank_followups" min="1" max="5"></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Should the AI voice sound? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="voice_type" value="professional" required>
+                            <span>Professional and formal</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_type" value="friendly">
+                            <span>Friendly and casual</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_type" value="neutral">
+                            <span>Neutral and balanced</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred voice gender *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="male" required>
+                            <span>Male</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="female">
+                            <span>Female</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="neutral">
+                            <span>Neutral/No preference</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What languages should the AI support? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="english">
+                            <span>English</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="spanish">
+                            <span>Spanish</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="french">
+                            <span>French</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="german">
+                            <span>German</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="chinese">
+                            <span>Chinese</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="languages" value="other">
+                            <span>Other (specify in notes)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Additional feature requirements</label>
+                    <textarea class="form-textarea" name="additional_features"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 4: Integration Requirements -->
+            <div class="section" data-section="4">
+                <h2 class="section-title">Section 4: Integration Requirements</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Current phone system *</label>
+                    <input type="text" class="form-input" name="phone_system" placeholder="e.g., RingCentral, Vonage, etc." required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">CRM system *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="salesforce" required>
+                            <span>Salesforce</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="hubspot">
+                            <span>HubSpot</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="zoho">
+                            <span>Zoho</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="pipedrive">
+                            <span>Pipedrive</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="custom">
+                            <span>Custom/Other</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="none">
+                            <span>No CRM currently</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Other systems to integrate with *</label>
+                    <span class="form-hint">Select all that apply</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="calendar">
+                            <span>Calendar system (Google Calendar, Outlook, etc.)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="ticketing">
+                            <span>Ticketing system (Zendesk, Freshdesk, etc.)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="payment">
+                            <span>Payment processing</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="inventory">
+                            <span>Inventory management</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="erp">
+                            <span>ERP system</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="integrations" value="slack">
+                            <span>Slack/Teams</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you have API access to your current systems? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="api_access" value="yes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="api_access" value="no">
+                            <span>No</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="api_access" value="unsure">
+                            <span>Not sure</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Data synchronization requirements</label>
+                    <textarea class="form-textarea" name="data_sync" placeholder="Describe how data should flow between systems"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 5: Call Routing & Escalation -->
+            <div class="section" data-section="5">
+                <h2 class="section-title">Section 5: Call Routing & Escalation</h2>
+
+                <div class="form-group">
+                    <label class="form-label">When should calls be escalated to a human agent? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="customer_request">
+                            <span>Customer requests human agent</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="complex_issue">
+                            <span>Complex technical issues</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="angry_customer">
+                            <span>Angry or frustrated customer</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="authorization">
+                            <span>Authorization/approval needed</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="high_value">
+                            <span>High-value customer/transaction</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="escalation_triggers" value="ai_uncertain">
+                            <span>AI is uncertain about response</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How should escalated calls be handled? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="escalation_method" value="immediate" required>
+                            <span>Immediate transfer to available agent</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="escalation_method" value="queue">
+                            <span>Place in queue for next available agent</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="escalation_method" value="callback">
+                            <span>Offer callback option</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="escalation_method" value="voicemail">
+                            <span>Take message/voicemail</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you need department-specific routing? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="department_routing" value="yes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="department_routing" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">If yes, list your departments</label>
+                    <textarea class="form-textarea" name="departments" placeholder="e.g., Sales, Support, Billing, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Priority call handling rules</label>
+                    <textarea class="form-textarea" name="priority_rules" placeholder="Describe any VIP customers or priority scenarios"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 6: Knowledge Base & Training -->
+            <div class="section" data-section="6">
+                <h2 class="section-title">Section 6: Knowledge Base & Training</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Do you have existing documentation/FAQs? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="existing_docs" value="yes_comprehensive" required>
+                            <span>Yes, comprehensive documentation</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="existing_docs" value="yes_limited">
+                            <span>Yes, limited documentation</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="existing_docs" value="no">
+                            <span>No existing documentation</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How is your knowledge currently stored? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="website">
+                            <span>Website/Help Center</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="wiki">
+                            <span>Internal Wiki</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="documents">
+                            <span>PDF/Word Documents</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="crm">
+                            <span>CRM System</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="scattered">
+                            <span>Scattered across multiple locations</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="knowledge_storage" value="tribal">
+                            <span>Tribal knowledge (employee minds)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What are your top 5 most common customer questions?</label>
+                    <textarea class="form-textarea" name="common_questions" placeholder="List the questions your team answers most frequently"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Specific product/service information the AI needs to know</label>
+                    <textarea class="form-textarea" name="product_info"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Company policies the AI should follow</label>
+                    <textarea class="form-textarea" name="company_policies" placeholder="e.g., return policy, warranty terms, etc."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How often does your information/pricing change? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="info_update_frequency" value="daily" required>
+                            <span>Daily</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="info_update_frequency" value="weekly">
+                            <span>Weekly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="info_update_frequency" value="monthly">
+                            <span>Monthly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="info_update_frequency" value="quarterly">
+                            <span>Quarterly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="info_update_frequency" value="rarely">
+                            <span>Rarely</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 7: Analytics & Reporting -->
+            <div class="section" data-section="7">
+                <h2 class="section-title">Section 7: Analytics & Reporting</h2>
+
+                <div class="form-group">
+                    <label class="form-label">What metrics are most important to track? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="call_volume">
+                            <span>Call volume</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="resolution_rate">
+                            <span>First-call resolution rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="duration">
+                            <span>Average call duration</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="satisfaction">
+                            <span>Customer satisfaction scores</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="escalation">
+                            <span>Escalation rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="sentiment">
+                            <span>Sentiment analysis</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="metrics" value="cost">
+                            <span>Cost per call</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How often do you need reports? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="report_frequency" value="realtime" required>
+                            <span>Real-time dashboard</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="report_frequency" value="daily">
+                            <span>Daily</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="report_frequency" value="weekly">
+                            <span>Weekly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="report_frequency" value="monthly">
+                            <span>Monthly</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Who needs access to analytics? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analytics_users" value="executives">
+                            <span>Executives/Management</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analytics_users" value="team_leads">
+                            <span>Team Leads</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analytics_users" value="agents">
+                            <span>Customer Service Agents</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analytics_users" value="marketing">
+                            <span>Marketing Team</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="analytics_users" value="sales">
+                            <span>Sales Team</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you need call recording? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="call_recording" value="all" required>
+                            <span>Yes, all calls</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="call_recording" value="sample">
+                            <span>Yes, sample of calls</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="call_recording" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you need call transcription? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="call_transcription" value="yes" required>
+                            <span>Yes</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="call_transcription" value="no">
+                            <span>No</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Additional reporting requirements</label>
+                    <textarea class="form-textarea" name="reporting_needs"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 8: Implementation & Budget -->
+            <div class="section" data-section="8">
+                <h2 class="section-title">Section 8: Implementation & Budget</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Desired implementation timeline *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="asap" required>
+                            <span>As soon as possible</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="1_month">
+                            <span>Within 1 month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="3_months">
+                            <span>Within 3 months</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="6_months">
+                            <span>Within 6 months</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="flexible">
+                            <span>Flexible</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Budget range *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="under_5k" required>
+                            <span>Under $5,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="5k_10k">
+                            <span>$5,000 - $10,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="10k_25k">
+                            <span>$10,000 - $25,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="25k_50k">
+                            <span>$25,000 - $50,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="over_50k">
+                            <span>Over $50,000/month</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do you have technical resources for implementation? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="tech_resources" value="yes_full" required>
+                            <span>Yes, full IT team</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="tech_resources" value="yes_limited">
+                            <span>Yes, limited resources</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="tech_resources" value="no">
+                            <span>No, need full support</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Training requirements *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="training" value="admin">
+                            <span>Admin/Management training</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="training" value="agents">
+                            <span>Agent training</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="training" value="it">
+                            <span>IT/Technical training</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="training" value="documentation">
+                            <span>Written documentation only</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Success criteria - How will you measure success? *</label>
+                    <textarea class="form-textarea" name="success_criteria" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Any concerns or specific requirements?</label>
+                    <textarea class="form-textarea" name="concerns"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Name *</label>
+                    <input type="text" class="form-input" name="contact_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Email *</label>
+                    <input type="email" class="form-input" name="contact_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Phone *</label>
+                    <input type="tel" class="form-input" name="contact_phone" required>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- OUTBOUND AI SYSTEM FORM -->
+        <form id="outboundForm" class="form-container">
+            <!-- Section 1: Business Overview -->
+            <div class="section active" data-section="1">
+                <h2 class="section-title">Section 1: Business Overview</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Company Name *</label>
+                    <input type="text" class="form-input" name="company_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Industry *</label>
+                    <input type="text" class="form-input" name="industry" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Company Size *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="1-10" required>
+                            <span>1-10 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="11-50">
+                            <span>11-50 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="51-200">
+                            <span>51-200 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="201-500">
+                            <span>201-500 employees</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="company_size" value="500+">
+                            <span>500+ employees</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What is your primary goal for outbound calling? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="sales">
+                            <span>Sales/Lead conversion</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="appointments">
+                            <span>Appointment scheduling</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="surveys">
+                            <span>Surveys/Feedback collection</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="reminders">
+                            <span>Appointment reminders</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="followup">
+                            <span>Customer follow-up</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="outbound_goals" value="reactivation">
+                            <span>Customer reactivation</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current outbound calling volume (per day/week) *</label>
+                    <input type="text" class="form-input" name="call_volume" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current outbound calling method *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="current_method" value="manual" required>
+                            <span>Manual dialing by staff</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="current_method" value="autodialer">
+                            <span>Auto-dialer system</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="current_method" value="none">
+                            <span>No current outbound calling</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')" disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 2: Campaign Strategy -->
+            <div class="section" data-section="2">
+                <h2 class="section-title">Section 2: Campaign Strategy</h2>
+
+                <div class="form-group">
+                    <label class="form-label">What types of campaigns will you run? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="cold_calling">
+                            <span>Cold calling/prospecting</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="warm_leads">
+                            <span>Warm lead follow-up</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="customer_retention">
+                            <span>Customer retention</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="upsell">
+                            <span>Upsell/Cross-sell</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="event_promotion">
+                            <span>Event promotion</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="campaign_types" value="satisfaction">
+                            <span>Customer satisfaction check-ins</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Target audience demographics</label>
+                    <textarea class="form-textarea" name="target_audience" placeholder="Describe your ideal customer profile"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred calling times *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="calling_times" value="morning">
+                            <span>Morning (8am-12pm)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="calling_times" value="afternoon">
+                            <span>Afternoon (12pm-5pm)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="calling_times" value="evening">
+                            <span>Evening (5pm-8pm)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How many attempts per contact? *</label>
+                    <select class="form-select" name="contact_attempts" required>
+                        <option value="">Select number</option>
+                        <option value="1">1 attempt</option>
+                        <option value="2">2 attempts</option>
+                        <option value="3">3 attempts</option>
+                        <option value="4">4 attempts</option>
+                        <option value="5+">5+ attempts</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Time between retry attempts *</label>
+                    <select class="form-select" name="retry_interval" required>
+                        <option value="">Select interval</option>
+                        <option value="same_day">Same day</option>
+                        <option value="next_day">Next day</option>
+                        <option value="2_3_days">2-3 days</option>
+                        <option value="1_week">1 week</option>
+                        <option value="custom">Custom schedule</option>
+                    </select>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 3: Script & Messaging -->
+            <div class="section" data-section="3">
+                <h2 class="section-title">Section 3: Script & Messaging</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Do you have existing call scripts? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="existing_scripts" value="yes_detailed" required>
+                            <span>Yes, detailed scripts</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="existing_scripts" value="yes_outline">
+                            <span>Yes, basic outlines</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="existing_scripts" value="no">
+                            <span>No, need help creating scripts</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Key message/value proposition *</label>
+                    <textarea class="form-textarea" name="value_proposition" placeholder="What's your main selling point?" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Call-to-action goals *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cta_goals" value="schedule_meeting">
+                            <span>Schedule a meeting/demo</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cta_goals" value="close_sale">
+                            <span>Close a sale</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cta_goals" value="qualify_lead">
+                            <span>Qualify lead</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cta_goals" value="collect_info">
+                            <span>Collect information</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="cta_goals" value="send_materials">
+                            <span>Send materials/info</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Tone and style preference *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="tone" value="professional" required>
+                            <span>Professional and formal</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="tone" value="conversational">
+                            <span>Conversational and friendly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="tone" value="enthusiastic">
+                            <span>Enthusiastic and energetic</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Common objections you encounter</label>
+                    <textarea class="form-textarea" name="objections" placeholder="List typical objections and how you'd like them handled"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 4: AI Voice & Personality -->
+            <div class="section" data-section="4">
+                <h2 class="section-title">Section 4: AI Voice & Personality</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Preferred voice gender *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="male" required>
+                            <span>Male</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="female">
+                            <span>Female</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voice_gender" value="neutral">
+                            <span>Neutral/No preference</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Voice characteristics *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="voice_characteristics" value="warm">
+                            <span>Warm and friendly</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="voice_characteristics" value="authoritative">
+                            <span>Authoritative and confident</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="voice_characteristics" value="energetic">
+                            <span>Energetic and upbeat</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="voice_characteristics" value="calm">
+                            <span>Calm and measured</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Speaking pace preference *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="speaking_pace" value="slow" required>
+                            <span>Slower, deliberate</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="speaking_pace" value="moderate">
+                            <span>Moderate pace</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="speaking_pace" value="fast">
+                            <span>Quick and efficient</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Should the AI identify itself as AI? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="ai_disclosure" value="yes_upfront" required>
+                            <span>Yes, at the beginning of call</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ai_disclosure" value="yes_if_asked">
+                            <span>Yes, only if asked</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="ai_disclosure" value="no">
+                            <span>No disclosure needed</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">AI agent name (optional)</label>
+                    <input type="text" class="form-input" name="ai_name" placeholder="e.g., Sarah, Alex, etc.">
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 5: Contact List Management -->
+            <div class="section" data-section="5">
+                <h2 class="section-title">Section 5: Contact List Management</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Current contact list size *</label>
+                    <select class="form-select" name="list_size" required>
+                        <option value="">Select size</option>
+                        <option value="under_1k">Under 1,000</option>
+                        <option value="1k_5k">1,000 - 5,000</option>
+                        <option value="5k_10k">5,000 - 10,000</option>
+                        <option value="10k_50k">10,000 - 50,000</option>
+                        <option value="over_50k">Over 50,000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Where is your contact data stored? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_storage" value="crm">
+                            <span>CRM system</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_storage" value="spreadsheet">
+                            <span>Spreadsheets (Excel/CSV)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_storage" value="database">
+                            <span>Database</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_storage" value="marketing_platform">
+                            <span>Marketing platform</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact information available *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="contact_data" value="phone">
+                            <span>Phone numbers</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="contact_data" value="email">
+                            <span>Email addresses</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="contact_data" value="name">
+                            <span>Names</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="contact_data" value="company">
+                            <span>Company information</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="contact_data" value="history">
+                            <span>Purchase/interaction history</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">List segmentation criteria</label>
+                    <textarea class="form-textarea" name="segmentation" placeholder="How do you segment your contacts? (e.g., by industry, location, behavior)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Do-Not-Call list management *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="dnc_management" value="have_list" required>
+                            <span>We have a DNC list to upload</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="dnc_management" value="need_system">
+                            <span>Need system to manage DNC requests</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="dnc_management" value="both">
+                            <span>Both</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 6: Response Handling -->
+            <div class="section" data-section="6">
+                <h2 class="section-title">Section 6: Response Handling</h2>
+
+                <div class="form-group">
+                    <label class="form-label">How should the AI handle positive responses? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="positive_handling" value="schedule">
+                            <span>Schedule appointment</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="positive_handling" value="transfer">
+                            <span>Transfer to sales rep</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="positive_handling" value="collect_info">
+                            <span>Collect additional information</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="positive_handling" value="send_materials">
+                            <span>Send follow-up materials</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">How should the AI handle rejections? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="rejection_handling" value="polite_end">
+                            <span>End call politely</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="rejection_handling" value="alternative_offer">
+                            <span>Offer alternative</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="rejection_handling" value="future_contact">
+                            <span>Ask about future contact</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="rejection_handling" value="feedback">
+                            <span>Request feedback</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Voicemail strategy *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="voicemail_strategy" value="leave_message" required>
+                            <span>Leave detailed voicemail</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voicemail_strategy" value="brief_message">
+                            <span>Leave brief callback number</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="voicemail_strategy" value="no_message">
+                            <span>Don't leave message, try again later</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Should AI handle questions during call? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="question_handling" value="yes_all" required>
+                            <span>Yes, answer all questions</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="question_handling" value="yes_basic">
+                            <span>Yes, basic questions only</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="question_handling" value="transfer">
+                            <span>Transfer to human for questions</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Gatekeeper handling strategy</label>
+                    <textarea class="form-textarea" name="gatekeeper_strategy" placeholder="How should the AI handle receptionists/gatekeepers?"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 7: Integration & CRM -->
+            <div class="section" data-section="7">
+                <h2 class="section-title">Section 7: Integration & CRM</h2>
+
+                <div class="form-group">
+                    <label class="form-label">CRM system *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="salesforce" required>
+                            <span>Salesforce</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="hubspot">
+                            <span>HubSpot</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="zoho">
+                            <span>Zoho</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="pipedrive">
+                            <span>Pipedrive</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="other">
+                            <span>Other</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="crm_system" value="none">
+                            <span>No CRM</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What data should sync to CRM? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="call_outcome">
+                            <span>Call outcome/disposition</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="recording">
+                            <span>Call recordings</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="transcript">
+                            <span>Call transcripts</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="notes">
+                            <span>Notes/Summary</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="appointments">
+                            <span>Scheduled appointments</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="crm_sync" value="lead_score">
+                            <span>Lead score/qualification</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Calendar integration needed? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="calendar_integration" value="yes_google" required>
+                            <span>Yes, Google Calendar</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="calendar_integration" value="yes_outlook">
+                            <span>Yes, Outlook/Microsoft</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="calendar_integration" value="yes_other">
+                            <span>Yes, other</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="calendar_integration" value="no">
+                            <span>No calendar integration</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Email integration requirements</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="email_integration" value="send_confirmation">
+                            <span>Send confirmation emails</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="email_integration" value="send_materials">
+                            <span>Send follow-up materials</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="email_integration" value="notify_team">
+                            <span>Notify team members</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Other integrations needed</label>
+                    <textarea class="form-textarea" name="other_integrations"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 8: Compliance & Regulations -->
+            <div class="section" data-section="8">
+                <h2 class="section-title">Section 8: Compliance & Regulations</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Industry-specific regulations *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="regulations" value="tcpa">
+                            <span>TCPA (Telephone Consumer Protection Act)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="regulations" value="hipaa">
+                            <span>HIPAA (Healthcare)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="regulations" value="gdpr">
+                            <span>GDPR (European data protection)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="regulations" value="finra">
+                            <span>FINRA (Financial services)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="regulations" value="none">
+                            <span>None specific</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Call recording requirements *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="recording_requirements" value="all" required>
+                            <span>Record all calls</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recording_requirements" value="consent">
+                            <span>Record with consent only</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recording_requirements" value="sample">
+                            <span>Record sample for quality</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="recording_requirements" value="none">
+                            <span>No recording</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Consent disclosure requirements *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="consent_disclosure" value="required" required>
+                            <span>Required at call start</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="consent_disclosure" value="opt_in">
+                            <span>Opt-in confirmation needed</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="consent_disclosure" value="not_required">
+                            <span>Not required</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Data retention requirements *</label>
+                    <select class="form-select" name="data_retention" required>
+                        <option value="">Select duration</option>
+                        <option value="30_days">30 days</option>
+                        <option value="90_days">90 days</option>
+                        <option value="1_year">1 year</option>
+                        <option value="3_years">3 years</option>
+                        <option value="5_years">5 years</option>
+                        <option value="indefinite">Indefinite</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Other compliance requirements</label>
+                    <textarea class="form-textarea" name="compliance_notes"></textarea>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('outbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- Section 9: Analytics & Implementation -->
+            <div class="section" data-section="9">
+                <h2 class="section-title">Section 9: Analytics & Implementation</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Key performance metrics to track *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="kpis" value="contact_rate">
+                            <span>Contact rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="kpis" value="conversion_rate">
+                            <span>Conversion rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="kpis" value="appointment_rate">
+                            <span>Appointment setting rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="kpis" value="talk_time">
+                            <span>Average talk time</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="kpis" value="roi">
+                            <span>ROI/Cost per conversion</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Desired implementation timeline *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="asap" required>
+                            <span>As soon as possible</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="1_month">
+                            <span>Within 1 month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="3_months">
+                            <span>Within 3 months</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="timeline" value="flexible">
+                            <span>Flexible</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Budget range *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="under_5k" required>
+                            <span>Under $5,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="5k_10k">
+                            <span>$5,000 - $10,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="10k_25k">
+                            <span>$10,000 - $25,000/month</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="budget" value="over_25k">
+                            <span>Over $25,000/month</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Expected monthly call volume *</label>
+                    <input type="number" class="form-input" name="expected_volume" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Success criteria *</label>
+                    <textarea class="form-textarea" name="success_criteria" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Name *</label>
+                    <input type="text" class="form-input" name="contact_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Email *</label>
+                    <input type="email" class="form-input" name="contact_email" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Contact Phone *</label>
+                    <input type="tel" class="form-input" name="contact_phone" required>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('outbound')">Previous</button>
+                    <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- LEAD GENERATION FORM -->
+        <form id="leadForm" class="form-container">
+            <!-- Due to length constraints, Lead Generation and Dashboard forms -->
+            <!-- contain representative sections. Contact us for full questionnaire. -->
+
+            <!-- Section 1: Business & Lead Goals -->
+            <div class="section active" data-section="1">
+                <h2 class="section-title">Section 1: Business & Lead Goals</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Company Name *</label>
+                    <input type="text" class="form-input" name="company_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Industry *</label>
+                    <input type="text" class="form-input" name="industry" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">What is your primary lead generation goal? *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_goals" value="increase_volume">
+                            <span>Increase lead volume</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_goals" value="improve_quality">
+                            <span>Improve lead quality</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_goals" value="reduce_cost">
+                            <span>Reduce cost per lead</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_goals" value="automate">
+                            <span>Automate lead capture</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_goals" value="better_qualification">
+                            <span>Better lead qualification</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Current monthly lead volume *</label>
+                    <input type="number" class="form-input" name="current_leads" min="0" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Target monthly lead volume *</label>
+                    <input type="number" class="form-input" name="target_leads" min="0" required>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')" disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <!-- Sections 2-9 abbreviated for space -->
+            <div class="section" data-section="2">
+                <h2 class="section-title">Section 2: Lead Sources & Channels</h2>
+                <div class="form-group">
+                    <label class="form-label">Primary lead sources *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="website">
+                            <span>Website forms</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="landing_pages">
+                            <span>Landing pages</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="social_media">
+                            <span>Social media</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="paid_ads">
+                            <span>Paid advertising</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="events">
+                            <span>Events/Webinars</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_sources" value="referrals">
+                            <span>Referrals</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="3">
+                <h2 class="section-title">Section 3: Lead Qualification</h2>
+                <div class="form-group">
+                    <label class="form-label">Lead qualification criteria *</label>
+                    <textarea class="form-textarea" name="qualification_criteria" placeholder="Describe what makes a qualified lead for your business" required></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="4">
+                <h2 class="section-title">Section 4: Lead Capture & Forms</h2>
+                <div class="form-group">
+                    <label class="form-label">Information to capture from leads *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="name">
+                            <span>Name</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="email">
+                            <span>Email</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="phone">
+                            <span>Phone</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="company">
+                            <span>Company</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="budget">
+                            <span>Budget</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="capture_fields" value="timeline">
+                            <span>Timeline</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="5">
+                <h2 class="section-title">Section 5: Lead Nurturing</h2>
+                <div class="form-group">
+                    <label class="form-label">Lead nurturing strategy *</label>
+                    <textarea class="form-textarea" name="nurturing_strategy" placeholder="How do you plan to nurture leads?" required></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="6">
+                <h2 class="section-title">Section 6: Lead Distribution</h2>
+                <div class="form-group">
+                    <label class="form-label">How should leads be distributed? *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="distribution" value="round_robin" required>
+                            <span>Round robin</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="distribution" value="territory">
+                            <span>By territory</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="distribution" value="specialty">
+                            <span>By product/specialty</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="distribution" value="score">
+                            <span>By lead score</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="7">
+                <h2 class="section-title">Section 7: CRM & Integration</h2>
+                <div class="form-group">
+                    <label class="form-label">CRM system *</label>
+                    <input type="text" class="form-input" name="crm_system" required>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="8">
+                <h2 class="section-title">Section 8: Lead Scoring</h2>
+                <div class="form-group">
+                    <label class="form-label">Lead scoring criteria *</label>
+                    <textarea class="form-textarea" name="scoring_criteria" placeholder="What factors determine a high-quality lead?" required></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="9">
+                <h2 class="section-title">Section 9: Analytics & Reporting</h2>
+                <div class="form-group">
+                    <label class="form-label">Key metrics to track *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_metrics" value="volume">
+                            <span>Lead volume</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_metrics" value="conversion">
+                            <span>Conversion rate</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_metrics" value="cost">
+                            <span>Cost per lead</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="lead_metrics" value="quality">
+                            <span>Lead quality score</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('lead')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="10">
+                <h2 class="section-title">Section 10: Implementation & Contact</h2>
+                <div class="form-group">
+                    <label class="form-label">Desired timeline *</label>
+                    <select class="form-select" name="timeline" required>
+                        <option value="">Select timeline</option>
+                        <option value="asap">As soon as possible</option>
+                        <option value="1_month">Within 1 month</option>
+                        <option value="3_months">Within 3 months</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Name *</label>
+                    <input type="text" class="form-input" name="contact_name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Email *</label>
+                    <input type="email" class="form-input" name="contact_email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Phone *</label>
+                    <input type="tel" class="form-input" name="contact_phone" required>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('lead')">Previous</button>
+                    <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+                </div>
+            </div>
+        </form>
+
+        <!-- DASHBOARD SYSTEM FORM -->
+        <form id="dashboardForm" class="form-container">
+            <!-- Section 1: Business Overview -->
+            <div class="section active" data-section="1">
+                <h2 class="section-title">Section 1: Business Overview</h2>
+
+                <div class="form-group">
+                    <label class="form-label">Company Name *</label>
+                    <input type="text" class="form-input" name="company_name" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Industry *</label>
+                    <input type="text" class="form-input" name="industry" required>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Primary dashboard purpose *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="dashboard_purpose" value="executive">
+                            <span>Executive reporting</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="dashboard_purpose" value="operations">
+                            <span>Operations monitoring</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="dashboard_purpose" value="sales">
+                            <span>Sales performance</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="dashboard_purpose" value="marketing">
+                            <span>Marketing analytics</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="dashboard_purpose" value="customer">
+                            <span>Customer insights</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')" disabled>Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <!-- Sections 2-9 abbreviated -->
+            <div class="section" data-section="2">
+                <h2 class="section-title">Section 2: Data Sources</h2>
+                <div class="form-group">
+                    <label class="form-label">Data sources to integrate *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_sources" value="crm">
+                            <span>CRM</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_sources" value="erp">
+                            <span>ERP</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_sources" value="analytics">
+                            <span>Web Analytics</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_sources" value="social">
+                            <span>Social Media</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="data_sources" value="financial">
+                            <span>Financial systems</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="3">
+                <h2 class="section-title">Section 3: Key Metrics & KPIs</h2>
+                <div class="form-group">
+                    <label class="form-label">Most important KPIs to track *</label>
+                    <textarea class="form-textarea" name="kpis" placeholder="List your key performance indicators" required></textarea>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="4">
+                <h2 class="section-title">Section 4: Visualization Preferences</h2>
+                <div class="form-group">
+                    <label class="form-label">Preferred chart types *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="chart_types" value="line">
+                            <span>Line charts</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="chart_types" value="bar">
+                            <span>Bar charts</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="chart_types" value="pie">
+                            <span>Pie charts</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="chart_types" value="tables">
+                            <span>Data tables</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="chart_types" value="heatmaps">
+                            <span>Heatmaps</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="5">
+                <h2 class="section-title">Section 5: User Access & Permissions</h2>
+                <div class="form-group">
+                    <label class="form-label">Number of dashboard users *</label>
+                    <input type="number" class="form-input" name="user_count" min="1" required>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="6">
+                <h2 class="section-title">Section 6: Real-time vs Historical</h2>
+                <div class="form-group">
+                    <label class="form-label">Data update frequency *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="update_frequency" value="realtime" required>
+                            <span>Real-time</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="update_frequency" value="hourly">
+                            <span>Hourly</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="update_frequency" value="daily">
+                            <span>Daily</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="update_frequency" value="weekly">
+                            <span>Weekly</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="7">
+                <h2 class="section-title">Section 7: Alerts & Notifications</h2>
+                <div class="form-group">
+                    <label class="form-label">Alert triggers needed *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alerts" value="thresholds">
+                            <span>Threshold alerts</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alerts" value="anomalies">
+                            <span>Anomaly detection</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alerts" value="trends">
+                            <span>Trend changes</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="alerts" value="goals">
+                            <span>Goal achievements</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="8">
+                <h2 class="section-title">Section 8: Export & Sharing</h2>
+                <div class="form-group">
+                    <label class="form-label">Export formats needed *</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export_formats" value="pdf">
+                            <span>PDF</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export_formats" value="excel">
+                            <span>Excel</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export_formats" value="csv">
+                            <span>CSV</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" name="export_formats" value="image">
+                            <span>Images</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="9">
+                <h2 class="section-title">Section 9: Mobile Access</h2>
+                <div class="form-group">
+                    <label class="form-label">Mobile dashboard requirements *</label>
+                    <div class="radio-group">
+                        <label class="radio-label">
+                            <input type="radio" name="mobile" value="essential" required>
+                            <span>Essential - must have mobile</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="mobile" value="nice">
+                            <span>Nice to have</span>
+                        </label>
+                        <label class="radio-label">
+                            <input type="radio" name="mobile" value="not_needed">
+                            <span>Not needed</span>
+                        </label>
+                    </div>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('dashboard')">Next</button>
+                </div>
+            </div>
+
+            <div class="section" data-section="10">
+                <h2 class="section-title">Section 10: Implementation & Contact</h2>
+                <div class="form-group">
+                    <label class="form-label">Budget range *</label>
+                    <select class="form-select" name="budget" required>
+                        <option value="">Select range</option>
+                        <option value="under_10k">Under $10,000</option>
+                        <option value="10k_25k">$10,000 - $25,000</option>
+                        <option value="25k_50k">$25,000 - $50,000</option>
+                        <option value="over_50k">Over $50,000</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Name *</label>
+                    <input type="text" class="form-input" name="contact_name" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Email *</label>
+                    <input type="email" class="form-input" name="contact_email" required>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Contact Phone *</label>
+                    <input type="tel" class="form-input" name="contact_phone" required>
+                </div>
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('dashboard')">Previous</button>
+                    <button type="submit" class="btn btn-primary">Submit Questionnaire</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+    <div class="success-overlay" id="successOverlay">
+        <div class="success-message">
+            <h2>Thank You!</h2>
+            <p>Your questionnaire has been submitted successfully. We'll be in touch soon!</p>
+            <button class="btn btn-primary" onclick="resetQuestionnaire()">Start Another Questionnaire</button>
+        </div>
+    </div>
+
+    <div class="autosave-indicator" id="autosaveIndicator">
+        Saved
+    </div>
 
     <script>
-        // Tab switching
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs and contents
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.form-content').forEach(c => c.classList.remove('active'));
+        let currentQuestionnaire = null;
+        let currentSection = 1;
+        let totalSections = 8;
+        const sectionCounts = {
+            inbound: 8,
+            outbound: 9,
+            lead: 10,
+            dashboard: 10
+        };
 
-                // Add active class to clicked tab
-                this.classList.add('active');
+        function selectQuestionnaire(type) {
+            currentQuestionnaire = type;
+            currentSection = 1;
+            totalSections = sectionCounts[type];
 
-                // Show corresponding content
-                const tabName = this.getAttribute('data-tab');
-                document.getElementById(tabName + '-content').classList.add('active');
-            });
-        });
+            document.getElementById('questionnaireSelection').style.display = 'none';
+            document.getElementById('progressContainer').classList.add('active');
+            document.getElementById(type + 'Form').classList.add('active');
 
-        // Progress tracking
-        function updateProgress() {
-            // This would track actual form completion
-            const progress = 12.5; // Example: 1 of 8 sections
-            document.getElementById('progressFill').style.width = progress + '%';
+            updateProgress();
+            loadSavedData(type);
         }
 
-        function nextSection() {
-            // Navigate to next section
-            alert('Form navigation will be implemented with full form structure');
-        }
+        function nextSection(type) {
+            const form = document.getElementById(type + 'Form');
+            const sections = form.querySelectorAll('.section');
 
-        // Priority button interactions
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('priority-btn')) {
-                const container = e.target.parentElement;
-                container.querySelectorAll('.priority-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                e.target.classList.add('selected');
+            sections[currentSection - 1].classList.remove('active');
+            currentSection++;
+
+            if (currentSection <= totalSections) {
+                sections[currentSection - 1].classList.add('active');
+                updateProgress();
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+                saveFormData(type);
             }
+        }
+
+        function previousSection(type) {
+            const form = document.getElementById(type + 'Form');
+            const sections = form.querySelectorAll('.section');
+
+            sections[currentSection - 1].classList.remove('active');
+            currentSection--;
+            sections[currentSection - 1].classList.add('active');
+            updateProgress();
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function updateProgress() {
+            const percent = (currentSection / totalSections) * 100;
+            document.getElementById('progressFill').style.width = percent + '%';
+            document.getElementById('currentSection').textContent = `Section ${currentSection} of ${totalSections}`;
+            document.getElementById('progressPercent').textContent = Math.round(percent) + '%';
+        }
+
+        function saveFormData(type) {
+            const form = document.getElementById(type + 'Form');
+            const formData = new FormData(form);
+            const data = {};
+
+            for (let [key, value] of formData.entries()) {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            }
+
+            localStorage.setItem(type + '_questionnaire', JSON.stringify(data));
+            showAutosave();
+        }
+
+        function loadSavedData(type) {
+            const saved = localStorage.getItem(type + '_questionnaire');
+            if (saved) {
+                const data = JSON.parse(saved);
+                const form = document.getElementById(type + 'Form');
+
+                Object.keys(data).forEach(key => {
+                    const elements = form.querySelectorAll(`[name="${key}"]`);
+                    elements.forEach(element => {
+                        if (element.type === 'checkbox' || element.type === 'radio') {
+                            if (Array.isArray(data[key])) {
+                                element.checked = data[key].includes(element.value);
+                            } else {
+                                element.checked = element.value === data[key];
+                            }
+                        } else {
+                            element.value = data[key];
+                        }
+                    });
+                });
+            }
+        }
+
+        function showAutosave() {
+            const indicator = document.getElementById('autosaveIndicator');
+            indicator.classList.add('show');
+            setTimeout(() => {
+                indicator.classList.remove('show');
+            }, 2000);
+        }
+
+        function resetQuestionnaire() {
+            document.getElementById('successOverlay').classList.remove('show');
+
+            if (currentQuestionnaire) {
+                document.getElementById(currentQuestionnaire + 'Form').classList.remove('active');
+                document.getElementById(currentQuestionnaire + 'Form').reset();
+            }
+
+            currentQuestionnaire = null;
+            currentSection = 1;
+
+            document.getElementById('progressContainer').classList.remove('active');
+            document.getElementById('questionnaireSelection').style.display = 'block';
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        // Form submission handlers
+        document.getElementById('inboundForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveFormData('inbound');
+            document.getElementById('successOverlay').classList.add('show');
         });
 
-        // Auto-save progress (optional)
-        let autoSaveTimer;
-        document.getElementById('questionnaireForm').addEventListener('input', function() {
-            clearTimeout(autoSaveTimer);
-            autoSaveTimer = setTimeout(() => {
-                console.log('Auto-saving form data...');
-                // Save to localStorage or backend
-            }, 2000);
+        document.getElementById('outboundForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveFormData('outbound');
+            document.getElementById('successOverlay').classList.add('show');
+        });
+
+        document.getElementById('leadForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveFormData('lead');
+            document.getElementById('successOverlay').classList.add('show');
+        });
+
+        document.getElementById('dashboardForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            saveFormData('dashboard');
+            document.getElementById('successOverlay').classList.add('show');
+        });
+
+        // Auto-save on input change
+        document.addEventListener('change', function(e) {
+            if (e.target.closest('form') && currentQuestionnaire) {
+                saveFormData(currentQuestionnaire);
+            }
         });
     </script>
 </body>

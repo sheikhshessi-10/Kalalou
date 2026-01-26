@@ -3,711 +3,2671 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kalalou AI Systems - Questionnaire</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <title>AI System Questionnaire - Kalalou</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
+        :root {
+            --bg-primary: #F7F4EF;
+            --card: #FFFFFF;
+            --accent: #B46A4C;
+            --ink: #2C2C2C;
+            --ink-light: #666666;
+            --divider: #E8E1D8;
+            --shadow: rgba(0, 0, 0, 0.08);
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --bg-primary: #F7F4EF;
-            --ink: #1C1C1C;
-            --secondary: #6F6F6F;
-            --accent: #B46A4C;
-            --divider: #DDD8D0;
-            --card: #FFFFFF;
-            --success: #4A7C59;
-        }
-
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-family: 'Inter', sans-serif;
             background: var(--bg-primary);
             color: var(--ink);
             line-height: 1.6;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        /* Navigation */
-        .nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: rgba(247, 244, 239, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--divider);
-            z-index: 1000;
-            padding: 24px 0;
-        }
-
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            font-weight: 600;
-            color: var(--ink);
-            text-decoration: none;
-        }
-
-        .nav-link {
-            color: var(--secondary);
-            text-decoration: none;
-            font-size: 0.95rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-link:hover {
-            color: var(--accent);
-        }
-
-        /* Main Content */
-        .main {
-            padding-top: 120px;
-            padding-bottom: 80px;
-            min-height: 100vh;
+            padding: 20px;
         }
 
         .container {
             max-width: 900px;
             margin: 0 auto;
-            padding: 0 40px;
         }
 
-        /* Header */
-        .header {
+        header {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 40px;
+            padding: 40px 20px;
         }
 
-        .header h1 {
+        h1 {
             font-family: 'Playfair Display', serif;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            font-weight: 400;
-            letter-spacing: -0.02em;
-            margin-bottom: 16px;
-            color: var(--ink);
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 10px;
         }
 
-        .header-divider {
-            width: 60px;
-            height: 1px;
-            background: var(--divider);
-            margin: 24px auto;
-        }
-
-        .header p {
+        .subtitle {
             font-size: 1.1rem;
-            color: var(--secondary);
-            max-width: 600px;
-            margin: 0 auto;
-            line-height: 1.8;
+            color: var(--ink-light);
         }
 
         /* Tab Navigation */
         .tabs {
             display: flex;
-            gap: 12px;
-            margin-bottom: 40px;
+            gap: 10px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid var(--divider);
             overflow-x: auto;
-            padding-bottom: 12px;
+            padding-bottom: 0;
         }
 
         .tab {
-            padding: 12px 24px;
-            background: var(--card);
-            border: 1px solid var(--divider);
-            border-radius: 24px;
+            padding: 15px 25px;
+            background: transparent;
+            border: none;
+            border-bottom: 3px solid transparent;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: var(--ink-light);
             cursor: pointer;
             transition: all 0.3s ease;
             white-space: nowrap;
-            font-size: 0.95rem;
-            color: var(--secondary);
         }
 
         .tab:hover {
-            border-color: var(--accent);
             color: var(--accent);
+            background: rgba(180, 106, 76, 0.05);
         }
 
         .tab.active {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
+            color: var(--accent);
+            border-bottom-color: var(--accent);
+            font-weight: 600;
         }
 
-        /* Progress Bar */
-        .progress-container {
-            margin-bottom: 40px;
-            background: var(--card);
-            padding: 24px;
-            border-radius: 12px;
-            border: 1px solid var(--divider);
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 8px;
-            background: var(--divider);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 12px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background: var(--accent);
-            transition: width 0.5s ease;
-            width: 0%;
-        }
-
-        .progress-text {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            text-align: center;
-        }
-
-        /* Form Content */
-        .form-content {
+        /* Form Sections */
+        .form-section {
             display: none;
+            animation: fadeIn 0.3s ease;
         }
 
-        .form-content.active {
+        .form-section.active {
             display: block;
-            animation: fadeIn 0.5s ease;
         }
 
         @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
+            from { opacity: 0; transform: translateY(10px); }
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Section Card */
-        .section-card {
+        .form-card {
             background: var(--card);
-            padding: 40px;
             border-radius: 12px;
-            border: 1px solid var(--divider);
-            margin-bottom: 32px;
-            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
+            padding: 40px;
+            box-shadow: 0 2px 20px var(--shadow);
+            margin-bottom: 30px;
         }
 
         .section-title {
             font-family: 'Playfair Display', serif;
             font-size: 1.8rem;
-            font-weight: 500;
-            margin-bottom: 12px;
-            color: var(--ink);
+            color: var(--accent);
+            margin-bottom: 30px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--divider);
         }
 
-        .section-subtitle {
-            font-size: 1rem;
-            color: var(--secondary);
-            margin-bottom: 32px;
-            line-height: 1.7;
-        }
-
-        /* Question Block */
-        .question-block {
-            margin-bottom: 40px;
-        }
-
-        .question-block:last-child {
-            margin-bottom: 0;
+        .question-group {
+            margin-bottom: 30px;
         }
 
         .question-label {
-            font-weight: 500;
-            font-size: 1.05rem;
-            color: var(--ink);
-            margin-bottom: 16px;
             display: block;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 10px;
+            font-size: 1rem;
         }
 
-        .question-hint {
-            font-size: 0.9rem;
-            color: var(--secondary);
-            margin-bottom: 16px;
-            font-style: italic;
+        .required {
+            color: var(--accent);
         }
 
-        /* Input Styles */
-        .input-text,
-        .input-textarea,
-        .input-number {
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        input[type="number"],
+        textarea,
+        select {
             width: 100%;
-            padding: 14px 18px;
+            padding: 12px 15px;
             border: 1px solid var(--divider);
             border-radius: 8px;
+            font-family: 'Inter', sans-serif;
             font-size: 1rem;
-            font-family: inherit;
-            transition: all 0.3s ease;
             background: var(--bg-primary);
+            color: var(--ink);
+            transition: all 0.3s ease;
         }
 
-        .input-text:focus,
-        .input-textarea:focus,
-        .input-number:focus {
+        input:focus,
+        textarea:focus,
+        select:focus {
             outline: none;
             border-color: var(--accent);
             background: white;
         }
 
-        .input-textarea {
-            min-height: 120px;
+        textarea {
+            min-height: 100px;
             resize: vertical;
         }
 
-        /* Radio/Checkbox Options */
-        .options-grid {
-            display: grid;
-            gap: 12px;
+        .radio-group,
+        .checkbox-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
         }
 
-        .option-item {
-            position: relative;
-        }
-
-        .option-label {
+        .radio-option,
+        .checkbox-option {
             display: flex;
             align-items: center;
-            padding: 14px 18px;
-            background: var(--bg-primary);
-            border: 1px solid var(--divider);
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.3s ease;
+            gap: 10px;
         }
 
-        .option-label:hover {
-            border-color: var(--accent);
-            background: white;
-        }
-
-        .option-input {
-            margin-right: 12px;
+        input[type="radio"],
+        input[type="checkbox"] {
             width: 18px;
             height: 18px;
             cursor: pointer;
-            accent-color: var(--accent);
-        }
-
-        .option-input:checked + .option-label {
-            border-color: var(--accent);
-            background: rgba(180, 106, 76, 0.05);
-        }
-
-        .option-label input[type="radio"],
-        .option-label input[type="checkbox"] {
-            margin-right: 12px;
-            width: 18px;
-            height: 18px;
-            cursor: pointer;
-            accent-color: var(--accent);
-        }
-
-        /* Priority Buttons */
-        .priority-options {
-            display: flex;
-            gap: 12px;
-            flex-wrap: wrap;
-        }
-
-        .priority-btn {
-            padding: 10px 20px;
-            border: 1px solid var(--divider);
-            border-radius: 24px;
-            background: var(--bg-primary);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .priority-btn:hover {
-            border-color: var(--accent);
-        }
-
-        .priority-btn.selected {
-            background: var(--accent);
-            border-color: var(--accent);
-            color: white;
-        }
-
-        /* Table */
-        .table-container {
-            overflow-x: auto;
-            margin-top: 16px;
         }
 
         table {
             width: 100%;
             border-collapse: collapse;
+            margin-top: 15px;
+        }
+
+        th, td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid var(--divider);
         }
 
         th {
-            text-align: left;
-            padding: 12px;
             background: var(--bg-primary);
-            font-weight: 500;
-            border-bottom: 2px solid var(--divider);
-        }
-
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--divider);
-        }
-
-        td input[type="text"],
-        td input[type="number"] {
-            width: 100%;
-            padding: 8px 12px;
-            border: 1px solid var(--divider);
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-
-        /* Navigation Buttons */
-        .form-navigation {
-            display: flex;
-            justify-content: space-between;
-            gap: 16px;
-            margin-top: 40px;
-        }
-
-        .btn {
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 1rem;
-            font-weight: 500;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            border: none;
-            font-family: inherit;
-        }
-
-        .btn-secondary {
-            background: var(--card);
-            border: 1px solid var(--divider);
+            font-weight: 600;
             color: var(--ink);
         }
 
-        .btn-secondary:hover {
-            border-color: var(--accent);
-            color: var(--accent);
+        td input {
+            margin: 0;
+            padding: 8px;
         }
 
-        .btn-primary {
+        .submit-button {
+            width: 100%;
+            padding: 15px 30px;
             background: var(--accent);
             color: white;
-            border: 1px solid var(--accent);
-        }
-
-        .btn-primary:hover {
-            background: #9A5840;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(180, 106, 76, 0.3);
-        }
-
-        .btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
-        }
-
-        /* Success Message */
-        .success-message {
-            display: none;
-            text-align: center;
-            padding: 60px 40px;
-        }
-
-        .success-message.show {
-            display: block;
-            animation: fadeIn 0.5s ease;
-        }
-
-        .success-icon {
-            width: 80px;
-            height: 80px;
-            background: var(--success);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin: 0 auto 24px;
-            font-size: 40px;
-            color: white;
-        }
-
-        .success-message h2 {
-            font-family: 'Playfair Display', serif;
-            font-size: 2rem;
-            margin-bottom: 16px;
-        }
-
-        .success-message p {
-            color: var(--secondary);
+            border: none;
+            border-radius: 8px;
             font-size: 1.1rem;
-            line-height: 1.8;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 20px;
         }
 
-        /* Responsive */
+        .submit-button:hover {
+            background: #9d5a3f;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 20px rgba(180, 106, 76, 0.3);
+        }
+
+        .note {
+            background: rgba(180, 106, 76, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 4px solid var(--accent);
+            margin: 20px 0;
+            font-size: 0.95rem;
+            color: var(--ink-light);
+        }
+
         @media (max-width: 768px) {
-            .container {
-                padding: 0 20px;
+            h1 {
+                font-size: 2rem;
             }
 
-            .section-card {
-                padding: 24px;
+            .form-card {
+                padding: 25px;
             }
 
             .tabs {
-                flex-wrap: nowrap;
-                -webkit-overflow-scrolling: touch;
+                flex-wrap: wrap;
             }
 
-            .form-navigation {
-                flex-direction: column;
-            }
-
-            .btn {
-                width: 100%;
+            .tab {
+                padding: 12px 15px;
+                font-size: 0.9rem;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-container">
-            <a href="index.html" class="logo">KALALOU</a>
-            <a href="index.html" class="nav-link">← Back to Home</a>
+    <div class="container">
+        <header>
+            <h1>AI System Questionnaire</h1>
+            <p class="subtitle">Help us understand your business needs</p>
+        </header>
+
+        <!-- Tab Navigation -->
+        <div class="tabs">
+            <button class="tab active" onclick="showSection('inbound')">Inbound AI System</button>
+            <button class="tab" onclick="showSection('outbound')">Outbound AI System</button>
+            <button class="tab" onclick="showSection('leadgen')">Lead Generation</button>
+            <button class="tab" onclick="showSection('dashboard')">Dashboard</button>
         </div>
-    </nav>
 
-    <!-- Main Content -->
-    <main class="main">
-        <div class="container">
-            <!-- Header -->
-            <div class="header">
-                <h1>AI Systems Questionnaire</h1>
-                <div class="header-divider"></div>
-                <p>Help us understand your needs to create the perfect AI solution for your business. Choose a questionnaire below to get started.</p>
-            </div>
+        <!-- Inbound AI System -->
+        <div id="inbound" class="form-section active">
+            <form class="form-card">
+                <h2 class="section-title">Inbound AI System Questionnaire</h2>
 
-            <!-- Tab Navigation -->
-            <div class="tabs">
-                <div class="tab active" data-tab="inbound">Inbound AI System</div>
-                <div class="tab" data-tab="outbound">Outbound AI System</div>
-                <div class="tab" data-tab="leadgen">Lead Generation</div>
-                <div class="tab" data-tab="dashboard">Custom Dashboard</div>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="progress-container">
-                <div class="progress-bar">
-                    <div class="progress-fill" id="progressFill"></div>
+                <div class="question-group">
+                    <label class="question-label">Business Name <span class="required">*</span></label>
+                    <input type="text" name="business_name" required>
                 </div>
-                <div class="progress-text" id="progressText">Section 1 of 8</div>
-            </div>
 
-            <!-- Form Container -->
-            <form id="questionnaireForm">
-                <!-- Inbound AI System -->
-                <div class="form-content active" id="inbound-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Section 1: Call Volume & Patterns</h2>
-                        <p class="section-subtitle">Understanding your current call activity helps us size the system correctly.</p>
+                <div class="question-group">
+                    <label class="question-label">Contact Person <span class="required">*</span></label>
+                    <input type="text" name="contact_person" required>
+                </div>
 
-                        <div class="question-block">
-                            <label class="question-label">1.1 How many inbound calls do you receive per month?</label>
-                            <div class="options-grid">
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="500-1000">
-                                    500-1,000 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="1000-1500">
-                                    1,000-1,500 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="1500-2500">
-                                    1,500-2,500 calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="2500+">
-                                    2,500+ calls
-                                </label>
-                                <label class="option-label">
-                                    <input type="radio" name="call-volume" value="not-sure">
-                                    Not sure (we'll help you track this)
-                                </label>
-                            </div>
-                            <input type="text" class="input-text" placeholder="If you know the exact number, enter it here..." style="margin-top: 12px;">
-                        </div>
+                <div class="question-group">
+                    <label class="question-label">Email <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
 
-                        <div class="question-block">
-                            <label class="question-label">1.2 Who's calling you? (Estimate percentage breakdown)</label>
-                            <p class="question-hint">Enter rough estimates - they don't need to add up to 100%</p>
-                            <div class="table-container">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Caller Type</th>
-                                            <th style="width: 150px;">Percentage</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Existing customers</td>
-                                            <td><input type="number" name="caller-existing" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>New prospects</td>
-                                            <td><input type="number" name="caller-prospects" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Vendors/suppliers</td>
-                                            <td><input type="number" name="caller-vendors" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                        <tr>
-                                            <td>Other</td>
-                                            <td><input type="number" name="caller-other" min="0" max="100" placeholder="%"></td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
+                <div class="question-group">
+                    <label class="question-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" required>
+                </div>
 
-                        <div class="question-block">
-                            <label class="question-label">1.3 When do most calls come in?</label>
-                            <p class="question-hint">Check all that apply</p>
-                            <div class="options-grid">
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="business-hours">
-                                    Business hours (9am-5pm CST)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="early-morning">
-                                    Early morning (7am-9am)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="late-afternoon">
-                                    Late afternoon/evening (5pm-8pm)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="after-hours">
-                                    After business hours (8pm-7am)
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="weekends">
-                                    Weekends
-                                </label>
-                                <label class="option-label">
-                                    <input type="checkbox" name="call-timing" value="distributed">
-                                    Calls are distributed fairly evenly throughout the day
-                                </label>
-                            </div>
-                        </div>
-                    </div>
+                <div class="question-group">
+                    <label class="question-label">Industry/Type of Business <span class="required">*</span></label>
+                    <input type="text" name="industry" required>
+                </div>
 
-                    <div class="form-navigation">
-                        <button type="button" class="btn btn-secondary" disabled>Previous</button>
-                        <button type="button" class="btn btn-primary" onclick="nextSection()">Next Section</button>
+                <div class="question-group">
+                    <label class="question-label">What is your average monthly call volume?</label>
+                    <input type="text" name="call_volume" placeholder="e.g., 500-1000 calls per month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What percentage of calls are from:</label>
+                    <table>
+                        <tr>
+                            <th>Category</th>
+                            <th>Percentage (%)</th>
+                        </tr>
+                        <tr>
+                            <td>New customers/leads</td>
+                            <td><input type="text" name="new_customers_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Existing customers</td>
+                            <td><input type="text" name="existing_customers_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Support inquiries</td>
+                            <td><input type="text" name="support_inquiries_pct"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What time of day do you receive the most calls?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="call_time[]" value="morning">
+                            Morning (6 AM - 12 PM)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="call_time[]" value="afternoon">
+                            Afternoon (12 PM - 6 PM)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="call_time[]" value="evening">
+                            Evening (6 PM - 10 PM)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="call_time[]" value="after_hours">
+                            After hours (10 PM - 6 AM)
+                        </label>
                     </div>
                 </div>
 
-                <!-- Placeholder for other questionnaires -->
-                <div class="form-content" id="outbound-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Outbound AI System</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
+                <div class="question-group">
+                    <label class="question-label">Do you currently experience missed calls due to high volume or after-hours calls? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="missed_calls" value="yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="missed_calls" value="no">
+                            No
+                        </label>
                     </div>
                 </div>
 
-                <div class="form-content" id="leadgen-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Lead Generation System</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
+                <div class="question-group">
+                    <label class="question-label">If yes, approximately how many calls are missed per week?</label>
+                    <input type="text" name="missed_calls_count">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How do you currently handle after-hours calls?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="after_hours[]" value="voicemail">
+                            Voicemail
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="after_hours[]" value="answering_service">
+                            Answering service
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="after_hours[]" value="staff">
+                            Staff on-call
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="after_hours[]" value="none">
+                            No coverage
+                        </label>
                     </div>
                 </div>
 
-                <div class="form-content" id="dashboard-content">
-                    <div class="section-card">
-                        <h2 class="section-title">Custom Dashboard</h2>
-                        <p class="section-subtitle">Coming soon - This section is being configured...</p>
+                <div class="question-group">
+                    <label class="question-label">Please rank the types of calls you receive by frequency (1 being most common):</label>
+                    <table>
+                        <tr>
+                            <th>Call Type</th>
+                            <th>Rank</th>
+                            <th>% of Total Calls</th>
+                        </tr>
+                        <tr>
+                            <td>General inquiries</td>
+                            <td><input type="text" name="general_rank"></td>
+                            <td><input type="text" name="general_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Appointment scheduling</td>
+                            <td><input type="text" name="appointment_rank"></td>
+                            <td><input type="text" name="appointment_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Order placement</td>
+                            <td><input type="text" name="order_rank"></td>
+                            <td><input type="text" name="order_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Customer support</td>
+                            <td><input type="text" name="support_rank"></td>
+                            <td><input type="text" name="support_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Billing questions</td>
+                            <td><input type="text" name="billing_rank"></td>
+                            <td><input type="text" name="billing_pct"></td>
+                        </tr>
+                        <tr>
+                            <td>Other (specify below)</td>
+                            <td><input type="text" name="other_rank"></td>
+                            <td><input type="text" name="other_pct"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_call_types">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What AI capabilities are most important to you? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="appointment_booking">
+                            Appointment booking
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="faq">
+                            Answering FAQs
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="order_taking">
+                            Order taking
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="information">
+                            Providing information (hours, location, etc.)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="routing">
+                            Call routing to the right department/person
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="lead_qualification">
+                            Lead qualification
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_capabilities[]" value="other">
+                            Other (specify below)
+                        </label>
                     </div>
                 </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_ai_capabilities">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need the AI to integrate with any existing systems? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="crm">
+                            CRM (e.g., Salesforce, HubSpot)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="calendar">
+                            Calendar/Scheduling software
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="ecommerce">
+                            E-commerce platform
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="helpdesk">
+                            Helpdesk/Support ticketing system
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="payment">
+                            Payment processing
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="none">
+                            None
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_integrations">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Please provide the names and details of any specific systems:</label>
+                    <textarea name="integration_details" placeholder="e.g., Salesforce CRM, Google Calendar, Shopify, etc."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like the AI to handle complex or sensitive inquiries that it cannot resolve? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="complex_handling" value="transfer" required>
+                            Transfer to a live agent
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="complex_handling" value="callback">
+                            Schedule a callback
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="complex_handling" value="voicemail">
+                            Take a detailed message/voicemail
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="complex_handling" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_complex_handling">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have specific scripts or guidelines you would like the AI to follow?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_scripts" value="yes">
+                            Yes (we will provide scripts)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_scripts" value="no">
+                            No (we need help creating them)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What are the top 3-5 questions/requests your callers ask most frequently?</label>
+                    <textarea name="top_questions" placeholder="List your most common caller questions or requests"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there any specific phrases, terminology, or brand voice guidelines the AI should use?</label>
+                    <textarea name="brand_voice" placeholder="Describe your preferred tone, terminology, or brand voice"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What metrics are most important for you to track? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="call_volume">
+                            Call volume
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="resolution_rate">
+                            Call resolution rate
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="sentiment">
+                            Customer sentiment analysis
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="conversion">
+                            Conversion rate (calls to appointments/sales)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="response_time">
+                            Average response time
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_metrics">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like to receive reports?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="daily">
+                            Daily email summary
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="weekly">
+                            Weekly dashboard
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="realtime">
+                            Real-time access via portal
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_report_delivery">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How many team members will need access to the AI system and reports?</label>
+                    <input type="text" name="team_size">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have dedicated staff to manage or monitor the AI, or would you prefer a fully managed solution? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="management" value="dedicated" required>
+                            We have dedicated staff
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="management" value="managed">
+                            We prefer a fully managed solution
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there any industry-specific compliance or regulatory requirements we should be aware of? (e.g., HIPAA, PCI-DSS)</label>
+                    <textarea name="compliance" placeholder="List any compliance requirements"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What are your business hours?</label>
+                    <input type="text" name="business_hours" placeholder="e.g., Monday-Friday 9 AM - 5 PM">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">When would you like the AI system to be active?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="ai_hours" value="247">
+                            24/7
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_hours" value="after_hours">
+                            After hours only
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_hours" value="business_hours">
+                            During business hours only
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_hours" value="custom">
+                            Custom schedule (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If custom schedule, please specify:</label>
+                    <input type="text" name="custom_schedule">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your ideal implementation timeline? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="immediate" required>
+                            Immediate (within 2 weeks)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="1month">
+                            Within 1 month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="3months">
+                            Within 3 months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="flexible">
+                            Flexible
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your estimated monthly budget for this solution?</label>
+                    <input type="text" name="budget" placeholder="e.g., $500-$1000/month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Is there anything else you'd like us to know about your business or requirements?</label>
+                    <textarea name="additional_notes" placeholder="Any additional information that would help us serve you better"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Inbound Questionnaire</button>
             </form>
-
-            <!-- Success Message -->
-            <div class="success-message" id="successMessage">
-                <div class="success-icon">✓</div>
-                <h2>Thank You!</h2>
-                <p>Your responses have been submitted successfully. We'll review your information and reach out shortly to discuss next steps.</p>
-            </div>
         </div>
-    </main>
+
+        <!-- Outbound AI System -->
+        <div id="outbound" class="form-section">
+            <form class="form-card">
+                <h2 class="section-title">Outbound AI System Questionnaire</h2>
+
+                <div class="question-group">
+                    <label class="question-label">Business Name <span class="required">*</span></label>
+                    <input type="text" name="business_name" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Contact Person <span class="required">*</span></label>
+                    <input type="text" name="contact_person" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Email <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Industry/Type of Business <span class="required">*</span></label>
+                    <input type="text" name="industry" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is the primary goal of your outbound calling campaign? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="lead_generation">
+                            Lead generation
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="appointment_setting">
+                            Appointment setting
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="sales">
+                            Sales/Product promotion
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="customer_followup">
+                            Customer follow-up
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="surveys">
+                            Surveys/Feedback collection
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="reminders">
+                            Reminders (appointments, renewals, etc.)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="campaign_goals[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_campaign_goals">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Who is your target audience?</label>
+                    <textarea name="target_audience" placeholder="Describe your ideal prospect (demographics, industry, role, etc.)"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How many outbound calls do you plan to make per day/week/month?</label>
+                    <input type="text" name="call_volume" placeholder="e.g., 100 calls per day">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What time zone(s) will you be calling?</label>
+                    <input type="text" name="time_zones" placeholder="e.g., EST, PST">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What hours do you want the AI to make calls?</label>
+                    <input type="text" name="calling_hours" placeholder="e.g., Monday-Friday 9 AM - 5 PM EST">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have an existing script or talking points for your outbound calls?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_script" value="yes">
+                            Yes (we will provide it)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_script" value="no">
+                            No (we need help creating one)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, please paste your script or upload it:</label>
+                    <textarea name="script_content" placeholder="Paste your call script here"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is the main value proposition or key message you want the AI to communicate?</label>
+                    <textarea name="value_proposition" placeholder="What problem do you solve? What makes your offering unique?"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there specific objections or questions you anticipate from prospects?</label>
+                    <textarea name="objections" placeholder="List common objections and how you'd like them addressed"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What tone or style should the AI voice have? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="professional">
+                            Professional
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="friendly">
+                            Friendly
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="conversational">
+                            Conversational
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="formal">
+                            Formal
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="energetic">
+                            Energetic
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="voice_style[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_voice_style">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you prefer a male or female voice, or no preference?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="voice_gender" value="male">
+                            Male
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voice_gender" value="female">
+                            Female
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voice_gender" value="no_preference">
+                            No preference
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have an existing contact list?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_contact_list" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_contact_list" value="no">
+                            No (we need help building one)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, how many contacts are on your list?</label>
+                    <input type="text" name="contact_count">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What information do you have about each contact? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="name">
+                            Name
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="phone">
+                            Phone number
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="email">
+                            Email
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="company">
+                            Company/Business name
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="title">
+                            Job title
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="industry">
+                            Industry
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="contact_info[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_contact_info">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like the contact list managed? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="list_management" value="upload" required>
+                            We will upload and update it
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="list_management" value="managed">
+                            We need it to be managed for us
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="list_management" value="integrated">
+                            Integrated with our CRM
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What should the AI do when a prospect answers? (Select the primary action)</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="answer_action" value="qualify">
+                            Qualify the lead and gather information
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="answer_action" value="appointment">
+                            Book an appointment
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="answer_action" value="transfer">
+                            Transfer to a live agent
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="answer_action" value="message">
+                            Deliver a message and end the call
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="answer_action" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_answer_action">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What should the AI do if the call goes to voicemail?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="voicemail_action" value="leave_message">
+                            Leave a pre-recorded message
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voicemail_action" value="hang_up">
+                            Hang up and try again later
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voicemail_action" value="mark">
+                            Mark as voicemail and move to next call
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If leaving a message, what should the voicemail say?</label>
+                    <textarea name="voicemail_message" placeholder="Provide the voicemail script"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How many times should the AI attempt to reach a contact if there's no answer?</label>
+                    <input type="text" name="retry_attempts" placeholder="e.g., 3 attempts">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How long should the AI wait between retry attempts?</label>
+                    <input type="text" name="retry_interval" placeholder="e.g., 2 days">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What prospect responses indicate interest or qualification?</label>
+                    <textarea name="interest_indicators" placeholder="e.g., requests more information, expresses interest, asks about pricing"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What responses indicate the prospect is not interested?</label>
+                    <textarea name="no_interest_indicators" placeholder="e.g., asks to be removed from list, not interested, wrong timing"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Should the AI hand off interested prospects to a live agent?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="handoff" value="yes">
+                            Yes, transfer immediately
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="handoff" value="appointment">
+                            No, schedule a follow-up call/appointment
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="handoff" value="log">
+                            No, log the lead for manual follow-up
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need the AI to integrate with any existing systems? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="crm">
+                            CRM (e.g., Salesforce, HubSpot, Zoho)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="calendar">
+                            Calendar/Scheduling tool
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="dialer">
+                            Auto-dialer system
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="marketing">
+                            Marketing automation platform
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="none">
+                            None
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_integrations">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Please provide the names of specific platforms:</label>
+                    <textarea name="integration_details" placeholder="e.g., Salesforce, Google Calendar, etc."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are you aware of any compliance or regulatory requirements for outbound calling in your industry or region? (e.g., TCPA, Do Not Call lists)</label>
+                    <textarea name="compliance" placeholder="List any compliance requirements"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need assistance with compliance setup?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="compliance_help" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="compliance_help" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What metrics are most important for you to track? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="call_volume">
+                            Number of calls made
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="connect_rate">
+                            Connect rate (answered vs. voicemail)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="conversion">
+                            Conversion rate (interested prospects)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="appointments">
+                            Appointments booked
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="call_duration">
+                            Average call duration
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="sentiment">
+                            Sentiment analysis
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_metrics">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like to receive performance reports?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="daily">
+                            Daily email summary
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="weekly">
+                            Weekly dashboard
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="realtime">
+                            Real-time access via portal
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_report_delivery">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you want call recordings available for review?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="call_recordings" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_recordings" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">When would you like to launch your outbound campaign? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="immediate" required>
+                            Immediate (within 2 weeks)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="1month">
+                            Within 1 month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="3months">
+                            Within 3 months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="flexible">
+                            Flexible
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need a pilot/test phase before full deployment?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="pilot_phase" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="pilot_phase" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your estimated monthly budget for this outbound AI system?</label>
+                    <input type="text" name="budget" placeholder="e.g., $1000-$2000/month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have any specific success criteria or KPIs you want to achieve?</label>
+                    <textarea name="success_criteria" placeholder="e.g., 100 qualified leads per month, 20% conversion rate"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Is there anything else you'd like us to know about your outbound calling needs?</label>
+                    <textarea name="additional_notes" placeholder="Any additional information that would help us serve you better"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Outbound Questionnaire</button>
+            </form>
+        </div>
+
+        <!-- Lead Generation -->
+        <div id="leadgen" class="form-section">
+            <form class="form-card">
+                <h2 class="section-title">Lead Generation System Questionnaire</h2>
+
+                <div class="question-group">
+                    <label class="question-label">Business Name <span class="required">*</span></label>
+                    <input type="text" name="business_name" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Contact Person <span class="required">*</span></label>
+                    <input type="text" name="contact_person" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Email <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Industry/Type of Business <span class="required">*</span></label>
+                    <input type="text" name="industry" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What product or service are you promoting?</label>
+                    <textarea name="product_service" placeholder="Describe what you're selling or promoting"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your primary lead generation goal? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="contact_info">
+                            Collect contact information
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="appointments">
+                            Schedule appointments/demos
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="qualify">
+                            Qualify prospects
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="education">
+                            Educate potential customers
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="sales">
+                            Direct sales
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_goals[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_lead_goals">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Who is your ideal customer/target audience?</label>
+                    <textarea name="target_audience" placeholder="Demographics, industry, company size, decision-makers, pain points, etc."></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What geographic areas are you targeting?</label>
+                    <input type="text" name="geographic_target" placeholder="e.g., Local, Regional, National, International">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How are you currently generating leads? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="website">
+                            Website forms
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="social">
+                            Social media ads
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="google">
+                            Google Ads
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="email">
+                            Email campaigns
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="events">
+                            Events/Trade shows
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="referrals">
+                            Referrals
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="cold_calling">
+                            Cold calling
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="none">
+                            None currently
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="current_methods[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_current_methods">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your current monthly lead volume?</label>
+                    <input type="text" name="current_lead_volume" placeholder="e.g., 50-100 leads per month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your target monthly lead volume?</label>
+                    <input type="text" name="target_lead_volume" placeholder="e.g., 200+ leads per month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your current lead-to-customer conversion rate (if known)?</label>
+                    <input type="text" name="conversion_rate" placeholder="e.g., 10%">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What AI-powered lead generation tools are you interested in? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="chatbot">
+                            AI chatbot on website
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="form">
+                            Smart lead capture forms
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="qualification">
+                            Automated lead qualification
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="outbound">
+                            AI-powered outbound calling
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="email">
+                            AI email campaigns
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="social">
+                            Social media automation
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="ads">
+                            AI ad optimization
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="ai_tools[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_ai_tools">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have a website where we can integrate lead generation tools?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_website" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_website" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, what is your website URL?</label>
+                    <input type="text" name="website_url" placeholder="https://www.example.com">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What platform is your website built on?</label>
+                    <input type="text" name="website_platform" placeholder="e.g., WordPress, Shopify, Custom, Wix, Squarespace">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What information do you want to collect from leads? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="name">
+                            Name
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="email">
+                            Email
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="phone">
+                            Phone number
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="company">
+                            Company name
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="title">
+                            Job title
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="industry">
+                            Industry
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="budget">
+                            Budget
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="timeline">
+                            Purchase timeline
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="needs">
+                            Specific needs/pain points
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="lead_info[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_lead_info">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What criteria qualify a lead as "hot" or ready for sales follow-up?</label>
+                    <textarea name="hot_lead_criteria" placeholder="e.g., requested demo, budget over $10k, decision-maker, immediate need"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What criteria disqualify a lead?</label>
+                    <textarea name="disqualify_criteria" placeholder="e.g., outside service area, no budget, competitor, not decision-maker"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you want the AI to automatically score/rank leads?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="auto_scoring" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="auto_scoring" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How quickly do you want to follow up with new leads? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="followup_speed" value="immediate" required>
+                            Immediately (real-time)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="followup_speed" value="15min">
+                            Within 15 minutes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="followup_speed" value="1hour">
+                            Within 1 hour
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="followup_speed" value="24hours">
+                            Within 24 hours
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="followup_speed" value="flexible">
+                            Flexible
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What should happen after a lead is captured? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="email_confirmation">
+                            Send automated email confirmation
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="sms">
+                            Send SMS confirmation
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="call">
+                            AI follow-up call
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="sales_notify">
+                            Notify sales team
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="crm">
+                            Add to CRM
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="nurture">
+                            Enter nurture campaign
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="post_capture[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_post_capture">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have email templates or messaging for lead follow-up?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="has_templates" value="yes">
+                            Yes (we will provide them)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="has_templates" value="no">
+                            No (we need help creating them)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need the lead generation system to integrate with your existing tools? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="crm">
+                            CRM (e.g., Salesforce, HubSpot, Zoho)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="email">
+                            Email marketing platform (e.g., Mailchimp, ActiveCampaign)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="calendar">
+                            Calendar/Scheduling tool (e.g., Calendly, Google Calendar)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="analytics">
+                            Analytics (e.g., Google Analytics)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="ads">
+                            Ad platforms (e.g., Google Ads, Facebook Ads)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="none">
+                            None
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="integrations[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_integrations">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Please provide names of specific tools/platforms:</label>
+                    <textarea name="integration_details" placeholder="e.g., HubSpot CRM, Mailchimp, Google Analytics"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your average customer lifetime value (if known)?</label>
+                    <input type="text" name="customer_lifetime_value" placeholder="e.g., $5,000">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your target cost per lead?</label>
+                    <input type="text" name="cost_per_lead" placeholder="e.g., $50">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your estimated monthly budget for lead generation?</label>
+                    <input type="text" name="monthly_budget" placeholder="e.g., $2,000-$5,000/month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What metrics are most important to track? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="lead_volume">
+                            Lead volume
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="lead_quality">
+                            Lead quality/score
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="conversion">
+                            Conversion rate
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="cost">
+                            Cost per lead
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="roi">
+                            ROI
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="source">
+                            Lead source performance
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="response_time">
+                            Response time
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="metrics[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_metrics">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like to receive lead generation reports?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="daily">
+                            Daily email summary
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="weekly">
+                            Weekly dashboard
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="realtime">
+                            Real-time dashboard access
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="monthly">
+                            Monthly executive report
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_delivery[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_report_delivery">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Who on your team will be responsible for managing/monitoring the lead generation system?</label>
+                    <input type="text" name="team_responsible" placeholder="e.g., Marketing Manager, Sales Team Lead">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you prefer a self-service platform or a fully managed solution? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="management_preference" value="self_service" required>
+                            Self-service (we manage it)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="management_preference" value="managed">
+                            Fully managed (you manage it for us)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="management_preference" value="hybrid">
+                            Hybrid (some of both)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there any compliance or legal requirements we should be aware of? (e.g., GDPR, CCPA, industry-specific regulations)</label>
+                    <textarea name="compliance" placeholder="List any compliance requirements"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">When would you like to launch your lead generation system? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="immediate" required>
+                            Immediate (within 2 weeks)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="1month">
+                            Within 1 month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="3months">
+                            Within 3 months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="launch_timeline" value="flexible">
+                            Flexible
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What does success look like for you in the first 90 days?</label>
+                    <textarea name="success_criteria" placeholder="e.g., 300 qualified leads, 10% conversion rate, positive ROI"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Is there anything else you'd like us to know about your lead generation needs or business?</label>
+                    <textarea name="additional_notes" placeholder="Any additional information that would help us serve you better"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Lead Generation Questionnaire</button>
+            </form>
+        </div>
+
+        <!-- Dashboard -->
+        <div id="dashboard" class="form-section">
+            <form class="form-card">
+                <h2 class="section-title">Custom Dashboard Questionnaire</h2>
+
+                <div class="question-group">
+                    <label class="question-label">Business Name <span class="required">*</span></label>
+                    <input type="text" name="business_name" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Contact Person <span class="required">*</span></label>
+                    <input type="text" name="contact_person" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Email <span class="required">*</span></label>
+                    <input type="email" name="email" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Phone Number <span class="required">*</span></label>
+                    <input type="tel" name="phone" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Industry/Type of Business <span class="required">*</span></label>
+                    <input type="text" name="industry" required>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is the primary purpose of this dashboard? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="performance">
+                            Track business performance
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="sales">
+                            Monitor sales metrics
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="marketing">
+                            Track marketing campaigns
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="operations">
+                            Operations/Project management
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="customer">
+                            Customer insights/analytics
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="financial">
+                            Financial reporting
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="dashboard_purpose[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_dashboard_purpose">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Who will be the primary users of this dashboard?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="executives">
+                            Executives/C-suite
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="managers">
+                            Managers
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="sales">
+                            Sales team
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="marketing">
+                            Marketing team
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="operations">
+                            Operations team
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="analysts">
+                            Data analysts
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="primary_users[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_primary_users">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What data sources need to be connected to the dashboard? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="crm">
+                            CRM (e.g., Salesforce, HubSpot)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="analytics">
+                            Website analytics (e.g., Google Analytics)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="ads">
+                            Advertising platforms (e.g., Google Ads, Facebook Ads)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="email">
+                            Email marketing (e.g., Mailchimp, Constant Contact)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="social">
+                            Social media platforms
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="ecommerce">
+                            E-commerce platform (e.g., Shopify, WooCommerce)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="accounting">
+                            Accounting software (e.g., QuickBooks, Xero)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="database">
+                            Internal database/spreadsheets
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="phone">
+                            Phone system (call data)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="data_sources[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_data_sources">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Please provide the specific names/brands of your tools:</label>
+                    <textarea name="tool_details" placeholder="e.g., Salesforce CRM, Google Analytics 4, Shopify, QuickBooks Online"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What are the most important metrics/KPIs you want to track? (Please rank in order of importance)</label>
+                    <table>
+                        <tr>
+                            <th>Metric/KPI</th>
+                            <th>Rank (1 = most important)</th>
+                        </tr>
+                        <tr>
+                            <td>Revenue/Sales</td>
+                            <td><input type="text" name="revenue_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Lead generation</td>
+                            <td><input type="text" name="leads_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Conversion rates</td>
+                            <td><input type="text" name="conversion_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Customer acquisition cost (CAC)</td>
+                            <td><input type="text" name="cac_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Customer lifetime value (CLV)</td>
+                            <td><input type="text" name="clv_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Marketing ROI</td>
+                            <td><input type="text" name="roi_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Website traffic</td>
+                            <td><input type="text" name="traffic_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Social media engagement</td>
+                            <td><input type="text" name="social_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Customer satisfaction/NPS</td>
+                            <td><input type="text" name="satisfaction_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Email campaign performance</td>
+                            <td><input type="text" name="email_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Sales pipeline/forecast</td>
+                            <td><input type="text" name="pipeline_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Inventory/Stock levels</td>
+                            <td><input type="text" name="inventory_rank"></td>
+                        </tr>
+                        <tr>
+                            <td>Other (specify below)</td>
+                            <td><input type="text" name="other_metric_rank"></td>
+                        </tr>
+                    </table>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_metrics">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there any custom metrics or calculations you need?</label>
+                    <textarea name="custom_metrics" placeholder="e.g., custom profitability formula, industry-specific KPIs"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How would you like data to be visualized? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="charts">
+                            Charts/Graphs (line, bar, pie)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="tables">
+                            Tables
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="gauges">
+                            Gauges/Meters
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="heatmaps">
+                            Heatmaps
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="maps">
+                            Geographic maps
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="trends">
+                            Trend indicators
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="cards">
+                            Summary cards/KPI cards
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="visualization[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_visualization">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you prefer a light or dark theme for the dashboard?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="theme" value="light">
+                            Light theme
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme" value="dark">
+                            Dark theme
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme" value="branded">
+                            Match our brand colors
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="theme" value="no_preference">
+                            No preference
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If brand colors, what are your primary brand colors?</label>
+                    <input type="text" name="brand_colors" placeholder="e.g., #B46A4C, #F7F4EF">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How many user accounts/seats do you need?</label>
+                    <input type="text" name="user_accounts" placeholder="e.g., 5-10 users">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need different permission levels or user roles? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="user_roles" value="yes" required>
+                            Yes (specify below)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="user_roles" value="no">
+                            No, all users see the same thing
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, describe the different roles and what each should access:</label>
+                    <textarea name="role_details" placeholder="e.g., Admins see everything, Sales team only sees sales data, Executives see summary reports"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need real-time data or is daily/weekly updates sufficient? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="data_frequency" value="realtime" required>
+                            Real-time (live data)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="data_frequency" value="hourly">
+                            Hourly updates
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="data_frequency" value="daily">
+                            Daily updates
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="data_frequency" value="weekly">
+                            Weekly updates
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What time period should the dashboard display by default? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="today" required>
+                            Today
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="week">
+                            This week
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="month">
+                            This month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="quarter">
+                            This quarter
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="year">
+                            This year
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="default_period" value="custom">
+                            Custom range
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need the ability to filter or drill down into data?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="drill_down" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="drill_down" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, what filters are most important? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="date">
+                            Date range
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="location">
+                            Location/Region
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="product">
+                            Product/Service
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="customer">
+                            Customer segment
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="campaign">
+                            Marketing campaign
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="team">
+                            Team/Department
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="filters[]" value="other">
+                            Other (specify below)
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If "Other," please specify:</label>
+                    <input type="text" name="other_filters">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you want automated alerts or notifications? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="alerts" value="yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="alerts" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, what should trigger an alert?</label>
+                    <textarea name="alert_triggers" placeholder="e.g., Sales drop below $10k/day, website traffic spike, negative reviews"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">How should alerts be delivered? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="alert_delivery[]" value="email">
+                            Email
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="alert_delivery[]" value="sms">
+                            SMS/Text message
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="alert_delivery[]" value="push">
+                            Push notification
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="alert_delivery[]" value="dashboard">
+                            In-dashboard notification
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="alert_delivery[]" value="slack">
+                            Slack/Teams integration
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need the ability to export data or reports? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="export" value="yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="export" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, what formats do you need? (Select all that apply)</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="export_formats[]" value="pdf">
+                            PDF
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="export_formats[]" value="excel">
+                            Excel/CSV
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="export_formats[]" value="image">
+                            Image (PNG/JPG)
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="export_formats[]" value="ppt">
+                            PowerPoint
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need scheduled reports to be automatically sent? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="scheduled_reports" value="yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="scheduled_reports" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, how often?</label>
+                    <div class="checkbox-group">
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_frequency[]" value="daily">
+                            Daily
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_frequency[]" value="weekly">
+                            Weekly
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_frequency[]" value="monthly">
+                            Monthly
+                        </label>
+                        <label class="checkbox-option">
+                            <input type="checkbox" name="report_frequency[]" value="quarterly">
+                            Quarterly
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need mobile access to the dashboard? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="mobile_access" value="yes" required>
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="mobile_access" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">If yes, do you prefer a mobile app or mobile-responsive web dashboard?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="mobile_type" value="app">
+                            Mobile app (iOS/Android)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="mobile_type" value="web">
+                            Mobile-responsive web
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="mobile_type" value="either">
+                            Either is fine
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Are there any specific security or compliance requirements? (e.g., GDPR, HIPAA, SOC 2)</label>
+                    <textarea name="security_requirements" placeholder="List any security or compliance requirements"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you need single sign-on (SSO) integration?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="sso" value="yes">
+                            Yes
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="sso" value="no">
+                            No
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">When would you like the dashboard to be ready? <span class="required">*</span></label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="immediate" required>
+                            Immediate (within 2 weeks)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="1month">
+                            Within 1 month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="3months">
+                            Within 3 months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timeline" value="flexible">
+                            Flexible
+                        </label>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">What is your estimated budget for dashboard development and maintenance?</label>
+                    <input type="text" name="budget" placeholder="e.g., $3,000 setup + $200/month">
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Do you have any examples or inspiration of dashboards you like?</label>
+                    <textarea name="inspiration" placeholder="Share links or describe dashboard designs you find effective"></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">Is there anything else you'd like us to know about your dashboard needs?</label>
+                    <textarea name="additional_notes" placeholder="Any additional information that would help us create the perfect dashboard for you"></textarea>
+                </div>
+
+                <button type="submit" class="submit-button">Submit Dashboard Questionnaire</button>
+            </form>
+        </div>
+    </div>
 
     <script>
-        // Tab switching
-        document.querySelectorAll('.tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                // Remove active class from all tabs and contents
-                document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-                document.querySelectorAll('.form-content').forEach(c => c.classList.remove('active'));
+        function showSection(sectionId) {
+            // Hide all sections
+            const sections = document.querySelectorAll('.form-section');
+            sections.forEach(section => section.classList.remove('active'));
 
-                // Add active class to clicked tab
-                this.classList.add('active');
+            // Remove active class from all tabs
+            const tabs = document.querySelectorAll('.tab');
+            tabs.forEach(tab => tab.classList.remove('active'));
 
-                // Show corresponding content
-                const tabName = this.getAttribute('data-tab');
-                document.getElementById(tabName + '-content').classList.add('active');
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+
+            // Add active class to clicked tab
+            event.target.classList.add('active');
+
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Load saved data for the new section
+            loadFormData(sectionId);
+        }
+
+        // Auto-save functionality
+        function getFormKey(sectionId) {
+            return `questionnaire_${sectionId}_data`;
+        }
+
+        function saveFormData(form) {
+            const sectionId = form.closest('.form-section').id;
+            const formData = new FormData(form);
+            const data = {};
+
+            formData.forEach((value, key) => {
+                if (data[key]) {
+                    if (Array.isArray(data[key])) {
+                        data[key].push(value);
+                    } else {
+                        data[key] = [data[key], value];
+                    }
+                } else {
+                    data[key] = value;
+                }
+            });
+
+            localStorage.setItem(getFormKey(sectionId), JSON.stringify(data));
+            console.log('Auto-saved:', sectionId);
+        }
+
+        function loadFormData(sectionId) {
+            const savedData = localStorage.getItem(getFormKey(sectionId));
+            if (!savedData) return;
+
+            try {
+                const data = JSON.parse(savedData);
+                const form = document.querySelector(`#${sectionId} form`);
+                if (!form) return;
+
+                // Restore form values
+                Object.keys(data).forEach(key => {
+                    const value = data[key];
+                    const elements = form.querySelectorAll(`[name="${key}"]`);
+
+                    elements.forEach(element => {
+                        if (element.type === 'checkbox' || element.type === 'radio') {
+                            if (Array.isArray(value)) {
+                                element.checked = value.includes(element.value);
+                            } else {
+                                element.checked = element.value === value;
+                            }
+                        } else {
+                            element.value = Array.isArray(value) ? value[0] : value;
+                        }
+                    });
+                });
+
+                console.log('Loaded saved data for:', sectionId);
+            } catch (error) {
+                console.error('Error loading saved data:', error);
+            }
+        }
+
+        // Initialize auto-save for all forms
+        document.querySelectorAll('form').forEach(form => {
+            // Auto-save on input change
+            form.addEventListener('input', function() {
+                saveFormData(this);
+            });
+
+            // Auto-save on checkbox/radio change
+            form.addEventListener('change', function() {
+                saveFormData(this);
+            });
+
+            // Handle form submission
+            form.addEventListener('submit', async function(e) {
+                e.preventDefault();
+
+                const sectionId = this.closest('.form-section').id;
+                const formData = new FormData(this);
+                const data = {};
+
+                formData.forEach((value, key) => {
+                    if (data[key]) {
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                });
+
+                // Determine form type
+                let formType = '';
+                if (sectionId === 'inbound') formType = 'Inbound AI System';
+                else if (sectionId === 'outbound') formType = 'Outbound AI System';
+                else if (sectionId === 'leadgen') formType = 'Lead Generation';
+                else if (sectionId === 'dashboard') formType = 'Dashboard';
+
+                // Prepare email body
+                let emailBody = `New ${formType} Questionnaire Submission\n\n`;
+                emailBody += `Submitted: ${new Date().toLocaleString()}\n`;
+                emailBody += `Form Type: ${formType}\n\n`;
+                emailBody += '='.repeat(50) + '\n\n';
+
+                Object.keys(data).forEach(key => {
+                    const value = data[key];
+                    const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
+                    const formattedValue = Array.isArray(value) ? value.join(', ') : value;
+                    emailBody += `${formattedKey}:\n${formattedValue}\n\n`;
+                });
+
+                console.log('Form submitted:', data);
+
+                // Send email using FormSubmit.co (free service)
+                try {
+                    const emailData = {
+                        to: 'sheikhshessi@gmail.com',
+                        subject: `${formType} Questionnaire - ${data.business_name || 'New Submission'}`,
+                        message: emailBody
+                    };
+
+                    // Create a temporary form to submit via FormSubmit
+                    const tempForm = document.createElement('form');
+                    tempForm.method = 'POST';
+                    tempForm.action = 'https://formsubmit.co/sheikhshessi@gmail.com';
+                    tempForm.style.display = 'none';
+
+                    // Add form fields
+                    const subjectInput = document.createElement('input');
+                    subjectInput.type = 'hidden';
+                    subjectInput.name = '_subject';
+                    subjectInput.value = `${formType} Questionnaire - ${data.business_name || 'New Submission'}`;
+                    tempForm.appendChild(subjectInput);
+
+                    const messageInput = document.createElement('input');
+                    messageInput.type = 'hidden';
+                    messageInput.name = 'message';
+                    messageInput.value = emailBody;
+                    tempForm.appendChild(messageInput);
+
+                    // Add all form data as hidden fields
+                    Object.keys(data).forEach(key => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = key;
+                        input.value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
+                        tempForm.appendChild(input);
+                    });
+
+                    // Add FormSubmit configuration
+                    const captchaInput = document.createElement('input');
+                    captchaInput.type = 'hidden';
+                    captchaInput.name = '_captcha';
+                    captchaInput.value = 'false';
+                    tempForm.appendChild(captchaInput);
+
+                    document.body.appendChild(tempForm);
+                    tempForm.submit();
+
+                    // Show success message
+                    alert('Thank you for completing the questionnaire! We will review your responses and get back to you shortly.');
+
+                    // Clear saved data
+                    localStorage.removeItem(getFormKey(sectionId));
+
+                    // Reset form
+                    this.reset();
+                } catch (error) {
+                    console.error('Error submitting form:', error);
+                    alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com');
+                }
             });
         });
 
-        // Progress tracking
-        function updateProgress() {
-            // This would track actual form completion
-            const progress = 12.5; // Example: 1 of 8 sections
-            document.getElementById('progressFill').style.width = progress + '%';
-        }
-
-        function nextSection() {
-            // Navigate to next section
-            alert('Form navigation will be implemented with full form structure');
-        }
-
-        // Priority button interactions
-        document.addEventListener('click', function(e) {
-            if (e.target.classList.contains('priority-btn')) {
-                const container = e.target.parentElement;
-                container.querySelectorAll('.priority-btn').forEach(btn => {
-                    btn.classList.remove('selected');
-                });
-                e.target.classList.add('selected');
-            }
-        });
-
-        // Auto-save progress (optional)
-        let autoSaveTimer;
-        document.getElementById('questionnaireForm').addEventListener('input', function() {
-            clearTimeout(autoSaveTimer);
-            autoSaveTimer = setTimeout(() => {
-                console.log('Auto-saving form data...');
-                // Save to localStorage or backend
-            }, 2000);
+        // Load saved data for the initial section (inbound)
+        window.addEventListener('DOMContentLoaded', function() {
+            loadFormData('inbound');
         });
     </script>
 </body>
