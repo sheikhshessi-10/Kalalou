@@ -502,81 +502,78 @@
 
         <!-- INBOUND AI SYSTEM FORM -->
         <form id="inboundForm" class="form-container">
-            <!-- Section 1: Business Overview -->
+            <!-- SECTION 1: CALL VOLUME & PATTERNS -->
             <div class="section active" data-section="1">
-                <h2 class="section-title">Section 1: Business Overview</h2>
+                <h2 class="section-title">SECTION 1: CALL VOLUME &amp; PATTERNS</h2>
 
                 <div class="form-group">
-                    <label class="form-label">Company Name *</label>
-                    <input type="text" class="form-input" name="company_name" required>
+                    <span class="form-hint">Your progress is saved automatically as you type.</span>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Industry *</label>
-                    <input type="text" class="form-input" name="industry" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Company Size *</label>
+                    <label class="form-label">1.1 Current inbound call volume (approximately): How many inbound calls do you receive per month?</label>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="company_size" value="1-10" required>
-                            <span>1-10 employees</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="company_size" value="11-50">
-                            <span>11-50 employees</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="company_size" value="51-200">
-                            <span>51-200 employees</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="company_size" value="201-500">
-                            <span>201-500 employees</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="company_size" value="500+">
-                            <span>500+ employees</span>
-                        </label>
+                        <label class="radio-label"><input type="radio" name="s1_1_calls_per_month_range" value="500-1000"><span>500-1,000</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_1_calls_per_month_range" value="1000-1500"><span>1,000-1,500</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_1_calls_per_month_range" value="1500-2500"><span>1,500-2,500</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_1_calls_per_month_range" value="2500+"><span>2,500+</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_1_calls_per_month_range" value="not_sure"><span>Not sure (we'll help you track this)</span></label>
                     </div>
+                    <span class="form-hint">If you have data, exact number:</span>
+                    <input type="number" class="form-input" name="s1_1_calls_per_month_exact" placeholder="calls/month" min="0">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Current customer service channels *</label>
-                    <span class="form-hint">Select all that apply</span>
+                    <label class="form-label">1.2 Caller breakdown (estimate %): Who's calling you?</label>
+                    <table>
+                        <thead>
+                            <tr><th>Caller Type</th><th>Percentage</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Existing customers</td><td><input type="number" name="s1_2_existing_customers_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>New prospects</td><td><input type="number" name="s1_2_new_prospects_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Vendors/suppliers</td><td><input type="number" name="s1_2_vendors_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Other</td><td><input type="number" name="s1_2_other_pct" min="0" max="100" placeholder="%"></td></tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">1.3 When do most calls come in? (check all that apply)</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="channels" value="phone">
-                            <span>Phone</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="channels" value="email">
-                            <span>Email</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="channels" value="chat">
-                            <span>Live Chat</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="channels" value="social">
-                            <span>Social Media</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="channels" value="other">
-                            <span>Other</span>
-                        </label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="business_hours"><span>Business hours (9am-5pm CST)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="early_morning"><span>Early morning (7am-9am)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="late_afternoon_evening"><span>Late afternoon/evening (5pm-8pm)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="after_hours"><span>After business hours (8pm-7am)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="weekends"><span>Weekends</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s1_3_call_times" value="evenly_distributed"><span>Calls are distributed fairly evenly throughout the day</span></label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Average daily call volume *</label>
-                    <input type="number" class="form-input" name="call_volume" min="0" required>
+                    <label class="form-label">1.4 Missed calls: How many calls do you estimate you MISS per month? (After hours, busy lines, holidays, etc.)</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="lt_10"><span>Less than 10/month</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="10_50"><span>10-50/month</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="50_150"><span>50-150/month</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="150_300"><span>150-300/month</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="300+"><span>300+/month</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_4_missed_calls_range" value="unknown"><span>We don't know</span></label>
+                    </div>
+                    <span class="form-hint">If you have data, estimate:</span>
+                    <input type="number" class="form-input" name="s1_4_missed_calls_exact" placeholder="missed calls/month" min="0">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Primary business goals *</label>
-                    <textarea class="form-textarea" name="business_goals" required></textarea>
+                    <label class="form-label">1.5 Current after-hours process: What happens when someone calls after business hours?</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s1_5_after_hours_process" value="voicemail"><span>Voicemail (we call back next business day)</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_5_after_hours_process" value="no_system"><span>No system (calls just ring, no voicemail)</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_5_after_hours_process" value="answering_service"><span>Answering service (live person)</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_5_after_hours_process" value="automated_system"><span>Automated system (press 1 for..., etc.)</span></label>
+                        <label class="radio-label"><input type="radio" name="s1_5_after_hours_process" value="other"><span>Other</span></label>
+                    </div>
+                    <input type="text" class="form-input" name="s1_5_after_hours_other" placeholder="If other, describe...">
                 </div>
 
                 <div class="nav-buttons">
@@ -585,214 +582,58 @@
                 </div>
             </div>
 
-            <!-- Section 2: Call Handling Requirements -->
+            <!-- SECTION 2: CALL TYPES & DISTRIBUTION -->
             <div class="section" data-section="2">
-                <h2 class="section-title">Section 2: Call Handling Requirements</h2>
+                <h2 class="section-title">SECTION 2: CALL TYPES &amp; DISTRIBUTION</h2>
 
                 <div class="form-group">
-                    <label class="form-label">What types of calls do you receive most frequently? *</label>
-                    <span class="form-hint">Select all that apply</span>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="general_inquiry">
-                            <span>General inquiries</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="support">
-                            <span>Technical support</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="sales">
-                            <span>Sales inquiries</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="billing">
-                            <span>Billing questions</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="appointments">
-                            <span>Appointment scheduling</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="call_types" value="complaints">
-                            <span>Complaints/Issues</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Average call duration *</label>
-                    <select class="form-select" name="call_duration" required>
-                        <option value="">Select duration</option>
-                        <option value="under_2">Under 2 minutes</option>
-                        <option value="2_5">2-5 minutes</option>
-                        <option value="5_10">5-10 minutes</option>
-                        <option value="10_20">10-20 minutes</option>
-                        <option value="over_20">Over 20 minutes</option>
-                    </select>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Peak call hours *</label>
-                    <span class="form-hint">Select all that apply</span>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="peak_hours" value="morning">
-                            <span>Morning (6am-12pm)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="peak_hours" value="afternoon">
-                            <span>Afternoon (12pm-5pm)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="peak_hours" value="evening">
-                            <span>Evening (5pm-10pm)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="peak_hours" value="night">
-                            <span>Night (10pm-6am)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Do you need 24/7 call coverage? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="24_7_coverage" value="yes" required>
-                            <span>Yes</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="24_7_coverage" value="no">
-                            <span>No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">What percentage of calls could be handled by AI? *</label>
-                    <input type="text" class="form-input" name="ai_handling_percentage" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Describe your ideal call handling process</label>
-                    <textarea class="form-textarea" name="ideal_call_process"></textarea>
-                </div>
-
-                <div class="nav-buttons">
-                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
-                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
-                </div>
-            </div>
-
-            <!-- Section 3: AI Capabilities & Features -->
-            <div class="section" data-section="3">
-                <h2 class="section-title">Section 3: AI Capabilities & Features</h2>
-
-                <div class="form-group">
-                    <label class="form-label">What AI capabilities are most important to you? *</label>
-                    <span class="form-hint">Rank from 1 (most important) to 5 (least important)</span>
+                    <label class="form-label">2.1 What are customers calling about? Rank top call types (1 = most common, 10 = least common) and estimate percentage.</label>
+                    <span class="form-hint">Percentages don't need to add to 100% — rough estimates are fine.</span>
                     <table>
                         <thead>
                             <tr>
-                                <th>Capability</th>
-                                <th>Ranking (1-5)</th>
+                                <th>Call Type</th>
+                                <th>Rank (1-10)</th>
+                                <th>% of Total</th>
                             </tr>
                         </thead>
                         <tbody>
+                            <tr><td>Product information/specifications</td><td><input type="number" name="s2_1_product_info_rank" min="1" max="10"></td><td><input type="number" name="s2_1_product_info_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Pricing inquiries</td><td><input type="number" name="s2_1_pricing_rank" min="1" max="10"></td><td><input type="number" name="s2_1_pricing_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Order status/tracking</td><td><input type="number" name="s2_1_order_status_rank" min="1" max="10"></td><td><input type="number" name="s2_1_order_status_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Inventory availability ("Do you have X in stock?")</td><td><input type="number" name="s2_1_inventory_rank" min="1" max="10"></td><td><input type="number" name="s2_1_inventory_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Account questions (login, payment terms, etc.)</td><td><input type="number" name="s2_1_account_rank" min="1" max="10"></td><td><input type="number" name="s2_1_account_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>New customer inquiry (requesting catalog)</td><td><input type="number" name="s2_1_new_customer_rank" min="1" max="10"></td><td><input type="number" name="s2_1_new_customer_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Placing an order</td><td><input type="number" name="s2_1_place_order_rank" min="1" max="10"></td><td><input type="number" name="s2_1_place_order_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Returns/complaints/issues</td><td><input type="number" name="s2_1_returns_rank" min="1" max="10"></td><td><input type="number" name="s2_1_returns_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr><td>Shipping information</td><td><input type="number" name="s2_1_shipping_rank" min="1" max="10"></td><td><input type="number" name="s2_1_shipping_pct" min="0" max="100" placeholder="%"></td></tr>
                             <tr>
-                                <td>Natural conversation flow</td>
-                                <td><input type="number" name="rank_conversation" min="1" max="5"></td>
-                            </tr>
-                            <tr>
-                                <td>Multi-language support</td>
-                                <td><input type="number" name="rank_language" min="1" max="5"></td>
-                            </tr>
-                            <tr>
-                                <td>Sentiment analysis</td>
-                                <td><input type="number" name="rank_sentiment" min="1" max="5"></td>
-                            </tr>
-                            <tr>
-                                <td>Call transcription</td>
-                                <td><input type="number" name="rank_transcription" min="1" max="5"></td>
-                            </tr>
-                            <tr>
-                                <td>Automated follow-ups</td>
-                                <td><input type="number" name="rank_followups" min="1" max="5"></td>
+                                <td>Other: <input type="text" name="s2_1_other_label" placeholder="Describe..."></td>
+                                <td><input type="number" name="s2_1_other_rank" min="1" max="10"></td>
+                                <td><input type="number" name="s2_1_other_pct" min="0" max="100" placeholder="%"></td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Should the AI voice sound? *</label>
+                    <label class="form-label">2.2 Information requirements: What percentage of calls can be answered with general product knowledge (no customer-specific data needed)?</label>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="voice_type" value="professional" required>
-                            <span>Professional and formal</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="voice_type" value="friendly">
-                            <span>Friendly and casual</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="voice_type" value="neutral">
-                            <span>Neutral and balanced</span>
-                        </label>
+                        <label class="radio-label"><input type="radio" name="s2_2_general_knowledge_pct" value="0-25"><span>0-25% (most calls need account lookup)</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_2_general_knowledge_pct" value="25-50"><span>25-50%</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_2_general_knowledge_pct" value="50-75"><span>50-75%</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_2_general_knowledge_pct" value="75-100"><span>75-100% (most are general questions)</span></label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Preferred voice gender *</label>
+                    <label class="form-label">2.3 Customer-specific lookups: What percentage of calls require looking up customer-specific information (order history, account status, tracking, etc.)?</label>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="voice_gender" value="male" required>
-                            <span>Male</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="voice_gender" value="female">
-                            <span>Female</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="voice_gender" value="neutral">
-                            <span>Neutral/No preference</span>
-                        </label>
+                        <label class="radio-label"><input type="radio" name="s2_3_customer_lookup_pct" value="0-25"><span>0-25%</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_3_customer_lookup_pct" value="25-50"><span>25-50%</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_3_customer_lookup_pct" value="50-75"><span>50-75%</span></label>
+                        <label class="radio-label"><input type="radio" name="s2_3_customer_lookup_pct" value="75-100"><span>75-100%</span></label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">What languages should the AI support? *</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="english">
-                            <span>English</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="spanish">
-                            <span>Spanish</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="french">
-                            <span>French</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="german">
-                            <span>German</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="chinese">
-                            <span>Chinese</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="languages" value="other">
-                            <span>Other (specify in notes)</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Additional feature requirements</label>
-                    <textarea class="form-textarea" name="additional_features"></textarea>
                 </div>
 
                 <div class="nav-buttons">
@@ -801,97 +642,134 @@
                 </div>
             </div>
 
-            <!-- Section 4: Integration Requirements -->
+            <!-- SECTION 3: AI CAPABILITIES REQUIRED -->
+            <div class="section" data-section="3">
+                <h2 class="section-title">SECTION 3: AI CAPABILITIES REQUIRED</h2>
+
+                <div class="form-group">
+                    <label class="form-label">3.1 Order taking — should AI handle this? (mark priority)</label>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Capability</th>
+                                <th>✅</th>
+                                <th>⭐</th>
+                                <th>❌</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Take simple repeat orders (customer knows item numbers)</td><td><input type="radio" name="s3_1_repeat_orders" value="must"></td><td><input type="radio" name="s3_1_repeat_orders" value="nice"></td><td><input type="radio" name="s3_1_repeat_orders" value="no"></td></tr>
+                            <tr><td>Take new orders (customer browsing, asking questions)</td><td><input type="radio" name="s3_1_new_orders" value="must"></td><td><input type="radio" name="s3_1_new_orders" value="nice"></td><td><input type="radio" name="s3_1_new_orders" value="no"></td></tr>
+                            <tr><td>Process payment information over phone</td><td><input type="radio" name="s3_1_phone_payments" value="must"></td><td><input type="radio" name="s3_1_phone_payments" value="nice"></td><td><input type="radio" name="s3_1_phone_payments" value="no"></td></tr>
+                            <tr><td>Collect order details and email to sales team</td><td><input type="radio" name="s3_1_email_order_details" value="must"></td><td><input type="radio" name="s3_1_email_order_details" value="nice"></td><td><input type="radio" name="s3_1_email_order_details" value="no"></td></tr>
+                            <tr><td>Don't take orders at all (transfer to sales)</td><td><input type="radio" name="s3_1_no_orders_transfer" value="must"></td><td><input type="radio" name="s3_1_no_orders_transfer" value="nice"></td><td><input type="radio" name="s3_1_no_orders_transfer" value="no"></td></tr>
+                        </tbody>
+                    </table>
+                    <span class="form-hint">Your preferred approach:</span>
+                    <input type="text" class="form-input" name="s3_1_preferred_approach" placeholder="Describe your ideal order-taking approach...">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3.2 Inventory checking: Should AI be able to check real-time inventory/stock levels?</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s3_2_inventory_checking" value="must"><span>✅ MUST-HAVE</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_2_inventory_checking" value="nice"><span>⭐ NICE-TO-HAVE</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_2_inventory_checking" value="no"><span>❌ NOT NEEDED</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3.3 Order status lookup: Should AI be able to look up order status and tracking information?</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s3_3_order_status_lookup" value="must"><span>✅ MUST-HAVE</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_3_order_status_lookup" value="nice"><span>⭐ NICE-TO-HAVE</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_3_order_status_lookup" value="no"><span>❌ NOT NEEDED</span></label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">3.4 Call transfers: Should AI be able to transfer calls to your sales team?</label>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s3_4_call_transfers" value="yes"><span>Yes, transfer for complex questions or when customer requests human</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_4_call_transfers" value="specific"><span>Only for very specific situations</span></label>
+                        <label class="radio-label"><input type="radio" name="s3_4_call_transfers" value="no"><span>No, AI should handle everything or take a message for callback</span></label>
+                    </div>
+                    <input type="text" class="form-input" name="s3_4_transfer_specific_situations" placeholder="If specific situations, specify...">
+
+                    <span class="form-hint">If yes, who should receive transfers?</span>
+                    <div class="checkbox-group">
+                        <label class="checkbox-label"><input type="checkbox" name="s3_4_transfer_routing" value="general_sales"><span>General sales line</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s3_4_transfer_routing" value="specific_rep"><span>Specific rep based on customer account</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s3_4_transfer_routing" value="by_call_type"><span>Different reps based on call type (new vs. existing customer)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s3_4_transfer_routing" value="other"><span>Other approach</span></label>
+                    </div>
+                    <input type="tel" class="form-input" name="s3_4_general_sales_number" placeholder="General sales line phone number (if applicable)">
+                    <input type="text" class="form-input" name="s3_4_transfer_other_approach" placeholder="Other approach (if applicable)">
+                </div>
+
+                <div class="nav-buttons">
+                    <button type="button" class="btn btn-secondary" onclick="previousSection('inbound')">Previous</button>
+                    <button type="button" class="btn btn-primary" onclick="nextSection('inbound')">Next</button>
+                </div>
+            </div>
+
+            <!-- SECTION 4: SYSTEM INTEGRATIONS -->
             <div class="section" data-section="4">
-                <h2 class="section-title">Section 4: Integration Requirements</h2>
+                <h2 class="section-title">SECTION 4: SYSTEM INTEGRATIONS</h2>
 
                 <div class="form-group">
-                    <label class="form-label">Current phone system *</label>
-                    <input type="text" class="form-input" name="phone_system" placeholder="e.g., RingCentral, Vonage, etc." required>
+                    <label class="form-label">4.1 Which systems need to be integrated? (mark priority)</label>
+                    <table>
+                        <thead>
+                            <tr><th>System Integration</th><th>✅</th><th>⭐</th><th>❌</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>NetSuite - Read customer data (account info, contact details)</td><td><input type="radio" name="s4_1_netsuite_customer_data" value="must"></td><td><input type="radio" name="s4_1_netsuite_customer_data" value="nice"></td><td><input type="radio" name="s4_1_netsuite_customer_data" value="no"></td></tr>
+                            <tr><td>NetSuite - Read order history (past purchases, dates)</td><td><input type="radio" name="s4_1_netsuite_order_history" value="must"></td><td><input type="radio" name="s4_1_netsuite_order_history" value="nice"></td><td><input type="radio" name="s4_1_netsuite_order_history" value="no"></td></tr>
+                            <tr><td>NetSuite - Check inventory levels (real-time stock)</td><td><input type="radio" name="s4_1_netsuite_inventory" value="must"></td><td><input type="radio" name="s4_1_netsuite_inventory" value="nice"></td><td><input type="radio" name="s4_1_netsuite_inventory" value="no"></td></tr>
+                            <tr><td>NetSuite - Create new orders (AI places order in system)</td><td><input type="radio" name="s4_1_netsuite_create_orders" value="must"></td><td><input type="radio" name="s4_1_netsuite_create_orders" value="nice"></td><td><input type="radio" name="s4_1_netsuite_create_orders" value="no"></td></tr>
+                            <tr><td>Magento - Product catalog/information</td><td><input type="radio" name="s4_1_magento_catalog" value="must"></td><td><input type="radio" name="s4_1_magento_catalog" value="nice"></td><td><input type="radio" name="s4_1_magento_catalog" value="no"></td></tr>
+                            <tr><td>Magento - Pricing information (wholesale tiers)</td><td><input type="radio" name="s4_1_magento_pricing" value="must"></td><td><input type="radio" name="s4_1_magento_pricing" value="nice"></td><td><input type="radio" name="s4_1_magento_pricing" value="no"></td></tr>
+                            <tr><td>Email system - Send confirmations/follow-ups</td><td><input type="radio" name="s4_1_email_system" value="must"></td><td><input type="radio" name="s4_1_email_system" value="nice"></td><td><input type="radio" name="s4_1_email_system" value="no"></td></tr>
+                            <tr><td>Calendar system - Schedule callbacks (Google/Outlook)</td><td><input type="radio" name="s4_1_calendar_system" value="must"></td><td><input type="radio" name="s4_1_calendar_system" value="nice"></td><td><input type="radio" name="s4_1_calendar_system" value="no"></td></tr>
+                            <tr>
+                                <td>Other: <input type="text" name="s4_1_other_system_label" placeholder="System name..."></td>
+                                <td><input type="radio" name="s4_1_other_system" value="must"></td>
+                                <td><input type="radio" name="s4_1_other_system" value="nice"></td>
+                                <td><input type="radio" name="s4_1_other_system" value="no"></td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">CRM system *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="salesforce" required>
-                            <span>Salesforce</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="hubspot">
-                            <span>HubSpot</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="zoho">
-                            <span>Zoho</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="pipedrive">
-                            <span>Pipedrive</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="custom">
-                            <span>Custom/Other</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="crm_system" value="none">
-                            <span>No CRM currently</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Other systems to integrate with *</label>
-                    <span class="form-hint">Select all that apply</span>
+                    <label class="form-label">4.2 Can you provide us with:</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="calendar">
-                            <span>Calendar system (Google Calendar, Outlook, etc.)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="ticketing">
-                            <span>Ticketing system (Zendesk, Freshdesk, etc.)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="payment">
-                            <span>Payment processing</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="inventory">
-                            <span>Inventory management</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="erp">
-                            <span>ERP system</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="integrations" value="slack">
-                            <span>Slack/Teams</span>
-                        </label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="netsuite_api"><span>NetSuite API credentials (read-only to start)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="magento_api"><span>Magento API credentials (read-only to start)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="catalog_export"><span>Product catalog export (CSV/Excel/PDF)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="sample_orders"><span>Sample order data (anonymized for testing)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="it_help"><span>We'll need IT help to set this up</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s4_2_resources" value="not_sure"><span>Not sure - let's discuss on our call</span></label>
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Do you have API access to your current systems? *</label>
+                    <label class="form-label">4.3 System administration: Who manages your NetSuite and Magento systems?</label>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="api_access" value="yes" required>
-                            <span>Yes</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="api_access" value="no">
-                            <span>No</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="api_access" value="unsure">
-                            <span>Not sure</span>
-                        </label>
+                        <label class="radio-label"><input type="radio" name="s4_3_system_admin" value="internal_it"><span>Internal IT team</span></label>
+                        <label class="radio-label"><input type="radio" name="s4_3_system_admin" value="external_consultant"><span>External consultant/agency</span></label>
+                        <label class="radio-label"><input type="radio" name="s4_3_system_admin" value="self_managed"><span>We manage it ourselves</span></label>
+                        <label class="radio-label"><input type="radio" name="s4_3_system_admin" value="combination"><span>Combination</span></label>
+                        <label class="radio-label"><input type="radio" name="s4_3_system_admin" value="not_sure"><span>Not sure - we'll find out</span></label>
                     </div>
-                </div>
+                    <input type="text" class="form-input" name="s4_3_external_agency" placeholder="If external consultant/agency, name...">
+                    <input type="text" class="form-input" name="s4_3_combination_details" placeholder="If combination, specify...">
 
-                <div class="form-group">
-                    <label class="form-label">Data synchronization requirements</label>
-                    <textarea class="form-textarea" name="data_sync" placeholder="Describe how data should flow between systems"></textarea>
+                    <span class="form-hint">Primary contact for technical setup:</span>
+                    <input type="text" class="form-input" name="s4_3_tech_contact_name" placeholder="Name">
+                    <input type="text" class="form-input" name="s4_3_tech_contact_role" placeholder="Role">
+                    <input type="email" class="form-input" name="s4_3_tech_contact_email" placeholder="Email">
                 </div>
 
                 <div class="nav-buttons">
@@ -900,84 +778,34 @@
                 </div>
             </div>
 
-            <!-- Section 5: Call Routing & Escalation -->
+            <!-- SECTION 5: SUCCESS METRICS -->
             <div class="section" data-section="5">
-                <h2 class="section-title">Section 5: Call Routing & Escalation</h2>
+                <h2 class="section-title">SECTION 5: SUCCESS METRICS</h2>
 
                 <div class="form-group">
-                    <label class="form-label">When should calls be escalated to a human agent? *</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="customer_request">
-                            <span>Customer requests human agent</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="complex_issue">
-                            <span>Complex technical issues</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="angry_customer">
-                            <span>Angry or frustrated customer</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="authorization">
-                            <span>Authorization/approval needed</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="high_value">
-                            <span>High-value customer/transaction</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="escalation_triggers" value="ai_uncertain">
-                            <span>AI is uncertain about response</span>
-                        </label>
-                    </div>
+                    <label class="form-label">5.1 How will you measure success? Rank these metrics by importance (1 = most important, 5 = least important) and add a target goal.</label>
+                    <table>
+                        <thead>
+                            <tr><th>Metric</th><th>Rank</th><th>Target Goal</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>Number of calls answered (volume)</td><td><input type="number" name="s5_1_calls_answered_rank" min="1" max="5"></td><td><input type="text" name="s5_1_calls_answered_target" placeholder="____/month"></td></tr>
+                            <tr><td>Customer satisfaction (positive feedback)</td><td><input type="number" name="s5_1_satisfaction_rank" min="1" max="5"></td><td><input type="text" name="s5_1_satisfaction_target" placeholder="____%"></td></tr>
+                            <tr><td>Call resolution rate (% handled without transfer)</td><td><input type="number" name="s5_1_resolution_rank" min="1" max="5"></td><td><input type="text" name="s5_1_resolution_target" placeholder="____%"></td></tr>
+                            <tr><td>After-hours calls answered</td><td><input type="number" name="s5_1_after_hours_rank" min="1" max="5"></td><td><input type="text" name="s5_1_after_hours_target" placeholder="____/month"></td></tr>
+                            <tr><td>Cost savings vs. hiring CSRs</td><td><input type="number" name="s5_1_cost_savings_rank" min="1" max="5"></td><td><input type="text" name="s5_1_cost_savings_target" placeholder="$____/month"></td></tr>
+                        </tbody>
+                    </table>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">How should escalated calls be handled? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="escalation_method" value="immediate" required>
-                            <span>Immediate transfer to available agent</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="escalation_method" value="queue">
-                            <span>Place in queue for next available agent</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="escalation_method" value="callback">
-                            <span>Offer callback option</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="escalation_method" value="voicemail">
-                            <span>Take message/voicemail</span>
-                        </label>
-                    </div>
+                    <label class="form-label">5.2 Success scenario: What would make you say "This AI system is working great"?</label>
+                    <textarea class="form-textarea" name="s5_2_success_scenario" placeholder="Be specific — give us your vision of success"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Do you need department-specific routing? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="department_routing" value="yes" required>
-                            <span>Yes</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="department_routing" value="no">
-                            <span>No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">If yes, list your departments</label>
-                    <textarea class="form-textarea" name="departments" placeholder="e.g., Sales, Support, Billing, etc."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Priority call handling rules</label>
-                    <textarea class="form-textarea" name="priority_rules" placeholder="Describe any VIP customers or priority scenarios"></textarea>
+                    <label class="form-label">5.3 Failure scenario: What would make you say "This isn't working, we need to fix it"?</label>
+                    <textarea class="form-textarea" name="s5_3_failure_scenario" placeholder="Be specific so we know what to avoid"></textarea>
                 </div>
 
                 <div class="nav-buttons">
@@ -986,97 +814,48 @@
                 </div>
             </div>
 
-            <!-- Section 6: Knowledge Base & Training -->
+            <!-- SECTION 6: TEAM & OPERATIONS -->
             <div class="section" data-section="6">
-                <h2 class="section-title">Section 6: Knowledge Base & Training</h2>
+                <h2 class="section-title">SECTION 6: TEAM &amp; OPERATIONS</h2>
 
                 <div class="form-group">
-                    <label class="form-label">Do you have existing documentation/FAQs? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="existing_docs" value="yes_comprehensive" required>
-                            <span>Yes, comprehensive documentation</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="existing_docs" value="yes_limited">
-                            <span>Yes, limited documentation</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="existing_docs" value="no">
-                            <span>No existing documentation</span>
-                        </label>
-                    </div>
+                    <label class="form-label">6.1 Primary point of contact (AI training, updates, and feedback)</label>
+                    <input type="text" class="form-input" name="s6_1_contact_name" placeholder="Name">
+                    <input type="text" class="form-input" name="s6_1_contact_role" placeholder="Role">
+                    <input type="email" class="form-input" name="s6_1_contact_email" placeholder="Email">
+                    <input type="tel" class="form-input" name="s6_1_contact_phone" placeholder="Phone">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">How is your knowledge currently stored? *</label>
+                    <label class="form-label">6.2 Dashboard access: Who should have access to the dashboard and call recordings?</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="website">
-                            <span>Website/Help Center</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="wiki">
-                            <span>Internal Wiki</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="documents">
-                            <span>PDF/Word Documents</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="crm">
-                            <span>CRM System</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="scattered">
-                            <span>Scattered across multiple locations</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="knowledge_storage" value="tribal">
-                            <span>Tribal knowledge (employee minds)</span>
-                        </label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="doug_williams"><span>Doug Williams</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="susan_williams"><span>Susan Williams</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="sales_team"><span>Sales team (all 7 people)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="office_manager"><span>Office manager</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="it_admin"><span>IT administrator</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s6_2_dashboard_access" value="other"><span>Other</span></label>
                     </div>
+                    <input type="text" class="form-input" name="s6_2_dashboard_access_other" placeholder="If other, specify...">
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">What are your top 5 most common customer questions?</label>
-                    <textarea class="form-textarea" name="common_questions" placeholder="List the questions your team answers most frequently"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Specific product/service information the AI needs to know</label>
-                    <textarea class="form-textarea" name="product_info"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Company policies the AI should follow</label>
-                    <textarea class="form-textarea" name="company_policies" placeholder="e.g., return policy, warranty terms, etc."></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">How often does your information/pricing change? *</label>
+                    <label class="form-label">6.3 Call recordings: Do you want recordings of customer calls?</label>
                     <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="info_update_frequency" value="daily" required>
-                            <span>Daily</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="info_update_frequency" value="weekly">
-                            <span>Weekly</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="info_update_frequency" value="monthly">
-                            <span>Monthly</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="info_update_frequency" value="quarterly">
-                            <span>Quarterly</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="info_update_frequency" value="rarely">
-                            <span>Rarely</span>
-                        </label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recordings" value="all"><span>Yes, record all calls</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recordings" value="transfers_only"><span>Only record calls that transfer to humans</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recordings" value="flagged_only"><span>Only record flagged calls (complaints, issues)</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recordings" value="none"><span>No recordings (just AI-generated summaries/transcripts)</span></label>
                     </div>
+
+                    <span class="form-hint">Storage preference:</span>
+                    <div class="radio-group">
+                        <label class="radio-label"><input type="radio" name="s6_3_recording_storage" value="30_days"><span>Store recordings for 30 days</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recording_storage" value="90_days"><span>Store recordings for 90 days</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recording_storage" value="1_year"><span>Store recordings for 1 year</span></label>
+                        <label class="radio-label"><input type="radio" name="s6_3_recording_storage" value="other"><span>Other</span></label>
+                    </div>
+                    <input type="text" class="form-input" name="s6_3_recording_storage_other" placeholder="If other, specify...">
                 </div>
 
                 <div class="nav-buttons">
@@ -1085,127 +864,25 @@
                 </div>
             </div>
 
-            <!-- Section 7: Analytics & Reporting -->
+            <!-- SECTION 7: COMPLIANCE & OPERATIONS -->
             <div class="section" data-section="7">
-                <h2 class="section-title">Section 7: Analytics & Reporting</h2>
+                <h2 class="section-title">SECTION 7: COMPLIANCE &amp; OPERATIONS</h2>
 
                 <div class="form-group">
-                    <label class="form-label">What metrics are most important to track? *</label>
+                    <label class="form-label">7.1 Topics AI should NEVER discuss (and must transfer immediately)</label>
+                    <textarea class="form-textarea" name="s7_1_never_topics" placeholder="Examples: pricing negotiations beyond published rates, custom product development, legal issues"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">7.2 Customer communication notes: Anything we should know about how your customers communicate?</label>
                     <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="call_volume">
-                            <span>Call volume</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="resolution_rate">
-                            <span>First-call resolution rate</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="duration">
-                            <span>Average call duration</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="satisfaction">
-                            <span>Customer satisfaction scores</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="escalation">
-                            <span>Escalation rate</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="sentiment">
-                            <span>Sentiment analysis</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="metrics" value="cost">
-                            <span>Cost per call</span>
-                        </label>
+                        <label class="checkbox-label"><input type="checkbox" name="s7_2_comm_notes" value="regional_accents"><span>Regional accents we should be aware of</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s7_2_comm_notes" value="industry_jargon"><span>Industry jargon or terminology</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s7_2_comm_notes" value="common_objections"><span>Common objections or concerns</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s7_2_comm_notes" value="seasonal_patterns"><span>Seasonal patterns (busier during holidays, etc.)</span></label>
+                        <label class="checkbox-label"><input type="checkbox" name="s7_2_comm_notes" value="other"><span>Other communication considerations</span></label>
                     </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">How often do you need reports? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="report_frequency" value="realtime" required>
-                            <span>Real-time dashboard</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="report_frequency" value="daily">
-                            <span>Daily</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="report_frequency" value="weekly">
-                            <span>Weekly</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="report_frequency" value="monthly">
-                            <span>Monthly</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Who needs access to analytics? *</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="analytics_users" value="executives">
-                            <span>Executives/Management</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="analytics_users" value="team_leads">
-                            <span>Team Leads</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="analytics_users" value="agents">
-                            <span>Customer Service Agents</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="analytics_users" value="marketing">
-                            <span>Marketing Team</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="analytics_users" value="sales">
-                            <span>Sales Team</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Do you need call recording? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="call_recording" value="all" required>
-                            <span>Yes, all calls</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="call_recording" value="sample">
-                            <span>Yes, sample of calls</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="call_recording" value="no">
-                            <span>No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Do you need call transcription? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="call_transcription" value="yes" required>
-                            <span>Yes</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="call_transcription" value="no">
-                            <span>No</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Additional reporting requirements</label>
-                    <textarea class="form-textarea" name="reporting_needs"></textarea>
+                    <textarea class="form-textarea" name="s7_2_comm_notes_details" placeholder="Add details here..."></textarea>
                 </div>
 
                 <div class="nav-buttons">
@@ -1214,125 +891,18 @@
                 </div>
             </div>
 
-            <!-- Section 8: Implementation & Budget -->
+            <!-- SECTION 8: ADDITIONAL NOTES -->
             <div class="section" data-section="8">
-                <h2 class="section-title">Section 8: Implementation & Budget</h2>
+                <h2 class="section-title">SECTION 8: ADDITIONAL NOTES</h2>
 
                 <div class="form-group">
-                    <label class="form-label">Desired implementation timeline *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="timeline" value="asap" required>
-                            <span>As soon as possible</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="timeline" value="1_month">
-                            <span>Within 1 month</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="timeline" value="3_months">
-                            <span>Within 3 months</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="timeline" value="6_months">
-                            <span>Within 6 months</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="timeline" value="flexible">
-                            <span>Flexible</span>
-                        </label>
-                    </div>
+                    <label class="form-label">8.1 Special requirements: Any special requirements, concerns, or considerations we should know about?</label>
+                    <textarea class="form-textarea" name="s8_1_special_requirements"></textarea>
                 </div>
 
                 <div class="form-group">
-                    <label class="form-label">Budget range *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="budget" value="under_5k" required>
-                            <span>Under $5,000/month</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="budget" value="5k_10k">
-                            <span>$5,000 - $10,000/month</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="budget" value="10k_25k">
-                            <span>$10,000 - $25,000/month</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="budget" value="25k_50k">
-                            <span>$25,000 - $50,000/month</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="budget" value="over_50k">
-                            <span>Over $50,000/month</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Do you have technical resources for implementation? *</label>
-                    <div class="radio-group">
-                        <label class="radio-label">
-                            <input type="radio" name="tech_resources" value="yes_full" required>
-                            <span>Yes, full IT team</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="tech_resources" value="yes_limited">
-                            <span>Yes, limited resources</span>
-                        </label>
-                        <label class="radio-label">
-                            <input type="radio" name="tech_resources" value="no">
-                            <span>No, need full support</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Training requirements *</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="training" value="admin">
-                            <span>Admin/Management training</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="training" value="agents">
-                            <span>Agent training</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="training" value="it">
-                            <span>IT/Technical training</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" name="training" value="documentation">
-                            <span>Written documentation only</span>
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Success criteria - How will you measure success? *</label>
-                    <textarea class="form-textarea" name="success_criteria" required></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Any concerns or specific requirements?</label>
-                    <textarea class="form-textarea" name="concerns"></textarea>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Contact Name *</label>
-                    <input type="text" class="form-input" name="contact_name" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Contact Email *</label>
-                    <input type="email" class="form-input" name="contact_email" required>
-                </div>
-
-                <div class="form-group">
-                    <label class="form-label">Contact Phone *</label>
-                    <input type="tel" class="form-input" name="contact_phone" required>
+                    <label class="form-label">8.2 Questions for us: Any questions about the inbound AI system you'd like us to address on our call?</label>
+                    <textarea class="form-textarea" name="s8_2_questions_for_us"></textarea>
                 </div>
 
                 <div class="nav-buttons">
