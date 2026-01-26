@@ -231,6 +231,65 @@
             box-shadow: 0 4px 20px rgba(180, 106, 76, 0.3);
         }
 
+        .subsection-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            color: var(--accent);
+            margin: 40px 0 20px 0;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--divider);
+        }
+
+        .table-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .table-row {
+            display: grid;
+            grid-template-columns: 1fr auto auto;
+            gap: 15px;
+            align-items: center;
+            padding: 10px;
+            background: rgba(0, 0, 0, 0.02);
+            border-radius: 6px;
+        }
+
+        .table-row:first-child {
+            background: var(--bg-primary);
+            font-weight: 600;
+        }
+
+        .table-row label {
+            margin-bottom: 0;
+        }
+
+        .table-row input[type="text"] {
+            width: 100%;
+            min-width: 80px;
+        }
+
+        .radio-inline {
+            display: flex;
+            gap: 15px;
+            align-items: center;
+        }
+
+        .radio-inline label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 0;
+            font-weight: normal;
+        }
+
+        .radio-inline input[type="radio"] {
+            width: auto;
+            margin: 0;
+        }
+
         .note {
             background: rgba(180, 106, 76, 0.1);
             padding: 15px;
@@ -714,528 +773,794 @@
             <form class="form-card">
                 <h2 class="section-title">Outbound AI System Questionnaire</h2>
 
+                <!-- Initial Question -->
                 <div class="question-group">
-                    <label class="question-label">Business Name <span class="required">*</span></label>
-                    <input type="text" name="business_name" required>
+                    <label class="question-label">How effective did you find Brian, The AI sales performance we demonstrated for outbound calls? On a rank of 1-4, with 1 being the highest!</label>
+                    <input type="text" name="brian_effectiveness" placeholder="Enter rank (1-4)">
+                </div>
+
+                <!-- SECTION 1: OUTBOUND GOALS & VOLUME -->
+                <h3 class="subsection-title">SECTION 1: OUTBOUND GOALS & VOLUME</h3>
+
+                <div class="question-group">
+                    <label class="question-label">1.1 Primary objective: What's the main goal of outbound calling? (Rank 1-4, with 1 = highest priority)</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Book meetings with sales team for new prospects</label>
+                            <input type="text" name="goal_meetings_rank" placeholder="Rank">
+                        </div>
+                        <div class="table-row">
+                            <label>Send catalogs to engaged prospects</label>
+                            <input type="text" name="goal_catalogs_rank" placeholder="Rank">
+                        </div>
+                        <div class="table-row">
+                            <label>Maintain relationships with existing customers</label>
+                            <input type="text" name="goal_relationships_rank" placeholder="Rank">
+                        </div>
+                        <div class="table-row">
+                            <label>Reactivate dormant customers (haven't ordered in 6+ months)</label>
+                            <input type="text" name="goal_reactivate_rank" placeholder="Rank">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">Contact Person <span class="required">*</span></label>
-                    <input type="text" name="contact_person" required>
+                    <label class="question-label">1.2 Target call volume: How many outbound calls per month do you want the AI to make?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="100-300">
+                            100-300 calls/month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="300-500">
+                            300-500 calls/month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="500-1000">
+                            500-1,000 calls/month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="1000-2000">
+                            1,000-2,000 calls/month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="2000+">
+                            2,000+ calls/month
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="call_volume" value="start_small">
+                            Start small and scale based on results
+                        </label>
+                    </div>
+                    <label class="question-label" style="margin-top: 15px;">Target number (if you have one):</label>
+                    <input type="text" name="target_calls_per_month" placeholder="_____ calls/month">
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">Email <span class="required">*</span></label>
-                    <input type="email" name="email" required>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Phone Number <span class="required">*</span></label>
-                    <input type="tel" name="phone" required>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Industry/Type of Business <span class="required">*</span></label>
-                    <input type="text" name="industry" required>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What is the primary goal of your outbound calling campaign? (Select all that apply)</label>
+                    <label class="question-label">1.3 Current outbound activity: How many outbound calls does your team currently make per month?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="current_call_volume" value="0-100">
+                            0-100 (very little outbound)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="current_call_volume" value="100-300">
+                            100-300
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="current_call_volume" value="300-500">
+                            300-500
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="current_call_volume" value="500-1000">
+                            500-1,000
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="current_call_volume" value="no_systematic">
+                            We don't do systematic outbound calling currently
+                        </label>
+                    </div>
+                    <label class="question-label" style="margin-top: 15px;">Who makes outbound calls now?</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="lead_generation">
-                            Lead generation
+                            <input type="checkbox" name="current_callers[]" value="sales_team">
+                            Sales team (how many people? <input type="text" name="sales_team_count" style="width: 60px; display: inline-block; margin-left: 5px;" placeholder="">)
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="appointment_setting">
-                            Appointment setting
+                            <input type="checkbox" name="current_callers[]" value="sdrs">
+                            Dedicated SDRs/inside sales
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="sales">
-                            Sales/Product promotion
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="customer_followup">
-                            Customer follow-up
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="surveys">
-                            Surveys/Feedback collection
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="reminders">
-                            Reminders (appointments, renewals, etc.)
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="campaign_goals[]" value="other">
-                            Other (specify below)
+                            <input type="checkbox" name="current_callers[]" value="other">
+                            Other: <input type="text" name="current_callers_other" style="width: 200px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
+                <!-- SECTION 2: TARGET AUDIENCES & CALL LISTS -->
+                <h3 class="subsection-title">SECTION 2: TARGET AUDIENCES & CALL LISTS</h3>
+
                 <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_campaign_goals">
+                    <label class="question-label">2.1 Who should the AI call? Mark which groups you want to target:</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>New prospects (from Lead Gen System, demonstrated)</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_new_prospects" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_new_prospects" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_new_prospects" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_new_prospects_volume" placeholder="Est. Volume/Month">
+                        </div>
+                        <div class="table-row">
+                            <label>Existing customers (relationship check-ins)</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_existing_customers" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_existing_customers" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_existing_customers" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_existing_customers_volume" placeholder="Est. Volume/Month">
+                        </div>
+                        <div class="table-row">
+                            <label>Dormant customers (no order in 6+ months)</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_dormant_customers" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_dormant_customers" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_dormant_customers" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_dormant_customers_volume" placeholder="Est. Volume/Month">
+                        </div>
+                        <div class="table-row">
+                            <label>Trade show leads</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_trade_show_leads" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_trade_show_leads" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_trade_show_leads" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_trade_show_leads_volume" placeholder="Est. Volume/Month">
+                        </div>
+                        <div class="table-row">
+                            <label>Referrals</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_referrals" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_referrals" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_referrals" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_referrals_volume" placeholder="Est. Volume/Month">
+                        </div>
+                        <div class="table-row">
+                            <label>Other: <input type="text" name="target_other_description" style="width: 150px; display: inline-block;" placeholder=""></label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="target_other" value="yes"> ✅</label>
+                                <label><input type="radio" name="target_other" value="priority"> ⭐</label>
+                                <label><input type="radio" name="target_other" value="no"> ❌</label>
+                            </div>
+                            <input type="text" name="target_other_volume" placeholder="Est. Volume/Month">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">Who is your target audience?</label>
-                    <textarea name="target_audience" placeholder="Describe your ideal prospect (demographics, industry, role, etc.)"></textarea>
+                    <label class="question-label">2.2 Call list sources: Where do calling lists come from?</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Lead Gen System (System 3 - AI finds retailers)</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_leadgen" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_leadgen" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_leadgen" value="no"> ❌</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <label>NetSuite customer database</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_netsuite" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_netsuite" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_netsuite" value="no"> ❌</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <label>Manually curated lists from your team</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_manual" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_manual" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_manual" value="no"> ❌</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <label>Trade show attendee lists</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_tradeshow" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_tradeshow" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_tradeshow" value="no"> ❌</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <label>Referrals from existing customers</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_referrals" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_referrals" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_referrals" value="no"> ❌</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <label>Other: <input type="text" name="source_other_description" style="width: 200px; display: inline-block;" placeholder=""></label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="source_other" value="yes"> ✅</label>
+                                <label><input type="radio" name="source_other" value="priority"> ⭐</label>
+                                <label><input type="radio" name="source_other" value="no"> ❌</label>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">How many outbound calls do you plan to make per day/week/month?</label>
-                    <input type="text" name="call_volume" placeholder="e.g., 100 calls per day">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What time zone(s) will you be calling?</label>
-                    <input type="text" name="time_zones" placeholder="e.g., EST, PST">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What hours do you want the AI to make calls?</label>
-                    <input type="text" name="calling_hours" placeholder="e.g., Monday-Friday 9 AM - 5 PM EST">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you have an existing script or talking points for your outbound calls?</label>
+                    <label class="question-label">2.3 Calling strategy: Which prospects should AI call?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="has_script" value="yes">
-                            Yes (we will provide it)
+                            <input type="radio" name="calling_strategy" value="warm_only">
+                            Only warm leads - opened email, clicked link, or engaged with content (SAFEST for TCPA compliance)
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="has_script" value="no">
-                            No (we need help creating one)
+                            <input type="radio" name="calling_strategy" value="all_database">
+                            All prospects in database - relationship maintenance approach
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="calling_strategy" value="mixed">
+                            Mixed approach - warm leads only for new prospects, all existing customers
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="calling_strategy" value="discuss">
+                            Let's discuss compliance and best approach on our call
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">If yes, please paste your script or upload it:</label>
-                    <textarea name="script_content" placeholder="Paste your call script here"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What is the main value proposition or key message you want the AI to communicate?</label>
-                    <textarea name="value_proposition" placeholder="What problem do you solve? What makes your offering unique?"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Are there specific objections or questions you anticipate from prospects?</label>
-                    <textarea name="objections" placeholder="List common objections and how you'd like them addressed"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What tone or style should the AI voice have? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="professional">
-                            Professional
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="friendly">
-                            Friendly
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="conversational">
-                            Conversational
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="formal">
-                            Formal
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="energetic">
-                            Energetic
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="voice_style[]" value="other">
-                            Other (specify below)
-                        </label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_voice_style">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you prefer a male or female voice, or no preference?</label>
+                    <label class="question-label">2.4 Existing customer outreach: For existing customers, how often should AI check in?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="voice_gender" value="male">
-                            Male
+                            <input type="radio" name="customer_checkin_frequency" value="monthly">
+                            Monthly
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="voice_gender" value="female">
-                            Female
+                            <input type="radio" name="customer_checkin_frequency" value="quarterly">
+                            Quarterly (every 3 months)
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="voice_gender" value="no_preference">
-                            No preference
+                            <input type="radio" name="customer_checkin_frequency" value="6months">
+                            Every 6 months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="customer_checkin_frequency" value="annually">
+                            Annually
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="customer_checkin_frequency" value="dormant">
+                            Only when dormant (no order in X months): <input type="text" name="dormant_months" style="width: 60px; display: inline-block; margin-left: 5px;" placeholder=""> months
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="customer_checkin_frequency" value="dont_call">
+                            Don't call existing customers (focus on new prospects only)
                         </label>
                     </div>
                 </div>
 
+                <!-- SECTION 3: CALL OUTCOMES & SUCCESS -->
+                <h3 class="subsection-title">SECTION 3: CALL OUTCOMES & SUCCESS</h3>
+
                 <div class="question-group">
-                    <label class="question-label">Do you have an existing contact list?</label>
+                    <label class="question-label">3.1 What counts as a successful call? What's your primary desired outcome? (Pick ONE)</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="has_contact_list" value="yes">
-                            Yes
+                            <input type="radio" name="success_outcome" value="catalog">
+                            A. Customer agrees to receive catalog (email or mail)
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="has_contact_list" value="no">
-                            No (we need help building one)
+                            <input type="radio" name="success_outcome" value="meeting">
+                            B. Customer books a meeting with your sales team
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="success_outcome" value="order">
+                            C. Customer places an order on the spot
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="success_outcome" value="qualifying">
+                            D. Customer provides feedback/information (qualifying)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="success_outcome" value="other">
+                            E. Other: <input type="text" name="success_outcome_other" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">If yes, how many contacts are on your list?</label>
-                    <input type="text" name="contact_count">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What information do you have about each contact? (Select all that apply)</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="name">
-                            Name
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="phone">
-                            Phone number
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="email">
-                            Email
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="company">
-                            Company/Business name
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="title">
-                            Job title
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="industry">
-                            Industry
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="contact_info[]" value="other">
-                            Other (specify below)
-                        </label>
+                    <label class="question-label">3.2 Realistic conversion benchmarks: Based on your industry experience, what conversion rates are realistic?</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>% of calls that reach decision-maker</label>
+                            <input type="text" name="conversion_decision_maker" placeholder="____%">
+                        </div>
+                        <div class="table-row">
+                            <label>% of conversations that show interest</label>
+                            <input type="text" name="conversion_show_interest" placeholder="____%">
+                        </div>
+                        <div class="table-row">
+                            <label>% of interested prospects that book meetings</label>
+                            <input type="text" name="conversion_book_meetings" placeholder="____%">
+                        </div>
+                        <div class="table-row">
+                            <label>% of meetings that convert to customers</label>
+                            <input type="text" name="conversion_to_customers" placeholder="____%">
+                        </div>
                     </div>
+                    <p style="font-size: 0.9rem; color: var(--ink-light); margin-top: 10px;">Example: 30% reach decision-maker → 20% show interest → 50% book meeting → 10% become customers = 0.3% overall conversion</p>
+                    <p style="font-size: 0.9rem; color: var(--ink-light);">We'll use these benchmarks to set realistic goals and measure performance.</p>
                 </div>
 
-                <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_contact_info">
-                </div>
+                <!-- SECTION 4: MEETING SCHEDULING & HANDOFF -->
+                <h3 class="subsection-title">SECTION 4: MEETING SCHEDULING & HANDOFF</h3>
 
                 <div class="question-group">
-                    <label class="question-label">How would you like the contact list managed? <span class="required">*</span></label>
+                    <label class="question-label">4.1 What happens when prospect wants to talk to someone? How should AI handle "I'm interested, let me talk to your team"?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="list_management" value="upload" required>
-                            We will upload and update it
+                            <input type="radio" name="handoff_method" value="schedule">
+                            Option A: AI schedules specific callback time for your rep
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="list_management" value="managed">
-                            We need it to be managed for us
+                            <input type="radio" name="handoff_method" value="transfer">
+                            Option B: AI transfers live to available sales rep (warm transfer)
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="list_management" value="integrated">
-                            Integrated with our CRM
+                            <input type="radio" name="handoff_method" value="collect">
+                            Option C: AI collects info, sales rep follows up within 24 hours
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="handoff_method" value="other">
+                            Option D: Other approach: <input type="text" name="handoff_method_other" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">What should the AI do when a prospect answers? (Select the primary action)</label>
+                    <label class="question-label">4.2 Calendar integration: Should AI have access to your team's calendars for direct scheduling?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="answer_action" value="qualify">
-                            Qualify the lead and gather information
+                            <input type="radio" name="calendar_integration" value="google">
+                            Yes - integrate with Google Calendar
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="answer_action" value="appointment">
-                            Book an appointment
+                            <input type="radio" name="calendar_integration" value="outlook">
+                            Yes - integrate with Outlook/Microsoft Calendar
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="answer_action" value="transfer">
-                            Transfer to a live agent
+                            <input type="radio" name="calendar_integration" value="other_system">
+                            Yes - other system: <input type="text" name="calendar_other_system" style="width: 200px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="answer_action" value="message">
-                            Deliver a message and end the call
+                            <input type="radio" name="calendar_integration" value="no">
+                            No - AI suggests times, rep confirms later manually
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="answer_action" value="other">
-                            Other (specify below)
+                            <input type="radio" name="calendar_integration" value="discuss">
+                            Not sure - let's discuss options
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_answer_action">
+                    <label class="question-label">4.3 Meeting distribution: Who should AI book meetings with?</label>
+                    <p style="font-size: 0.95rem; margin-bottom: 10px;">Option 1 - Specific reps:</p>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Sales Rep Name</label>
+                            <label>Territory/Focus</label>
+                            <label>Calendar Access?</label>
+                        </div>
+                        <div class="table-row">
+                            <input type="text" name="rep1_name" placeholder="">
+                            <input type="text" name="rep1_territory" placeholder="">
+                            <div class="radio-inline">
+                                <label><input type="radio" name="rep1_calendar" value="yes"> Yes</label>
+                                <label><input type="radio" name="rep1_calendar" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <input type="text" name="rep2_name" placeholder="">
+                            <input type="text" name="rep2_territory" placeholder="">
+                            <div class="radio-inline">
+                                <label><input type="radio" name="rep2_calendar" value="yes"> Yes</label>
+                                <label><input type="radio" name="rep2_calendar" value="no"> No</label>
+                            </div>
+                        </div>
+                        <div class="table-row">
+                            <input type="text" name="rep3_name" placeholder="">
+                            <input type="text" name="rep3_territory" placeholder="">
+                            <div class="radio-inline">
+                                <label><input type="radio" name="rep3_calendar" value="yes"> Yes</label>
+                                <label><input type="radio" name="rep3_calendar" value="no"> No</label>
+                            </div>
+                        </div>
+                    </div>
+                    <p style="font-size: 0.95rem; margin-top: 20px; margin-bottom: 10px;">Option 2 - Distribution method:</p>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="distribution_method" value="round_robin">
+                            Round-robin (distribute evenly across team)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="distribution_method" value="one_person">
+                            All meetings to one person: <input type="text" name="distribution_one_person" style="width: 200px; display: inline-block; margin-left: 5px;" placeholder="">
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="distribution_method" value="prospect_type">
+                            Based on prospect type (new vs. existing)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="distribution_method" value="no_booking">
+                            AI doesn't book meetings (just collects information)
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 5: COMPLIANCE & LEGAL REQUIREMENTS -->
+                <h3 class="subsection-title">SECTION 5: COMPLIANCE & LEGAL REQUIREMENTS</h3>
+
+                <div class="question-group">
+                    <label class="question-label">5.1 AI disclosure: Should the AI identify itself as AI?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="ai_disclosure" value="full">
+                            Yes, full transparency from the start ("This is Alex, an AI assistant...")
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_disclosure" value="if_asked">
+                            Only if directly asked by the prospect
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_disclosure" value="no_preference">
+                            No preference - recommend best practice for compliance
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="ai_disclosure" value="discuss">
+                            Let's discuss compliance requirements on our call
+                        </label>
+                    </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">What should the AI do if the call goes to voicemail?</label>
+                    <label class="question-label">5.2 TCPA compliance: For legal compliance, we'll include consent language in emails like:</label>
+                    <p style="font-size: 0.9rem; font-style: italic; padding: 15px; background: rgba(180, 106, 76, 0.05); border-left: 3px solid var(--accent); margin: 10px 0;">"By engaging with this email or scheduling a call, you consent to receive follow-up communications, including phone calls that may use AI-generated voices, from Kalalou Inc. regarding wholesale opportunities. Reply STOP to opt out."</p>
+                    <label class="question-label">Do you want to review and approve exact language before we use it?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="tcpa_review" value="yes">
+                            Yes, I want to review all compliance language
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tcpa_review" value="no">
+                            No, trust your expertise on TCPA compliance
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="tcpa_review" value="discuss">
+                            Let's discuss on our call
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 6: VOICEMAIL & FOLLOW-UP STRATEGY -->
+                <h3 class="subsection-title">SECTION 6: VOICEMAIL & FOLLOW-UP STRATEGY</h3>
+
+                <div class="question-group">
+                    <label class="question-label">6.1 Voicemail handling: What should AI do if it reaches voicemail?</label>
                     <div class="radio-group">
                         <label class="radio-option">
                             <input type="radio" name="voicemail_action" value="leave_message">
-                            Leave a pre-recorded message
+                            Option A: Leave a brief message with callback number
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="voicemail_action" value="hang_up">
-                            Hang up and try again later
+                            <input type="radio" name="voicemail_action" value="email">
+                            Option B: Hang up and send follow-up email instead
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="voicemail_action" value="mark">
-                            Mark as voicemail and move to next call
+                            <input type="radio" name="voicemail_action" value="retry">
+                            Option C: Hang up and retry later (2-3 attempts max)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voicemail_action" value="combination">
+                            Option D: Combination approach (specify): <input type="text" name="voicemail_combination" style="width: 250px; display: inline-block; margin-left: 5px;" placeholder="">
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="voicemail_action" value="other">
+                            Option E: Other: <input type="text" name="voicemail_other" style="width: 250px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">If leaving a message, what should the voicemail say?</label>
-                    <textarea name="voicemail_message" placeholder="Provide the voicemail script"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">How many times should the AI attempt to reach a contact if there's no answer?</label>
-                    <input type="text" name="retry_attempts" placeholder="e.g., 3 attempts">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">How long should the AI wait between retry attempts?</label>
-                    <input type="text" name="retry_interval" placeholder="e.g., 2 days">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What prospect responses indicate interest or qualification?</label>
-                    <textarea name="interest_indicators" placeholder="e.g., requests more information, expresses interest, asks about pricing"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What responses indicate the prospect is not interested?</label>
-                    <textarea name="no_interest_indicators" placeholder="e.g., asks to be removed from list, not interested, wrong timing"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Should the AI hand off interested prospects to a live agent?</label>
+                    <label class="question-label">6.2 Call attempt strategy: How many times should AI attempt to reach a prospect before moving on?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="handoff" value="yes">
-                            Yes, transfer immediately
+                            <input type="radio" name="attempt_strategy" value="1_attempt">
+                            1 attempt, then email follow-up
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="handoff" value="appointment">
-                            No, schedule a follow-up call/appointment
+                            <input type="radio" name="attempt_strategy" value="2-3_week">
+                            2-3 attempts over 1 week
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="handoff" value="log">
-                            No, log the lead for manual follow-up
+                            <input type="radio" name="attempt_strategy" value="3-5_2weeks">
+                            3-5 attempts over 2 weeks
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_strategy" value="5+">
+                            5+ attempts until contact or opt-out
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_strategy" value="other">
+                            Other strategy: <input type="text" name="attempt_strategy_other" style="width: 250px; display: inline-block; margin-left: 5px;" placeholder="">
+                        </label>
+                    </div>
+                    <label class="question-label" style="margin-top: 15px;">Spacing between attempts:</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_spacing" value="same_day">
+                            Same day (morning then afternoon)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_spacing" value="every_other">
+                            Every other day
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_spacing" value="weekly">
+                            Weekly
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="attempt_spacing" value="other">
+                            Other: <input type="text" name="attempt_spacing_other" style="width: 150px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">Do you need the AI to integrate with any existing systems? (Select all that apply)</label>
+                    <label class="question-label">6.3 Follow-up emails: Should AI send automated follow-up emails after calls?</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Scenario</label>
+                            <label>Send Email?</label>
+                            <label>What to Include</label>
+                        </div>
+                        <div class="table-row">
+                            <label>Left voicemail</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="followup_voicemail" value="yes"> Yes</label>
+                                <label><input type="radio" name="followup_voicemail" value="no"> No</label>
+                            </div>
+                            <input type="text" name="followup_voicemail_content" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>No answer (hung up)</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="followup_no_answer" value="yes"> Yes</label>
+                                <label><input type="radio" name="followup_no_answer" value="no"> No</label>
+                            </div>
+                            <input type="text" name="followup_no_answer_content" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Spoke but not interested</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="followup_not_interested" value="yes"> Yes</label>
+                                <label><input type="radio" name="followup_not_interested" value="no"> No</label>
+                            </div>
+                            <input type="text" name="followup_not_interested_content" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Interested - meeting booked</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="followup_meeting_booked" value="yes"> Yes</label>
+                                <label><input type="radio" name="followup_meeting_booked" value="no"> No</label>
+                            </div>
+                            <input type="text" name="followup_meeting_booked_content" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Requested catalog</label>
+                            <div class="radio-inline">
+                                <label><input type="radio" name="followup_catalog" value="yes"> Yes</label>
+                                <label><input type="radio" name="followup_catalog" value="no"> No</label>
+                            </div>
+                            <input type="text" name="followup_catalog_content" placeholder="">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- SECTION 7: SUCCESS METRICS -->
+                <h3 class="subsection-title">SECTION 7: SUCCESS METRICS</h3>
+
+                <div class="question-group">
+                    <label class="question-label">7.1 How will you measure outbound AI success? Rank by importance (1 = most important, 5 = least important):</label>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Metric</label>
+                            <label>Rank</label>
+                            <label>Monthly Target</label>
+                        </div>
+                        <div class="table-row">
+                            <label>Total calls made (volume)</label>
+                            <input type="text" name="metric_calls_rank" placeholder="Rank">
+                            <input type="text" name="metric_calls_target" placeholder="____ calls">
+                        </div>
+                        <div class="table-row">
+                            <label>Contact rate (reached decision-maker)</label>
+                            <input type="text" name="metric_contact_rank" placeholder="Rank">
+                            <input type="text" name="metric_contact_target" placeholder="____%">
+                        </div>
+                        <div class="table-row">
+                            <label>Conversation quality (meaningful dialogue)</label>
+                            <input type="text" name="metric_quality_rank" placeholder="Rank">
+                            <input type="text" name="metric_quality_target" placeholder="____%">
+                        </div>
+                        <div class="table-row">
+                            <label>Meetings booked per month</label>
+                            <input type="text" name="metric_meetings_rank" placeholder="Rank">
+                            <input type="text" name="metric_meetings_target" placeholder="____ meetings">
+                        </div>
+                        <div class="table-row">
+                            <label>Catalogs sent to prospects</label>
+                            <input type="text" name="metric_catalogs_rank" placeholder="Rank">
+                            <input type="text" name="metric_catalogs_target" placeholder="____ catalogs">
+                        </div>
+                        <div class="table-row">
+                            <label>New customers acquired</label>
+                            <input type="text" name="metric_customers_rank" placeholder="Rank">
+                            <input type="text" name="metric_customers_target" placeholder="____ customers">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">7.2 ROI expectations: What is the Average Lifetime expected value of your customer?</label>
+                    <input type="text" name="customer_lifetime_value" placeholder="$">
+                    <label class="question-label" style="margin-top: 15px;">What would make this outbound AI system worth the investment?</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="crm">
-                            CRM (e.g., Salesforce, HubSpot, Zoho)
+                            Meetings per month: <input type="text" name="roi_meetings" style="width: 100px; display: inline-block; margin-left: 5px;" placeholder=""> meetings
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="calendar">
-                            Calendar/Scheduling tool
+                            New customers per quarter: <input type="text" name="roi_customers" style="width: 100px; display: inline-block; margin-left: 5px;" placeholder=""> customers
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="dialer">
-                            Auto-dialer system
+                            Additional revenue per year: $<input type="text" name="roi_revenue" style="width: 150px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="marketing">
-                            Marketing automation platform
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="none">
-                            None
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="integrations[]" value="other">
-                            Other (specify below)
+                            Other success metric: <input type="text" name="roi_other" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
+                <!-- SECTION 8: CALLING SCHEDULE & TIMING -->
+                <h3 class="subsection-title">SECTION 8: CALLING SCHEDULE & TIMING</h3>
+
                 <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_integrations">
+                    <label class="question-label">8.1 Best times to call: When are prospects most likely to answer?</label>
+                    <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 10px;">Example: "Tuesday: 10am-12pm, 2pm-4pm"</p>
+                    <div class="table-group">
+                        <div class="table-row">
+                            <label>Day of Week</label>
+                            <label>Best Time Windows</label>
+                        </div>
+                        <div class="table-row">
+                            <label>Monday</label>
+                            <input type="text" name="schedule_monday" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Tuesday</label>
+                            <input type="text" name="schedule_tuesday" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Wednesday</label>
+                            <input type="text" name="schedule_wednesday" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Thursday</label>
+                            <input type="text" name="schedule_thursday" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Friday</label>
+                            <input type="text" name="schedule_friday" placeholder="">
+                        </div>
+                        <div class="table-row">
+                            <label>Saturday</label>
+                            <input type="text" name="schedule_saturday" placeholder="(or SKIP)">
+                        </div>
+                        <div class="table-row">
+                            <label>Sunday</label>
+                            <input type="text" name="schedule_sunday" placeholder="(or SKIP)">
+                        </div>
+                    </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">Please provide the names of specific platforms:</label>
-                    <textarea name="integration_details" placeholder="e.g., Salesforce, Google Calendar, etc."></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Are you aware of any compliance or regulatory requirements for outbound calling in your industry or region? (e.g., TCPA, Do Not Call lists)</label>
-                    <textarea name="compliance" placeholder="List any compliance requirements"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you need assistance with compliance setup?</label>
+                    <label class="question-label">8.2 Weekend calling: Should AI call on weekends?</label>
                     <div class="radio-group">
                         <label class="radio-option">
-                            <input type="radio" name="compliance_help" value="yes">
-                            Yes
+                            <input type="radio" name="weekend_calling" value="yes">
+                            Yes, weekends are fine (retail owners may be in store)
                         </label>
                         <label class="radio-option">
-                            <input type="radio" name="compliance_help" value="no">
-                            No
+                            <input type="radio" name="weekend_calling" value="no">
+                            No, weekdays only (Monday-Friday)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="weekend_calling" value="saturday">
+                            Only Saturday (not Sunday)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="weekend_calling" value="test">
+                            Let's test and see what works
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">What metrics are most important for you to track? (Select all that apply)</label>
+                    <label class="question-label">8.3 Time zone considerations: How should AI handle different time zones?</label>
+                    <div class="radio-group">
+                        <label class="radio-option">
+                            <input type="radio" name="timezone_handling" value="prospect">
+                            Call during prospect's local business hours (9am-5pm their time)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timezone_handling" value="our">
+                            Call during our business hours (9am-5pm CST)
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timezone_handling" value="mixed">
+                            Mix - prioritize prospect's time zone but okay to call outside if needed
+                        </label>
+                        <label class="radio-option">
+                            <input type="radio" name="timezone_handling" value="no_preference">
+                            No strong preference
+                        </label>
+                    </div>
+                </div>
+
+                <!-- SECTION 9: ADDITIONAL CONTEXT -->
+                <h3 class="subsection-title">SECTION 9: ADDITIONAL CONTEXT</h3>
+
+                <div class="question-group">
+                    <label class="question-label">9.1 Industry-specific terminology: Any specific terminology, jargon, or product categories AI should understand?</label>
+                    <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 10px;">Examples: "Farmhouse chic," "coastal vibes," "distressed finishes," specific product lines</p>
+                    <textarea name="industry_terminology" placeholder=""></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">9.2 Topics to avoid: Are there any topics AI should NEVER discuss on outbound calls?</label>
+                    <p style="font-size: 0.9rem; color: var(--ink-light); margin-bottom: 10px;">Examples: Competitor comparisons, pricing negotiations, custom product development</p>
+                    <textarea name="topics_to_avoid" placeholder=""></textarea>
+                </div>
+
+                <div class="question-group">
+                    <label class="question-label">9.3 Seasonal considerations: Any seasonal patterns we should know about?</label>
                     <div class="checkbox-group">
                         <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="call_volume">
-                            Number of calls made
+                            Busy seasons when calling is less effective: <input type="text" name="seasonal_busy" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="connect_rate">
-                            Connect rate (answered vs. voicemail)
+                            Slow seasons when prospects have more time: <input type="text" name="seasonal_slow" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="conversion">
-                            Conversion rate (interested prospects)
+                            Major trade shows or industry events: <input type="text" name="seasonal_events" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                         <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="appointments">
-                            Appointments booked
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="call_duration">
-                            Average call duration
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="sentiment">
-                            Sentiment analysis
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="metrics[]" value="other">
-                            Other (specify below)
+                            Other timing considerations: <input type="text" name="seasonal_other" style="width: 300px; display: inline-block; margin-left: 5px;" placeholder="">
                         </label>
                     </div>
                 </div>
 
                 <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_metrics">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">How would you like to receive performance reports?</label>
-                    <div class="checkbox-group">
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="report_delivery[]" value="daily">
-                            Daily email summary
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="report_delivery[]" value="weekly">
-                            Weekly dashboard
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="report_delivery[]" value="realtime">
-                            Real-time access via portal
-                        </label>
-                        <label class="checkbox-option">
-                            <input type="checkbox" name="report_delivery[]" value="other">
-                            Other (specify below)
-                        </label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">If "Other," please specify:</label>
-                    <input type="text" name="other_report_delivery">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you want call recordings available for review?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="call_recordings" value="yes">
-                            Yes
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="call_recordings" value="no">
-                            No
-                        </label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">When would you like to launch your outbound campaign? <span class="required">*</span></label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="launch_timeline" value="immediate" required>
-                            Immediate (within 2 weeks)
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="launch_timeline" value="1month">
-                            Within 1 month
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="launch_timeline" value="3months">
-                            Within 3 months
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="launch_timeline" value="flexible">
-                            Flexible
-                        </label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you need a pilot/test phase before full deployment?</label>
-                    <div class="radio-group">
-                        <label class="radio-option">
-                            <input type="radio" name="pilot_phase" value="yes">
-                            Yes
-                        </label>
-                        <label class="radio-option">
-                            <input type="radio" name="pilot_phase" value="no">
-                            No
-                        </label>
-                    </div>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">What is your estimated monthly budget for this outbound AI system?</label>
-                    <input type="text" name="budget" placeholder="e.g., $1000-$2000/month">
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Do you have any specific success criteria or KPIs you want to achieve?</label>
-                    <textarea name="success_criteria" placeholder="e.g., 100 qualified leads per month, 20% conversion rate"></textarea>
-                </div>
-
-                <div class="question-group">
-                    <label class="question-label">Is there anything else you'd like us to know about your outbound calling needs?</label>
-                    <textarea name="additional_notes" placeholder="Any additional information that would help us serve you better"></textarea>
+                    <label class="question-label">9.4 Additional notes: Anything else we should know about your outbound calling strategy?</label>
+                    <textarea name="additional_notes" placeholder=""></textarea>
                 </div>
 
                 <button type="submit" class="submit-button">Submit Outbound Questionnaire</button>
