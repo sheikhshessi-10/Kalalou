@@ -1987,26 +1987,9 @@
             console.log('Autosave initialized - your progress is being saved automatically');
         }
 
-        // REMOVED: Old JavaScript form submission code (now using native HTML form POST)
-        // The form now submits directly to FormSubmit.co via HTML form action
-        
-        // NOTE: Dead code below will be cleaned up (orphaned from old AJAX submission)
-        const _DEAD_CODE_START = {
-                    'caller_other_pct': 'Other Callers (%)',
-                    'call_type_product': 'Product Information/Specifications',
-                    'call_type_pricing': 'Pricing Inquiries',
-                    'call_type_order_status': 'Order Status/Tracking',
-                    'call_type_inventory': 'Inventory Availability',
-                    'call_type_account': 'Account Questions',
-                    'call_type_new_customer': 'New Customer Inquiry',
-                    'call_type_placing_order': 'Placing an Order',
-                    'call_type_returns': 'Returns/Complaints/Issues',
-                    'call_type_shipping': 'Shipping Information',
-                    'call_type_other_label': 'Other Call Type',
-                    'call_type_other': 'Other Call Type - Frequency',
-                    'general_knowledge_pct': 'Calls Answered with General Knowledge (%)',
-                    'customer_lookup_pct': 'Calls Requiring Customer Lookup (%)',
-                    'order_repeat': 'Take Simple Repeat Orders',
+        // Form now submits directly via HTML to FormSubmit.co (old AJAX code removed)
+        /* DEAD CODE REMOVED - START
+        'caller_other_pct': 'Other Callers (%)',
                     'order_new': 'Take New Orders',
                     'order_email': 'Collect Order Details & Email to Sales',
                     'order_transfer': "Don't Take Orders (Transfer to Sales)",
@@ -2301,8 +2284,7 @@
                     alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com\n\nError: ' + error.message);
                 }
             }
-        };
-        // NOTE: Dead code above - END
+DEAD CODE REMOVED - END */
 
         // Load saved data on page load - multiple strategies for reliability
         function initializeFormData() {
