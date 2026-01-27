@@ -75,7 +75,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding-bottom: 100px;
+            padding-bottom: 80px;
         }
 
         .hero h1 {
@@ -102,6 +102,59 @@
             height: 1px;
             background: var(--divider);
             margin: 0 auto;
+        }
+
+        /* Brian Introduction */
+        .brian-intro {
+            margin-top: 40px;
+            text-align: center;
+            max-width: 700px;
+            padding: 0 20px;
+        }
+
+        .brian-headline {
+            font-size: 1.6rem;
+            color: var(--ink);
+            margin-bottom: 16px;
+            line-height: 1.4;
+            font-weight: 500;
+        }
+
+        .brian-name {
+            color: var(--accent);
+            font-weight: 700;
+            font-size: 1.8rem;
+        }
+
+        .brian-feature {
+            font-size: 1.3rem;
+            color: var(--ink-light);
+            margin-bottom: 24px;
+            font-style: italic;
+        }
+
+        .brian-cta {
+            font-size: 1.5rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (max-width: 768px) {
+            .brian-headline {
+                font-size: 1.3rem;
+            }
+            .brian-name {
+                font-size: 1.5rem;
+            }
+            .brian-feature {
+                font-size: 1.1rem;
+            }
+            .brian-cta {
+                font-size: 1.2rem;
+            }
         }
 
         /* Carousel Navigation */
@@ -758,6 +811,13 @@
                     <h1>KALALOU AI LEVERAGE</h1>
                     <p class="hero-subtext">Lets unlock it!</p>
                     <div class="hero-divider"></div>
+                    
+                    <!-- Brian Introduction -->
+                    <div class="brian-intro">
+                        <p class="brian-headline">We are bringing into life a new team member for Kalalou, <span class="brian-name">Brian!</span></p>
+                        <p class="brian-feature">Brian works 24/7, never sleeps, never takes a day off!</p>
+                        <p class="brian-cta">Help us decide Superpowers for Brian:</p>
+                    </div>
                 </div>
             </div>
 
