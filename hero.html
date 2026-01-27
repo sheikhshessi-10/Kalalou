@@ -2220,61 +2220,36 @@
                 submitButton.textContent = 'Submitting...';
                 submitButton.disabled = true;
 
-                // Submit via hidden iframe (real form POST, no CORS issues, no redirect)
+                // Submit via Formspree (reliable, free, AJAX-friendly)
                 try {
-                    // Create hidden iframe if it doesn't exist
-                    let iframe = document.getElementById('hidden-form-iframe');
-                    if (!iframe) {
-                        iframe = document.createElement('iframe');
-                        iframe.id = 'hidden-form-iframe';
-                        iframe.name = 'hidden-form-iframe';
-                        iframe.style.display = 'none';
-                        document.body.appendChild(iframe);
-                    }
-
-                    // Create a new form element for submission
-                    const submitForm = document.createElement('form');
-                    submitForm.method = 'POST';
-                    submitForm.action = 'https://formsubmit.co/sheikhshessi@gmail.com';
-                    submitForm.target = 'hidden-form-iframe';
-                    submitForm.style.display = 'none';
-
-                    // Helper to add hidden fields
-                    const addField = (name, value) => {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = name;
-                        input.value = value;
-                        submitForm.appendChild(input);
-                    };
-
-                    // FormSubmit configuration
-                    addField('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
-                    addField('_captcha', 'false');
-                    addField('_template', 'table');
-                    addField('message', emailBody);
+                    const formDataToSend = new FormData();
+                    formDataToSend.append('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
+                    formDataToSend.append('message', emailBody);
 
                     // Add all form data fields
                     Object.keys(data).forEach(key => {
                         const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
                         if (value && value.toString().trim() !== '') {
-                            addField(key, value);
+                            formDataToSend.append(key, value);
                         }
                     });
 
-                    // Add form to document and submit
-                    document.body.appendChild(submitForm);
-                    
-                    // Listen for iframe load (indicates submission complete)
-                    const onIframeLoad = () => {
-                        iframe.removeEventListener('load', onIframeLoad);
-                        
-                        // Clean up the form
-                        submitForm.remove();
-                        
-                        submitButton.textContent = originalButtonText;
-                        submitButton.disabled = false;
+                    // Submit to Formspree (email endpoint)
+                    const response = await fetch('https://formspree.io/sheikhshessi@gmail.com', {
+                        method: 'POST',
+                        body: formDataToSend,
+                        headers: {
+                            'Accept': 'application/json'
+                        }
+                    });
 
+                    const result = await response.json();
+                    console.log('Formspree response:', result);
+
+                    submitButton.textContent = originalButtonText;
+                    submitButton.disabled = false;
+
+                    if (response.ok) {
                         // Hide form and show thank you section
                         const formSection = document.querySelector('.form-section');
                         const thankYouSection = document.getElementById('thankYouSection');
@@ -2302,20 +2277,15 @@
                         }
                         
                         console.log('Form submitted successfully!');
-                    };
-                    
-                    iframe.addEventListener('load', onIframeLoad);
-                    
-                    // Submit the form
-                    submitForm.submit();
-                    
-                    console.log('Form submission initiated...');
+                    } else {
+                        throw new Error(result.error || 'Submission failed');
+                    }
 
                 } catch (error) {
                     console.error('Error submitting form:', error);
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
-                    alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com');
+                    alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com\n\nError: ' + error.message);
                 }
             });
 
