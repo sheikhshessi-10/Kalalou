@@ -234,6 +234,81 @@
             padding: 80px 60px;
             z-index: 10;
             overflow: hidden;
+            display: none; /* Hidden until login */
+        }
+
+        /* Thank You Section */
+        .thank-you-section {
+            position: relative;
+            width: 100%;
+            min-height: 100vh;
+            display: none; /* Hidden until submission */
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 60px;
+            text-align: center;
+            overflow: hidden;
+            z-index: 10;
+        }
+
+        .thank-you-section.show {
+            display: flex;
+        }
+
+        .thank-you-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            display: block;
+            background: var(--bg-primary);
+        }
+
+        .thank-you-content {
+            position: relative;
+            z-index: 10;
+            max-width: 800px;
+        }
+
+        .thank-you-section h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 400;
+            letter-spacing: -0.02em;
+            margin-bottom: 24px;
+            line-height: 1.1;
+            color: var(--ink);
+        }
+
+        .thank-you-section p {
+            font-size: 1.2rem;
+            color: var(--secondary);
+            margin-bottom: 40px;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+
+        .submit-again-button {
+            padding: 16px 40px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-family: 'Inter', sans-serif;
+            margin-top: 20px;
+        }
+
+        .submit-again-button:hover {
+            background: #9d5a3f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(180, 106, 76, 0.3);
         }
 
         .form-canvas {
@@ -478,6 +553,153 @@
             transform: translateY(0);
         }
 
+        /* Login Modal */
+        .login-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            backdrop-filter: blur(4px);
+        }
+
+        .login-overlay.hidden {
+            display: none;
+        }
+
+        .login-card {
+            background: var(--card);
+            border-radius: 16px;
+            padding: 50px;
+            max-width: 450px;
+            width: 90%;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .login-card h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--ink);
+            margin-bottom: 12px;
+        }
+
+        .login-card p {
+            color: var(--secondary);
+            margin-bottom: 30px;
+            font-size: 0.95rem;
+        }
+
+        .login-form-group {
+            margin-bottom: 20px;
+            text-align: left;
+        }
+
+        .login-form-group label {
+            display: block;
+            font-weight: 500;
+            color: var(--ink);
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .login-form-group input {
+            width: 100%;
+            padding: 14px 18px;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            background: var(--bg-primary);
+            color: var(--ink);
+            transition: all 0.3s ease;
+        }
+
+        .login-form-group input:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: white;
+            box-shadow: 0 0 0 3px rgba(180, 106, 76, 0.1);
+        }
+
+        .login-error {
+            color: #d32f2f;
+            font-size: 0.9rem;
+            margin-top: 8px;
+            display: none;
+        }
+
+        .login-error.show {
+            display: block;
+        }
+
+        .login-button {
+            width: 100%;
+            padding: 16px;
+            background: var(--accent);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .login-button:hover {
+            background: #9d5a3f;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 24px rgba(180, 106, 76, 0.3);
+        }
+
+        .login-button:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .user-info {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: var(--card);
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            padding: 12px 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            z-index: 1000;
+            display: none;
+        }
+
+        .user-info.show {
+            display: block;
+        }
+
+        .user-info span {
+            color: var(--ink);
+            font-weight: 500;
+            font-size: 0.95rem;
+        }
+
+        .user-info .logout-btn {
+            margin-left: 12px;
+            color: var(--accent);
+            cursor: pointer;
+            text-decoration: underline;
+            font-size: 0.9rem;
+        }
+
+        .user-info .logout-btn:hover {
+            color: #9d5a3f;
+        }
+
         @media (max-width: 768px) {
             .form-section {
                 padding: 60px 30px;
@@ -498,6 +720,34 @@
     </style>
 </head>
 <body>
+    <!-- Login Modal -->
+    <div class="login-overlay" id="loginOverlay">
+        <div class="login-card">
+            <h2>Welcome</h2>
+            <p>Please login to access the questionnaire</p>
+            <form id="loginForm">
+                <div class="login-form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required autocomplete="username">
+                    <div class="login-error" id="usernameError">Please enter a username</div>
+                </div>
+                <div class="login-form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required autocomplete="current-password">
+                    <div class="login-error" id="passwordError">Please enter a password</div>
+                </div>
+                <div class="login-error" id="loginError">Invalid username or password</div>
+                <button type="submit" class="login-button" id="loginButton">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- User Info -->
+    <div class="user-info" id="userInfo">
+        <span>Logged in as: <strong id="currentUsername"></strong></span>
+        <span class="logout-btn" id="logoutBtn">Logout</span>
+    </div>
+
     <!-- Hero -->
     <section class="hero">
         <canvas class="hero-canvas" id="heroCanvas"></canvas>
@@ -561,23 +811,73 @@
                     </div>
 
                     <div class="question-group">
-                        <label class="question-label">What are customers calling about?<br>Rank the top call types (1 = most common, 10 = least common) and estimate percentage:</label>
-                        <div class="question-helper">Note: Percentages don't need to add to 100% - rough estimates are fine.</div>
+                        <label class="question-label">What are customers calling about?</label>
                         <table>
-                            <tr><th>Call Type</th><th>Rank (1-10)</th><th>% of Total</th></tr>
-                            <tr><td>Product information/specifications</td><td><input type="number" name="call_type_product_rank" min="1" max="10"></td><td><input type="number" name="call_type_product_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Pricing inquiries</td><td><input type="number" name="call_type_pricing_rank" min="1" max="10"></td><td><input type="number" name="call_type_pricing_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Order status/tracking</td><td><input type="number" name="call_type_order_status_rank" min="1" max="10"></td><td><input type="number" name="call_type_order_status_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Inventory availability ("Do you have X in stock?")</td><td><input type="number" name="call_type_inventory_rank" min="1" max="10"></td><td><input type="number" name="call_type_inventory_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Account questions (login, payment terms, etc.)</td><td><input type="number" name="call_type_account_rank" min="1" max="10"></td><td><input type="number" name="call_type_account_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>New customer inquiry (requesting catalog)</td><td><input type="number" name="call_type_new_customer_rank" min="1" max="10"></td><td><input type="number" name="call_type_new_customer_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Placing an order</td><td><input type="number" name="call_type_placing_order_rank" min="1" max="10"></td><td><input type="number" name="call_type_placing_order_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Returns/complaints/issues</td><td><input type="number" name="call_type_returns_rank" min="1" max="10"></td><td><input type="number" name="call_type_returns_pct" min="0" max="100" placeholder="%"></td></tr>
-                            <tr><td>Shipping information</td><td><input type="number" name="call_type_shipping_rank" min="1" max="10"></td><td><input type="number" name="call_type_shipping_pct" min="0" max="100" placeholder="%"></td></tr>
+                            <tr>
+                                <th>Call Type</th>
+                                <th style="text-align: center;">High volume</th>
+                                <th style="text-align: center;">Occasional</th>
+                                <th style="text-align: center;">Rarely/never</th>
+                            </tr>
+                            <tr>
+                                <td>Product information/specifications</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_product" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_product" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_product" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Pricing inquiries</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_pricing" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_pricing" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_pricing" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Order status/tracking</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_order_status" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_order_status" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_order_status" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Inventory availability ("Do you have X in stock?")</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_inventory" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_inventory" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_inventory" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Account questions (login, payment terms, etc.)</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_account" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_account" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_account" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>New customer inquiry (requesting catalog)</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_new_customer" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_new_customer" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_new_customer" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Placing an order</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_placing_order" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_placing_order" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_placing_order" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Returns/complaints/issues</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_returns" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_returns" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_returns" value="rarely_never"></td>
+                            </tr>
+                            <tr>
+                                <td>Shipping information</td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_shipping" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_shipping" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_shipping" value="rarely_never"></td>
+                            </tr>
                             <tr>
                                 <td>Other: <input type="text" name="call_type_other_label" placeholder="Describe..." style="width: 200px; display: inline-block; margin-left: 8px;"></td>
-                                <td><input type="number" name="call_type_other_rank" min="1" max="10"></td>
-                                <td><input type="number" name="call_type_other_pct" min="0" max="100" placeholder="%"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_other" value="high_volume"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_other" value="occasional"></td>
+                                <td style="text-align: center;"><input type="radio" name="call_type_other" value="rarely_never"></td>
                             </tr>
                         </table>
                     </div>
@@ -654,41 +954,41 @@
                     </div>
 
                     <div class="question-group">
-                        <label class="question-label">System integrations:<br>Mark priority for each integration:</label>
+                        <label class="question-label">What abilities would you want the AI to have?</label>
                         <table class="priority-table">
                             <tr><th>System Integration</th><th>✅</th><th>⭐</th><th>❌</th></tr>
                             <tr>
-                                <td style="text-align: left;">NetSuite - Read customer data (account info, contact details)</td>
+                                <td style="text-align: left;">Read customer data (account info, contact details)</td>
                                 <td><input type="radio" name="integration_netsuite_customer" value="must"></td>
                                 <td><input type="radio" name="integration_netsuite_customer" value="nice"></td>
                                 <td><input type="radio" name="integration_netsuite_customer" value="no"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">NetSuite - Read order history (past purchases, dates)</td>
+                                <td style="text-align: left;">Read order history (past purchases, dates)</td>
                                 <td><input type="radio" name="integration_netsuite_history" value="must"></td>
                                 <td><input type="radio" name="integration_netsuite_history" value="nice"></td>
                                 <td><input type="radio" name="integration_netsuite_history" value="no"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">NetSuite - Check inventory levels (real-time stock)</td>
+                                <td style="text-align: left;">Check inventory levels (real-time stock)</td>
                                 <td><input type="radio" name="integration_netsuite_inventory" value="must"></td>
                                 <td><input type="radio" name="integration_netsuite_inventory" value="nice"></td>
                                 <td><input type="radio" name="integration_netsuite_inventory" value="no"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">NetSuite - Create new orders (AI places order in system)</td>
+                                <td style="text-align: left;">Create new orders (AI places order in system)</td>
                                 <td><input type="radio" name="integration_netsuite_create" value="must"></td>
                                 <td><input type="radio" name="integration_netsuite_create" value="nice"></td>
                                 <td><input type="radio" name="integration_netsuite_create" value="no"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">Magento - Product catalog/information</td>
+                                <td style="text-align: left;">Product catalog/information</td>
                                 <td><input type="radio" name="integration_magento_catalog" value="must"></td>
                                 <td><input type="radio" name="integration_magento_catalog" value="nice"></td>
                                 <td><input type="radio" name="integration_magento_catalog" value="no"></td>
                             </tr>
                             <tr>
-                                <td style="text-align: left;">Magento - Pricing information (wholesale tiers)</td>
+                                <td style="text-align: left;">Pricing information (wholesale tiers)</td>
                                 <td><input type="radio" name="integration_magento_pricing" value="must"></td>
                                 <td><input type="radio" name="integration_magento_pricing" value="nice"></td>
                                 <td><input type="radio" name="integration_magento_pricing" value="no"></td>
@@ -754,14 +1054,13 @@
                     <h2 class="form-section-title">OUTBOUND AI SYSTEM – LET'S UNLOCK LEVERAGE!</h2>
                     
                     <div class="question-group">
-                        <label class="question-label">Primary objective:<br>What's the main goal of outbound calling? (Rank 1-4, with 1 = highest priority)</label>
-                        <table>
-                            <tr><th>Goal</th><th>Rank</th></tr>
-                            <tr><td>Book meetings with sales team for new prospects</td><td><input type="number" name="outbound_goal_meetings_rank" min="1" max="4"></td></tr>
-                            <tr><td>Send catalogs to engaged prospects</td><td><input type="number" name="outbound_goal_catalogs_rank" min="1" max="4"></td></tr>
-                            <tr><td>Maintain relationships with existing customers</td><td><input type="number" name="outbound_goal_relationships_rank" min="1" max="4"></td></tr>
-                            <tr><td>Reactivate dormant customers (haven't ordered in 6+ months)</td><td><input type="number" name="outbound_goal_reactivate_rank" min="1" max="4"></td></tr>
-                        </table>
+                        <label class="question-label">Primary objective:<br>What's the main goal of outbound calling? (Select all that apply)</label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-option"><input type="checkbox" name="outbound_goals[]" value="book_meetings">Book meetings with sales team for new prospects</label>
+                            <label class="checkbox-option"><input type="checkbox" name="outbound_goals[]" value="send_catalogs">Send catalogs to engaged prospects</label>
+                            <label class="checkbox-option"><input type="checkbox" name="outbound_goals[]" value="maintain_relationships">Maintain relationships with existing customers</label>
+                            <label class="checkbox-option"><input type="checkbox" name="outbound_goals[]" value="reactivate_dormant">Reactivate dormant customers (haven't ordered in 6+ months)</label>
+                        </div>
                     </div>
 
                     <div class="question-group">
@@ -1034,6 +1333,16 @@
 
     <div class="autosave-indicator" id="autosaveIndicator" aria-live="polite">Saved</div>
 
+    <!-- Thank You Section -->
+    <section class="thank-you-section" id="thankYouSection">
+        <canvas class="thank-you-canvas" id="thankYouCanvas"></canvas>
+        <div class="thank-you-content">
+            <h1>We Got Your Submission</h1>
+            <p>Thank you for completing the questionnaire! We will review your responses and get back to you shortly.</p>
+            <button class="submit-again-button" id="submitAgainButton">Submit Another Response</button>
+        </div>
+    </section>
+
     <!-- Three.js Library -->
     <script src="https://unpkg.com/three@0.150.1/build/three.min.js"></script>
 
@@ -1130,8 +1439,21 @@
                 });
             }
 
+            // Thank you background (animated like hero)
+            const thankYouCanvas = document.getElementById('thankYouCanvas');
+            let thankYouBundle = null;
+            if (thankYouCanvas) {
+                thankYouBundle = createWaveScene({
+                    canvas: thankYouCanvas,
+                    backgroundHex: 0xF7F4EF,
+                    lineHex: 0x6F6F6F,
+                    opacity: 0.3
+                });
+            }
+
             let heroScene, heroCamera, heroRenderer, heroParticles;
             let formScene, formCamera, formRenderer, formParticles;
+            let thankYouScene, thankYouCamera, thankYouRenderer, thankYouParticles;
 
             if (heroBundle) {
                 ({ scene: heroScene, camera: heroCamera, renderer: heroRenderer, particles: heroParticles } = heroBundle);
@@ -1139,6 +1461,10 @@
 
             if (formBundle) {
                 ({ scene: formScene, camera: formCamera, renderer: formRenderer, particles: formParticles } = formBundle);
+            }
+
+            if (thankYouBundle) {
+                ({ scene: thankYouScene, camera: thankYouCamera, renderer: thankYouRenderer, particles: thankYouParticles } = thankYouBundle);
             }
 
             // Render form waves once (stationary)
@@ -1151,7 +1477,7 @@
                 animationId = requestAnimationFrame(animateAll);
                 time += 0.01;
 
-                // Animate hero waves only
+                // Animate hero waves
                 if (heroParticles && heroRenderer && heroScene && heroCamera) {
                     heroParticles.forEach((line, i) => {
                         const positions = line.geometry.attributes.position;
@@ -1165,6 +1491,22 @@
                         positions.needsUpdate = true;
                     });
                     heroRenderer.render(heroScene, heroCamera);
+                }
+
+                // Animate thank you waves (same as hero)
+                if (thankYouParticles && thankYouRenderer && thankYouScene && thankYouCamera) {
+                    thankYouParticles.forEach((line, i) => {
+                        const positions = line.geometry.attributes.position;
+                        for (let j = 0; j < positions.count; j++) {
+                            const x = positions.getX(j);
+                            const z = Math.sin(x * 0.2 + i * 0.1 + time) * 2 + 
+                                      Math.cos(x * 0.4 + i * 0.08 + time * 0.8) * 1.2 +
+                                      Math.sin(x * 0.6 + i * 0.15 + time * 0.6) * 0.8;
+                            positions.setZ(j, z);
+                        }
+                        positions.needsUpdate = true;
+                    });
+                    thankYouRenderer.render(thankYouScene, thankYouCamera);
                 }
             }
 
@@ -1188,6 +1530,14 @@
                     formRenderer.setSize(w, h);
                     // Re-render stationary form waves after resize
                     formRenderer.render(formScene, formCamera);
+                }
+
+                if (thankYouRenderer && thankYouCamera && thankYouCanvas && thankYouScene) {
+                    const w = thankYouCanvas.clientWidth || window.innerWidth;
+                    const h = thankYouCanvas.clientHeight || window.innerHeight;
+                    thankYouCamera.aspect = w / h;
+                    thankYouCamera.updateProjectionMatrix();
+                    thankYouRenderer.setSize(w, h);
                 }
             });
         }
@@ -1221,53 +1571,162 @@
             });
         }
 
-        // Auto-save functionality
+        // Auto-save functionality - Enhanced for persistence
         let autosaveToastTimer = null;
+        let saveDebounceTimer = null;
+        let lastSaveTime = null;
+
         function flashAutosave() {
             const el = document.getElementById('autosaveIndicator');
             if (!el) return;
             el.classList.add('show');
+            el.textContent = '✓ Saved';
             if (autosaveToastTimer) window.clearTimeout(autosaveToastTimer);
-            autosaveToastTimer = window.setTimeout(() => el.classList.remove('show'), 900);
+            autosaveToastTimer = window.setTimeout(() => el.classList.remove('show'), 2000);
+        }
+
+        // Authentication system
+        const VALID_USERS = {
+            'test': 'admin',
+            'kalalou': 'teamkalalou'
+        };
+
+        function getCurrentUser() {
+            return sessionStorage.getItem('current_user') || localStorage.getItem('current_user');
+        }
+
+        function setCurrentUser(username) {
+            sessionStorage.setItem('current_user', username);
+            localStorage.setItem('current_user', username);
+        }
+
+        function clearCurrentUser() {
+            sessionStorage.removeItem('current_user');
+            localStorage.removeItem('current_user');
+        }
+
+        function authenticate(username, password) {
+            const normalizedUsername = username.toLowerCase().trim();
+            const normalizedPassword = password.toLowerCase().trim();
+            
+            if (VALID_USERS[normalizedUsername] === normalizedPassword) {
+                return normalizedUsername;
+            }
+            return null;
         }
 
         function getFormKey() {
-            return 'hero_questionnaire_data';
+            const username = getCurrentUser();
+            if (!username) {
+                return 'hero_questionnaire_data';
+            }
+            return `hero_questionnaire_data_${username}`;
+        }
+
+        function isLocalStorageAvailable() {
+            try {
+                const test = '__localStorage_test__';
+                localStorage.setItem(test, test);
+                localStorage.removeItem(test);
+                return true;
+            } catch (e) {
+                return false;
+            }
         }
 
         function saveFormData(form) {
-            const formData = new FormData(form);
-            const data = {};
+            if (!form) return;
+            
+            // Check if localStorage is available
+            if (!isLocalStorageAvailable()) {
+                console.warn('LocalStorage is not available. Progress cannot be saved.');
+                return;
+            }
 
-            formData.forEach((value, key) => {
-                if (data[key]) {
-                    if (Array.isArray(data[key])) {
-                        data[key].push(value);
-                    } else {
-                        data[key] = [data[key], value];
+            try {
+                const formData = new FormData(form);
+                const data = {};
+
+                formData.forEach((value, key) => {
+                    // Skip empty values for cleaner storage
+                    if (value && value.toString().trim() !== '') {
+                        if (data[key]) {
+                            if (Array.isArray(data[key])) {
+                                data[key].push(value);
+                            } else {
+                                data[key] = [data[key], value];
+                            }
+                        } else {
+                            data[key] = value;
+                        }
                     }
-                } else {
-                    data[key] = value;
-                }
-            });
+                });
 
-            localStorage.setItem(getFormKey(), JSON.stringify(data));
-            flashAutosave();
+                // Add timestamp
+                data._lastSaved = new Date().toISOString();
+
+                // Save to localStorage
+                const dataString = JSON.stringify(data);
+                localStorage.setItem(getFormKey(), dataString);
+                
+                lastSaveTime = new Date();
+                flashAutosave();
+                
+                console.log('Form data saved at', lastSaveTime.toLocaleTimeString());
+            } catch (error) {
+                console.error('Error saving form data:', error);
+                // Try to save a simplified version if storage is full
+                try {
+                    const formData = new FormData(form);
+                    const data = {};
+                    let itemCount = 0;
+                    formData.forEach((value, key) => {
+                        if (value && value.toString().trim() !== '' && itemCount < 50) {
+                            data[key] = value;
+                            itemCount++;
+                        }
+                    });
+                    data._lastSaved = new Date().toISOString();
+                    localStorage.setItem(getFormKey(), JSON.stringify(data));
+                    console.log('Saved simplified version due to storage limit');
+                } catch (e) {
+                    console.error('Failed to save even simplified version:', e);
+                }
+            }
         }
 
         function loadFormData() {
+            if (!isLocalStorageAvailable()) {
+                console.warn('LocalStorage is not available. Cannot load saved data.');
+                return;
+            }
+
             const savedData = localStorage.getItem(getFormKey());
-            if (!savedData) return;
+            if (!savedData) {
+                console.log('No saved data found');
+                return;
+            }
 
             try {
                 const data = JSON.parse(savedData);
                 const form = document.getElementById('mainForm');
-                if (!form) return;
+                if (!form) {
+                    // Retry after a short delay if form isn't ready
+                    setTimeout(loadFormData, 100);
+                    return;
+                }
+
+                let loadedCount = 0;
 
                 // Restore form values
                 Object.keys(data).forEach(key => {
+                    // Skip metadata keys
+                    if (key.startsWith('_')) return;
+
                     const value = data[key];
                     const elements = form.querySelectorAll(`[name="${key}"]`);
+
+                    if (elements.length === 0) return;
 
                     elements.forEach(element => {
                         if (element.type === 'checkbox' || element.type === 'radio') {
@@ -1276,29 +1735,191 @@
                             } else {
                                 element.checked = element.value === value;
                             }
+                            if (element.checked) loadedCount++;
                         } else {
                             element.value = Array.isArray(value) ? value[0] : value;
+                            if (element.value) loadedCount++;
                         }
                     });
                 });
 
-                console.log('Loaded saved data');
+                if (loadedCount > 0) {
+                    console.log(`Loaded ${loadedCount} saved form fields`);
+                    if (data._lastSaved) {
+                        const saveDate = new Date(data._lastSaved);
+                        console.log('Last saved:', saveDate.toLocaleString());
+                    }
+                }
             } catch (error) {
                 console.error('Error loading saved data:', error);
             }
         }
 
+        // Debounced save function
+        function debouncedSave(form) {
+            if (saveDebounceTimer) {
+                clearTimeout(saveDebounceTimer);
+            }
+            saveDebounceTimer = setTimeout(() => {
+                saveFormData(form);
+            }, 500); // Save 500ms after user stops typing
+        }
+
+        // Login functionality
+        function initializeLogin() {
+            const loginForm = document.getElementById('loginForm');
+            const loginOverlay = document.getElementById('loginOverlay');
+            const userInfo = document.getElementById('userInfo');
+            const currentUsernameSpan = document.getElementById('currentUsername');
+            const logoutBtn = document.getElementById('logoutBtn');
+            const formSection = document.querySelector('.form-section');
+
+            // Check if user is already logged in
+            const currentUser = getCurrentUser();
+            if (currentUser) {
+                loginOverlay.classList.add('hidden');
+                userInfo.classList.add('show');
+                currentUsernameSpan.textContent = currentUser;
+                if (formSection) {
+                    formSection.style.display = 'block';
+                }
+                // Initialize autosave for logged-in user
+                setTimeout(() => {
+                    initializeAutosave();
+                    loadFormData();
+                }, 100);
+                return;
+            }
+
+            // Show login overlay if not logged in
+            loginOverlay.classList.remove('hidden');
+            if (formSection) formSection.style.display = 'none';
+
+            // Handle login form submission
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                const username = document.getElementById('username').value;
+                const password = document.getElementById('password').value;
+                const loginError = document.getElementById('loginError');
+                const usernameError = document.getElementById('usernameError');
+                const passwordError = document.getElementById('passwordError');
+                const loginButton = document.getElementById('loginButton');
+
+                // Clear previous errors
+                loginError.classList.remove('show');
+                usernameError.classList.remove('show');
+                passwordError.classList.remove('show');
+
+                // Validate inputs
+                if (!username.trim()) {
+                    usernameError.classList.add('show');
+                    return;
+                }
+
+                if (!password.trim()) {
+                    passwordError.classList.add('show');
+                    return;
+                }
+
+                // Authenticate
+                loginButton.disabled = true;
+                loginButton.textContent = 'Logging in...';
+
+                setTimeout(() => {
+                    const authenticatedUser = authenticate(username, password);
+                    
+                    if (authenticatedUser) {
+                        setCurrentUser(authenticatedUser);
+                        loginOverlay.classList.add('hidden');
+                        userInfo.classList.add('show');
+                        currentUsernameSpan.textContent = authenticatedUser;
+                        if (formSection) {
+                            formSection.style.display = 'block';
+                        }
+                        
+                        // Load user-specific form data and initialize autosave
+                        setTimeout(() => {
+                            loadFormData();
+                            initializeAutosave();
+                        }, 100);
+                    } else {
+                        loginError.classList.add('show');
+                        loginButton.disabled = false;
+                        loginButton.textContent = 'Login';
+                    }
+                }, 300);
+            });
+
+            // Handle logout
+            logoutBtn.addEventListener('click', function() {
+                if (confirm('Are you sure you want to logout? Your progress is saved.')) {
+                    clearCurrentUser();
+                    loginOverlay.classList.remove('hidden');
+                    userInfo.classList.remove('show');
+                    if (formSection) formSection.style.display = 'none';
+                    
+                    // Clear form
+                    const form = document.getElementById('mainForm');
+                    if (form) {
+                        form.reset();
+                    }
+                }
+            });
+        }
+
         // Initialize auto-save for form
-        const form = document.getElementById('mainForm');
-        if (form) {
-            // Auto-save on input change
-            form.addEventListener('input', function() {
+        function initializeAutosave() {
+            const form = document.getElementById('mainForm');
+            if (!form) {
+                // Retry if form isn't ready yet
+                setTimeout(initializeAutosave, 100);
+                return;
+            }
+
+            // Only initialize if user is logged in
+            if (!getCurrentUser()) {
+                return;
+            }
+
+            // Auto-save on input change (with debounce for text inputs)
+            form.addEventListener('input', function(e) {
+                // For text inputs, use debounced save
+                if (e.target.type === 'text' || e.target.type === 'email' || 
+                    e.target.type === 'tel' || e.target.type === 'number' || 
+                    e.target.tagName === 'TEXTAREA') {
+                    debouncedSave(this);
+                } else {
+                    // For other inputs, save immediately
+                    saveFormData(this);
+                }
+            });
+
+            // Auto-save on checkbox/radio change (immediate)
+            form.addEventListener('change', function() {
                 saveFormData(this);
             });
 
-            // Auto-save on checkbox/radio change
-            form.addEventListener('change', function() {
+            // Auto-save on blur (when user leaves a field)
+            form.addEventListener('blur', function() {
                 saveFormData(this);
+            }, true); // Use capture phase to catch all blur events
+
+            // Periodic auto-save as backup (every 30 seconds)
+            setInterval(() => {
+                saveFormData(form);
+            }, 30000);
+
+            // Save on page unload as final safety net
+            window.addEventListener('beforeunload', function() {
+                saveFormData(form);
+            });
+
+            // Save when page becomes hidden (user switches tabs)
+            document.addEventListener('visibilitychange', function() {
+                if (document.hidden) {
+                    saveFormData(form);
+                }
             });
 
             // Handle form submission
@@ -1320,17 +1941,246 @@
                     }
                 });
 
-                // Prepare email body
-                let emailBody = `New Hero Questionnaire Submission\n\n`;
-                emailBody += `Submitted: ${new Date().toLocaleString()}\n\n`;
-                emailBody += '='.repeat(50) + '\n\n';
+                // Field name to readable label mapping
+                const fieldLabels = {
+                    // Inbound Section
+                    'inbound_calls_range': 'Inbound Call Volume Range',
+                    'inbound_calls_exact': 'Inbound Call Volume (Exact)',
+                    'caller_existing_pct': 'Existing Customers (%)',
+                    'caller_new_pct': 'New Prospects (%)',
+                    'caller_vendors_pct': 'Vendors/Suppliers (%)',
+                    'caller_other_pct': 'Other Callers (%)',
+                    'call_type_product': 'Product Information/Specifications',
+                    'call_type_pricing': 'Pricing Inquiries',
+                    'call_type_order_status': 'Order Status/Tracking',
+                    'call_type_inventory': 'Inventory Availability',
+                    'call_type_account': 'Account Questions',
+                    'call_type_new_customer': 'New Customer Inquiry',
+                    'call_type_placing_order': 'Placing an Order',
+                    'call_type_returns': 'Returns/Complaints/Issues',
+                    'call_type_shipping': 'Shipping Information',
+                    'call_type_other_label': 'Other Call Type',
+                    'call_type_other': 'Other Call Type - Frequency',
+                    'general_knowledge_pct': 'Calls Answered with General Knowledge (%)',
+                    'customer_lookup_pct': 'Calls Requiring Customer Lookup (%)',
+                    'order_repeat': 'Take Simple Repeat Orders',
+                    'order_new': 'Take New Orders',
+                    'order_email': 'Collect Order Details & Email to Sales',
+                    'order_transfer': "Don't Take Orders (Transfer to Sales)",
+                    'order_preferred_approach': 'Preferred Order-Taking Approach',
+                    'inventory_checking': 'Inventory Checking Capability',
+                    'order_status_lookup': 'Order Status Lookup Capability',
+                    'integration_netsuite_customer': 'Read Customer Data',
+                    'integration_netsuite_history': 'Read Order History',
+                    'integration_netsuite_inventory': 'Check Inventory Levels',
+                    'integration_netsuite_create': 'Create New Orders',
+                    'integration_magento_catalog': 'Product Catalog/Information',
+                    'integration_magento_pricing': 'Pricing Information',
+                    'integration_email': 'Email System - Send Confirmations',
+                    'integration_calendar': 'Calendar System - Schedule Callbacks',
+                    'integration_other_label': 'Other Integration System',
+                    'integration_other': 'Other Integration Priority',
+                    'call_recordings': 'Call Recordings Preference',
+                    'recording_storage': 'Recording Storage Duration',
+                    'recording_storage_other': 'Recording Storage (Other)',
+                    'special_requirements': 'Special Requirements',
+                    'questions_for_us': 'Questions for Us',
+                    
+                    // Outbound Section
+                    'outbound_goals': 'Primary Outbound Goals',
+                    'outbound_target_volume': 'Target Outbound Call Volume',
+                    'outbound_target_exact': 'Target Outbound Calls (Exact)',
+                    'outbound_current_volume': 'Current Outbound Call Volume',
+                    'target_new_prospects': 'Target: New Prospects',
+                    'target_new_prospects_volume': 'New Prospects Volume/Month',
+                    'target_existing_customers': 'Target: Existing Customers',
+                    'target_existing_customers_volume': 'Existing Customers Volume/Month',
+                    'target_dormant': 'Target: Dormant Customers',
+                    'target_dormant_volume': 'Dormant Customers Volume/Month',
+                    'target_trade_show': 'Target: Trade Show Leads',
+                    'target_trade_show_volume': 'Trade Show Leads Volume/Month',
+                    'target_referrals': 'Target: Referrals',
+                    'target_referrals_volume': 'Referrals Volume/Month',
+                    'target_other_label': 'Other Target Audience',
+                    'target_other': 'Other Target Priority',
+                    'target_other_volume': 'Other Target Volume/Month',
+                    'calling_strategy': 'Calling Strategy',
+                    'success_outcome': 'Primary Success Outcome',
+                    'success_outcome_other': 'Success Outcome (Other)',
+                    'transfer_distribution': 'Call Transfer Distribution',
+                    'transfer_one_person': 'Transfer to One Person',
+                    'voicemail_action': 'Voicemail Handling',
+                    'voicemail_combination': 'Voicemail Combination Approach',
+                    'voicemail_other': 'Voicemail Handling (Other)',
+                    'outbound_additional_notes': 'Outbound Additional Notes',
+                    
+                    // Lead Generation Section
+                    'store_types': 'Target Store Types',
+                    'store_types_other': 'Store Types (Other)',
+                    'store_size': 'Store Size Preference',
+                    'store_size_min': 'Store Size Min ($)',
+                    'store_size_max': 'Store Size Max ($)',
+                    'aesthetic': 'Aesthetic/Style Preference',
+                    'aesthetic_other': 'Aesthetic (Other)',
+                    'ideal_customer': 'Ideal Customer Description',
+                    'geographic_focus': 'Geographic Focus',
+                    'regions': 'Specific Regions',
+                    'specific_states': 'Specific States',
+                    'target_lead_volume': 'Target Lead Volume',
+                    'target_lead_exact': 'Target Leads (Exact)',
+                    'email_sequence': 'Email Sequence Before Calling',
+                    'email_sequence_other': 'Email Sequence (Other)',
+                    'engagement_metrics': 'Engagement Metrics to Track',
+                    'engagement_metrics_other': 'Engagement Metrics (Other)'
+                };
 
-                Object.keys(data).forEach(key => {
-                    const value = data[key];
-                    const formattedKey = key.replace(/_/g, ' ').replace(/\b\w/g, l => l.toUpperCase());
-                    const formattedValue = Array.isArray(value) ? value.join(', ') : value;
-                    emailBody += `${formattedKey}:\n${formattedValue}\n\n`;
+                // Value formatting function
+                function formatValue(key, value) {
+                    if (!value || value === '' || (Array.isArray(value) && value.length === 0)) {
+                        return null;
+                    }
+                    
+                    if (Array.isArray(value)) {
+                        return value.filter(v => v && v !== '').join(', ');
+                    }
+                    
+                    // Format specific values
+                    if (key.includes('_pct') && value) {
+                        return `${value}%`;
+                    }
+                    
+                    if (key.includes('_rank') && value) {
+                        return `Rank: ${value}`;
+                    }
+                    
+                    // Format priority values
+                    if (value === 'must') return '✅ Must-Have';
+                    if (value === 'nice') return '⭐ Nice-to-Have';
+                    if (value === 'no') return '❌ Not Needed';
+                    if (value === 'yes') return '✅ Yes';
+                    if (value === 'priority') return '⭐ Priority';
+                    
+                    // Format call type frequency values
+                    if (value === 'high_volume') return '📞 High Volume';
+                    if (value === 'occasional') return '📋 Occasional';
+                    if (value === 'rarely_never') return '🔕 Rarely/Never';
+                    
+                    // Format outbound goals
+                    if (key === 'outbound_goals' && Array.isArray(value)) {
+                        const goalLabels = {
+                            'book_meetings': 'Book meetings with sales team',
+                            'send_catalogs': 'Send catalogs to engaged prospects',
+                            'maintain_relationships': 'Maintain relationships with existing customers',
+                            'reactivate_dormant': 'Reactivate dormant customers'
+                        };
+                        return value.map(v => goalLabels[v] || v).join(', ');
+                    }
+                    
+                    return value;
+                }
+
+                // Prepare comprehensive email body
+                let emailBody = `═══════════════════════════════════════════════════════\n`;
+                emailBody += `   NEW QUESTIONNAIRE SUBMISSION - KALALOU AI SYSTEM\n`;
+                emailBody += `═══════════════════════════════════════════════════════\n\n`;
+                emailBody += `📅 Submitted: ${new Date().toLocaleString()}\n\n`;
+
+                // INBOUND SYSTEM SECTION
+                const inboundFields = [
+                    'inbound_calls_range', 'inbound_calls_exact', 'caller_existing_pct', 'caller_new_pct',
+                    'caller_vendors_pct', 'caller_other_pct', 'call_type_product', 'call_type_pricing',
+                    'call_type_order_status', 'call_type_inventory', 'call_type_account',
+                    'call_type_new_customer', 'call_type_placing_order', 'call_type_returns',
+                    'call_type_shipping', 'call_type_other_label', 'call_type_other',
+                    'general_knowledge_pct', 'customer_lookup_pct', 'order_repeat', 'order_new', 'order_email',
+                    'order_transfer', 'order_preferred_approach', 'inventory_checking', 'order_status_lookup',
+                    'integration_netsuite_customer', 'integration_netsuite_history', 'integration_netsuite_inventory',
+                    'integration_netsuite_create', 'integration_magento_catalog', 'integration_magento_pricing',
+                    'integration_email', 'integration_calendar', 'integration_other_label', 'integration_other',
+                    'call_recordings', 'recording_storage', 'recording_storage_other', 'special_requirements',
+                    'questions_for_us'
+                ];
+
+                emailBody += `\n${'═'.repeat(60)}\n`;
+                emailBody += `📞 INBOUND AI SYSTEM\n`;
+                emailBody += `${'═'.repeat(60)}\n\n`;
+
+                let hasInboundData = false;
+                inboundFields.forEach(key => {
+                    if (data[key]) {
+                        const formatted = formatValue(key, data[key]);
+                        if (formatted) {
+                            hasInboundData = true;
+                            emailBody += `  • ${fieldLabels[key] || key}: ${formatted}\n`;
+                        }
+                    }
                 });
+
+                if (!hasInboundData) {
+                    emailBody += `  (No inbound data provided)\n`;
+                }
+
+                // OUTBOUND SYSTEM SECTION
+                const outboundFields = [
+                    'outbound_goals', 'outbound_target_volume', 'outbound_target_exact',
+                    'outbound_current_volume', 'target_new_prospects', 'target_new_prospects_volume',
+                    'target_existing_customers', 'target_existing_customers_volume', 'target_dormant',
+                    'target_dormant_volume', 'target_trade_show', 'target_trade_show_volume', 'target_referrals',
+                    'target_referrals_volume', 'target_other_label', 'target_other', 'target_other_volume',
+                    'calling_strategy', 'success_outcome', 'success_outcome_other', 'transfer_distribution',
+                    'transfer_one_person', 'voicemail_action', 'voicemail_combination', 'voicemail_other',
+                    'outbound_additional_notes'
+                ];
+
+                emailBody += `\n${'═'.repeat(60)}\n`;
+                emailBody += `📢 OUTBOUND AI SYSTEM\n`;
+                emailBody += `${'═'.repeat(60)}\n\n`;
+
+                let hasOutboundData = false;
+                outboundFields.forEach(key => {
+                    if (data[key]) {
+                        const formatted = formatValue(key, data[key]);
+                        if (formatted) {
+                            hasOutboundData = true;
+                            emailBody += `  • ${fieldLabels[key] || key}: ${formatted}\n`;
+                        }
+                    }
+                });
+
+                if (!hasOutboundData) {
+                    emailBody += `  (No outbound data provided)\n`;
+                }
+
+                // LEAD GENERATION SECTION
+                const leadGenFields = [
+                    'store_types', 'store_types_other', 'store_size', 'store_size_min', 'store_size_max',
+                    'aesthetic', 'aesthetic_other', 'ideal_customer', 'geographic_focus', 'regions',
+                    'specific_states', 'target_lead_volume', 'target_lead_exact', 'email_sequence',
+                    'email_sequence_other', 'engagement_metrics', 'engagement_metrics_other'
+                ];
+
+                emailBody += `\n${'═'.repeat(60)}\n`;
+                emailBody += `🎯 LEAD GENERATION SYSTEM\n`;
+                emailBody += `${'═'.repeat(60)}\n\n`;
+
+                let hasLeadGenData = false;
+                leadGenFields.forEach(key => {
+                    if (data[key]) {
+                        const formatted = formatValue(key, data[key]);
+                        if (formatted) {
+                            hasLeadGenData = true;
+                            emailBody += `  • ${fieldLabels[key] || key}: ${formatted}\n`;
+                        }
+                    }
+                });
+
+                if (!hasLeadGenData) {
+                    emailBody += `  (No lead generation data provided)\n`;
+                }
+
+                emailBody += `\n${'═'.repeat(60)}\n`;
+                emailBody += `End of Submission\n`;
+                emailBody += `${'═'.repeat(60)}\n`;
 
                 console.log('Form submitted:', data);
 
@@ -1366,9 +2216,30 @@
                     submitButton.disabled = false;
 
                     if (response.ok) {
-                        alert('Thank you for completing the questionnaire! We will review your responses and get back to you shortly.');
-                        localStorage.removeItem(getFormKey());
+                        // Hide form and show thank you section
+                        const formSection = document.querySelector('.form-section');
+                        const thankYouSection = document.getElementById('thankYouSection');
+                        
+                        if (formSection) formSection.style.display = 'none';
+                        if (thankYouSection) {
+                            thankYouSection.classList.add('show');
+                            // Initialize Three.js for thank you section if not already done
+                            setTimeout(() => {
+                                if (typeof THREE !== 'undefined' && !document.getElementById('thankYouCanvas').getContext('webgl')) {
+                                    initThreeJS();
+                                }
+                            }, 100);
+                        }
+                        
+                        // Clear saved data for current user
+                        const formKey = getFormKey();
+                        localStorage.removeItem(formKey);
                         this.reset();
+                        
+                        // Scroll to thank you section
+                        if (thankYouSection) {
+                            thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
                     } else {
                         throw new Error('Submission failed');
                     }
@@ -1379,12 +2250,76 @@
                     alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com');
                 }
             });
+
+            console.log('Autosave initialized - your progress is being saved automatically');
         }
 
-        // Load saved data on page load
-        window.addEventListener('DOMContentLoaded', function() {
+        // Load saved data on page load - multiple strategies for reliability
+        function initializeFormData() {
+            // Initialize login first
+            initializeLogin();
+            
+            // Only load form data if user is logged in
+            const currentUser = getCurrentUser();
+            if (!currentUser) {
+                return;
+            }
+            
+            // Try loading immediately
             loadFormData();
-        });
+            
+            // Also try after DOM is fully ready
+            if (document.readyState === 'loading') {
+                document.addEventListener('DOMContentLoaded', function() {
+                    loadFormData();
+                    initializeAutosave();
+                });
+            } else {
+                // DOM is already ready
+                loadFormData();
+                initializeAutosave();
+            }
+        }
+
+        // Handle "Submit Again" button
+        function initializeSubmitAgain() {
+            const submitAgainButton = document.getElementById('submitAgainButton');
+            const thankYouSection = document.getElementById('thankYouSection');
+            const formSection = document.querySelector('.form-section');
+            const form = document.getElementById('mainForm');
+
+            if (submitAgainButton) {
+                submitAgainButton.addEventListener('click', function() {
+                    // Hide thank you section
+                    if (thankYouSection) {
+                        thankYouSection.classList.remove('show');
+                    }
+                    
+                    // Show form section
+                    if (formSection) {
+                        formSection.style.display = 'block';
+                    }
+                    
+                    // Reset form
+                    if (form) {
+                        form.reset();
+                    }
+                    
+                    // Clear saved data
+                    const formKey = getFormKey();
+                    localStorage.removeItem(formKey);
+                    
+                    // Scroll to form
+                    if (formSection) {
+                        formSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                });
+            }
+        }
+
+        // Initialize everything
+        initializeFormData();
+        initializeSubmitAgain();
     </script>
 </body>
 </html>
