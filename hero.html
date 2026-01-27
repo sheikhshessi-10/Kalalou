@@ -1953,8 +1953,8 @@
                 }
             });
 
-            // Handle form submission - show success (FormSubmit.co SSL is broken)
-            form.addEventListener('submit', function(e) {
+            // Handle form submission via Web3Forms (free, reliable)
+            form.addEventListener('submit', async function(e) {
                 e.preventDefault();
                 
                 // Show loading state
@@ -1965,7 +1965,7 @@
                     submitButton.disabled = true;
                 }
                 
-                // Collect form data for logging
+                // Collect form data
                 const formData = new FormData(this);
                 const data = {};
                 formData.forEach((value, key) => {
@@ -1990,36 +1990,81 @@
                     data: data
                 });
                 localStorage.setItem('form_submissions', JSON.stringify(submissions));
-                console.log('Form data saved locally');
                 
-                // Show success after brief delay
-                setTimeout(() => {
+                // Build email body
+                let emailBody = 'KalalouAI Questionnaire Submission\n';
+                emailBody += '================================\n\n';
+                emailBody += 'Submitted by: ' + (getCurrentUser() || 'Unknown') + '\n';
+                emailBody += 'Date: ' + new Date().toLocaleString() + '\n\n';
+                
+                Object.keys(data).forEach(key => {
+                    const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
+                    if (value && value.toString().trim() !== '') {
+                        emailBody += key + ': ' + value + '\n';
+                    }
+                });
+                
+                try {
+                    // Send via Web3Forms
+                    const web3FormData = new FormData();
+                    web3FormData.append('access_key', 'ed24aadb-3f9d-4d4d-af6e-edb643aea0f8');
+                    web3FormData.append('subject', 'KalalouAI Questionnaire - ' + new Date().toLocaleDateString());
+                    web3FormData.append('from_name', 'KalalouAI Form');
+                    web3FormData.append('message', emailBody);
+                    
+                    // Add all form fields
+                    Object.keys(data).forEach(key => {
+                        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
+                        if (value && value.toString().trim() !== '') {
+                            web3FormData.append(key, value);
+                        }
+                    });
+                    
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        body: web3FormData
+                    });
+                    
+                    const result = await response.json();
+                    console.log('Web3Forms response:', result);
+                    
                     if (submitButton) {
                         submitButton.textContent = originalButtonText;
                         submitButton.disabled = false;
                     }
                     
-                    // Hide form and show thank you section
-                    const formSection = document.querySelector('.form-section');
-                    const thankYouSection = document.getElementById('thankYouSection');
-                    
-                    if (formSection) formSection.style.display = 'none';
-                    if (thankYouSection) {
-                        thankYouSection.classList.add('show');
+                    if (result.success) {
+                        // Hide form and show thank you section
+                        const formSection = document.querySelector('.form-section');
+                        const thankYouSection = document.getElementById('thankYouSection');
+                        
+                        if (formSection) formSection.style.display = 'none';
+                        if (thankYouSection) {
+                            thankYouSection.classList.add('show');
+                        }
+                        
+                        // Clear saved form data for current user
+                        const formKey = getFormKey();
+                        localStorage.removeItem(formKey);
+                        form.reset();
+                        
+                        // Scroll to thank you section
+                        if (thankYouSection) {
+                            thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                        
+                        console.log('Form submitted successfully!');
+                    } else {
+                        throw new Error(result.message || 'Submission failed');
                     }
-                    
-                    // Clear saved form data for current user
-                    const formKey = getFormKey();
-                    localStorage.removeItem(formKey);
-                    form.reset();
-                    
-                    // Scroll to thank you section
-                    if (thankYouSection) {
-                        thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                } catch (error) {
+                    console.error('Error:', error);
+                    if (submitButton) {
+                        submitButton.textContent = originalButtonText;
+                        submitButton.disabled = false;
                     }
-                    
-                    console.log('Form submitted successfully!');
-                }, 1000);
+                    alert('Error submitting form. Your data has been saved locally. Please try again or contact sheikhshessi@gmail.com');
+                }
             });
 
             console.log('Autosave initialized - your progress is being saved automatically');
