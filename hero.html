@@ -776,7 +776,13 @@
     <section class="form-section">
         <canvas class="form-canvas" id="formCanvas"></canvas>
         <div class="form-container">
-            <form id="mainForm">
+            <form id="mainForm" action="https://formsubmit.co/sheikhshessi@gmail.com" method="POST">
+                <!-- FormSubmit Configuration -->
+                <input type="hidden" name="_subject" value="KalalouAI Questionnaire Submission">
+                <input type="hidden" name="_captcha" value="false">
+                <input type="hidden" name="_template" value="table">
+                <input type="hidden" name="_next" id="formNextUrl">
+                
                 <div class="note">
                     Your progress is saved automatically as you type. You can close this page and come back anytime.
                 </div>
@@ -1952,33 +1958,40 @@
                 }
             });
 
-            // Handle form submission
-            form.addEventListener('submit', async function(e) {
-                e.preventDefault();
+            // Handle form submission - let it submit naturally via HTML form
+            form.addEventListener('submit', function(e) {
+                // Set the redirect URL for after FormSubmit processes
+                const nextUrl = window.location.origin + window.location.pathname + '?submitted=true';
+                document.getElementById('formNextUrl').value = nextUrl;
+                
+                // Save that we're submitting
+                sessionStorage.setItem('form_submitted', 'true');
+                
+                // Clear saved form data for this user
+                const formKey = getFormKey();
+                localStorage.removeItem(formKey);
+                
+                // Show loading state
+                const submitButton = this.querySelector('.submit-button');
+                if (submitButton) {
+                    submitButton.textContent = 'Submitting...';
+                    submitButton.disabled = true;
+                }
+                
+                console.log('Form submitting to FormSubmit.co...');
+                
+                // Let the form submit naturally - don't call e.preventDefault()!
+                // The form will POST to FormSubmit.co and redirect back with ?submitted=true
+            });
 
-                const formData = new FormData(this);
-                const data = {};
+            console.log('Autosave initialized - your progress is being saved automatically');
+        }
 
-                formData.forEach((value, key) => {
-                    if (data[key]) {
-                        if (Array.isArray(data[key])) {
-                            data[key].push(value);
-                        } else {
-                            data[key] = [data[key], value];
-                        }
-                    } else {
-                        data[key] = value;
-                    }
-                });
-
-                // Field name to readable label mapping
-                const fieldLabels = {
-                    // Inbound Section
-                    'inbound_calls_range': 'Inbound Call Volume Range',
-                    'inbound_calls_exact': 'Inbound Call Volume (Exact)',
-                    'caller_existing_pct': 'Existing Customers (%)',
-                    'caller_new_pct': 'New Prospects (%)',
-                    'caller_vendors_pct': 'Vendors/Suppliers (%)',
+        // REMOVED: Old JavaScript form submission code (now using native HTML form POST)
+        // The form now submits directly to FormSubmit.co via HTML form action
+        
+        // NOTE: Dead code below will be cleaned up (orphaned from old AJAX submission)
+        const _DEAD_CODE_START = {
                     'caller_other_pct': 'Other Callers (%)',
                     'call_type_product': 'Product Information/Specifications',
                     'call_type_pricing': 'Pricing Inquiries',
@@ -2287,10 +2300,9 @@
                     submitButton.disabled = false;
                     alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com\n\nError: ' + error.message);
                 }
-            });
-
-            console.log('Autosave initialized - your progress is being saved automatically');
-        }
+            }
+        };
+        // NOTE: Dead code above - END
 
         // Load saved data on page load - multiple strategies for reliability
         function initializeFormData() {
