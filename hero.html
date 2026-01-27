@@ -1774,6 +1774,38 @@
             const logoutBtn = document.getElementById('logoutBtn');
             const formSection = document.querySelector('.form-section');
 
+            // Setup logout handler first (before any early returns)
+            if (logoutBtn) {
+                logoutBtn.addEventListener('click', function() {
+                    // Save progress before logout
+                    const form = document.getElementById('mainForm');
+                    if (form) {
+                        saveFormData(form);
+                    }
+                    
+                    if (confirm('Are you sure you want to logout? Your progress has been saved.')) {
+                        clearCurrentUser();
+                        loginOverlay.classList.remove('hidden');
+                        userInfo.classList.remove('show');
+                        if (formSection) formSection.style.display = 'none';
+                        
+                        // Reset form display (but data is saved)
+                        if (form) {
+                            form.reset();
+                        }
+                        
+                        // Hide thank you section if visible
+                        const thankYouSection = document.getElementById('thankYouSection');
+                        if (thankYouSection) {
+                            thankYouSection.classList.remove('show');
+                        }
+                        
+                        // Scroll to top
+                        window.scrollTo({ top: 0, behavior: 'smooth' });
+                    }
+                });
+            }
+
             // Check if user is already logged in
             const currentUser = getCurrentUser();
             if (currentUser) {
@@ -1849,22 +1881,6 @@
                         loginButton.textContent = 'Login';
                     }
                 }, 300);
-            });
-
-            // Handle logout
-            logoutBtn.addEventListener('click', function() {
-                if (confirm('Are you sure you want to logout? Your progress is saved.')) {
-                    clearCurrentUser();
-                    loginOverlay.classList.remove('hidden');
-                    userInfo.classList.remove('show');
-                    if (formSection) formSection.style.display = 'none';
-                    
-                    // Clear form
-                    const form = document.getElementById('mainForm');
-                    if (form) {
-                        form.reset();
-                    }
-                }
             });
         }
 
