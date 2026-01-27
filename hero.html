@@ -2005,6 +2005,8 @@
                 });
                 
                 try {
+                    console.log('Starting Web3Forms submission...');
+                    
                     // Send via Web3Forms
                     const web3FormData = new FormData();
                     web3FormData.append('access_key', 'ed24aadb-3f9d-4d4d-af6e-edb643aea0f8');
@@ -2020,11 +2022,14 @@
                         }
                     });
                     
+                    console.log('Sending to Web3Forms...');
+                    
                     const response = await fetch('https://api.web3forms.com/submit', {
                         method: 'POST',
                         body: web3FormData
                     });
                     
+                    console.log('Response status:', response.status);
                     const result = await response.json();
                     console.log('Web3Forms response:', result);
                     
@@ -2058,12 +2063,14 @@
                         throw new Error(result.message || 'Submission failed');
                     }
                 } catch (error) {
-                    console.error('Error:', error);
+                    console.error('Web3Forms Error:', error);
+                    console.error('Error message:', error.message);
+                    console.error('Error stack:', error.stack);
                     if (submitButton) {
                         submitButton.textContent = originalButtonText;
                         submitButton.disabled = false;
                     }
-                    alert('Error submitting form. Your data has been saved locally. Please try again or contact sheikhshessi@gmail.com');
+                    alert('Error submitting form: ' + error.message + '\n\nYour data has been saved locally. Please check the browser console (F12) for details.');
                 }
             });
 
