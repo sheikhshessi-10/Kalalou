@@ -2220,35 +2220,58 @@
                 submitButton.textContent = 'Submitting...';
                 submitButton.disabled = true;
 
-                // Send form data via fetch (fire and forget approach)
+                // Submit via hidden iframe (real form POST, no CORS issues, no redirect)
                 try {
-                    const formDataToSend = new FormData();
-                    formDataToSend.append('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
-                    formDataToSend.append('_captcha', 'false');
-                    formDataToSend.append('_template', 'table');
-                    formDataToSend.append('message', emailBody);
+                    // Create hidden iframe if it doesn't exist
+                    let iframe = document.getElementById('hidden-form-iframe');
+                    if (!iframe) {
+                        iframe = document.createElement('iframe');
+                        iframe.id = 'hidden-form-iframe';
+                        iframe.name = 'hidden-form-iframe';
+                        iframe.style.display = 'none';
+                        document.body.appendChild(iframe);
+                    }
+
+                    // Create a new form element for submission
+                    const submitForm = document.createElement('form');
+                    submitForm.method = 'POST';
+                    submitForm.action = 'https://formsubmit.co/sheikhshessi@gmail.com';
+                    submitForm.target = 'hidden-form-iframe';
+                    submitForm.style.display = 'none';
+
+                    // Helper to add hidden fields
+                    const addField = (name, value) => {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = name;
+                        input.value = value;
+                        submitForm.appendChild(input);
+                    };
+
+                    // FormSubmit configuration
+                    addField('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
+                    addField('_captcha', 'false');
+                    addField('_template', 'table');
+                    addField('message', emailBody);
 
                     // Add all form data fields
                     Object.keys(data).forEach(key => {
                         const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
                         if (value && value.toString().trim() !== '') {
-                            formDataToSend.append(key, value);
+                            addField(key, value);
                         }
                     });
 
-                    // Send to FormSubmit (fire and forget - no-cors mode)
-                    fetch('https://formsubmit.co/sheikhshessi@gmail.com', {
-                        method: 'POST',
-                        body: formDataToSend,
-                        mode: 'no-cors'
-                    }).catch(err => console.log('Form submission background error:', err));
-
-                    // Also log the submission data for backup
-                    console.log('Form submitted with data:', data);
-                    console.log('Email body:', emailBody);
-
-                    // Show success immediately (form was sent)
-                    setTimeout(() => {
+                    // Add form to document and submit
+                    document.body.appendChild(submitForm);
+                    
+                    // Listen for iframe load (indicates submission complete)
+                    const onIframeLoad = () => {
+                        iframe.removeEventListener('load', onIframeLoad);
+                        
+                        // Clean up the form
+                        submitForm.remove();
+                        
                         submitButton.textContent = originalButtonText;
                         submitButton.disabled = false;
 
@@ -2277,7 +2300,16 @@
                         if (thankYouSection) {
                             thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
-                    }, 1000);
+                        
+                        console.log('Form submitted successfully!');
+                    };
+                    
+                    iframe.addEventListener('load', onIframeLoad);
+                    
+                    // Submit the form
+                    submitForm.submit();
+                    
+                    console.log('Form submission initiated...');
 
                 } catch (error) {
                     console.error('Error submitting form:', error);
