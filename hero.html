@@ -1794,6 +1794,20 @@
                             form.reset();
                         }
                         
+                        // Reset login form and button
+                        if (loginForm) {
+                            loginForm.reset();
+                        }
+                        const loginButton = document.querySelector('.login-button');
+                        if (loginButton) {
+                            loginButton.disabled = false;
+                            loginButton.textContent = 'Login';
+                        }
+                        const loginError = document.getElementById('loginError');
+                        if (loginError) {
+                            loginError.textContent = '';
+                        }
+                        
                         // Hide thank you section if visible
                         const thankYouSection = document.getElementById('thankYouSection');
                         if (thankYouSection) {
