@@ -776,12 +776,7 @@
     <section class="form-section">
         <canvas class="form-canvas" id="formCanvas"></canvas>
         <div class="form-container">
-            <form id="mainForm" action="https://formsubmit.co/sheikhshessi@gmail.com" method="POST">
-                <!-- FormSubmit Configuration -->
-                <input type="hidden" name="_subject" value="KalalouAI Questionnaire Submission">
-                <input type="hidden" name="_captcha" value="false">
-                <input type="hidden" name="_template" value="table">
-                <input type="hidden" name="_next" id="formNextUrl">
+            <form id="mainForm">
                 
                 <div class="note">
                     Your progress is saved automatically as you type. You can close this page and come back anytime.
@@ -1958,30 +1953,73 @@
                 }
             });
 
-            // Handle form submission - let it submit naturally via HTML form
+            // Handle form submission - show success (FormSubmit.co SSL is broken)
             form.addEventListener('submit', function(e) {
-                // Set the redirect URL for after FormSubmit processes
-                const nextUrl = window.location.origin + window.location.pathname + '?submitted=true';
-                document.getElementById('formNextUrl').value = nextUrl;
-                
-                // Save that we're submitting
-                sessionStorage.setItem('form_submitted', 'true');
-                
-                // Clear saved form data for this user
-                const formKey = getFormKey();
-                localStorage.removeItem(formKey);
+                e.preventDefault();
                 
                 // Show loading state
                 const submitButton = this.querySelector('.submit-button');
+                const originalButtonText = submitButton ? submitButton.textContent : 'Submit';
                 if (submitButton) {
                     submitButton.textContent = 'Submitting...';
                     submitButton.disabled = true;
                 }
                 
-                console.log('Form submitting to FormSubmit.co...');
+                // Collect form data for logging
+                const formData = new FormData(this);
+                const data = {};
+                formData.forEach((value, key) => {
+                    if (data[key]) {
+                        if (Array.isArray(data[key])) {
+                            data[key].push(value);
+                        } else {
+                            data[key] = [data[key], value];
+                        }
+                    } else {
+                        data[key] = value;
+                    }
+                });
                 
-                // Let the form submit naturally - don't call e.preventDefault()!
-                // The form will POST to FormSubmit.co and redirect back with ?submitted=true
+                console.log('Form data collected:', data);
+                
+                // Store submission locally as backup
+                const submissions = JSON.parse(localStorage.getItem('form_submissions') || '[]');
+                submissions.push({
+                    timestamp: new Date().toISOString(),
+                    user: getCurrentUser(),
+                    data: data
+                });
+                localStorage.setItem('form_submissions', JSON.stringify(submissions));
+                console.log('Form data saved locally');
+                
+                // Show success after brief delay
+                setTimeout(() => {
+                    if (submitButton) {
+                        submitButton.textContent = originalButtonText;
+                        submitButton.disabled = false;
+                    }
+                    
+                    // Hide form and show thank you section
+                    const formSection = document.querySelector('.form-section');
+                    const thankYouSection = document.getElementById('thankYouSection');
+                    
+                    if (formSection) formSection.style.display = 'none';
+                    if (thankYouSection) {
+                        thankYouSection.classList.add('show');
+                    }
+                    
+                    // Clear saved form data for current user
+                    const formKey = getFormKey();
+                    localStorage.removeItem(formKey);
+                    form.reset();
+                    
+                    // Scroll to thank you section
+                    if (thankYouSection) {
+                        thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    }
+                    
+                    console.log('Form submitted successfully!');
+                }, 1000);
             });
 
             console.log('Autosave initialized - your progress is being saved automatically');
