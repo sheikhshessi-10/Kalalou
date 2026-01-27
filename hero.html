@@ -2220,21 +2220,23 @@
                 submitButton.textContent = 'Submitting...';
                 submitButton.disabled = true;
 
-                // Send email using FormSubmit.co with AJAX
+                // Send email using FormSubmit.co
                 try {
                     const formDataToSend = new FormData();
-                    formDataToSend.append('_subject', `Hero Questionnaire - ${new Date().toLocaleDateString()}`);
+                    formDataToSend.append('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
                     formDataToSend.append('message', emailBody);
-
-                    Object.keys(data).forEach(key => {
-                        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
-                        formDataToSend.append(key, value);
-                    });
-
                     formDataToSend.append('_captcha', 'false');
                     formDataToSend.append('_template', 'table');
 
-                    const response = await fetch('https://formsubmit.co/sheikhshessi@gmail.com', {
+                    // Add all form data fields
+                    Object.keys(data).forEach(key => {
+                        const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
+                        if (value && value.toString().trim() !== '') {
+                            formDataToSend.append(key, value);
+                        }
+                    });
+
+                    const response = await fetch('https://formsubmit.co/ajax/sheikhshessi@gmail.com', {
                         method: 'POST',
                         body: formDataToSend,
                         headers: {
@@ -2242,10 +2244,13 @@
                         }
                     });
 
+                    const result = await response.json();
+                    console.log('FormSubmit response:', result);
+
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
 
-                    if (response.ok) {
+                    if (result.success) {
                         // Hide form and show thank you section
                         const formSection = document.querySelector('.form-section');
                         const thankYouSection = document.getElementById('thankYouSection');
@@ -2253,7 +2258,6 @@
                         if (formSection) formSection.style.display = 'none';
                         if (thankYouSection) {
                             thankYouSection.classList.add('show');
-                            // Initialize Three.js for thank you section if not already done
                             setTimeout(() => {
                                 if (typeof THREE !== 'undefined' && !document.getElementById('thankYouCanvas').getContext('webgl')) {
                                     initThreeJS();
@@ -2271,13 +2275,19 @@
                             thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
                         }
                     } else {
-                        throw new Error('Submission failed');
+                        throw new Error(result.message || 'Submission failed');
                     }
                 } catch (error) {
                     console.error('Error submitting form:', error);
                     submitButton.textContent = originalButtonText;
                     submitButton.disabled = false;
-                    alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com');
+                    
+                    // Check if it's a CORS error (localhost issue)
+                    if (error.message === 'Failed to fetch') {
+                        alert('Form submission may not work on localhost. Please test on the live site (infinixleverage.com) or deploy to test.');
+                    } else {
+                        alert('There was an error submitting your form. Please try again or contact us directly at sheikhshessi@gmail.com\n\nError: ' + error.message);
+                    }
                 }
             });
 
