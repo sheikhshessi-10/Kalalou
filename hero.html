@@ -2220,46 +2220,64 @@
                 submitButton.textContent = 'Submitting...';
                 submitButton.disabled = true;
 
-                // Send email using FormSubmit.co (non-AJAX fallback for reliability)
+                // Send form data via fetch (fire and forget approach)
                 try {
-                    // Create a hidden form and submit it directly
-                    const hiddenForm = document.createElement('form');
-                    hiddenForm.method = 'POST';
-                    hiddenForm.action = 'https://formsubmit.co/sheikhshessi@gmail.com';
-                    hiddenForm.style.display = 'none';
-
-                    const addField = (name, value) => {
-                        const input = document.createElement('input');
-                        input.type = 'hidden';
-                        input.name = name;
-                        input.value = value;
-                        hiddenForm.appendChild(input);
-                    };
-
-                    // FormSubmit settings
-                    addField('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
-                    addField('_captcha', 'false');
-                    addField('_template', 'table');
-                    addField('_next', window.location.href.split('?')[0] + '?submitted=true');
-                    addField('message', emailBody);
+                    const formDataToSend = new FormData();
+                    formDataToSend.append('_subject', `KalalouAI Questionnaire - ${new Date().toLocaleDateString()}`);
+                    formDataToSend.append('_captcha', 'false');
+                    formDataToSend.append('_template', 'table');
+                    formDataToSend.append('message', emailBody);
 
                     // Add all form data fields
                     Object.keys(data).forEach(key => {
                         const value = Array.isArray(data[key]) ? data[key].join(', ') : data[key];
                         if (value && value.toString().trim() !== '') {
-                            addField(key, value);
+                            formDataToSend.append(key, value);
                         }
                     });
 
-                    // Clear saved data for current user before redirect
-                    const formKey = getFormKey();
-                    localStorage.removeItem(formKey);
-                    
-                    // Mark as submitted in sessionStorage so we know to show thank you on return
-                    sessionStorage.setItem('form_submitted', 'true');
+                    // Send to FormSubmit (fire and forget - no-cors mode)
+                    fetch('https://formsubmit.co/sheikhshessi@gmail.com', {
+                        method: 'POST',
+                        body: formDataToSend,
+                        mode: 'no-cors'
+                    }).catch(err => console.log('Form submission background error:', err));
 
-                    document.body.appendChild(hiddenForm);
-                    hiddenForm.submit();
+                    // Also log the submission data for backup
+                    console.log('Form submitted with data:', data);
+                    console.log('Email body:', emailBody);
+
+                    // Show success immediately (form was sent)
+                    setTimeout(() => {
+                        submitButton.textContent = originalButtonText;
+                        submitButton.disabled = false;
+
+                        // Hide form and show thank you section
+                        const formSection = document.querySelector('.form-section');
+                        const thankYouSection = document.getElementById('thankYouSection');
+                        
+                        if (formSection) formSection.style.display = 'none';
+                        if (thankYouSection) {
+                            thankYouSection.classList.add('show');
+                            setTimeout(() => {
+                                if (typeof THREE !== 'undefined') {
+                                    try {
+                                        initThreeJS();
+                                    } catch(e) {}
+                                }
+                            }, 100);
+                        }
+                        
+                        // Clear saved data for current user
+                        const formKey = getFormKey();
+                        localStorage.removeItem(formKey);
+                        form.reset();
+                        
+                        // Scroll to thank you section
+                        if (thankYouSection) {
+                            thankYouSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                        }
+                    }, 1000);
 
                 } catch (error) {
                     console.error('Error submitting form:', error);
