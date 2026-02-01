@@ -21,6 +21,8 @@
             --accent: #B46A4C;
             --divider: #DDD8D0;
             --card: #FFFFFF;
+            --danger: #c44;
+            --success: #2d7a5e;
         }
 
         body {
@@ -997,6 +999,224 @@
             opacity: 0;
             animation: fadeIn 0.6s ease 0.2s forwards;
         }
+
+        /* ========== Brian presentation sections (brand colors) ========== */
+        .presentation-section {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 120px 40px 80px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .presentation-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            color: var(--ink);
+            margin-bottom: 16px;
+            text-align: center;
+        }
+        .presentation-section .subtitle {
+            font-size: clamp(1rem, 2vw, 1.35rem);
+            color: var(--secondary);
+            margin-bottom: 48px;
+            text-align: center;
+        }
+        /* Section 1: The Ambition */
+        .ambition-current, .ambition-goal {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 48px;
+            flex-wrap: wrap;
+            margin: 24px 0;
+        }
+        .ambition-icons {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+        }
+        .ambition-icons .icon-person {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--divider);
+            flex-shrink: 0;
+        }
+        .ambition-icons .icon-brian {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--accent);
+            box-shadow: 0 0 20px rgba(180, 106, 76, 0.5);
+            flex-shrink: 0;
+        }
+        .ambition-stats {
+            text-align: left;
+            font-size: 1.25rem;
+            color: var(--ink);
+        }
+        .ambition-stats .big { font-weight: 600; font-size: 1.5rem; }
+        .ambition-bracket {
+            width: 100%;
+            height: 2px;
+            background: var(--divider);
+            margin-top: 8px;
+            max-width: 320px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .ambition-arrow {
+            margin: 32px 0;
+            animation: pulse 2s ease-in-out infinite;
+        }
+        @keyframes pulse { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(8px); } }
+        .ambition-badge {
+            display: inline-block;
+            background: var(--success);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-top: 8px;
+        }
+        .challenge-card {
+            background: var(--card);
+            padding: 32px 40px;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+            max-width: 420px;
+            margin: 32px auto;
+            text-align: left;
+        }
+        .challenge-card h3 { font-size: 1.35rem; color: var(--danger); margin-bottom: 20px; }
+        .challenge-card ul { list-style: none; }
+        .challenge-card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--ink); }
+        .challenge-card li::before { content: "✕"; color: var(--danger); font-weight: bold; }
+        .challenge-card .note { font-style: italic; color: var(--secondary); font-size: 0.95rem; margin-top: 16px; }
+        .transition-text { text-align: center; margin-top: 48px; font-style: italic; font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--ink); }
+        .transition-text .second { display: block; margin-top: 12px; opacity: 0.9; }
+        /* Section 2: Meet Brian (dark) */
+        .meet-brian-section {
+            background: #1C1C1C;
+            color: #fff;
+            min-height: 100vh;
+            padding: 120px 40px 80px;
+        }
+        .meet-brian-section h2 { color: #fff; }
+        .meet-brian-section .subtitle { color: rgba(255,255,255,0.75); }
+        .brian-avatar-wrap {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--accent), #8B4512);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 32px auto;
+            box-shadow: 0 0 40px rgba(180, 106, 76, 0.4);
+            font-size: 4rem;
+        }
+        .brian-bubbles {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        .brian-bubble {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            padding: 16px 24px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            text-align: center;
+            min-width: 140px;
+        }
+        .comparison-bar {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: 0;
+            max-width: 700px;
+            margin: 48px auto 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+        }
+        .comparison-left { background: rgba(200,80,80,0.25); padding: 24px; text-align: center; }
+        .comparison-right { background: rgba(45,122,94,0.35); padding: 24px; text-align: center; }
+        .comparison-center { background: var(--accent); color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
+        /* Section 3: Three Powers */
+        .power-cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 32px;
+            max-width: 1100px;
+            margin: 40px auto;
+        }
+        @media (max-width: 900px) { .power-cards { grid-template-columns: 1fr; } }
+        .power-card {
+            background: var(--card);
+            border-radius: 12px;
+            padding: 32px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.06);
+            text-align: center;
+            border-top: 8px solid var(--accent);
+        }
+        .power-card--orange { border-top-color: #d4845c; }
+        .power-card--blue { border-top-color: #6b8fa3; }
+        .power-card--green { border-top-color: var(--success); }
+        .power-card .badge { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
+        .power-card h3 { font-size: 1.35rem; margin-bottom: 8px; color: var(--ink); }
+        .power-card .volume { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
+        .power-card p { font-size: 0.95rem; color: var(--secondary); line-height: 1.6; }
+        .powers-total { margin-top: 48px; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--ink); }
+        .powers-total span { color: var(--accent); }
+        /* Flow sections */
+        .flow-section { min-height: 100vh; padding: 100px 40px 80px; }
+        .flow-section--orange { background: #FFF9F5; }
+        .flow-section--blue { background: #F5F9FC; }
+        .flow-section--green { background: #F5FAF7; }
+        .flow-diagram { max-width: 640px; margin: 40px auto; text-align: left; }
+        .flow-box {
+            background: var(--card);
+            border-left: 4px solid var(--accent);
+            padding: 20px 24px;
+            border-radius: 8px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+        }
+        .flow-box .step-badge { font-size: 0.75rem; font-weight: 600; color: var(--accent); margin-bottom: 8px; }
+        .flow-arrow { text-align: center; margin: 12px 0; color: var(--divider); font-size: 1.5rem; }
+        .flow-result { background: var(--card); padding: 24px; border-radius: 12px; margin-top: 32px; max-width: 500px; margin-left: auto; margin-right: auto; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+        .flow-result h4 { font-size: 1rem; margin-bottom: 12px; color: var(--ink); }
+        /* Transformation */
+        .transformation-section { padding: 100px 40px; }
+        .transformation-split {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0;
+            max-width: 900px;
+            margin: 40px auto;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+        }
+        @media (max-width: 700px) { .transformation-split { grid-template-columns: 1fr; } }
+        .transformation-panel { padding: 40px 32px; }
+        .transformation-panel--without { background: #FDF2F2; }
+        .transformation-panel--with { background: #F0FDF4; }
+        .transformation-panel h3 { font-size: 1.25rem; margin-bottom: 24px; }
+        .transformation-panel--without h3 { color: var(--danger); }
+        .transformation-panel--with h3 { color: var(--success); }
+        .transformation-panel .stat { font-size: 1.1rem; margin-bottom: 12px; }
+        .transformation-cta { margin-top: 48px; text-align: center; }
+        .transformation-cta .big-badge { display: inline-block; background: var(--success); color: #fff; padding: 16px 32px; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
     </style>
 </head>
 <body>
@@ -1070,786 +1290,223 @@
         </div>
     </section>
 
-    <!-- Section 1: Inbound -->
-    <div class="section">
-        <div class="section-carousel">
-            <div class="section-slides" id="section1Slides">
-                <!-- Slide 1 -->
-                <div class="section-slide">
-                    <div class="two-col">
-                        <!-- iPhone Left -->
-                        <div>
-                            <div class="iphone-mockup">
-                                <div class="iphone-notch"></div>
-                                <div class="iphone-screen">
-                                    <div class="status-bar">
-                                        <div class="time">2:34</div>
-                                        <div class="status-icons">
-                                            <span>📶</span>
-                                            <span>📡</span>
-                                            <span>🔋</span>
-                                        </div>
-                                    </div>
+    <!-- Section 1: The Ambition -->
+    <section class="presentation-section">
+        <h2>YOUR AMBITION</h2>
+        <p class="subtitle">Scale outbound calling from 1,000 to 12,000 calls/month</p>
 
-                                    <div class="call-screen">
-                                        <div class="call-header">
-                                            <div class="caller-name">Kalalou</div>
-                                            <div class="call-subtitle">Support Connected</div>
-                                            <div class="call-duration">00:47</div>
-                                        </div>
-
-                                        <div>
-                                            <div class="call-actions">
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔇</div>
-                                                    <div class="action-label">mute</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">⌨️</div>
-                                                    <div class="action-label">keypad</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔊</div>
-                                                    <div class="action-label">speaker</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">➕</div>
-                                                    <div class="action-label">add call</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">📹</div>
-                                                    <div class="action-label">FaceTime</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">👤</div>
-                                                    <div class="action-label">contacts</div>
-                                                </button>
-                                            </div>
-                                            <div class="end-call-container">
-                                                <button class="end-call-btn">📞</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- Content Right -->
-                        <div class="content-block">
-                            <h2>24/7 Customer Presence</h2>
-                            <p>While your team rests, Kalalou remains available. Every call answered. Every question resolved. Every opportunity captured.</p>
-                            
-                            <div class="soft-stats">
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Always available</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>No waiting</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Infinite scalability</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Consistent answers</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+        <div class="ambition-current">
+            <div>
+                <div class="ambition-icons">
+                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span>
                 </div>
-
-                <!-- Slide 2 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>Our AI</h2>
-                        <p>Always on. Always steady. Always aligned with your business.</p>
-
-                        <div class="ai-mindmap" aria-label="Our AI mind map">
-                            <svg viewBox="0 0 920 520" role="img" aria-label="Our AI with arrows to key benefits">
-                                <defs>
-                                    <marker id="arrowHeadBlue2" viewBox="0 0 10 10" refX="9.5" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                                        <path d="M 0 0 L 10 5 L 0 10 z" fill="#2b6fff"></path>
-                                    </marker>
-                                </defs>
-
-                                <!-- arrows (blue) - stop before labels -->
-                                <g stroke="#2b6fff" stroke-width="2.4" fill="none" stroke-linecap="round">
-                                    <path d="M 460 260 C 360 235, 300 210, 245 180" marker-end="url(#arrowHeadBlue2)"></path>
-                                    <path d="M 460 260 C 350 295, 300 335, 245 372" marker-end="url(#arrowHeadBlue2)"></path>
-                                    <path d="M 460 260 C 470 200, 500 150, 545 120" marker-end="url(#arrowHeadBlue2)"></path>
-                                    <path d="M 460 260 C 575 240, 660 220, 720 210" marker-end="url(#arrowHeadBlue2)"></path>
-                                    <path d="M 460 260 C 585 295, 665 335, 720 375" marker-end="url(#arrowHeadBlue2)"></path>
-                                    <path d="M 460 260 C 465 330, 480 385, 505 430" marker-end="url(#arrowHeadBlue2)"></path>
-                                </g>
-
-                                <!-- center "Our AI" (no circle) -->
-                                <g font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
-                                    <text x="460" y="258" text-anchor="middle" class="label" style="font-size:30px;font-weight:700;">Our AI</text>
-                                </g>
-
-                                <!-- labels (kept away from arrow tips) -->
-                                <g font-family="Inter, -apple-system, BlinkMacSystemFont, sans-serif">
-                                    <!-- left-top -->
-                                    <text x="40" y="145" class="label">Never puts customers</text>
-                                    <text x="40" y="172" class="label">on hold</text>
-
-                                    <!-- left-bottom -->
-                                    <text x="40" y="385" class="label">Always happy</text>
-                                    <text x="40" y="412" class="sub">No bad mood</text>
-
-                                    <!-- top -->
-                                    <text x="560" y="70" class="label">Gives your team leverage</text>
-                                    <text x="560" y="97" class="sub">Focus on more creative tasks</text>
-
-                                    <!-- right-mid -->
-                                    <text x="770" y="215" class="label" style="font-size:32px;font-weight:700;">24/7</text>
-
-                                    <!-- right-bottom -->
-                                    <text x="700" y="395" class="label">No holidays</text>
-
-                                    <!-- bottom -->
-                                    <text x="520" y="490" class="label">Never sleeps</text>
-                                </g>
-                            </svg>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section big-win">
-                        <div class="big-win-title">With AI, we win big time <span class="emoji">💪</span></div>
-                        <p class="big-win-sub">This isn’t “nice to have.” It’s the leverage that turns missed calls into captured revenue and slow responses into higher conversion.</p>
-
-                        <div class="win-list">
-                            <div class="win-item">
-                                <div class="win-dot"></div>
-                                <div>
-                                    <strong>Scale infinitely</strong> — handle <strong>1–1000 calls at once</strong>, without adding headcount.
-                                </div>
-                            </div>
-
-                            <div class="win-item">
-                                <div class="win-dot"></div>
-                                <div>
-                                    <strong>Missed calls = lost revenue</strong>. With AI, we protect that revenue — <strong>your hidden ROI</strong>.
-                                </div>
-                            </div>
-
-                            <div class="win-item">
-                                <div class="win-dot"></div>
-                                <div>
-                                    <strong>Faster response = higher conversion</strong>. It’s our ace.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <div class="ambition-bracket"></div>
             </div>
-
-            <!-- Navigation Dots -->
-            <div class="section-carousel-dots">
-                <div class="section-carousel-dot active" data-section="1" data-slide="0"></div>
-                <div class="section-carousel-dot" data-section="1" data-slide="1"></div>
-                <div class="section-carousel-dot" data-section="1" data-slide="2"></div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="section-carousel-nav">
-                <button class="section-carousel-button" data-section="1" data-direction="prev">←</button>
-                <button class="section-carousel-button" data-section="1" data-direction="next">→</button>
+            <div class="ambition-stats">
+                <div class="big">500–1,000 calls/month</div>
+                <div>7 team members</div>
             </div>
         </div>
-    </div>
+
+        <div class="ambition-arrow">↓</div>
+
+        <div class="ambition-goal">
+            <div>
+                <div class="ambition-icons">
+                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-brian"></span>
+                </div>
+                <div class="ambition-bracket"></div>
+            </div>
+            <div class="ambition-stats">
+                <div class="big">12,000 calls/month</div>
+                <span class="ambition-badge">12–24× CURRENT OUTPUT</span>
+            </div>
+        </div>
+
+        <div class="challenge-card">
+            <h3>The Old Way</h3>
+            <ul>
+                <li>Hire 40+ people ($1.8M/year)</li>
+                <li>4–6 month recruiting cycle</li>
+                <li>Training, onboarding, management</li>
+                <li>Every time you scale → hire again</li>
+            </ul>
+            <p class="note">This is a real constraint.</p>
+        </div>
+
+        <p class="transition-text">This is the leverage age.<span class="second">There's a better way…</span></p>
+    </section>
 
     <div class="section-divider"></div>
 
-    <!-- TAM Section -->
-    <section class="tam-hero">
-        <div class="tam-canvas-wrapper">
-            <canvas class="tam-canvas" id="tamCanvas"></canvas>
-        </div>
-
-        <div class="tam-carousel">
-            <div class="tam-slides" id="tamSlides">
-                <!-- Slide 1 -->
-                <div class="tam-slide">
-                    <div class="tam-title">We are fishing in a massive pond…</div>
-                    <div class="tam-title tam-title-sub">With a fishing rod?</div>
-                </div>
-
-                <!-- Slide 2 -->
-                <div class="tam-slide">
-                    <div class="tam-title">Where the TAM actually is</div>
-                    <div class="tam-stats">
-                        <div>
-                            <div class="tam-stats-block-title">Market (TAM)</div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>54,941 gift shops &amp; card stores<span aria-hidden="true">¹</span></div>
-                            </div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>Thousands more home decor boutiques</div>
-                            </div>
-                            <div class="tam-bullet tam-bullet-strong">
-                                <div class="tam-bullet-icon"></div>
-                                <div><strong>Total: 60,000+ potential retailers</strong></div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="tam-stats-block-title">We today</div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>10–15k retail partners</div>
-                            </div>
-                            <div class="tam-bullet tam-bullet-strong">
-                                <div class="tam-bullet-icon"></div>
-                                <div><strong>That’s 16.7–25% market penetration</strong></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <p class="tam-footnote">¹ Illustrative counts based on U.S. gift, card, and specialty retail segments.</p>
-                </div>
-
-                <!-- Slide 3 -->
-                <div class="tam-slide">
-                    <div class="tam-title">That’s why we need a massive net.</div>
-                    <div class="tam-title tam-title-sub">And that’s AI.</div>
-                </div>
-
-                <!-- Slide 4 -->
-                <div class="tam-slide">
-                    <div class="tam-title">Two ways to fish this pond.</div>
-                    <div class="tam-stats">
-                        <div>
-                            <div class="tam-stats-block-title">🎣 Manual outreach</div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>Limited by human capacity.</div>
-                            </div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>Each addition to the team, maybe on average <strong>50–100 calls/week</strong>.</div>
-                            </div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>That’s roughly <strong>2,600–5,200 calls/year</strong> per rep.</div>
-                            </div>
-                        </div>
-
-                        <div>
-                            <div class="tam-stats-block-title">🕸️ AI net</div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>We can touch <strong>1,000–10,000+ leads/year</strong>.</div>
-                            </div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>And place <strong>1,000–10,000+ calls/year</strong>—without burning out a team.</div>
-                            </div>
-                            <div class="tam-bullet">
-                                <div class="tam-bullet-icon"></div>
-                                <div>With AI, <strong>we set the limit</strong>. We just have to design the right system.</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Section 2: Meet Brian -->
+    <section class="meet-brian-section">
+        <div class="presentation-section" style="background: transparent; color: inherit;">
+            <h2>MEET BRIAN</h2>
+            <p class="subtitle">Your Superhuman Team Member</p>
+            <div class="brian-avatar-wrap">🤖</div>
+            <div class="brian-bubbles">
+                <div class="brian-bubble">🌙 Never Sleeps – 24/7 Operation</div>
+                <div class="brian-bubble">⚡ 10 Simultaneous Calls</div>
+                <div class="brian-bubble">🧠 Perfect Memory – Never Forgets</div>
+                <div class="brian-bubble">📅 Auto-Books Meetings</div>
+                <div class="brian-bubble">📈 Scales Infinitely</div>
             </div>
-
-            <!-- Dots -->
-            <div class="tam-dots">
-                <div class="tam-dot active" data-tam-slide="0"></div>
-                <div class="tam-dot" data-tam-slide="1"></div>
-                <div class="tam-dot" data-tam-slide="2"></div>
-                <div class="tam-dot" data-tam-slide="3"></div>
-            </div>
-
-            <!-- Nav -->
-            <div class="tam-nav">
-                <button class="carousel-button" id="tamPrev">←</button>
-                <button class="carousel-button" id="tamNext">→</button>
+            <div class="comparison-bar">
+                <div class="comparison-left">
+                    <strong>Current Team</strong><br>1,000 calls/month
+                </div>
+                <div class="comparison-center">4× MORE OUTPUT</div>
+                <div class="comparison-right">
+                    <strong>Team + Brian</strong><br>4,000 calls/month
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Section 2: Outbound -->
-    <div class="section">
-        <div class="section-carousel">
-            <div class="section-slides" id="section2Slides">
-                <!-- Slide 1 -->
-                <div class="section-slide">
-                    <div class="two-col reverse">
-                        <!-- Content Left -->
-                        <div class="content-block">
-                            <h2>Reaching Stores Before Competitors</h2>
-                            <p>Calm conversations. Never cold. Always relevant.</p>
-                            
-                            <div class="soft-stats">
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Only warm leads</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Human tone</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Books real meetings</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Works quietly in background</span>
-                                </div>
-                            </div>
-                        </div>
+    <div class="section-divider"></div>
 
-                        <!-- iPhone Right -->
-                        <div>
-                            <div class="iphone-mockup">
-                                <div class="iphone-notch"></div>
-                                <div class="iphone-screen">
-                                    <div class="status-bar">
-                                        <div class="time">10:15</div>
-                                        <div class="status-icons">
-                                            <span>📶</span>
-                                            <span>📡</span>
-                                            <span>🔋</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="call-screen">
-                                        <div class="call-header">
-                                            <div class="caller-name">Wholesale Buyer</div>
-                                            <div class="call-subtitle">Warm Lead</div>
-                                            <div class="call-duration">calling...</div>
-                                        </div>
-
-                                        <div>
-                                            <div class="call-actions">
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔇</div>
-                                                    <div class="action-label">mute</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">⌨️</div>
-                                                    <div class="action-label">keypad</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔊</div>
-                                                    <div class="action-label">speaker</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">➕</div>
-                                                    <div class="action-label">add call</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">📹</div>
-                                                    <div class="action-label">FaceTime</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">👤</div>
-                                                    <div class="action-label">contacts</div>
-                                                </button>
-                                            </div>
-                                            <div class="end-call-container">
-                                                <button class="end-call-btn">📞</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 2 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="two-col reverse">
-                        <!-- Content Left -->
-                        <div class="content-block">
-                            <h2>Reaching Stores Before Competitors</h2>
-                            <p>Calm conversations. Never cold. Always relevant.</p>
-                            
-                            <div class="soft-stats">
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Only warm leads</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Human tone</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Books real meetings</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Works quietly in background</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- iPhone Right -->
-                        <div>
-                            <div class="iphone-mockup">
-                                <div class="iphone-notch"></div>
-                                <div class="iphone-screen">
-                                    <div class="status-bar">
-                                        <div class="time">10:15</div>
-                                        <div class="status-icons">
-                                            <span>📶</span>
-                                            <span>📡</span>
-                                            <span>🔋</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="call-screen">
-                                        <div class="call-header">
-                                            <div class="caller-name">Wholesale Buyer</div>
-                                            <div class="call-subtitle">Warm Lead</div>
-                                            <div class="call-duration">calling...</div>
-                                        </div>
-
-                                        <div>
-                                            <div class="call-actions">
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔇</div>
-                                                    <div class="action-label">mute</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">⌨️</div>
-                                                    <div class="action-label">keypad</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔊</div>
-                                                    <div class="action-label">speaker</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">➕</div>
-                                                    <div class="action-label">add call</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">📹</div>
-                                                    <div class="action-label">FaceTime</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">👤</div>
-                                                    <div class="action-label">contacts</div>
-                                                </button>
-                                            </div>
-                                            <div class="end-call-container">
-                                                <button class="end-call-btn">📞</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="two-col reverse">
-                        <!-- Content Left -->
-                        <div class="content-block">
-                            <h2>Reaching Stores Before Competitors</h2>
-                            <p>Calm conversations. Never cold. Always relevant.</p>
-                            
-                            <div class="soft-stats">
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Only warm leads</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Human tone</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Books real meetings</span>
-                                </div>
-                                <div class="stat-item">
-                                    <div class="stat-bullet"></div>
-                                    <span>Works quietly in background</span>
-                                </div>
-                            </div>
-                        </div>
-
-                        <!-- iPhone Right -->
-                        <div>
-                            <div class="iphone-mockup">
-                                <div class="iphone-notch"></div>
-                                <div class="iphone-screen">
-                                    <div class="status-bar">
-                                        <div class="time">10:15</div>
-                                        <div class="status-icons">
-                                            <span>📶</span>
-                                            <span>📡</span>
-                                            <span>🔋</span>
-                                        </div>
-                                    </div>
-
-                                    <div class="call-screen">
-                                        <div class="call-header">
-                                            <div class="caller-name">Wholesale Buyer</div>
-                                            <div class="call-subtitle">Warm Lead</div>
-                                            <div class="call-duration">calling...</div>
-                                        </div>
-
-                                        <div>
-                                            <div class="call-actions">
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔇</div>
-                                                    <div class="action-label">mute</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">⌨️</div>
-                                                    <div class="action-label">keypad</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">🔊</div>
-                                                    <div class="action-label">speaker</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">➕</div>
-                                                    <div class="action-label">add call</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">📹</div>
-                                                    <div class="action-label">FaceTime</div>
-                                                </button>
-                                                <button class="call-action-btn">
-                                                    <div class="action-icon">👤</div>
-                                                    <div class="action-label">contacts</div>
-                                                </button>
-                                            </div>
-                                            <div class="end-call-container">
-                                                <button class="end-call-btn">📞</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+    <!-- Section 3: Three Superpowers -->
+    <section class="presentation-section">
+        <h2>BRIAN'S THREE SUPERPOWERS</h2>
+        <div class="power-cards">
+            <div class="power-card power-card--orange">
+                <div class="badge">Power #1</div>
+                <h3>Trade Show Follow-Up</h3>
+                <div class="volume">500 calls/month</div>
+                <p>48-hour follow-up on every trade show lead. References products they showed interest in.</p>
             </div>
-
-            <!-- Navigation Dots -->
-            <div class="section-carousel-dots">
-                <div class="section-carousel-dot active" data-section="2" data-slide="0"></div>
-                <div class="section-carousel-dot" data-section="2" data-slide="1"></div>
-                <div class="section-carousel-dot" data-section="2" data-slide="2"></div>
+            <div class="power-card power-card--blue">
+                <div class="badge">Power #2</div>
+                <h3>Dormant Reactivation</h3>
+                <div class="volume">1,500 calls/month</div>
+                <p>Reactivate customers who haven't ordered in 6+ months. Empathetic check-in, not sales pitch.</p>
             </div>
-
-            <!-- Navigation Buttons -->
-            <div class="section-carousel-nav">
-                <button class="section-carousel-button" data-section="2" data-direction="prev">←</button>
-                <button class="section-carousel-button" data-section="2" data-direction="next">→</button>
+            <div class="power-card power-card--green">
+                <div class="badge">Power #3</div>
+                <h3>New Customer Acquisition</h3>
+                <div class="volume">2,000 calls/month</div>
+                <p>Reach independent retailers nationwide.</p>
             </div>
         </div>
-    </div>
+        <p class="powers-total"><span>4,000</span> TOTAL CALLS PER MONTH <span style="font-size: 0.85rem; font-weight: 400; color: var(--secondary);">(with ability to scale infinitely)</span></p>
+    </section>
 
     <div class="section-divider"></div>
 
-    <!-- Section 3: Lead Engine -->
-    <div class="section">
-        <div class="section-carousel">
-            <div class="section-slides" id="section3Slides">
-                <!-- Slide 1 -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A Living Pipeline</h2>
-                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
-                        
-                        <div class="pipeline-diagram">
-                            <div class="pipeline-step">AI finds retailers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI emails</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Buyers click</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI calls</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Meetings booked</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">New customers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI supports</div>
-                        </div>
-                    </div>
+    <!-- Section 4: Trade Show Flow -->
+    <section class="flow-section flow-section--orange">
+        <div class="presentation-section" style="min-height: auto;">
+            <h2>POWER #1: TRADE SHOW FOLLOW-UP</h2>
+            <p class="subtitle">Strike while the iron is hot</p>
+            <div class="flow-diagram">
+                <div class="flow-box"><div class="step-badge">STEP 1</div><strong>Collect booth visitor info at trade show</strong><br><span style="color: var(--secondary); font-size: 0.9rem;">Name, store, products interested in</span></div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 2</div><strong>Upload to system via CSV or email</strong></div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 3</div><strong>Brian calls within 48 hours</strong><br><em style="font-size: 0.9rem;">"Hi Sarah, this is Emily from Kalalou. We met at the Atlanta Gift Show…"</em></div>
+                <div class="flow-arrow">↓</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="flow-box" style="background: #F0FDF4; border-left-color: var(--success);">If Interested → Books meeting with sales rep</div>
+                    <div class="flow-box" style="background: var(--bg-primary);">Not Interested → Send catalog for future reference</div>
                 </div>
-
-                <!-- Slide 2 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A Living Pipeline</h2>
-                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
-                        
-                        <div class="pipeline-diagram">
-                            <div class="pipeline-step">AI finds retailers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI emails</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Buyers click</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI calls</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Meetings booked</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">New customers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI supports</div>
-                        </div>
-                    </div>
+                <div class="flow-result">
+                    <h4>Expected Results</h4>
+                    <p>500 leads called · 50–100 meetings booked (10–20%) · $300K–$1.5M revenue</p>
                 </div>
-
-                <!-- Slide 3 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A Living Pipeline</h2>
-                        <p>Leads flow. Conversations happen. Growth becomes predictable.</p>
-                        
-                        <div class="pipeline-diagram">
-                            <div class="pipeline-step">AI finds retailers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI emails</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Buyers click</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI calls</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">Meetings booked</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">New customers</div>
-                            <div class="pipeline-arrow">→</div>
-                            <div class="pipeline-step">AI supports</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="section-carousel-dots">
-                <div class="section-carousel-dot active" data-section="3" data-slide="0"></div>
-                <div class="section-carousel-dot" data-section="3" data-slide="1"></div>
-                <div class="section-carousel-dot" data-section="3" data-slide="2"></div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="section-carousel-nav">
-                <button class="section-carousel-button" data-section="3" data-direction="prev">←</button>
-                <button class="section-carousel-button" data-section="3" data-direction="next">→</button>
             </div>
         </div>
-    </div>
+    </section>
 
     <div class="section-divider"></div>
 
-    <!-- Section 4: Flywheel -->
-    <div class="section">
-        <div class="section-carousel">
-            <div class="section-slides" id="section4Slides">
-                <!-- Slide 1 -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A System That Compounds</h2>
-                        
-                        <div class="flywheel">
-                            <div class="flywheel-circle">
-                                <div class="flywheel-steps">
-                                    <div class="flywheel-step">Leads</div>
-                                    <div class="flywheel-step">Calls</div>
-                                    <div class="flywheel-step">Orders</div>
-                                    <div class="flywheel-step">Growth</div>
-                                    <div class="flywheel-step">Loyalty</div>
-                                    <div class="flywheel-step">Referrals</div>
-                                </div>
-                                <div class="flywheel-center">∞</div>
-                            </div>
-                            
-                            <p class="flywheel-text">A system that compounds without chaos.</p>
-                        </div>
-                    </div>
+    <!-- Section 5: Dormant Flow -->
+    <section class="flow-section flow-section--blue">
+        <div class="presentation-section" style="min-height: auto;">
+            <h2>POWER #2: DORMANT CUSTOMER REACTIVATION</h2>
+            <p class="subtitle">Unlock revenue from dormant accounts</p>
+            <div class="flow-diagram">
+                <div class="flow-box"><div class="step-badge">STEP 1</div><strong>Brian pulls dormant customers from NetSuite</strong><br><span style="color: var(--secondary); font-size: 0.9rem;">Filter: 6+ months no orders, $5K+ lifetime value</span></div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 2</div><strong>Brian calls with personalized context</strong><br><em style="font-size: 0.9rem;">"Hi Sarah, I noticed Beach House Boutique hasn't ordered since July. Just checking in – is everything okay?"</em><br><span style="font-size: 0.85rem; color: var(--secondary);">Tone: Empathetic, not pushy</span></div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 3</div><strong>Customer response</strong> → Business slow / Price concerns / Switched vendors / Just forgot → Path to sales rep with full context</div>
+                <div class="flow-result">
+                    <h4>Expected Results</h4>
+                    <p>1,500 customers called · 75–225 meetings (5–15%) · 15–67 reactivated (20–30%) · $225K–$1M revenue/month</p>
                 </div>
-
-                <!-- Slide 2 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A System That Compounds</h2>
-                        
-                        <div class="flywheel">
-                            <div class="flywheel-circle">
-                                <div class="flywheel-steps">
-                                    <div class="flywheel-step">Leads</div>
-                                    <div class="flywheel-step">Calls</div>
-                                    <div class="flywheel-step">Orders</div>
-                                    <div class="flywheel-step">Growth</div>
-                                    <div class="flywheel-step">Loyalty</div>
-                                    <div class="flywheel-step">Referrals</div>
-                                </div>
-                                <div class="flywheel-center">∞</div>
-                            </div>
-                            
-                            <p class="flywheel-text">A system that compounds without chaos.</p>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Slide 3 (Duplicate) -->
-                <div class="section-slide">
-                    <div class="centered-section">
-                        <h2>A System That Compounds</h2>
-                        
-                        <div class="flywheel">
-                            <div class="flywheel-circle">
-                                <div class="flywheel-steps">
-                                    <div class="flywheel-step">Leads</div>
-                                    <div class="flywheel-step">Calls</div>
-                                    <div class="flywheel-step">Orders</div>
-                                    <div class="flywheel-step">Growth</div>
-                                    <div class="flywheel-step">Loyalty</div>
-                                    <div class="flywheel-step">Referrals</div>
-                                </div>
-                                <div class="flywheel-center">∞</div>
-                            </div>
-                            
-                            <p class="flywheel-text">A system that compounds without chaos.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Navigation Dots -->
-            <div class="section-carousel-dots">
-                <div class="section-carousel-dot active" data-section="4" data-slide="0"></div>
-                <div class="section-carousel-dot" data-section="4" data-slide="1"></div>
-                <div class="section-carousel-dot" data-section="4" data-slide="2"></div>
-            </div>
-
-            <!-- Navigation Buttons -->
-            <div class="section-carousel-nav">
-                <button class="section-carousel-button" data-section="4" data-direction="prev">←</button>
-                <button class="section-carousel-button" data-section="4" data-direction="next">→</button>
             </div>
         </div>
-    </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 6: New Customers Flow -->
+    <section class="flow-section flow-section--green">
+        <div class="presentation-section" style="min-height: auto;">
+            <h2>POWER #3: NEW CUSTOMER ACQUISITION</h2>
+            <p class="subtitle">40,000+ independent retailers available</p>
+            <div class="flow-diagram">
+                <div class="flow-box"><div class="step-badge">STEP 1</div><strong>Generate qualified leads</strong><br><span style="color: var(--secondary); font-size: 0.9rem;">Apollo, Google Maps, etc.</span></div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 2</div><strong>Warm email (optional)</strong> – Send catalog, track opens/clicks</div>
+                <div class="flow-arrow">↓</div>
+                <div class="flow-box"><div class="step-badge">STEP 3</div><strong>Brian qualifies via phone</strong><br>Do they carry home decor? What aesthetic? Who handles buying?</div>
+                <div class="flow-arrow">↓</div>
+                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+                    <div class="flow-box" style="background: #F0FDF4; border-left-color: var(--success);">Qualified & Interested → Book meeting</div>
+                    <div class="flow-box" style="background: var(--bg-primary);">Not a Fit → Mark as unqualified</div>
+                </div>
+                <div class="flow-box"><div class="step-badge">STEP 4</div><strong>Sales rep receives brief</strong> – Store aesthetic, budget level, timeline</div>
+                <div class="flow-result">
+                    <h4>Expected Results</h4>
+                    <p>2,000 prospects called · 20–60 meetings (1–3%) · $150K–$900K revenue/year</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Section 7: The Transformation -->
+    <section class="transformation-section">
+        <h2 style="text-align: center;">THE TRANSFORMATION</h2>
+        <div class="transformation-split">
+            <div class="transformation-panel transformation-panel--without">
+                <h3>WITHOUT BRIAN</h3>
+                <div class="ambition-icons" style="margin-bottom: 20px;">
+                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span>
+                </div>
+                <div class="stat">1,000 calls/month</div>
+                <div class="stat">7 people</div>
+                <div class="stat">To scale: Hire 40+ people</div>
+                <div class="stat"><strong>$1.8M/year</strong></div>
+                <div class="stat">4–6 month hiring cycle</div>
+            </div>
+            <div class="transformation-panel transformation-panel--with">
+                <h3>WITH BRIAN</h3>
+                <div class="ambition-icons" style="margin-bottom: 20px;">
+                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-brian"></span>
+                </div>
+                <div class="stat">4,000 calls/month</div>
+                <div class="stat">Same 7 people + Brian</div>
+                <div class="stat">To scale: Turn up volume</div>
+                <div class="stat"><strong>$134K/year</strong></div>
+                <div class="stat">Instant scale</div>
+            </div>
+        </div>
+        <div class="transformation-cta">
+            <span class="big-badge">13× MORE COST-EFFECTIVE</span>
+            <p style="margin-top: 16px; color: var(--secondary); font-size: 1.1rem;">Same output as 40 people for 7% of the cost</p>
+        </div>
+    </section>
 
     <div class="section-divider"></div>
 
     <!-- Final Section -->
     <section class="final-section">
         <h2>Growth should feel calm,<br/>not exhausting.</h2>
-        <a href="#" class="cta-button">Explore the System</a>
+        <a href="https://calendly.com/teamshessi/30min" target="_blank" class="cta-button">Explore the System</a>
     </section>
 
     <!-- Three.js Library -->
