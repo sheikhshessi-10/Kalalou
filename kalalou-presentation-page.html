@@ -21,8 +21,6 @@
             --accent: #B46A4C;
             --divider: #DDD8D0;
             --card: #FFFFFF;
-            --danger: #c44;
-            --success: #2d7a5e;
         }
 
         body {
@@ -328,6 +326,54 @@
             height: 1px;
             background: var(--divider);
             margin: 0 auto;
+        }
+
+        /* Hero slide 2 + 3 custom styling */
+        .hero-alt-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 5.5vw, 4.5rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 16px;
+        }
+
+        .hero-weak-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.3rem, 4.2vw, 3.2rem); /* slightly smaller than Right now! */
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: #d1b15a; /* muted yellow, feels a bit \"tired\" */
+            margin-bottom: 28px;
+        }
+
+        .hero-strong-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.3rem, 4.2vw, 3.2rem);
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: #2563eb; /* stronger blue for peak state */
+            margin-bottom: 28px;
+        }
+
+        .hero-percent-note {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.3rem, 4.2vw, 3.2rem); /* same size as 500–1,000 calls/month */
+            font-weight: 600;
+            letter-spacing: -0.03em;
+            color: var(--ink);
+            margin-bottom: 28px;
+        }
+
+        .hero-percent-note span.hero-percent-range {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .hero-percent-note span.hero-percent-arrow {
+            color: #7f1d1d; /* dark red arrow */
+            font-weight: 800; /* a bit bolder */
+            margin-left: 8px;
         }
 
         /* Carousel Navigation */
@@ -1076,7 +1122,7 @@
         @keyframes pulse { 0%, 100% { opacity: 1; transform: translateY(0); } 50% { opacity: 0.6; transform: translateY(8px); } }
         .ambition-badge {
             display: inline-block;
-            background: var(--success);
+            background: var(--accent);
             color: #fff;
             padding: 8px 16px;
             border-radius: 8px;
@@ -1093,32 +1139,115 @@
             margin: 32px auto;
             text-align: left;
         }
-        .challenge-card h3 { font-size: 1.35rem; color: var(--danger); margin-bottom: 20px; }
+        .challenge-card h3 { font-size: 1.35rem; color: var(--ink); margin-bottom: 20px; }
         .challenge-card ul { list-style: none; }
         .challenge-card li { margin-bottom: 12px; display: flex; align-items: center; gap: 10px; color: var(--ink); }
-        .challenge-card li::before { content: "✕"; color: var(--danger); font-weight: bold; }
+        .challenge-card li::before { content: "✕"; color: var(--ink); font-weight: bold; }
         .challenge-card .note { font-style: italic; color: var(--secondary); font-size: 0.95rem; margin-top: 16px; }
         .transition-text { text-align: center; margin-top: 48px; font-style: italic; font-size: clamp(1.25rem, 2.5vw, 1.75rem); color: var(--ink); }
         .transition-text .second { display: block; margin-top: 12px; opacity: 0.9; }
-        /* Section 2: Meet Brian (dark) */
-        .meet-brian-section {
-            background: #1C1C1C;
+        /* Choice Section - Elegant Cards */
+        .choice-section {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 120px 40px;
+            background: var(--bg-primary);
+        }
+        .choice-container {
+            display: flex;
+            gap: 48px;
+            max-width: 1200px;
+            width: 100%;
+            justify-content: center;
+            align-items: stretch;
+        }
+        .choice-card {
+            flex: 0 1 480px;
+            background: var(--card);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+            border: none;
+            cursor: pointer;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            text-align: left;
+            display: flex;
+            flex-direction: column;
+        }
+        .choice-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+        }
+        .choice-card--active {
+            transform: translateY(-8px);
+            box-shadow: 0 12px 48px rgba(0,0,0,0.18);
+        }
+        .choice-card-header {
+            padding: 40px 32px;
             color: #fff;
+        }
+        .choice-card--lead .choice-card-header {
+            background: linear-gradient(135deg, #FF6B6B 0%, #FF8E8E 100%);
+        }
+        .choice-card--outbound .choice-card-header {
+            background: linear-gradient(135deg, #4ECDC4 0%, #6EDDD6 100%);
+        }
+        .choice-card-title {
+            font-size: clamp(1.5rem, 2.5vw, 2rem);
+            font-weight: 700;
+            margin: 0;
+            color: #fff;
+            letter-spacing: -0.02em;
+        }
+        .choice-card-body {
+            padding: 40px 32px;
+            background: #fff;
+        }
+        .choice-card-body-title {
+            font-size: clamp(1.25rem, 2vw, 1.5rem);
+            font-weight: 700;
+            color: var(--ink);
+            margin: 0 0 16px 0;
+            letter-spacing: -0.01em;
+        }
+        .choice-card-description {
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+            color: var(--secondary);
+            line-height: 1.7;
+            margin: 0;
+        }
+        @media (max-width: 900px) {
+            .choice-container {
+                flex-direction: column;
+                gap: 32px;
+                align-items: center;
+            }
+            .choice-card {
+                flex: 1 1 auto;
+                max-width: 100%;
+            }
+        }
+        /* Section 2: Meet Brian (same as hero) */
+        .meet-brian-section {
+            background: var(--bg-primary);
+            color: var(--ink);
             min-height: 100vh;
             padding: 120px 40px 80px;
         }
-        .meet-brian-section h2 { color: #fff; }
-        .meet-brian-section .subtitle { color: rgba(255,255,255,0.75); }
+        .meet-brian-section h2 { color: var(--ink); }
+        .meet-brian-section .subtitle { color: var(--secondary); }
         .brian-avatar-wrap {
             width: 180px;
             height: 180px;
             border-radius: 50%;
-            background: linear-gradient(135deg, var(--accent), #8B4512);
+            background: var(--accent);
             display: flex;
             align-items: center;
             justify-content: center;
             margin: 32px auto;
-            box-shadow: 0 0 40px rgba(180, 106, 76, 0.4);
+            box-shadow: 0 0 40px rgba(180, 106, 76, 0.3);
             font-size: 4rem;
         }
         .brian-bubbles {
@@ -1130,13 +1259,15 @@
             margin: 40px auto;
         }
         .brian-bubble {
-            background: rgba(255,255,255,0.1);
-            border: 1px solid rgba(255,255,255,0.2);
+            background: var(--card);
+            border: 1px solid var(--divider);
+            color: var(--ink);
             padding: 16px 24px;
             border-radius: 12px;
             font-size: 0.95rem;
             text-align: center;
             min-width: 140px;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.04);
         }
         .comparison-bar {
             display: grid;
@@ -1146,10 +1277,10 @@
             margin: 48px auto 0;
             border-radius: 12px;
             overflow: hidden;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            box-shadow: 0 4px 20px rgba(0,0,0,0.08);
         }
-        .comparison-left { background: rgba(200,80,80,0.25); padding: 24px; text-align: center; }
-        .comparison-right { background: rgba(45,122,94,0.35); padding: 24px; text-align: center; }
+        .comparison-left { background: var(--card); color: var(--ink); border: 1px solid var(--divider); padding: 24px; text-align: center; }
+        .comparison-right { background: var(--card); color: var(--ink); border: 1px solid var(--divider); padding: 24px; text-align: center; }
         .comparison-center { background: var(--accent); color: #fff; padding: 16px 24px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 1.1rem; }
         /* Section 3: Three Powers */
         .power-cards {
@@ -1168,20 +1299,20 @@
             text-align: center;
             border-top: 8px solid var(--accent);
         }
-        .power-card--orange { border-top-color: #d4845c; }
-        .power-card--blue { border-top-color: #6b8fa3; }
-        .power-card--green { border-top-color: var(--success); }
+        .power-card--orange,
+        .power-card--blue,
+        .power-card--green { border-top-color: var(--accent); }
         .power-card .badge { font-size: 0.75rem; font-weight: 600; text-transform: uppercase; margin-bottom: 12px; }
         .power-card h3 { font-size: 1.35rem; margin-bottom: 8px; color: var(--ink); }
         .power-card .volume { font-size: 1rem; color: var(--accent); font-weight: 600; margin-bottom: 12px; }
         .power-card p { font-size: 0.95rem; color: var(--secondary); line-height: 1.6; }
         .powers-total { margin-top: 48px; font-size: clamp(1.75rem, 3vw, 2.5rem); font-weight: 700; color: var(--ink); }
         .powers-total span { color: var(--accent); }
-        /* Flow sections */
-        .flow-section { min-height: 100vh; padding: 100px 40px 80px; }
-        .flow-section--orange { background: #FFF9F5; }
-        .flow-section--blue { background: #F5F9FC; }
-        .flow-section--green { background: #F5FAF7; }
+        /* Flow sections (same as hero) */
+        .flow-section { min-height: 100vh; padding: 100px 40px 80px; background: var(--bg-primary); }
+        .flow-section--orange,
+        .flow-section--blue,
+        .flow-section--green { background: var(--bg-primary); }
         .flow-diagram { max-width: 640px; margin: 40px auto; text-align: left; }
         .flow-box {
             background: var(--card);
@@ -1208,15 +1339,193 @@
             box-shadow: 0 8px 32px rgba(0,0,0,0.1);
         }
         @media (max-width: 700px) { .transformation-split { grid-template-columns: 1fr; } }
-        .transformation-panel { padding: 40px 32px; }
-        .transformation-panel--without { background: #FDF2F2; }
-        .transformation-panel--with { background: #F0FDF4; }
-        .transformation-panel h3 { font-size: 1.25rem; margin-bottom: 24px; }
-        .transformation-panel--without h3 { color: var(--danger); }
-        .transformation-panel--with h3 { color: var(--success); }
-        .transformation-panel .stat { font-size: 1.1rem; margin-bottom: 12px; }
+        .transformation-panel { padding: 40px 32px; background: var(--card); border: 1px solid var(--divider); color: var(--ink); }
+        .transformation-panel--without,
+        .transformation-panel--with { background: var(--card); border: 1px solid var(--divider); }
+        .transformation-panel h3 { font-size: 1.25rem; margin-bottom: 24px; color: var(--ink); }
+        .transformation-panel--without h3,
+        .transformation-panel--with h3 { color: var(--ink); }
+        .transformation-panel .stat { font-size: 1.1rem; margin-bottom: 12px; color: var(--ink); }
         .transformation-cta { margin-top: 48px; text-align: center; }
-        .transformation-cta .big-badge { display: inline-block; background: var(--success); color: #fff; padding: 16px 32px; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
+        .transformation-cta .big-badge { display: inline-block; background: var(--accent); color: #fff; padding: 16px 32px; border-radius: 12px; font-size: 1.35rem; font-weight: 700; }
+
+        /* Timeline section */
+        .timeline-section {
+            padding: 80px 40px 120px;
+            background: var(--bg-primary);
+        }
+        .timeline-section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(1.75rem, 3vw, 2.5rem);
+            font-weight: 400;
+            color: var(--ink);
+            text-align: center;
+            margin-bottom: 48px;
+            letter-spacing: 0.02em;
+        }
+        .timeline-wrap {
+            max-width: 920px;
+            margin: 0 auto;
+            background: var(--card);
+            padding: 40px 48px 48px;
+            border-radius: 20px;
+            box-shadow: 0 8px 40px rgba(0,0,0,0.06);
+            border: 1px solid var(--divider);
+        }
+        .timeline-months {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 12px;
+        }
+        .timeline-spacer { width: 110px; flex-shrink: 0; }
+        .timeline-months-inner {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.04em;
+        }
+        .timeline-ruler {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .timeline-ruler-inner {
+            flex: 1;
+            position: relative;
+            height: 24px;
+        }
+        .timeline-dotted-lines {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+        }
+        .timeline-dotted-lines .tl-line {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 0;
+            border-left: 2px dotted var(--divider);
+        }
+        .timeline-dotted-lines .tl-line:nth-child(1) { left: 0; }
+        .timeline-dotted-lines .tl-line:nth-child(2) { left: 25%; }
+        .timeline-dotted-lines .tl-line:nth-child(3) { left: 50%; }
+        .timeline-dotted-lines .tl-line:nth-child(4) { left: 75%; }
+        .timeline-dotted-lines .tl-line:nth-child(5) { left: 100%; margin-left: -2px; }
+        .timeline-row {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 24px;
+        }
+        .timeline-row:last-child { margin-bottom: 0; }
+        .timeline-row .timeline-label {
+            width: 110px;
+            flex-shrink: 0;
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--ink);
+            letter-spacing: 0.02em;
+        }
+        .timeline-track {
+            flex: 1;
+            height: 44px;
+            background: var(--bg-primary);
+            border: 1px solid var(--divider);
+            border-radius: 22px;
+            position: relative;
+            overflow: visible;
+        }
+        .timeline-bar {
+            position: absolute;
+            top: 6px;
+            bottom: 6px;
+            border-radius: 16px;
+            cursor: grab;
+            min-width: 48px;
+            user-select: none;
+            box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+        }
+        .timeline-bar:active { cursor: grabbing; }
+        .timeline-bar .timeline-bar-inner {
+            position: absolute;
+            left: 6px;
+            right: 6px;
+            top: 0;
+            bottom: 0;
+            border-radius: 14px;
+        }
+        .timeline-bar.trade-show .timeline-bar-inner {
+            background: linear-gradient(135deg, #c47a5a 0%, var(--accent) 100%);
+            box-shadow: 0 2px 8px rgba(180, 106, 76, 0.35);
+        }
+        .timeline-bar.dormant .timeline-bar-inner {
+            background: linear-gradient(135deg, #5a8fa8 0%, #4a7a8f 100%);
+            box-shadow: 0 2px 8px rgba(74, 122, 143, 0.35);
+        }
+        .timeline-bar.outbound .timeline-bar-inner {
+            background: linear-gradient(135deg, #a68b65 0%, #8b7355 100%);
+            box-shadow: 0 2px 8px rgba(139, 115, 85, 0.35);
+        }
+        .timeline-bar-handle {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 14px;
+            cursor: ew-resize;
+            z-index: 2;
+        }
+        .timeline-bar-handle.left { left: 0; border-radius: 16px 0 0 16px; }
+        .timeline-bar-handle.right { right: 0; border-radius: 0 16px 16px 0; }
+        /* Timeline markers (Start, End, Testing) */
+        .timeline-marker {
+            position: absolute;
+            top: -36px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            z-index: 3;
+            pointer-events: none;
+        }
+        .timeline-marker .timeline-marker-label {
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.06em;
+            color: var(--ink);
+            margin-bottom: 4px;
+            white-space: nowrap;
+        }
+        .timeline-marker .timeline-marker-needle {
+            width: 0;
+            height: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            border-top: 8px solid var(--ink);
+        }
+        .timeline-marker-start {
+            left: 0;
+            transform: translateX(-50%);
+        }
+        .timeline-marker-end {
+            right: 0;
+            left: auto;
+            transform: translateX(50%);
+        }
+        .timeline-marker-testing {
+            left: 50%;
+            transform: translateX(-50%);
+            pointer-events: auto;
+            cursor: grab;
+        }
+        .timeline-marker-testing:active { cursor: grabbing; }
+        .timeline-row .timeline-track { margin-top: 44px; }
     </style>
 </head>
 <body>
@@ -1259,19 +1568,31 @@
                     <div class="hero-divider"></div>
                 </div>
 
-                <!-- Slide 2: Custom Message -->
+                <!-- Slide 2: Peak State -->
                 <div class="hero-slide">
-                    <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Future of Wholesale</h1>
-                    <p class="hero-subtext">Where craftsmanship meets intelligent automation.</p>
+                    <h1 class="hero-alt-heading">Peak</h1>
+                    <p class="hero-strong-heading">2,100 calls/month</p>
                     <div class="hero-divider"></div>
                 </div>
 
-                <!-- Slide 3: Artwork -->
-                <div class="hero-slide artwork-slide">
-                    <img src="kalalou-artwork.png" 
-                         alt="Kalalou Vision - Balancing craftsmanship with modern efficiency" 
-                         class="artwork-image"
-                         id="artworkImage">
+                <!-- Slide 3: Current State -->
+                <div class="hero-slide">
+                    <h1 class="hero-alt-heading">Right now!</h1>
+                    <p class="hero-weak-heading">500–1,000 calls/month</p>
+                    <p class="hero-percent-note">
+                        <span class="hero-percent-range">52% to 76%</span>
+                        <span class="hero-percent-arrow">↓</span>
+                    </p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 4: Goal -->
+                <div class="hero-slide">
+                    <h1 class="hero-alt-heading">Goal</h1>
+                    <p class="hero-strong-heading">12,000 calls/month</p>
+                    <p class="hero-weak-heading">24x the current volume</p>
+                    <p class="hero-weak-heading">Nearly 6x the Peak</p>
+                    <div class="hero-divider"></div>
                 </div>
             </div>
 
@@ -1280,6 +1601,7 @@
                 <div class="carousel-dot active" data-slide="0"></div>
                 <div class="carousel-dot" data-slide="1"></div>
                 <div class="carousel-dot" data-slide="2"></div>
+                <div class="carousel-dot" data-slide="3"></div>
             </div>
 
             <!-- Navigation Buttons -->
@@ -1290,51 +1612,29 @@
         </div>
     </section>
 
-    <!-- Section 1: The Ambition -->
-    <section class="presentation-section">
-        <h2>YOUR AMBITION</h2>
-        <p class="subtitle">Scale outbound calling from 1,000 to 12,000 calls/month</p>
-
-        <div class="ambition-current">
-            <div>
-                <div class="ambition-icons">
-                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span>
+    <!-- Lead Generation vs Outbound Call Volume -->
+    <section class="choice-section">
+        <div class="choice-container">
+            <button class="choice-card choice-card--lead" type="button" data-choice="lead">
+                <div class="choice-card-header">
+                    <h3 class="choice-card-title">Lead Generation</h3>
                 </div>
-                <div class="ambition-bracket"></div>
-            </div>
-            <div class="ambition-stats">
-                <div class="big">500–1,000 calls/month</div>
-                <div>7 team members</div>
-            </div>
-        </div>
-
-        <div class="ambition-arrow">↓</div>
-
-        <div class="ambition-goal">
-            <div>
-                <div class="ambition-icons">
-                    <span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-person"></span><span class="icon-brian"></span>
+                <div class="choice-card-body">
+                    <h4 class="choice-card-body-title">Lead Generation</h4>
+                    <p class="choice-card-description">Build a predictable pipeline of qualified independent retailers Brian can warm up for your sales team.</p>
                 </div>
-                <div class="ambition-bracket"></div>
-            </div>
-            <div class="ambition-stats">
-                <div class="big">12,000 calls/month</div>
-                <span class="ambition-badge">12–24× CURRENT OUTPUT</span>
-            </div>
-        </div>
+            </button>
 
-        <div class="challenge-card">
-            <h3>The Old Way</h3>
-            <ul>
-                <li>Hire 40+ people ($1.8M/year)</li>
-                <li>4–6 month recruiting cycle</li>
-                <li>Training, onboarding, management</li>
-                <li>Every time you scale → hire again</li>
-            </ul>
-            <p class="note">This is a real constraint.</p>
+            <button class="choice-card choice-card--outbound" type="button" data-choice="outbound">
+                <div class="choice-card-header">
+                    <h3 class="choice-card-title">Outbound Call Volume</h3>
+                </div>
+                <div class="choice-card-body">
+                    <h4 class="choice-card-body-title">Outbound Call Volume</h4>
+                    <p class="choice-card-description">Let Brian handle the heavy lifting on follow‑ups, reactivation, and warm calls while your team closes.</p>
+                </div>
+            </button>
         </div>
-
-        <p class="transition-text">This is the leverage age.<span class="second">There's a better way…</span></p>
     </section>
 
     <div class="section-divider"></div>
@@ -1407,8 +1707,8 @@
                 <div class="flow-box"><div class="step-badge">STEP 3</div><strong>Brian calls within 48 hours</strong><br><em style="font-size: 0.9rem;">"Hi Sarah, this is Emily from Kalalou. We met at the Atlanta Gift Show…"</em></div>
                 <div class="flow-arrow">↓</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    <div class="flow-box" style="background: #F0FDF4; border-left-color: var(--success);">If Interested → Books meeting with sales rep</div>
-                    <div class="flow-box" style="background: var(--bg-primary);">Not Interested → Send catalog for future reference</div>
+                    <div class="flow-box">If Interested → Books meeting with sales rep</div>
+                    <div class="flow-box">Not Interested → Send catalog for future reference</div>
                 </div>
                 <div class="flow-result">
                     <h4>Expected Results</h4>
@@ -1454,8 +1754,8 @@
                 <div class="flow-box"><div class="step-badge">STEP 3</div><strong>Brian qualifies via phone</strong><br>Do they carry home decor? What aesthetic? Who handles buying?</div>
                 <div class="flow-arrow">↓</div>
                 <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-                    <div class="flow-box" style="background: #F0FDF4; border-left-color: var(--success);">Qualified & Interested → Book meeting</div>
-                    <div class="flow-box" style="background: var(--bg-primary);">Not a Fit → Mark as unqualified</div>
+                    <div class="flow-box">Qualified & Interested → Book meeting</div>
+                    <div class="flow-box">Not a Fit → Mark as unqualified</div>
                 </div>
                 <div class="flow-box"><div class="step-badge">STEP 4</div><strong>Sales rep receives brief</strong> – Store aesthetic, budget level, timeline</div>
                 <div class="flow-result">
@@ -1503,10 +1803,129 @@
 
     <div class="section-divider"></div>
 
-    <!-- Final Section -->
-    <section class="final-section">
-        <h2>Growth should feel calm,<br/>not exhausting.</h2>
-        <a href="https://calendly.com/teamshessi/30min" target="_blank" class="cta-button">Explore the System</a>
+    <!-- Timeline -->
+    <section class="timeline-section">
+        <h2>Deployment Timeline</h2>
+        <div class="timeline-wrap">
+            <div class="timeline-months">
+                <span class="timeline-spacer"></span>
+                <div class="timeline-months-inner">
+                    <span>Feb</span>
+                    <span>March</span>
+                    <span>April</span>
+                    <span>May</span>
+                </div>
+            </div>
+            <div class="timeline-ruler">
+                <span class="timeline-spacer"></span>
+                <div class="timeline-ruler-inner">
+                    <div class="timeline-dotted-lines">
+                        <span class="tl-line"></span>
+                        <span class="tl-line"></span>
+                        <span class="tl-line"></span>
+                        <span class="tl-line"></span>
+                        <span class="tl-line"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <span class="timeline-label">Trade show</span>
+                <div class="timeline-track" id="track1">
+                    <div class="timeline-bar trade-show" id="bar1" data-left="0" data-width="33">
+                        <span class="timeline-bar-handle left"></span>
+                        <span class="timeline-bar-inner"></span>
+                        <span class="timeline-bar-handle right"></span>
+                        <div class="timeline-marker timeline-marker-start"><span class="timeline-marker-label">Start</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-end"><span class="timeline-marker-label">Action!</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-testing" data-pos="50"><span class="timeline-marker-label">Testing</span><span class="timeline-marker-needle"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <span class="timeline-label">Dormant</span>
+                <div class="timeline-track" id="track2">
+                    <div class="timeline-bar dormant" id="bar2" data-left="20" data-width="50">
+                        <span class="timeline-bar-handle left"></span>
+                        <span class="timeline-bar-inner"></span>
+                        <span class="timeline-bar-handle right"></span>
+                        <div class="timeline-marker timeline-marker-start"><span class="timeline-marker-label">Start</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-end"><span class="timeline-marker-label">Action!</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-testing" data-pos="50"><span class="timeline-marker-label">Testing</span><span class="timeline-marker-needle"></span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="timeline-row">
+                <span class="timeline-label">Outbound</span>
+                <div class="timeline-track" id="track3">
+                    <div class="timeline-bar outbound" id="bar3" data-left="50" data-width="50">
+                        <span class="timeline-bar-handle left"></span>
+                        <span class="timeline-bar-inner"></span>
+                        <span class="timeline-bar-handle right"></span>
+                        <div class="timeline-marker timeline-marker-start"><span class="timeline-marker-label">Start</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-end"><span class="timeline-marker-label">Action!</span><span class="timeline-marker-needle"></span></div>
+                        <div class="timeline-marker timeline-marker-testing" data-pos="50"><span class="timeline-marker-label">Testing</span><span class="timeline-marker-needle"></span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="section-divider"></div>
+
+    <!-- Hero (duplicate after timeline) -->
+    <section class="hero fade-in" id="heroBottom">
+        <canvas class="hero-canvas" id="heroCanvas2"></canvas>
+        <div class="hero-carousel">
+            <div class="hero-slides" id="heroSlides2">
+                <!-- Slide 1: Main Title -->
+                <div class="hero-slide">
+                    <h1>KALALOU AI LEVERAGE</h1>
+                    <p class="hero-subtext">A quiet system working behind the scenes.</p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 2: Peak State -->
+                <div class="hero-slide">
+                    <h1 class="hero-alt-heading">Peak</h1>
+                    <p class="hero-strong-heading">2,100 calls/month</p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 3: Current State -->
+                <div class="hero-slide">
+                    <h1 class="hero-alt-heading">Right now!</h1>
+                    <p class="hero-weak-heading">500–1,000 calls/month</p>
+                    <p class="hero-percent-note">
+                        <span class="hero-percent-range">52% to 76%</span>
+                        <span class="hero-percent-arrow">↓</span>
+                    </p>
+                    <div class="hero-divider"></div>
+                </div>
+
+                <!-- Slide 4: Goal -->
+                <div class="hero-slide">
+                    <h1 class="hero-alt-heading">Goal</h1>
+                    <p class="hero-strong-heading">12,000 calls/month</p>
+                    <p class="hero-weak-heading">24x the current volume</p>
+                    <p class="hero-weak-heading">Nearly 6x the Peak</p>
+                    <div class="hero-divider"></div>
+                </div>
+            </div>
+
+            <!-- Navigation Dots -->
+            <div class="carousel-dots" id="carouselDots2">
+                <div class="carousel-dot active" data-slide="0" data-hero="bottom"></div>
+                <div class="carousel-dot" data-slide="1" data-hero="bottom"></div>
+                <div class="carousel-dot" data-slide="2" data-hero="bottom"></div>
+                <div class="carousel-dot" data-slide="3" data-hero="bottom"></div>
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="carousel-nav">
+                <button class="carousel-button" id="prevButton2" aria-label="Previous">←</button>
+                <button class="carousel-button" id="nextButton2" aria-label="Next">→</button>
+            </div>
+        </div>
     </section>
 
     <!-- Three.js Library -->
@@ -1515,6 +1934,7 @@
     <script>
         // Three.js Animated Background
         let scene, camera, renderer, particles;
+        let hero2Scene, hero2Camera, hero2Renderer, hero2Particles;
         let tamScene, tamCamera, tamRenderer, tamParticles;
         let isDarkMode = false; // Kalalou starts with light theme
         let animationId;
@@ -1600,6 +2020,18 @@
                 ({ scene, camera, renderer, particles } = heroBundle);
             }
 
+            // Hero 2 (bottom) background
+            const heroCanvas2 = document.getElementById('heroCanvas2');
+            const hero2Bundle = createWaveScene({
+                canvas: heroCanvas2,
+                backgroundHex: 0xF7F4EF,
+                lineHex: 0x6F6F6F,
+                opacity: 0.3
+            });
+            if (hero2Bundle) {
+                ({ scene: hero2Scene, camera: hero2Camera, renderer: hero2Renderer, particles: hero2Particles } = hero2Bundle);
+            }
+
             // TAM background
             const tamCanvasEl = document.getElementById('tamCanvas');
             const tamBundle = createWaveScene({
@@ -1651,6 +2083,7 @@
                     bundleRenderer.setSize(w, h);
                 };
                 resizeBundle(renderer, camera, heroCanvas);
+                resizeBundle(hero2Renderer, hero2Camera, heroCanvas2);
                 resizeBundle(tamRenderer, tamCamera, tamCanvasEl);
             });
         }
@@ -1691,6 +2124,7 @@
                         }
                     };
                     applyLight(scene, particles, 0.3);
+                    applyLight(hero2Scene, hero2Particles, 0.3);
                     applyLight(tamScene, tamParticles, 0.25);
                     themeIcon.textContent = '🌙';
                 }
@@ -1713,21 +2147,17 @@
             checkThreeJS();
         }
 
-        // Carousel functionality
+        // Carousel functionality (top hero)
         let currentSlide = 0;
-        const totalSlides = 3;
+        const totalSlides = 4;
         const heroSlides = document.getElementById('heroSlides');
-        const dots = document.querySelectorAll('.carousel-dot');
+        const dots = document.querySelectorAll('.carousel-dot:not([data-hero])');
         const prevButton = document.getElementById('prevButton');
         const nextButton = document.getElementById('nextButton');
 
         function updateCarousel() {
-            heroSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
-            
-            // Update dots
-            dots.forEach((dot, index) => {
-                dot.classList.toggle('active', index === currentSlide);
-            });
+            if (heroSlides) heroSlides.style.transform = `translateX(-${currentSlide * 100}%)`;
+            dots.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide));
         }
 
         function nextSlide() {
@@ -1740,17 +2170,50 @@
             updateCarousel();
         }
 
-        // Button click handlers
-        nextButton.addEventListener('click', nextSlide);
-        prevButton.addEventListener('click', prevSlide);
-
-        // Dot click handlers
+        if (nextButton) nextButton.addEventListener('click', nextSlide);
+        if (prevButton) prevButton.addEventListener('click', prevSlide);
         dots.forEach((dot, index) => {
-            dot.addEventListener('click', () => {
-                currentSlide = index;
-                updateCarousel();
-            });
+            dot.addEventListener('click', () => { currentSlide = index; updateCarousel(); });
         });
+
+        // Carousel functionality (bottom hero)
+        let currentSlide2 = 0;
+        const heroSlides2 = document.getElementById('heroSlides2');
+        const dots2 = document.querySelectorAll('.carousel-dot[data-hero="bottom"]');
+        const prevButton2 = document.getElementById('prevButton2');
+        const nextButton2 = document.getElementById('nextButton2');
+
+        function updateCarousel2() {
+            if (heroSlides2) heroSlides2.style.transform = `translateX(-${currentSlide2 * 100}%)`;
+            dots2.forEach((dot, index) => dot.classList.toggle('active', index === currentSlide2));
+        }
+
+        function nextSlide2() {
+            currentSlide2 = (currentSlide2 + 1) % totalSlides;
+            updateCarousel2();
+        }
+
+        function prevSlide2() {
+            currentSlide2 = (currentSlide2 - 1 + totalSlides) % totalSlides;
+            updateCarousel2();
+        }
+
+        if (nextButton2) nextButton2.addEventListener('click', nextSlide2);
+        if (prevButton2) prevButton2.addEventListener('click', prevSlide2);
+        dots2.forEach((dot, index) => {
+            dot.addEventListener('click', () => { currentSlide2 = index; updateCarousel2(); });
+        });
+
+        // Touch swipe for bottom hero
+        if (heroSlides2) {
+            let touchStartX2 = 0, touchEndX2 = 0;
+            heroSlides2.addEventListener('touchstart', (e) => { touchStartX2 = e.changedTouches[0].screenX; });
+            heroSlides2.addEventListener('touchend', (e) => {
+                touchEndX2 = e.changedTouches[0].screenX;
+                if (touchEndX2 < touchStartX2 - 50) nextSlide2();
+                if (touchEndX2 > touchStartX2 + 50) prevSlide2();
+            });
+        }
 
         // Keyboard navigation
         document.addEventListener('keydown', (e) => {
@@ -1917,6 +2380,161 @@
                 });
             }
         });
+
+        // Choice cards (lead vs outbound)
+        (function initChoiceCards() {
+            const cards = document.querySelectorAll('.choice-card');
+            cards.forEach((card) => {
+                card.addEventListener('click', () => {
+                    card.classList.toggle('choice-card--active');
+                });
+            });
+        })();
+
+        // Timeline draggable bars
+        (function initTimelineBars() {
+            const MIN_WIDTH = 5;
+            const bars = document.querySelectorAll('.timeline-bar');
+            bars.forEach(bar => {
+                const track = bar.closest('.timeline-track');
+                if (!track) return;
+                const leftHandle = bar.querySelector('.timeline-bar-handle.left');
+                const rightHandle = bar.querySelector('.timeline-bar-handle.right');
+
+                function getPct(e) {
+                    const rect = track.getBoundingClientRect();
+                    const x = (e.touches && e.touches[0] ? e.touches[0].clientX : e.clientX) - rect.left;
+                    return Math.max(0, Math.min(100, (x / rect.width) * 100));
+                }
+
+                function applyBar() {
+                    let left = parseFloat(bar.dataset.left) || 0;
+                    let width = parseFloat(bar.dataset.width) || 30;
+                    bar.style.left = left + '%';
+                    bar.style.width = width + '%';
+                }
+
+                applyBar();
+
+                function dragLeft(e) {
+                    e.preventDefault();
+                    const startX = getPct(e);
+                    const startLeft = parseFloat(bar.dataset.left);
+                    const startWidth = parseFloat(bar.dataset.width);
+                    function move(ev) {
+                        const pct = getPct(ev);
+                        const newLeft = Math.min(pct, startLeft + startWidth - MIN_WIDTH);
+                        const newWidth = startWidth + (startLeft - newLeft);
+                        bar.dataset.left = newLeft.toFixed(1);
+                        bar.dataset.width = Math.max(MIN_WIDTH, newWidth).toFixed(1);
+                        applyBar();
+                    }
+                    function stop() {
+                        document.removeEventListener('mousemove', move);
+                        document.removeEventListener('mouseup', stop);
+                        document.removeEventListener('touchmove', move);
+                        document.removeEventListener('touchend', stop);
+                    }
+                    document.addEventListener('mousemove', move);
+                    document.addEventListener('mouseup', stop);
+                    document.addEventListener('touchmove', move, { passive: false });
+                    document.addEventListener('touchend', stop);
+                }
+
+                function dragRight(e) {
+                    e.preventDefault();
+                    const startLeft = parseFloat(bar.dataset.left);
+                    const startWidth = parseFloat(bar.dataset.width);
+                    function move(ev) {
+                        const pct = getPct(ev);
+                        const newRight = Math.max(pct, startLeft + MIN_WIDTH);
+                        const newWidth = newRight - startLeft;
+                        bar.dataset.width = Math.max(MIN_WIDTH, Math.min(100 - startLeft, newWidth)).toFixed(1);
+                        applyBar();
+                    }
+                    function stop() {
+                        document.removeEventListener('mousemove', move);
+                        document.removeEventListener('mouseup', stop);
+                        document.removeEventListener('touchmove', move);
+                        document.removeEventListener('touchend', stop);
+                    }
+                    document.addEventListener('mousemove', move);
+                    document.addEventListener('mouseup', stop);
+                    document.addEventListener('touchmove', move, { passive: false });
+                    document.addEventListener('touchend', stop);
+                }
+
+                function dragBody(e) {
+                    if (e.target.classList.contains('timeline-bar-handle')) return;
+                    e.preventDefault();
+                    const startX = getPct(e);
+                    const startLeft = parseFloat(bar.dataset.left);
+                    const startWidth = parseFloat(bar.dataset.width);
+                    function move(ev) {
+                        const pct = getPct(ev);
+                        const delta = pct - startX;
+                        let newLeft = Math.max(0, Math.min(100 - startWidth, startLeft + delta));
+                        bar.dataset.left = newLeft.toFixed(1);
+                        applyBar();
+                    }
+                    function stop() {
+                        document.removeEventListener('mousemove', move);
+                        document.removeEventListener('mouseup', stop);
+                        document.removeEventListener('touchmove', move);
+                        document.removeEventListener('touchend', stop);
+                    }
+                    document.addEventListener('mousemove', move);
+                    document.addEventListener('mouseup', stop);
+                    document.addEventListener('touchmove', move, { passive: false });
+                    document.addEventListener('touchend', stop);
+                }
+
+                leftHandle.addEventListener('mousedown', dragLeft);
+                rightHandle.addEventListener('mousedown', dragRight);
+                bar.addEventListener('mousedown', dragBody);
+                leftHandle.addEventListener('touchstart', dragLeft, { passive: false });
+                rightHandle.addEventListener('touchstart', dragRight, { passive: false });
+                bar.addEventListener('touchstart', dragBody, { passive: false });
+
+                // Slidable marker (Testing)
+                function initSlidableMarker(marker) {
+                    if (!marker) return;
+                    function applyPos() {
+                        const pos = Math.max(0, Math.min(100, parseFloat(marker.dataset.pos) || 50));
+                        marker.dataset.pos = pos.toFixed(1);
+                        marker.style.left = pos + '%';
+                    }
+                    applyPos();
+                    function dragMarker(e) {
+                        e.preventDefault();
+                        e.stopPropagation();
+                        function getBarPct(ev) {
+                            const rect = bar.getBoundingClientRect();
+                            const x = (ev.touches && ev.touches[0] ? ev.touches[0].clientX : ev.clientX) - rect.left;
+                            return Math.max(0, Math.min(100, (x / rect.width) * 100));
+                        }
+                        function move(ev) {
+                            const pos = getBarPct(ev);
+                            marker.dataset.pos = pos.toFixed(1);
+                            marker.style.left = pos + '%';
+                        }
+                        function stop() {
+                            document.removeEventListener('mousemove', move);
+                            document.removeEventListener('mouseup', stop);
+                            document.removeEventListener('touchmove', move);
+                            document.removeEventListener('touchend', stop);
+                        }
+                        document.addEventListener('mousemove', move);
+                        document.addEventListener('mouseup', stop);
+                        document.addEventListener('touchmove', move, { passive: false });
+                        document.addEventListener('touchend', stop);
+                    }
+                    marker.addEventListener('mousedown', dragMarker);
+                    marker.addEventListener('touchstart', dragMarker, { passive: false });
+                }
+                initSlidableMarker(bar.querySelector('.timeline-marker-testing'));
+            });
+        })();
     </script>
 </body>
 </html>
